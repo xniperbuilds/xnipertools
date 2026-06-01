@@ -44,11 +44,21 @@
 
   <!-- main generator -->
   <div class="tool-box">
-    <label for="name">Enter your name</label>
-    <input type="text" id="name" placeholder="e.g. Xniper" value="Xniper" maxlength="20" autocomplete="off">
+    <label for="name" style="display:flex;justify-content:space-between;align-items:baseline">Enter your name <span class="muted" id="nameCount">6 / 12</span></label>
+    <input type="text" id="name" placeholder="e.g. Xniper" value="Xniper" maxlength="12" autocomplete="off">
     <div class="mt">
       <label for="clan">Clan / team tag <span class="muted">(optional)</span></label>
-      <input type="text" id="clan" placeholder="e.g. LP" maxlength="6" autocomplete="off">
+      <input type="text" id="clan" placeholder="e.g. LP" maxlength="8" autocomplete="off">
+      <div class="sep-row">
+        <span class="sep-lbl">Tag separator</span>
+        <button type="button" class="sep-chip active" data-s="メ">メ</button>
+        <button type="button" class="sep-chip" data-s=" ">space</button>
+        <button type="button" class="sep-chip" data-s="✗">✗</button>
+        <button type="button" class="sep-chip" data-s="|">|</button>
+        <button type="button" class="sep-chip" data-s="•">•</button>
+        <button type="button" class="sep-chip" data-s="-">-</button>
+        <button type="button" class="sep-chip" data-s="">none</button>
+      </div>
     </div>
     <div class="ff-toggles mt">
       <label class="ff-toggle"><input type="checkbox" id="aesthetic"><span class="tg"></span><span>Aesthetic — clean pro-style names</span></label>
@@ -207,12 +217,13 @@ function randomName(){
   return n.slice(0,18);
 }
 const BLANK='ㅤ'; // U+3164 invisible space for Free Fire
+let SEP='メ'; // clan/name separator (changeable)
 
 const name=document.getElementById('name'),clan=document.getElementById('clan'),ffSpace=document.getElementById('ffSpace'),out=document.getElementById('out');
 function getBase(){
   let nm=(name.value||'').trim()||'Xniper';
   const cl=(clan.value||'').trim();
-  let base=cl?(cl+'メ'+nm):nm;
+  let base=cl?(cl+SEP+nm):nm;
   if(ffSpace.checked)base=base.replace(/ /g,BLANK);
   return base;
 }
@@ -256,7 +267,10 @@ clan.addEventListener('input',renderAll);
 ffSpace.addEventListener('change',renderAll);
 aesthetic.addEventListener('change',function(){reshuffle();renderAll();});
 document.getElementById('genBtn').addEventListener('click',function(){reshuffle();renderAll();});
-document.getElementById('randBtn').addEventListener('click',function(){name.value=randomName();reshuffle();renderAll();});
+document.getElementById('randBtn').addEventListener('click',function(){name.value=randomName();updCount();reshuffle();renderAll();});
+function updCount(){var c=document.getElementById('nameCount');if(c)c.textContent=name.value.length+' / 12';}
+name.addEventListener('input',updCount);updCount();
+document.querySelectorAll('.sep-chip').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.sep-chip').forEach(function(x){x.classList.remove('active');});b.classList.add('active');SEP=b.dataset.s;renderAll();});});
 document.getElementById('copyBlank').addEventListener('click',function(){const b=this;navigator.clipboard.writeText(BLANK).then(()=>{b.textContent='Copied! ✓';setTimeout(()=>{b.textContent='Copy Blank Space';},1400);});});
 
 renderAll();renderFavs();

@@ -325,6 +325,11 @@ select#fontPick{width:100%}
 .sym.done{background:#16a34a;border-color:#16a34a;font-size:.68rem}
 .ff-toggles{display:flex;flex-wrap:wrap;gap:12px 26px}
 .ff-toggles .ff-toggle{margin-top:0}
+.sep-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:10px}
+.sep-lbl{font-size:.78rem;color:var(--muted);margin-right:4px}
+.sep-chip{cursor:pointer;min-width:40px;padding:7px 11px;border-radius:9px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--muted);font-size:.85rem;font-weight:600;font-family:inherit;transition:.15s}
+.sep-chip:hover{color:#fff;border-color:var(--border-2)}
+.sep-chip.active{background:linear-gradient(135deg,#6f97f5,#3f63d8);color:#fff;border-color:transparent}
 
 /* ===== FF Points Calculator ===== */
 .ffp-match{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:12px}
