@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Fire Tournament Standings Calculator — Team Rankings + Image | Xnipertools</title>
+<meta name="description" content="Free Fire tournament standings calculator for organizers. Add 10–15 teams with position points and kills, auto-rank top 1/2/3 with medals, add your org name and logo, and download a clean standings image.">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/free-fire-tournament-standings/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Fire Tournament Standings Calculator","url":"https://xnipertools.com/free-fire-tournament-standings/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Gaming</span><span class="sep">/</span><span>Tournament Standings</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🏆</div>
+    <div>
+      <h1>FF Tournament Standings</h1>
+      <p>For organizers — add your teams, auto-rank the <b>top 1/2/3</b>, and download a clean standings image with your <b>logo</b>.</p>
+    </div>
+  </div>
+
+  <!-- settings -->
+  <div class="tool-box">
+    <label for="org">Organization / Tournament name</label>
+    <input type="text" id="org" placeholder="e.g. Xniper Esports League" maxlength="34" autocomplete="off">
+
+    <div class="mt">
+      <label>Organization logo <span class="muted">(optional)</span></label>
+      <div class="org-logo-row">
+        <img id="logoPrev" class="org-logo-prev" alt="">
+        <label class="file-btn" for="logoFile">📁 Upload logo</label>
+        <input type="file" id="logoFile" accept="image/*" style="display:none">
+        <button type="button" class="file-rm" id="logoRm" style="display:none">Remove</button>
+      </div>
+    </div>
+
+    <div class="mt" style="max-width:200px">
+      <label for="teamCount">Number of teams</label>
+      <input type="number" id="teamCount" value="12" min="2" max="25">
+    </div>
+
+    <div class="mt">
+      <label>Optional columns <span class="muted">(only show if you use them)</span></label>
+      <div class="ff-toggles" style="margin-top:8px">
+        <label class="ff-toggle"><input type="checkbox" id="optDmg"><span class="tg"></span><span>Total damage</span></label>
+        <label class="ff-toggle"><input type="checkbox" id="optMatches"><span class="tg"></span><span>Matches played</span></label>
+        <label class="ff-toggle"><input type="checkbox" id="optSurv"><span class="tg"></span><span>Survival time</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- team entry -->
+  <div class="tool-box">
+    <h3>Enter team data</h3>
+    <p class="muted">Total = position points + kills. Ranking updates automatically.</p>
+    <div id="teams" class="mt"></div>
+  </div>
+
+  <!-- standings -->
+  <div class="tool-box">
+    <h3>🏅 Live standings</h3>
+    <p class="muted">Auto-ranked by total points (ties broken by position points).</p>
+    <div id="standings" class="mt"></div>
+    <button class="btn block mt" id="dlBtn">📥 Download Standings (image)</button>
+    <p class="muted center" style="font-size:.8rem;margin-top:10px">A clean standings card with your org name, logo &amp; xnipertools.com.</p>
+  </div>
+
+  <!-- off-screen card for image -->
+  <div id="cardWrap"><div id="card"></div></div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>About the FF Tournament Standings Calculator</h2>
+    <p>Running a daily Free Fire tournament with 10–15 teams? This free tool builds your standings in seconds. Enter each team's name, position points and kills — the calculator adds the totals and automatically ranks every team from #1 down, awarding gold, silver and bronze to the top three. Add your organization's name and logo, then download a clean, professional standings image to share with players and on your channels.</p>
+    <h3>How ranking works</h3>
+    <p>Teams are sorted by <b>total points</b> (position points + kills). If two teams have the same total, the team with more <b>position points</b> ranks higher. The top three teams get 🥇 🥈 🥉.</p>
+    <h3>Optional stats</h3>
+    <p>You can also turn on extra columns — total damage, matches played and survival time. They only appear in your standings and image if you switch them on, keeping the result clean.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">🎮</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../free-fire-points-calculator/" class="card"><div class="ico">🏆</div><h3>FF Points Calculator</h3><p>Your own team's tournament points.</p><span class="go">Open tool →</span></a>
+      <a href="../free-fire-name-generator/" class="card"><div class="ico">🔥</div><h3>Free Fire Name Generator</h3><p>Stylish FF names &amp; symbols.</p><span class="go">Open tool →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../free-fire-points-calculator/">FF Points</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const BADGE="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236f97f5'/%3E%3Cstop offset='1' stop-color='%233f63d8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23b)'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E";
+const KEY="ff_tourny_v1";
+const S={org:'',logo:'',count:12,opt:{dmg:false,matches:false,surv:false},teams:[]};
+function blankTeam(){return{name:'',pos:'',kills:'',dmg:'',matches:'',surv:''};}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+const orgI=document.getElementById('org'),teamCountI=document.getElementById('teamCount'),teamsEl=document.getElementById('teams'),standingsEl=document.getElementById('standings');
+const optDmg=document.getElementById('optDmg'),optMatches=document.getElementById('optMatches'),optSurv=document.getElementById('optSurv');
+
+(function load(){
+  try{var o=JSON.parse(localStorage.getItem(KEY));if(o){S.org=o.org||'';S.logo=o.logo||'';S.count=o.count||12;S.opt=o.opt||S.opt;S.teams=o.teams||[];}}catch(e){}
+  while(S.teams.length<S.count)S.teams.push(blankTeam());
+  S.teams=S.teams.slice(0,S.count);
+  orgI.value=S.org;teamCountI.value=S.count;optDmg.checked=!!S.opt.dmg;optMatches.checked=!!S.opt.matches;optSurv.checked=!!S.opt.surv;
+  if(S.logo)showLogo();
+  renderTeams();renderStandings();
+})();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+
+function renderTeams(){
+  var h='';
+  for(var i=0;i<S.count;i++){
+    var t=S.teams[i],tot=(+t.pos||0)+(+t.kills||0);
+    h+='<div class="tm-card"><input class="tm-name" placeholder="Team '+(i+1)+' name" value="'+esc(t.name)+'" oninput="upd('+i+',\'name\',this.value)">'+
+      '<div class="tm-fields"><div class="tm-f"><label>Pos pts</label><input type="number" inputmode="numeric" value="'+esc(t.pos)+'" oninput="upd('+i+',\'pos\',this.value)"></div>'+
+      '<div class="tm-f"><label>Kills</label><input type="number" inputmode="numeric" value="'+esc(t.kills)+'" oninput="upd('+i+',\'kills\',this.value)"></div>'+
+      (S.opt.dmg?'<div class="tm-f"><label>Damage</label><input type="number" inputmode="numeric" value="'+esc(t.dmg)+'" oninput="upd('+i+',\'dmg\',this.value)"></div>':'')+
+      (S.opt.matches?'<div class="tm-f"><label>Matches</label><input type="number" inputmode="numeric" value="'+esc(t.matches)+'" oninput="upd('+i+',\'matches\',this.value)"></div>':'')+
+      (S.opt.surv?'<div class="tm-f"><label>Survival</label><input type="text" placeholder="mm:ss" value="'+esc(t.surv)+'" oninput="upd('+i+',\'surv\',this.value)"></div>':'')+
+      '<div class="tm-tot"><label>Total</label><span id="tot'+i+'">'+tot+'</span></div></div></div>';
+  }
+  teamsEl.innerHTML=h;
+}
+function upd(i,k,v){S.teams[i][k]=v;if(k==='pos'||k==='kills'){var tt=document.getElementById('tot'+i);if(tt)tt.textContent=(+S.teams[i].pos||0)+(+S.teams[i].kills||0);}renderStandings();save();}
+
+function standings(){
+  var a=S.teams.map(function(t,i){return{name:t.name,idx:i,pos:+t.pos||0,kills:+t.kills||0,dmg:+t.dmg||0,matches:+t.matches||0,surv:t.surv||'',total:(+t.pos||0)+(+t.kills||0)};});
+  a.sort(function(x,y){return y.total-x.total||y.pos-x.pos||y.kills-x.kills;});
+  a.forEach(function(t,i){t.rank=i+1;});
+  return a;
+}
+function medal(r){return r===1?'🥇':r===2?'🥈':r===3?'🥉':'#'+r;}
+function renderStandings(){
+  var a=standings();
+  standingsEl.innerHTML=a.map(function(t){
+    var extra=[];
+    if(S.opt.dmg)extra.push((t.dmg||0)+' dmg');
+    if(S.opt.matches)extra.push((t.matches||0)+' matches');
+    if(S.opt.surv&&t.surv)extra.push(t.surv);
+    return '<div class="st-row'+(t.rank<=3?' st-r'+t.rank:'')+'"><div class="st-rank">'+medal(t.rank)+'</div>'+
+      '<div class="st-team"><div class="st-name">'+esc(t.name||('Team '+(t.idx+1)))+'</div><div class="st-sub">Pos '+t.pos+' · '+t.kills+' kills'+(extra.length?' · '+extra.join(' · '):'')+'</div></div>'+
+      '<div class="st-total">'+t.total+'<span>pts</span></div></div>';
+  }).join('');
+}
+
+/* logo upload */
+document.getElementById('logoFile').addEventListener('change',function(e){
+  var f=e.target.files&&e.target.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(ev){var img=new Image();img.onload=function(){var max=256,sc=Math.min(1,max/Math.max(img.width,img.height));var c=document.createElement('canvas');c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);c.getContext('2d').drawImage(img,0,0,c.width,c.height);S.logo=c.toDataURL('image/png');showLogo();save();};img.src=ev.target.result;};
+  r.readAsDataURL(f);
+});
+function showLogo(){var p=document.getElementById('logoPrev');p.src=S.logo;p.style.display='block';document.getElementById('logoRm').style.display='inline-flex';}
+document.getElementById('logoRm').addEventListener('click',function(){S.logo='';document.getElementById('logoPrev').style.display='none';this.style.display='none';document.getElementById('logoFile').value='';save();});
+
+/* settings listeners */
+orgI.addEventListener('input',function(){S.org=orgI.value;save();});
+teamCountI.addEventListener('change',function(){var n=Math.max(2,Math.min(25,parseInt(teamCountI.value)||12));teamCountI.value=n;S.count=n;while(S.teams.length<n)S.teams.push(blankTeam());S.teams=S.teams.slice(0,n);renderTeams();renderStandings();save();});
+[optDmg,optMatches,optSurv].forEach(function(el){el.addEventListener('change',function(){S.opt.dmg=optDmg.checked;S.opt.matches=optMatches.checked;S.opt.surv=optSurv.checked;renderTeams();renderStandings();save();});});
+
+/* build image card */
+function buildCard(){
+  var a=standings();
+  var optCols=[];if(S.opt.dmg)optCols.push(['DMG','dmg']);if(S.opt.matches)optCols.push(['M','matches']);if(S.opt.surv)optCols.push(['SURV','surv']);
+  var thead='<tr><th class="l">#</th><th class="l">TEAM</th><th>POS</th><th>K</th>'+optCols.map(function(c){return '<th>'+c[0]+'</th>';}).join('')+'<th>TOTAL</th></tr>';
+  var tbody=a.map(function(t){
+    var od=optCols.map(function(c){return '<td>'+(c[1]==='surv'?esc(t.surv||'-'):(t[c[1]]||0))+'</td>';}).join('');
+    return '<tr'+(t.rank<=3?' class="r'+t.rank+'"':'')+'><td class="l card-rank">'+medal(t.rank)+'</td><td class="l">'+esc(t.name||('Team '+(t.idx+1)))+'</td><td>'+t.pos+'</td><td>'+t.kills+'</td>'+od+'<td class="tot">'+t.total+'</td></tr>';
+  }).join('');
+  document.getElementById('card').innerHTML=
+    '<div class="card-head">'+(S.logo?'<img class="card-logo" src="'+S.logo+'">':'')+'<div><div class="card-org">'+esc(S.org.trim()||'Tournament')+'</div><div class="card-sub">Tournament Standings · '+a.length+' Teams</div></div></div>'+
+    '<table class="card-tbl"><thead>'+thead+'</thead><tbody>'+tbody+'</tbody></table>'+
+    '<div class="card-foot"><img src="'+BADGE+'"><span class="lnk">xnipertools.com</span></div>';
+}
+function downloadImg(){
+  if(typeof html2canvas==='undefined'){alert('Image library still loading — try again in a moment.');return;}
+  buildCard();
+  var btn=document.getElementById('dlBtn'),o=btn.textContent;btn.textContent='Generating…';btn.disabled=true;
+  var run=function(){
+    html2canvas(document.getElementById('card'),{backgroundColor:'#0a0b0f',scale:2,logging:false,useCORS:true}).then(function(canvas){
+      var a=document.createElement('a');a.download=((S.org.trim()||'tournament')+'-standings.jpg').replace(/\s+/g,'-');a.href=canvas.toDataURL('image/jpeg',0.93);document.body.appendChild(a);a.click();a.remove();btn.textContent=o;btn.disabled=false;
+    }).catch(function(err){btn.textContent=o;btn.disabled=false;alert('Could not generate the image — please try again.');});
+  };
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(run);else run();
+}
+document.getElementById('dlBtn').addEventListener('click',downloadImg);
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
