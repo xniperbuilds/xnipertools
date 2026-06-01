@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Fire Tournament Points Calculator — Team Score + JPG | Xnipertools</title>
+<meta name="description" content="Free Fire tournament points calculator. Add your team name, enter placement and kills per match, get the total points, and download a clean result image (JPG). Free.">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/free-fire-points-calculator/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Fire Points Calculator","url":"https://xnipertools.com/free-fire-points-calculator/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Gaming</span><span class="sep">/</span><span>FF Points Calculator</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🏆</div>
+    <div>
+      <h1>Free Fire Points Calculator</h1>
+      <p>Add your <b>team name</b>, enter each match, get the total — then <b>download the result as a JPG</b>.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <label for="team">Team / Player name</label>
+    <input type="text" id="team" placeholder="e.g. Xniper Esports" maxlength="26" autocomplete="off">
+
+    <div class="mt" style="max-width:220px">
+      <label for="matchCount">Number of matches</label>
+      <select id="matchCount"><option>4</option><option selected>6</option><option>8</option><option>10</option><option>12</option></select>
+    </div>
+
+    <div id="matches" class="mt"></div>
+
+    <button class="btn ghost block mt" id="resetBtn">↺ Reset all matches</button>
+
+    <details class="ffp-details mt">
+      <summary>📋 Point system used</summary>
+      <table class="ffp-table" id="ptsTable"></table>
+    </details>
+  </div>
+
+  <div class="tool-box ffp-totalbox">
+    <div class="ffp-total">
+      <div><div class="ffp-tl">Total Points</div><div class="ffp-tn" id="grandTotal">0</div></div>
+      <div class="ffp-tb">Placement <b id="placeTotal">0</b><br>Kills <b id="killTotal">0</b></div>
+    </div>
+    <button class="btn block mt" id="dlBtn">📥 Download Result (JPG)</button>
+    <p class="muted center" style="font-size:.8rem;margin-top:10px">A clean result card with your team name &amp; xnipertools.com.</p>
+  </div>
+
+  <canvas id="resCanvas" style="display:none"></canvas>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>About the Free Fire Points Calculator</h2>
+    <p>This tool adds up your Free Fire tournament points across all your matches. For every match, pick your <b>placement</b> (rank) and the number of <b>kills</b> — the calculator instantly shows that match's points and your running grand total. When you're done, add your team name and tap <b>Download Result (JPG)</b> to get a clean image you can share with your squad or post online.</p>
+    <h3>How points are counted</h3>
+    <p>Placement points: #1 (Booyah) = 12, #2 = 9, #3 = 8, #4 = 7, #5 = 6, #6 = 5, #7 = 4, #8 = 3, #9 = 2, #10 = 1, #11–12 = 0. Each kill = 1 point. Total = placement points + kill points across every match.</p>
+    <h3>Does it save my data?</h3>
+    <p>Your matches are saved right in your browser, so your numbers stay even if you close the page. Nothing is uploaded.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">🎮</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../free-fire-name-generator/" class="card"><div class="ico">🔥</div><h3>Free Fire Name Generator</h3><p>Stylish FF names, fonts &amp; symbols.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../free-fire-points-calculator/">FF Points</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const MAPS=["Bermuda","Purgatory","Kalahari","Nexterra","Alpine","Solara"];
+const PLACEMENT={1:12,2:9,3:8,4:7,5:6,6:5,7:4,8:3,9:2,10:1,11:0,12:0};
+const KEY="ff_pts_v1";
+const teamInput=document.getElementById('team'),countSel=document.getElementById('matchCount'),matchesEl=document.getElementById('matches');
+let state, count=6;
+
+(function init(){
+  try{var o=JSON.parse(localStorage.getItem(KEY));if(o&&Array.isArray(o.state)){state=o.state;count=o.count||o.state.length;teamInput.value=o.team||'';}}catch(e){}
+  if(!state){count=6;state=blank(6);}
+  countSel.value=String(count);
+  render();
+})();
+
+function blank(n){var a=[];for(var i=0;i<n;i++)a.push({rank:"",kills:0});return a;}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({count:count,team:teamInput.value,state:state}));}catch(e){}}
+function setCount(n){n=parseInt(n)||6;if(n>state.length){while(state.length<n)state.push({rank:"",kills:0});}else state=state.slice(0,n);count=n;render();}
+
+function render(){
+  var html='';
+  for(var i=0;i<count;i++){
+    var m=state[i],map=MAPS[i%MAPS.length],p=PLACEMENT[m.rank]||0,k=parseInt(m.kills)||0;
+    var opts='<option value="">— Rank —</option>';
+    for(var r=1;r<=12;r++)opts+='<option value="'+r+'"'+(m.rank===r?' selected':'')+'>#'+r+(r===1?' 👑':'')+' · '+PLACEMENT[r]+' pts</option>';
+    html+='<div class="ffp-match"><div class="ffp-head"><div class="ffp-mt"><span class="ffp-no">'+(i+1)+'</span><span class="ffp-map">'+map+'</span></div><span class="ffp-mpts" id="mp'+i+'">'+(p+k)+' pts</span></div>'+
+      '<div class="ffp-row"><div class="ffp-f"><label>Placement</label><select onchange="setRank('+i+',this.value)">'+opts+'</select></div>'+
+      '<div class="ffp-f"><label>Kills</label><div class="killbox"><button type="button" onclick="addKill('+i+',-1)">−</button><input type="number" inputmode="numeric" min="0" value="'+k+'" id="k'+i+'" oninput="setKills('+i+',this.value)" onblur="clampField('+i+')"><button type="button" onclick="addKill('+i+',1)">+</button></div></div></div></div>';
+  }
+  matchesEl.innerHTML=html;
+  updateTotals();
+}
+function updateTotals(){
+  var place=0,kills=0;
+  for(var i=0;i<count;i++){var p=PLACEMENT[state[i].rank]||0,k=parseInt(state[i].kills)||0;place+=p;kills+=k;var mp=document.getElementById('mp'+i);if(mp)mp.textContent=(p+k)+' pts';}
+  document.getElementById('grandTotal').textContent=place+kills;
+  document.getElementById('placeTotal').textContent=place;
+  document.getElementById('killTotal').textContent=kills;
+  save();
+}
+function setRank(i,v){state[i].rank=(v===''?'':parseInt(v));updateTotals();}
+function setKills(i,v){var n=parseInt(v);if(isNaN(n)||n<0)n=0;state[i].kills=n;updateTotals();}
+function clampField(i){document.getElementById('k'+i).value=state[i].kills;}
+function addKill(i,d){var n=(parseInt(state[i].kills)||0)+d;if(n<0)n=0;state[i].kills=n;var f=document.getElementById('k'+i);if(f)f.value=n;updateTotals();}
+function resetAll(){if(confirm('Reset all matches?')){state=blank(count);render();}}
+
+teamInput.addEventListener('input',save);
+countSel.addEventListener('change',function(e){setCount(e.target.value);});
+document.getElementById('resetBtn').addEventListener('click',resetAll);
+
+/* point table reference */
+var pt='';for(var r=1;r<=12;r++)pt+='<tr><td>#'+r+(r===1?' (Booyah)':'')+'</td><td>'+PLACEMENT[r]+' pts</td></tr>';
+pt+='<tr><td>Per kill</td><td>1 pt</td></tr>';
+document.getElementById('ptsTable').innerHTML=pt;
+
+/* ---- Download result as JPG ---- */
+function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function drawCard(){
+  var place=0,kills=0,rows=[];
+  for(var i=0;i<count;i++){var m=state[i],p=PLACEMENT[m.rank]||0,k=parseInt(m.kills)||0;place+=p;kills+=k;rows.push({n:i+1,map:MAPS[i%MAPS.length],rank:(m.rank===''||m.rank==null?'—':'#'+m.rank),kills:k,pts:p+k});}
+  var total=place+kills;
+  var W=1080,P=70,rowH=86,headTop=360,total_h=200,footH=150;
+  var H=headTop+rows.length*rowH+60+total_h+footH;
+  var cv=document.getElementById('resCanvas');cv.width=W;cv.height=H;var x=cv.getContext('2d');
+  var g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#0c0e15');g.addColorStop(1,'#08090d');x.fillStyle=g;x.fillRect(0,0,W,H);
+  var rg=x.createRadialGradient(W/2,-120,60,W/2,260,760);rg.addColorStop(0,'rgba(94,139,255,.28)');rg.addColorStop(1,'rgba(94,139,255,0)');x.fillStyle=rg;x.fillRect(0,0,W,560);
+  var tb=x.createLinearGradient(0,0,W,0);tb.addColorStop(0,'#8fb0ff');tb.addColorStop(1,'#3f63d8');x.fillStyle=tb;x.fillRect(0,0,W,12);
+  x.textAlign='center';x.fillStyle='#8b90b5';x.font='600 27px Inter,sans-serif';x.fillText('FREE FIRE  ·  TOURNAMENT RESULT',W/2,108);
+  var team=(teamInput.value.trim()||'Your Team');var fs=74;x.font='800 '+fs+'px Inter,sans-serif';
+  while(x.measureText(team).width>W-150&&fs>32){fs-=4;x.font='800 '+fs+'px Inter,sans-serif';}
+  x.fillStyle='#ffffff';x.fillText(team,W/2,196);
+  var ug=x.createLinearGradient(W/2-110,0,W/2+110,0);ug.addColorStop(0,'#8fb0ff');ug.addColorStop(1,'#3f63d8');x.fillStyle=ug;rr(x,W/2-110,224,220,6,3);x.fill();
+  x.font='600 24px Inter,sans-serif';x.fillStyle='#6f74a0';x.textAlign='left';x.fillText('MATCH',P,300);x.textAlign='center';x.fillText('RANK',640,300);x.fillText('KILLS',800,300);x.textAlign='right';x.fillText('PTS',W-P,300);
+  x.strokeStyle='rgba(255,255,255,.08)';x.lineWidth=2;x.beginPath();x.moveTo(P,322);x.lineTo(W-P,322);x.stroke();
+  var y=headTop;
+  rows.forEach(function(rw){
+    x.textAlign='left';x.fillStyle='#aeb4cc';x.font='700 30px Inter,sans-serif';x.fillText('M'+rw.n,P,y+8);
+    x.fillStyle='#8b90b5';x.font='500 26px Inter,sans-serif';x.fillText(rw.map,P+78,y+6);
+    x.textAlign='center';x.fillStyle='#e7eaf5';x.font='700 30px Inter,sans-serif';x.fillText(rw.rank,640,y+8);x.fillText(String(rw.kills),800,y+8);
+    x.textAlign='right';x.fillStyle='#9db8ff';x.font='800 32px Inter,sans-serif';x.fillText(String(rw.pts),W-P,y+8);
+    x.strokeStyle='rgba(255,255,255,.06)';x.lineWidth=1;x.beginPath();x.moveTo(P,y+34);x.lineTo(W-P,y+34);x.stroke();
+    y+=rowH;
+  });
+  y+=24;
+  var tg=x.createLinearGradient(P,y,W-P,y+total_h);tg.addColorStop(0,'rgba(94,139,255,.22)');tg.addColorStop(1,'rgba(63,99,216,.12)');x.fillStyle=tg;rr(x,P,y,W-2*P,total_h,28);x.fill();
+  x.strokeStyle='rgba(143,176,255,.4)';x.lineWidth=2;rr(x,P,y,W-2*P,total_h,28);x.stroke();
+  x.textAlign='left';x.fillStyle='#c3c8d6';x.font='600 28px Inter,sans-serif';x.fillText('TOTAL POINTS',P+44,y+62);
+  x.fillStyle='#ffffff';x.font='900 104px Inter,sans-serif';x.fillText(String(total),P+40,y+158);
+  x.textAlign='right';x.fillStyle='#c3c8d6';x.font='600 30px Inter,sans-serif';
+  x.fillText('Placement   '+place,W-P-44,y+78);x.fillText('Kills   '+kills,W-P-44,y+128);
+  var fy=H-70;x.textAlign='center';x.fillStyle='#9db8ff';x.font='800 32px Inter,sans-serif';x.fillText('xnipertools.com',W/2,fy);
+  x.fillStyle='#6f74a0';x.font='500 24px Inter,sans-serif';x.fillText('Free Fire Points Calculator',W/2,fy+38);
+  return cv;
+}
+function downloadJPG(){
+  var go=function(){
+    var cv=drawCard();
+    var a=document.createElement('a');
+    a.download=((teamInput.value.trim()||'xnipertools')+'-ff-points.jpg').replace(/\s+/g,'-');
+    a.href=cv.toDataURL('image/jpeg',0.95);
+    document.body.appendChild(a);a.click();a.remove();
+  };
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(go);else go();
+}
+document.getElementById('dlBtn').addEventListener('click',downloadJPG);
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
