@@ -59,6 +59,8 @@
       <button type="button" class="seg-btn" data-v="Change to an existing tool">🔧 Change to an existing tool</button>
     </div>
 
+    <div class="mt" id="rToolWrap" style="display:none"><label for="rTool">Which tool? <span style="color:#f87171">*</span> <span class="muted">(name or link)</span></label><input type="text" id="rTool" placeholder="e.g. Free Fire Name Generator — or paste its link"></div>
+
     <div class="row cols-2 mt">
       <div><label for="rName">Your name <span style="color:#f87171">*</span></label><input type="text" id="rName" placeholder="Name" autocomplete="name"></div>
       <div><label for="rEmail">Email <span style="color:#f87171">*</span></label><input type="email" id="rEmail" placeholder="you@example.com" autocomplete="email"></div>
@@ -97,13 +99,14 @@ setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
 document.getElementById('year').textContent=new Date().getFullYear();
 
 var reqType='New tool';
-document.querySelectorAll('#reqType .seg-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#reqType .seg-btn').forEach(function(x){x.classList.remove('active');});b.classList.add('active');reqType=b.dataset.v;});});
+document.querySelectorAll('#reqType .seg-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#reqType .seg-btn').forEach(function(x){x.classList.remove('active');});b.classList.add('active');reqType=b.dataset.v;document.getElementById('rToolWrap').style.display=(reqType==='Change to an existing tool')?'':'none';});});
 function v(id){return (document.getElementById(id).value||'').trim();}
 document.getElementById('rSubmit').addEventListener('click',function(){
-  var name=v('rName'),email=v('rEmail'),wa=v('rWa'),idea=v('rIdea'),msg=document.getElementById('rMsg');
+  var name=v('rName'),email=v('rEmail'),wa=v('rWa'),idea=v('rIdea'),tool=v('rTool'),msg=document.getElementById('rMsg');
   if(!name||!email||!idea){msg.className='req-msg center err';msg.textContent='Please fill in your name, email and idea.';return;}
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.className='req-msg center err';msg.textContent='Please enter a valid email address.';return;}
-  var body='Request type: '+reqType+'\nName: '+name+'\nEmail: '+email+(wa?'\nWhatsApp: '+wa:'')+'\n\nIdea / details:\n'+idea;
+  if(reqType==='Change to an existing tool'&&!tool){msg.className='req-msg center err';msg.textContent='Please tell us which tool you want changed (its name or link).';return;}
+  var body='Request type: '+reqType+(tool?'\nTool: '+tool:'')+'\nName: '+name+'\nEmail: '+email+(wa?'\nWhatsApp: '+wa:'')+'\n\nIdea / details:\n'+idea;
   window.location.href='mailto:xniperbuilds@gmail.com?subject='+encodeURIComponent('Tool request ('+reqType+') — '+name)+'&body='+encodeURIComponent(body);
   msg.className='req-msg center ok';msg.textContent='Thanks, '+name+'! Your email app will open — just hit send and we’ll take it from there. 🙌';
 });
