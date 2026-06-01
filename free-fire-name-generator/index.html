@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Free Fire Name Generator — Stylish FF Names, Symbols &amp; Invisible Name | Xnipertools</title>
-<meta name="description" content="Free Fire name generator with stylish fonts, cool symbols and fancy nicknames — plus an invisible name / blank space character. Copy stylish FF names in one tap. 100% free.">
+<title>Free Fire Name Generator — Stylish FF Names, Fonts, Symbols &amp; Invisible Name | Xnipertools</title>
+<meta name="description" content="Free Fire name generator with stylish fonts, cool symbols, clan tags and an invisible name / blank space. Pick a font, add symbols, and copy pro FF names in one tap. 100% free.">
 <meta name="theme-color" content="#0a0a12">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,45 +35,82 @@
     <div class="ic">🔥</div>
     <div>
       <h1>Free Fire Name Generator</h1>
-      <p>Type your name and get <b>stylish FF nicknames</b> with cool fonts &amp; symbols. Tap to copy.</p>
+      <p>Make <b>pro-style FF names</b> — stylish fonts, symbols, clan tags &amp; invisible spaces. Tap to copy.</p>
     </div>
   </div>
 
+  <!-- main generator -->
   <div class="tool-box">
     <label for="name">Enter your name</label>
     <input type="text" id="name" placeholder="e.g. Xniper" value="Xniper" maxlength="20" autocomplete="off">
-    <label class="ff-toggle"><input type="checkbox" id="ffSpace"><span class="tg"></span><span>Use Free Fire <b>invisible space</b> — keeps real spaces in-game</span></label>
-    <button class="btn block mt" id="genBtn">Generate Stylish Names 🔥</button>
+    <div class="row cols-2 mt">
+      <div>
+        <label for="clan">Clan / team tag <span class="muted">(optional)</span></label>
+        <input type="text" id="clan" placeholder="e.g. LP" maxlength="6" autocomplete="off">
+      </div>
+      <div>
+        <label>Free Fire space</label>
+        <label class="ff-toggle" style="margin-top:8px"><input type="checkbox" id="ffSpace"><span class="tg"></span><span>Invisible space (works in-game)</span></label>
+      </div>
+    </div>
+    <div class="ff-actions mt">
+      <button class="btn" id="genBtn">Generate 🔥</button>
+      <button class="btn ghost" id="randBtn">🎲 Random idea</button>
+    </div>
     <div class="style-list" id="out"></div>
   </div>
 
+  <!-- font picker -->
+  <div class="tool-box">
+    <h3>🎨 Pick a specific font</h3>
+    <p class="muted">Choose a font style and copy your name in just that font.</p>
+    <select id="fontPick" class="mt"></select>
+    <div class="font-result" id="fontResult"></div>
+  </div>
+
+  <!-- invisible / blank char -->
   <div class="tool-box blank-box">
     <div>
       <h3>🫥 Invisible Name / Blank Space</h3>
-      <p class="muted">A special blank character that Free Fire accepts where normal spaces get removed. Copy it for an <b>invisible name</b>, or to put real spaces between words.</p>
+      <p class="muted">A special blank character Free Fire accepts where normal spaces get removed. Copy it for an <b>invisible name</b>, or to put real spaces between words.</p>
     </div>
     <button class="btn" id="copyBlank">Copy Blank Space</button>
+  </div>
+
+  <!-- symbols -->
+  <div class="tool-box">
+    <h3>🔣 Cool symbols — tap to copy</h3>
+    <p class="muted">Add these to your name, just like the pros (Luckyメsukhi, M⚔lik…).</p>
+    <div class="sym-grid" id="symGrid"></div>
+  </div>
+
+  <!-- favorites -->
+  <div class="tool-box" id="favBox" style="display:none">
+    <h3>⭐ Your favourites</h3>
+    <p class="muted">Saved on this device — tap the ★ on any name to save it.</p>
+    <div class="style-list" id="favList"></div>
   </div>
 
   <div class="ad-slot">Advertisement</div>
 
   <article class="article reveal">
     <h2>About the Free Fire Name Generator</h2>
-    <p>Want a cool, stylish name for Free Fire that stands out in the lobby? This generator turns your normal name into dozens of fancy versions using special fonts, symbols and decorations. Just type your name, and tap any style to copy it — then paste it straight into your Free Fire profile.</p>
-    <h3>How to change your name in Free Fire</h3>
+    <p>Want a cool, pro-style name for Free Fire? This generator turns your normal name into dozens of stylish versions using special fonts, symbols and decorations — the same styles you see on the top of the ranked leaderboard. Type your name, optionally add a clan tag, then tap any style to copy it and paste it into your Free Fire profile.</p>
+    <h3>How to use it</h3>
     <ol>
-      <li>Type your name above and tap <b>copy</b> on the style you like.</li>
-      <li>Open Free Fire → tap your <b>profile</b> → <b>Edit</b>.</li>
-      <li>Paste the copied name and save (you may need a Name Change Card).</li>
+      <li>Type your name, and add a <b>clan tag</b> if you want (it joins with a メ, like pro players).</li>
+      <li>Browse the styles, or use <b>Pick a font</b> to choose one exact font.</li>
+      <li>Tap <b>Copy</b>, then paste it into Free Fire → Profile → Edit name.</li>
+      <li>Tap <b>★</b> to save your favourites for later.</li>
     </ol>
-    <h3>Are these stylish names safe to use?</h3>
-    <p>Yes — these are just normal Unicode characters and symbols, so they work in Free Fire, PUBG, BGMI, Instagram, TikTok and most games and apps.</p>
     <h3>How do I make an invisible Free Fire name?</h3>
-    <p>Free Fire removes normal spaces, so an invisible or blank name needs a special character. Tap <b>Copy Blank Space</b> above and paste it as your name for a fully invisible name — or turn on <b>Use Free Fire invisible space</b> to keep real spaces between words in your stylish name.</p>
+    <p>Free Fire removes normal spaces, so an invisible or blank name needs a special character. Tap <b>Copy Blank Space</b> above and paste it as your name for a fully invisible name — or turn on <b>Invisible space</b> to keep real spaces between words in your stylish name.</p>
+    <h3>Are these stylish names safe to use?</h3>
+    <p>Yes — these are normal Unicode characters and symbols, so they work in Free Fire, PUBG, BGMI, Instagram, TikTok and most games and apps.</p>
   </article>
 
   <section class="section">
-    <div class="sec-head"><div class="ic">🎮</div><h2>More tools</h2></div>
+    <div class="sec-head"><div class="ic">🎂</div><h2>More tools</h2></div>
     <div class="grid">
       <a href="../age-calculator/" class="card"><div class="ico">🎂</div><h3>Age Calculator</h3><p>Your exact age in seconds.</p><span class="go">Open tool →</span></a>
       <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
@@ -102,86 +139,115 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+/* ---- unicode maps ---- */
 const DS={A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕁',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ',a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫'};
 const SC={a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'ꜱ',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'};
 const CD={'0':'⓪','1':'①','2':'②','3':'③','4':'④','5':'⑤','6':'⑥','7':'⑦','8':'⑧','9':'⑨'};
-
 function style(str,o){
-  let out='';
+  let r='';
   for(const ch of str){
     const lc=ch.toLowerCase();
-    if(o.map&&o.map[ch]!==undefined){out+=o.map[ch];continue;}
-    if(o.smallcaps&&SC[lc]!==undefined){out+=SC[lc];continue;}
-    if(o.dstruck&&DS[ch]!==undefined){out+=DS[ch];continue;}
-    if(o.circ&&CD[ch]!==undefined){out+=CD[ch];continue;}
+    if(o.map&&o.map[ch]!==undefined){r+=o.map[ch];continue;}
+    if(o.smallcaps&&SC[lc]!==undefined){r+=SC[lc];continue;}
+    if(o.dstruck&&DS[ch]!==undefined){r+=DS[ch];continue;}
+    if(o.circ&&CD[ch]!==undefined){r+=CD[ch];continue;}
     const c=ch.charCodeAt(0);
-    if(o.U&&c>=65&&c<=90)out+=String.fromCodePoint(o.U+(c-65));
-    else if(o.L&&c>=97&&c<=122)out+=String.fromCodePoint(o.L+(c-97));
-    else if(o.D&&c>=48&&c<=57)out+=String.fromCodePoint(o.D+(c-48));
-    else out+=ch;
+    if(o.U&&c>=65&&c<=90)r+=String.fromCodePoint(o.U+(c-65));
+    else if(o.L&&c>=97&&c<=122)r+=String.fromCodePoint(o.L+(c-97));
+    else if(o.D&&c>=48&&c<=57)r+=String.fromCodePoint(o.D+(c-48));
+    else r+=ch;
   }
-  return out;
+  return r;
 }
 const F={
   bold:n=>style(n,{U:0x1D400,L:0x1D41A,D:0x1D7CE}),
+  italic:n=>style(n,{U:0x1D434,L:0x1D44E,map:{h:'ℎ'}}),
   bitalic:n=>style(n,{U:0x1D468,L:0x1D482}),
   script:n=>style(n,{U:0x1D4D0,L:0x1D4EA}),
   fraktur:n=>style(n,{U:0x1D56C,L:0x1D586}),
+  dstruck:n=>style(n,{dstruck:1}),
   mono:n=>style(n,{U:0x1D670,L:0x1D68A,D:0x1D7F6}),
   full:n=>style(n,{U:0xFF21,L:0xFF41,D:0xFF10}),
-  dstruck:n=>style(n,{dstruck:1}),
   smallcaps:n=>style(n,{smallcaps:1}),
-  circ:n=>style(n,{U:0x24B6,L:0x24D0,circ:1})
+  circ:n=>style(n,{U:0x24B6,L:0x24D0,circ:1}),
+  squared:n=>style(n.toUpperCase(),{U:0x1F130})
 };
+const FONTLIST=[['Bold','bold'],['Italic','italic'],['Bold Italic','bitalic'],['Script','script'],['Fraktur','fraktur'],['Double-Struck','dstruck'],['Monospace','mono'],['Fullwidth','full'],['Small Caps','smallcaps'],['Circled','circ'],['Squared','squared']];
+const WRAPS=[
+  b=>'꧁༒'+F.bold(b)+'༒꧂',
+  b=>'▄︻デ '+b+' ══━一',
+  b=>F.bitalic(b),
+  b=>'꧁'+F.script(b)+'꧂',
+  b=>'༺'+F.bold(b)+'༻',
+  b=>'◥꧁ '+b+' ꧂◤',
+  b=>'『'+F.full(b)+'』',
+  b=>'【'+F.script(b)+'】',
+  b=>'☆彡'+b+'彡☆',
+  b=>'๖ۣۜ'+F.bold(b),
+  b=>F.fraktur(b),
+  b=>'⚔️'+b+'⚔️',
+  b=>'≪'+F.bold(b)+'≫',
+  b=>b+'࿐',
+  b=>F.dstruck(b),
+  b=>'✰'+b+'✰',
+  b=>'❦'+F.bold(b)+'❦',
+  b=>F.smallcaps(b),
+  b=>'༒'+b+'༒',
+  b=>'⫷'+F.bold(b)+'⫸',
+  b=>F.mono(b),
+  b=>'☢'+b+'☢'
+];
+const SYMBOLS=['メ','✗','⚔','々','☆','★','♡','✿','❄','✓','™','°','♛','卄','乡','ఌ','࿐','༒','꧁','꧂','彡','☠','⚡','✰','☯','ღ','ᯤ','「','」','『','』','【','】','▄︻デ═一'];
+const RANDOM=['Sniper','Killer','Noob','Pro','King','Demon','Ghost','Hunter','Legend','Toxic','Savage','Beast','Phantom','Reaper','Storm','Shadow','Viper','Devil','Op','Boss','Sigma','Joker','Hitman','Alpha','Titan','Rusher','Slayer','Venom'];
+const BLANK='ㅤ'; // U+3164 invisible space for Free Fire
 
-function build(n){
-  n=n.trim()||'Xniper';
-  return [
-    '꧁༒'+F.bold(n)+'༒꧂',
-    '▄︻デ '+n+' ══━一',
-    F.bitalic(n),
-    '『'+F.full(n)+'』',
-    '꧁'+F.script(n)+'꧂',
-    F.fraktur(n),
-    '☆⌒° '+n+' °⌒☆',
-    F.dstruck(n),
-    '༺ '+F.bold(n)+' ༻',
-    F.smallcaps(n),
-    '◥꧁ '+n+' ꧂◤',
-    F.mono(n),
-    '╰☆☆ '+n+' ☆☆╮',
-    F.circ(n),
-    '⚡'+F.bold(n)+'⚡',
-    F.full(n),
-    '๑۩۞۩๑ '+n+' ๑۩۞۩๑',
-    '【'+F.script(n)+'】'
-  ];
+const name=document.getElementById('name'),clan=document.getElementById('clan'),ffSpace=document.getElementById('ffSpace'),out=document.getElementById('out');
+function getBase(){
+  let nm=(name.value||'').trim()||'Xniper';
+  const cl=(clan.value||'').trim();
+  let base=cl?(cl+'メ'+nm):nm;
+  if(ffSpace.checked)base=base.replace(/ /g,BLANK);
+  return base;
 }
-const out=document.getElementById('out'),name=document.getElementById('name');
-const BLANK='ㅤ'; // Hangul Filler — invisible space that works in Free Fire
-const ffSpace=document.getElementById('ffSpace');
-function render(){
-  const useBlank=ffSpace.checked;
-  const arr=build(name.value).map(v=>useBlank?v.replace(/ /g,BLANK):v);
-  out.innerHTML=arr.map(v=>
-    `<div class="style-item"><span class="txt">${v.replace(/</g,'&lt;')}</span><button class="copy" data-v="${v.replace(/"/g,'&quot;')}">Copy</button></div>`).join('');
-  out.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
-    navigator.clipboard.writeText(b.dataset.v).then(()=>{b.textContent='Copied!';b.classList.add('done');setTimeout(()=>{b.textContent='Copy';b.classList.remove('done');},1200);});
-  }));
-}
-name.addEventListener('input',render);
-ffSpace.addEventListener('change',render);
-document.getElementById('genBtn').addEventListener('click',render);
-document.getElementById('copyBlank').addEventListener('click',function(){
-  var b=this; navigator.clipboard.writeText(BLANK).then(()=>{b.textContent='Copied! ✓';setTimeout(()=>{b.textContent='Copy Blank Space';},1400);});
-});
-render();
+function esc(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');}
+function escTxt(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function copyText(t,btn){navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='Copied!';btn.classList.add('done');setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},1100);});}
 
-document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){
-  const r=document.createElement('span');r.className='ripple';const rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);
-  r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';
-  this.appendChild(r);setTimeout(()=>r.remove(),600);
-}));
+/* favorites */
+function favs(){try{return JSON.parse(localStorage.getItem('ff_favs')||'[]');}catch(e){return[];}}
+function isFav(v){return favs().indexOf(v)>-1;}
+function toggleFav(v){const f=favs();const i=f.indexOf(v);if(i>-1)f.splice(i,1);else f.unshift(v);localStorage.setItem('ff_favs',JSON.stringify(f.slice(0,60)));renderList();renderFavs();}
+function itemHTML(v){
+  return '<div class="style-item"><span class="txt">'+escTxt(v)+'</span><div class="si-act"><button class="favb'+(isFav(v)?' on':'')+'" data-v="'+esc(v)+'">'+(isFav(v)?'★':'☆')+'</button><button class="copy" data-v="'+esc(v)+'">Copy</button></div></div>';
+}
+function bindItems(c){
+  c.querySelectorAll('.copy').forEach(b=>b.onclick=()=>copyText(b.dataset.v,b));
+  c.querySelectorAll('.favb').forEach(b=>b.onclick=()=>toggleFav(b.dataset.v));
+}
+function renderList(){const base=getBase();out.innerHTML=WRAPS.map(w=>itemHTML(w(base))).join('');bindItems(out);}
+function renderFavs(){const f=favs(),box=document.getElementById('favBox');if(!f.length){box.style.display='none';return;}box.style.display='';const l=document.getElementById('favList');l.innerHTML=f.map(itemHTML).join('');bindItems(l);}
+
+/* font picker */
+const fontPick=document.getElementById('fontPick'),fontResult=document.getElementById('fontResult');
+fontPick.innerHTML=FONTLIST.map(f=>'<option value="'+f[1]+'">'+f[0]+'</option>').join('');
+function renderFont(){const styled=F[fontPick.value](getBase());fontResult.innerHTML='<span class="txt">'+escTxt(styled)+'</span><button class="copy" data-v="'+esc(styled)+'">Copy</button>';fontResult.querySelector('.copy').onclick=function(){copyText(styled,this);};}
+fontPick.onchange=renderFont;
+
+/* symbols */
+const symGrid=document.getElementById('symGrid');
+symGrid.innerHTML=SYMBOLS.map(s=>'<button class="sym" data-s="'+esc(s)+'">'+escTxt(s)+'</button>').join('');
+symGrid.querySelectorAll('.sym').forEach(b=>b.onclick=()=>copyText(b.dataset.s,b));
+
+function renderAll(){renderList();renderFont();}
+name.addEventListener('input',renderAll);
+clan.addEventListener('input',renderAll);
+ffSpace.addEventListener('change',renderAll);
+document.getElementById('genBtn').addEventListener('click',renderAll);
+document.getElementById('randBtn').addEventListener('click',function(){name.value=RANDOM[Math.floor(Math.random()*RANDOM.length)];renderAll();});
+document.getElementById('copyBlank').addEventListener('click',function(){const b=this;navigator.clipboard.writeText(BLANK).then(()=>{b.textContent='Copied! ✓';setTimeout(()=>{b.textContent='Copy Blank Space';},1400);});});
+
+renderAll();renderFavs();
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){const r=document.createElement('span');r.className='ripple';const rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
 </body>
 </html>

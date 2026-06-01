@@ -292,3 +292,16 @@ footer.site{margin-top:80px;border-top:1px solid var(--border);background:rgba(6
 .blank-box h3{font-size:1.05rem;margin-bottom:5px}
 .blank-box p{font-size:.86rem;max-width:520px}
 .blank-box .btn{width:auto;flex-shrink:0}
+.tool-box h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.ff-actions{display:flex;gap:10px;flex-wrap:wrap}
+.ff-actions .btn{width:auto;flex:0 0 auto}
+.style-item .si-act{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.favb{cursor:pointer;background:transparent;border:none;color:#6f74a0;font-size:1.15rem;line-height:1;padding:6px 2px;transition:.15s}
+.favb:hover,.favb.on{color:#f5b400}
+.font-result{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:14px;padding:16px 18px;min-height:60px}
+.font-result .txt{font-size:1.4rem;color:#fff;word-break:break-word}
+select#fontPick{width:100%}
+.sym-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:8px;margin-top:4px}
+.sym{cursor:pointer;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:11px;padding:10px 4px;font-size:1.15rem;color:#fff;transition:.15s;min-height:46px;font-family:inherit}
+.sym:hover{border-color:var(--accent);background:rgba(94,139,255,.12);transform:translateY(-2px)}
+.sym.done{background:#16a34a;border-color:#16a34a;font-size:.68rem}
