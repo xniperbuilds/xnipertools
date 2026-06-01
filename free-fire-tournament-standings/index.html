@@ -126,6 +126,8 @@ const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.ta
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 const BADGE="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236f97f5'/%3E%3Cstop offset='1' stop-color='%233f63d8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23b)'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E";
+var BADGE_PNG='';
+(function(){try{var im=new Image();im.onload=function(){try{var c=document.createElement('canvas');c.width=104;c.height=104;c.getContext('2d').drawImage(im,0,0,104,104);BADGE_PNG=c.toDataURL('image/png');}catch(e){}};im.src=BADGE;}catch(e){}})();
 const KEY="ff_tourny_v1";
 const S={org:'',logo:'',count:12,opt:{dmg:false,matches:false,surv:false},teams:[]};
 function blankTeam(){return{name:'',pos:'',kills:'',dmg:'',matches:'',surv:''};}
@@ -149,10 +151,11 @@ function renderTeams(){
   for(var i=0;i<S.count;i++){
     var t=S.teams[i],tot=(+t.pos||0)+(+t.kills||0);
     h+='<div class="tm-card"><input class="tm-name" placeholder="Team '+(i+1)+' name" value="'+esc(t.name)+'" oninput="upd('+i+',\'name\',this.value)">'+
-      '<div class="tm-fields"><div class="tm-f"><label>Pos pts</label><input type="number" inputmode="numeric" value="'+esc(t.pos)+'" oninput="upd('+i+',\'pos\',this.value)"></div>'+
+      '<div class="tm-fields">'+
+      (S.opt.matches?'<div class="tm-f"><label>Matches</label><input type="number" inputmode="numeric" value="'+esc(t.matches)+'" oninput="upd('+i+',\'matches\',this.value)"></div>':'')+
+      '<div class="tm-f"><label>Pos pts</label><input type="number" inputmode="numeric" value="'+esc(t.pos)+'" oninput="upd('+i+',\'pos\',this.value)"></div>'+
       '<div class="tm-f"><label>Kills</label><input type="number" inputmode="numeric" value="'+esc(t.kills)+'" oninput="upd('+i+',\'kills\',this.value)"></div>'+
       (S.opt.dmg?'<div class="tm-f"><label>Damage</label><input type="number" inputmode="numeric" value="'+esc(t.dmg)+'" oninput="upd('+i+',\'dmg\',this.value)"></div>':'')+
-      (S.opt.matches?'<div class="tm-f"><label>Matches</label><input type="number" inputmode="numeric" value="'+esc(t.matches)+'" oninput="upd('+i+',\'matches\',this.value)"></div>':'')+
       (S.opt.surv?'<div class="tm-f"><label>Survival</label><input type="text" placeholder="mm:ss" value="'+esc(t.surv)+'" oninput="upd('+i+',\'surv\',this.value)"></div>':'')+
       '<div class="tm-tot"><label>Total</label><span id="tot'+i+'">'+tot+'</span></div></div></div>';
   }
@@ -170,12 +173,13 @@ function medal(r){return r===1?'🥇':r===2?'🥈':r===3?'🥉':'#'+r;}
 function renderStandings(){
   var a=standings();
   standingsEl.innerHTML=a.map(function(t){
-    var extra=[];
-    if(S.opt.dmg)extra.push((t.dmg||0)+' dmg');
-    if(S.opt.matches)extra.push((t.matches||0)+' matches');
-    if(S.opt.surv&&t.surv)extra.push(t.surv);
+    var p=[];
+    if(S.opt.matches)p.push((t.matches||0)+' matches');
+    p.push('Pos '+t.pos);p.push(t.kills+' kills');
+    if(S.opt.dmg)p.push((t.dmg||0)+' dmg');
+    if(S.opt.surv&&t.surv)p.push(t.surv);
     return '<div class="st-row'+(t.rank<=3?' st-r'+t.rank:'')+'"><div class="st-rank">'+medal(t.rank)+'</div>'+
-      '<div class="st-team"><div class="st-name">'+esc(t.name||('Team '+(t.idx+1)))+'</div><div class="st-sub">Pos '+t.pos+' · '+t.kills+' kills'+(extra.length?' · '+extra.join(' · '):'')+'</div></div>'+
+      '<div class="st-team"><div class="st-name">'+esc(t.name||('Team '+(t.idx+1)))+'</div><div class="st-sub">'+p.join(' · ')+'</div></div>'+
       '<div class="st-total">'+t.total+'<span>pts</span></div></div>';
   }).join('');
 }
@@ -198,16 +202,21 @@ teamCountI.addEventListener('change',function(){var n=Math.max(2,Math.min(25,par
 /* build image card */
 function buildCard(){
   var a=standings();
-  var optCols=[];if(S.opt.dmg)optCols.push(['DMG','dmg']);if(S.opt.matches)optCols.push(['M','matches']);if(S.opt.surv)optCols.push(['SURV','surv']);
-  var thead='<tr><th class="l">#</th><th class="l">TEAM</th><th>POS</th><th>K</th>'+optCols.map(function(c){return '<th>'+c[0]+'</th>';}).join('')+'<th>TOTAL</th></tr>';
+  var before=[];if(S.opt.matches)before.push(['M','matches']);
+  var after=[];if(S.opt.dmg)after.push(['DMG','dmg']);if(S.opt.surv)after.push(['SURV','surv']);
+  function hh(cs){return cs.map(function(c){return '<th>'+c[0]+'</th>';}).join('');}
+  function cc(t,cs){return cs.map(function(c){return '<td>'+(c[1]==='surv'?esc(t.surv||'-'):(t[c[1]]||0))+'</td>';}).join('');}
+  var thead='<tr><th class="l">#</th><th class="l">TEAM</th>'+hh(before)+'<th>POS</th><th>K</th>'+hh(after)+'<th>TOTAL</th></tr>';
   var tbody=a.map(function(t){
-    var od=optCols.map(function(c){return '<td>'+(c[1]==='surv'?esc(t.surv||'-'):(t[c[1]]||0))+'</td>';}).join('');
-    return '<tr'+(t.rank<=3?' class="r'+t.rank+'"':'')+'><td class="l card-rank">'+medal(t.rank)+'</td><td class="l">'+esc(t.name||('Team '+(t.idx+1)))+'</td><td>'+t.pos+'</td><td>'+t.kills+'</td>'+od+'<td class="tot">'+t.total+'</td></tr>';
+    return '<tr'+(t.rank<=3?' class="r'+t.rank+'"':'')+'><td class="l card-rank">'+medal(t.rank)+'</td><td class="l">'+esc(t.name||('Team '+(t.idx+1)))+'</td>'+cc(t,before)+'<td>'+t.pos+'</td><td>'+t.kills+'</td>'+cc(t,after)+'<td class="tot">'+t.total+'</td></tr>';
   }).join('');
+  var logoImg=S.logo?'<img class="card-logo" src="'+S.logo+'">':'';
   document.getElementById('card').innerHTML=
-    '<div class="card-head">'+(S.logo?'<img class="card-logo" src="'+S.logo+'">':'')+'<div><div class="card-org">'+esc(S.org.trim()||'Tournament')+'</div><div class="card-sub">Tournament Standings · '+a.length+' Teams</div></div></div>'+
+    '<div class="card-top"></div><div class="card-inner">'+
+    '<div class="card-head">'+logoImg+'<div class="card-org">'+esc(S.org.trim()||'Tournament')+'</div><div class="card-sub">Tournament Standings · '+a.length+' Teams</div><div class="card-divider"></div></div>'+
     '<table class="card-tbl"><thead>'+thead+'</thead><tbody>'+tbody+'</tbody></table>'+
-    '<div class="card-foot"><img src="'+BADGE+'"><span class="lnk">xnipertools.com</span></div>';
+    '<div class="card-foot"><img src="'+(BADGE_PNG||BADGE)+'"><span class="lnk">xnipertools.com</span></div>'+
+    '</div>';
 }
 function downloadImg(){
   if(typeof html2canvas==='undefined'){alert('Image library still loading — try again in a moment.');return;}
