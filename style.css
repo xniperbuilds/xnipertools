@@ -305,3 +305,5 @@ select#fontPick{width:100%}
 .sym{cursor:pointer;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:11px;padding:10px 4px;font-size:1.15rem;color:#fff;transition:.15s;min-height:46px;font-family:inherit}
 .sym:hover{border-color:var(--accent);background:rgba(94,139,255,.12);transform:translateY(-2px)}
 .sym.done{background:#16a34a;border-color:#16a34a;font-size:.68rem}
+.ff-toggles{display:flex;flex-wrap:wrap;gap:12px 26px}
+.ff-toggles .ff-toggle{margin-top:0}

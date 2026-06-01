@@ -46,20 +46,19 @@
   <div class="tool-box">
     <label for="name">Enter your name</label>
     <input type="text" id="name" placeholder="e.g. Xniper" value="Xniper" maxlength="20" autocomplete="off">
-    <div class="row cols-2 mt">
-      <div>
-        <label for="clan">Clan / team tag <span class="muted">(optional)</span></label>
-        <input type="text" id="clan" placeholder="e.g. LP" maxlength="6" autocomplete="off">
-      </div>
-      <div>
-        <label>Free Fire space</label>
-        <label class="ff-toggle" style="margin-top:8px"><input type="checkbox" id="ffSpace"><span class="tg"></span><span>Invisible space (works in-game)</span></label>
-      </div>
+    <div class="mt">
+      <label for="clan">Clan / team tag <span class="muted">(optional)</span></label>
+      <input type="text" id="clan" placeholder="e.g. LP" maxlength="6" autocomplete="off">
+    </div>
+    <div class="ff-toggles mt">
+      <label class="ff-toggle"><input type="checkbox" id="aesthetic"><span class="tg"></span><span>Aesthetic — clean pro-style names</span></label>
+      <label class="ff-toggle"><input type="checkbox" id="ffSpace"><span class="tg"></span><span>Invisible space (works in-game)</span></label>
     </div>
     <div class="ff-actions mt">
       <button class="btn" id="genBtn">Generate 🔥</button>
-      <button class="btn ghost" id="randBtn">🎲 Random idea</button>
+      <button class="btn ghost" id="randBtn">🎲 Random name</button>
     </div>
+    <p class="muted" style="font-size:.82rem;margin-top:10px">💡 Tap <b>Generate</b> again for fresh designs every time.</p>
     <div class="style-list" id="out"></div>
   </div>
 
@@ -176,32 +175,37 @@ const F={
   squared:n=>style(n.toUpperCase(),{U:0x1F130})
 };
 const FONTLIST=[['Bold','bold'],['Italic','italic'],['Bold Italic','bitalic'],['Script','script'],['Fraktur','fraktur'],['Double-Struck','dstruck'],['Monospace','mono'],['Fullwidth','full'],['Small Caps','smallcaps'],['Circled','circ'],['Squared','squared']];
-const WRAPS=[
-  b=>'꧁༒'+F.bold(b)+'༒꧂',
-  b=>'▄︻デ '+b+' ══━一',
-  b=>F.bitalic(b),
-  b=>'꧁'+F.script(b)+'꧂',
-  b=>'༺'+F.bold(b)+'༻',
-  b=>'◥꧁ '+b+' ꧂◤',
-  b=>'『'+F.full(b)+'』',
-  b=>'【'+F.script(b)+'】',
-  b=>'☆彡'+b+'彡☆',
-  b=>'๖ۣۜ'+F.bold(b),
-  b=>F.fraktur(b),
-  b=>'⚔️'+b+'⚔️',
-  b=>'≪'+F.bold(b)+'≫',
-  b=>b+'࿐',
-  b=>F.dstruck(b),
-  b=>'✰'+b+'✰',
-  b=>'❦'+F.bold(b)+'❦',
-  b=>F.smallcaps(b),
-  b=>'༒'+b+'༒',
-  b=>'⫷'+F.bold(b)+'⫸',
-  b=>F.mono(b),
-  b=>'☢'+b+'☢'
+const DECOR=[
+  b=>'꧁༒'+F.bold(b)+'༒꧂', b=>'▄︻デ '+b+' ══━一', b=>'꧁'+F.script(b)+'꧂',
+  b=>'༺'+F.bold(b)+'༻', b=>'◥꧁ '+b+' ꧂◤', b=>'『'+F.full(b)+'』',
+  b=>'【'+F.script(b)+'】', b=>'☆彡'+b+'彡☆', b=>'๖ۣۜ'+F.bold(b),
+  b=>'⚔️'+b+'⚔️', b=>'≪'+F.bold(b)+'≫', b=>b+'࿐',
+  b=>'✰'+b+'✰', b=>'❦'+F.bold(b)+'❦', b=>'༒'+b+'༒',
+  b=>'⫷'+F.bold(b)+'⫸', b=>'☢'+b+'☢', b=>'꧁☆'+b+'☆꧂',
+  b=>'★彡'+F.bold(b)+'彡★', b=>'乡'+F.bold(b), b=>'ღ'+b+'ღ',
+  b=>'☬'+F.bold(b)+'☬', b=>'‹'+F.bold(b)+'›', b=>F.script(b)+'࿐',
+  b=>'ヅ'+F.bold(b), b=>'⛧'+b+'⛧', b=>'༄ '+F.bold(b),
+  b=>'꧁'+F.fraktur(b)+'꧂', b=>'☠'+F.bold(b)+'☠', b=>'⪻'+b+'⪼',
+  b=>F.fraktur(b), b=>F.dstruck(b), b=>F.mono(b),
+  b=>F.bitalic(b), b=>'¥'+F.bold(b)+'¥', b=>'☯'+b+'☯'
+];
+const AESTHETIC=[
+  b=>F.bold(b), b=>F.bitalic(b), b=>F.smallcaps(b), b=>F.full(b), b=>b,
+  b=>b+'°', b=>b+'™', b=>'✿'+b, b=>b+'✿', b=>'★'+b,
+  b=>F.bold(b)+'❄', b=>'⚡'+F.bold(b), b=>F.bitalic(b)+'✓', b=>F.smallcaps(b)+'°',
+  b=>'°'+b+'°', b=>F.bold(b)+'࿐', b=>'❥'+b, b=>F.italic(b)
 ];
 const SYMBOLS=['メ','✗','⚔','々','☆','★','♡','✿','❄','✓','™','°','♛','卄','乡','ఌ','࿐','༒','꧁','꧂','彡','☠','⚡','✰','☯','ღ','ᯤ','「','」','『','』','【','】','▄︻デ═一'];
-const RANDOM=['Sniper','Killer','Noob','Pro','King','Demon','Ghost','Hunter','Legend','Toxic','Savage','Beast','Phantom','Reaper','Storm','Shadow','Viper','Devil','Op','Boss','Sigma','Joker','Hitman','Alpha','Titan','Rusher','Slayer','Venom'];
+const RP=['Dark','Toxic','Savage','Silent','Crazy','Royal','Evil','Frozen','Shadow','Cyber','Ghost','Mystic','Rapid','Brutal','Hyper','Lunar','Venom','Rogue','Storm','Blaze','Crimson','Iron','Night','Soul','Death','Blood','Wild','Lone','Mad','Psycho','Fatal','Grim','Void','Neon','Turbo','Astro','Apex','Omega','Zero','Rebel','Frost','Phantom','Savant','Inferno','Toxix'];
+const RC=['Sniper','Reaper','Killer','Demon','Wolf','Hunter','Slayer','Beast','Ninja','Samurai','Viper','Dragon','Phoenix','Titan','Ghost','Devil','Assassin','Predator','Warrior','Striker','Raider','Phantom','Shooter','Knight','Hawk','Cobra','Shark','Tiger','Falcon','Spectre','Joker','Blade','Bullet','Hitman','Gamerz','Sniperz','Savage','Legend','Rusher','Bolt'];
+const RS=['X','YT','OP','FF','Pro','God','King','Lord','xD','99','07','21','786','420','Yt','_OP','OG','GG'];
+function pick(a){return a[Math.floor(Math.random()*a.length)];}
+function randomName(){
+  let n;const r=Math.random();
+  if(r<0.25){n=pick(RP)+'メ'+pick(RC);}
+  else{n=pick(RP)+pick(RC);const s=Math.random();if(s<0.4)n+=pick(RS);else if(s<0.6)n+=Math.floor(Math.random()*900+100);}
+  return n.slice(0,18);
+}
 const BLANK='ㅤ'; // U+3164 invisible space for Free Fire
 
 const name=document.getElementById('name'),clan=document.getElementById('clan'),ffSpace=document.getElementById('ffSpace'),out=document.getElementById('out');
@@ -227,7 +231,12 @@ function bindItems(c){
   c.querySelectorAll('.copy').forEach(b=>b.onclick=()=>copyText(b.dataset.v,b));
   c.querySelectorAll('.favb').forEach(b=>b.onclick=()=>toggleFav(b.dataset.v));
 }
-function renderList(){const base=getBase();out.innerHTML=WRAPS.map(w=>itemHTML(w(base))).join('');bindItems(out);}
+const aesthetic=document.getElementById('aesthetic');
+function activePool(){return aesthetic.checked?AESTHETIC:DECOR;}
+let currentSel=[];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function reshuffle(){const p=activePool();currentSel=shuffle(p.map((_,i)=>i)).slice(0,Math.min(20,p.length));}
+function renderList(){const pool=activePool(),base=getBase();if(!currentSel.length)reshuffle();out.innerHTML=currentSel.map(i=>itemHTML(pool[i](base))).join('');bindItems(out);}
 function renderFavs(){const f=favs(),box=document.getElementById('favBox');if(!f.length){box.style.display='none';return;}box.style.display='';const l=document.getElementById('favList');l.innerHTML=f.map(itemHTML).join('');bindItems(l);}
 
 /* font picker */
@@ -245,8 +254,9 @@ function renderAll(){renderList();renderFont();}
 name.addEventListener('input',renderAll);
 clan.addEventListener('input',renderAll);
 ffSpace.addEventListener('change',renderAll);
-document.getElementById('genBtn').addEventListener('click',renderAll);
-document.getElementById('randBtn').addEventListener('click',function(){name.value=RANDOM[Math.floor(Math.random()*RANDOM.length)];renderAll();});
+aesthetic.addEventListener('change',function(){reshuffle();renderAll();});
+document.getElementById('genBtn').addEventListener('click',function(){reshuffle();renderAll();});
+document.getElementById('randBtn').addEventListener('click',function(){name.value=randomName();reshuffle();renderAll();});
 document.getElementById('copyBlank').addEventListener('click',function(){const b=this;navigator.clipboard.writeText(BLANK).then(()=>{b.textContent='Copied! ✓';setTimeout(()=>{b.textContent='Copy Blank Space';},1400);});});
 
 renderAll();renderFavs();
