@@ -73,6 +73,7 @@
     <h3>Enter team data</h3>
     <p class="muted">Total = position points + kills. Ranking updates automatically.</p>
     <div id="teams" class="mt"></div>
+    <button class="btn ghost block mt" id="resetBtn">↺ Reset all teams</button>
   </div>
 
   <!-- standings -->
@@ -150,7 +151,7 @@ function renderTeams(){
   var h='';
   for(var i=0;i<S.count;i++){
     var t=S.teams[i],tot=(+t.pos||0)+(+t.kills||0);
-    h+='<div class="tm-card"><input class="tm-name" placeholder="Team '+(i+1)+' name" value="'+esc(t.name)+'" oninput="upd('+i+',\'name\',this.value)">'+
+    h+='<div class="tm-card"><div class="tm-top"><span class="tm-no">'+(i+1)+'</span><input class="tm-name" placeholder="Team name" value="'+esc(t.name)+'" oninput="upd('+i+',\'name\',this.value)"></div>'+
       '<div class="tm-fields">'+
       (S.opt.matches?'<div class="tm-f"><label>Matches</label><input type="number" inputmode="numeric" value="'+esc(t.matches)+'" oninput="upd('+i+',\'matches\',this.value)"></div>':'')+
       '<div class="tm-f"><label>Pos pts</label><input type="number" inputmode="numeric" value="'+esc(t.pos)+'" oninput="upd('+i+',\'pos\',this.value)"></div>'+
@@ -198,6 +199,8 @@ document.getElementById('logoRm').addEventListener('click',function(){S.logo='';
 orgI.addEventListener('input',function(){S.org=orgI.value;save();});
 teamCountI.addEventListener('change',function(){var n=Math.max(2,Math.min(25,parseInt(teamCountI.value)||12));teamCountI.value=n;S.count=n;while(S.teams.length<n)S.teams.push(blankTeam());S.teams=S.teams.slice(0,n);renderTeams();renderStandings();save();});
 [optDmg,optMatches,optSurv].forEach(function(el){el.addEventListener('change',function(){S.opt.dmg=optDmg.checked;S.opt.matches=optMatches.checked;S.opt.surv=optSurv.checked;renderTeams();renderStandings();save();});});
+function resetAll(){if(confirm('Reset all teams and scores?')){S.teams=[];for(var i=0;i<S.count;i++)S.teams.push(blankTeam());renderTeams();renderStandings();save();}}
+document.getElementById('resetBtn').addEventListener('click',resetAll);
 
 /* build image card */
 function buildCard(){
@@ -215,7 +218,7 @@ function buildCard(){
     '<div class="card-top"></div><div class="card-inner">'+
     '<div class="card-head">'+logoImg+'<div class="card-org">'+esc(S.org.trim()||'Tournament')+'</div><div class="card-sub">Tournament Standings · '+a.length+' Teams</div><div class="card-divider"></div></div>'+
     '<table class="card-tbl"><thead>'+thead+'</thead><tbody>'+tbody+'</tbody></table>'+
-    '<div class="card-foot"><img src="'+(BADGE_PNG||BADGE)+'"><span class="lnk">xnipertools.com</span></div>'+
+    '<div class="card-foot"><img src="'+(BADGE_PNG||BADGE)+'"><div class="card-foot-txt"><div class="lnk">xnipertools.com</div><div class="card-foot-sub">Free Fire Tournament Standings · free online tools</div></div></div>'+
     '</div>';
 }
 function downloadImg(){
