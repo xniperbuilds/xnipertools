@@ -262,13 +262,20 @@ footer.site{margin-top:80px;border-top:1px solid var(--border);background:rgba(6
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
-/* ===== Custom subscribe form ===== */
-.sub-form{display:flex;gap:10px;max-width:460px;margin:10px auto 0;flex-wrap:wrap}
-.sub-form input{flex:1;min-width:200px;padding:14px 16px;border-radius:13px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:#fff;font:500 1rem 'Inter',sans-serif;outline:none;transition:.18s}
-.sub-form input:focus{border-color:var(--accent);background:rgba(255,255,255,.08);box-shadow:0 0 0 3px rgba(94,139,255,.15)}
+/* ===== Custom subscribe form (premium capsule) ===== */
+.sub-form{display:flex;align-items:center;gap:8px;max-width:440px;margin:14px auto 0;
+  background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:100px;padding:6px 6px 6px 18px;
+  transition:border-color .2s,box-shadow .2s}
+.sub-form:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px rgba(94,139,255,.14),0 12px 34px rgba(0,0,0,.32)}
+.sub-form .sub-ico{color:var(--muted);flex-shrink:0}
+.sub-form input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:#fff;font:500 1rem 'Inter',sans-serif;padding:11px 2px}
 .sub-form input::placeholder{color:var(--muted-2)}
-.sub-form .btn{width:auto;flex-shrink:0}
-@media(max-width:480px){.sub-form{flex-direction:column}.sub-form .btn{width:100%}}
-.sub-msg{max-width:460px;margin:12px auto 0;font-size:.92rem;min-height:1.1em;font-weight:500}
+.sub-form button{flex-shrink:0;border:none;cursor:pointer;border-radius:100px;padding:12px 24px;
+  background:linear-gradient(135deg,#6f97f5,#3f63d8);color:#fff;font:600 .95rem 'Inter',sans-serif;white-space:nowrap;
+  box-shadow:0 6px 20px rgba(63,99,216,.35);transition:filter .15s,transform .15s}
+.sub-form button:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.sub-form button:disabled{opacity:.65;cursor:default}
+@media(max-width:430px){.sub-form{flex-wrap:wrap;border-radius:18px;padding:12px;gap:10px}.sub-form .sub-ico{display:none}.sub-form input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.04)}.sub-form button{width:100%}}
+.sub-msg{max-width:440px;margin:14px auto 0;font-size:.9rem;min-height:1.1em;font-weight:500}
 .sub-msg.ok{color:#34d399}
 .sub-msg.err{color:#f87171}
