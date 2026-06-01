@@ -51,9 +51,16 @@
     <span class="eyebrow"><span class="pulse"></span> 50+ free tools • no signup • 100% free</span>
     <h1>Every tool you need,<br><span class="shiny">in one click.</span></h1>
     <p class="sub">Free calculators, generators &amp; gaming tools — cinematic design, instant results, zero signup.</p>
-    <div class="hero-cta">
-      <a href="#tools" class="btn white">Explore Tools →</a>
-      <a href="#why" class="btn ghost">See features</a>
+    <div class="search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="Search a tool…  (e.g. age, free fire)" autocomplete="off">
+    </div>
+    <div class="chips">
+      <span class="chip" data-q="age">🎂 Age Calculator</span>
+      <span class="chip" data-q="free fire">🔥 Free Fire Name</span>
+      <span class="chip" data-q="password">🔑 Password</span>
+      <span class="chip" data-q="qr">📱 QR Code</span>
+      <span class="chip" data-q="love">❤️ Love</span>
     </div>
 
     <!-- cinematic glass mockup -->
@@ -195,6 +202,24 @@ if(!reduce&&!touch){
     });
     el.addEventListener('mouseleave',()=>{el.style.transform=el.dataset.rest||'';});
   });
+}
+
+// tool search
+const search=document.getElementById('search');
+function filterTools(q){
+  q=q.toLowerCase().trim();
+  document.querySelectorAll('#tools .section').forEach(sec=>{
+    let any=false;
+    sec.querySelectorAll('.card').forEach(c=>{
+      const hit=!q||(c.dataset.name||'').includes(q)||c.textContent.toLowerCase().includes(q);
+      c.style.display=hit?'':'none'; if(hit)any=true;
+    });
+    if(sec.querySelector('.card'))sec.style.display=any?'':'none';
+  });
+}
+if(search){
+  search.addEventListener('input',e=>filterTools(e.target.value));
+  document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{search.value=ch.dataset.q;filterTools(ch.dataset.q);document.getElementById('tools').scrollIntoView({behavior:'smooth'});}));
 }
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){
