@@ -30,6 +30,7 @@
     <nav class="nav-links">
       <a href="#tools">Tools</a>
       <a href="#why">Why us</a>
+      <a href="#request">Request a Tool</a>
       <a href="about.html">About</a>
       <a href="#tools" class="btn">Explore Tools</a>
     </nav>
@@ -137,6 +138,19 @@
     </div>
   </section>
 
+  <section class="cta liquid-glass reveal" id="request">
+    <h2>Can't find the tool you need?</h2>
+    <p>Tell us what you're looking for — even a quick one-line idea is enough. If it's useful, we'll build it and add it here, free.</p>
+    <div class="req-form">
+      <input type="text" id="reqIdea" placeholder="Your tool idea… (e.g. Instagram font generator)" autocomplete="off">
+      <div class="req-row">
+        <input type="email" id="reqEmail" placeholder="Your email (optional)" autocomplete="email">
+        <button class="btn white" id="reqBtn">Send Request</button>
+      </div>
+    </div>
+    <div class="req-msg" id="reqMsg"></div>
+  </section>
+
   <section class="cta liquid-glass reveal">
     <h2>Stay in the loop</h2>
     <p>New tools every week — subscribe to get notified. No spam, unsubscribe anytime.</p>
@@ -241,6 +255,16 @@ if(subForm){subForm.addEventListener('submit',function(e){
     if(d&&d.success){msg.className='sub-msg ok';msg.textContent='🎉 Subscribed! Please check your inbox to confirm.';subForm.reset();}
     else{msg.className='sub-msg err';msg.textContent='Could not subscribe — please try again or use another email.';}})
   .catch(function(){btn.disabled=false;btn.textContent=orig;msg.className='sub-msg err';msg.textContent='Network error — please try again.';});
+});}
+
+// request a tool
+var reqBtn=document.getElementById('reqBtn');
+if(reqBtn){reqBtn.addEventListener('click',function(){
+  var idea=document.getElementById('reqIdea').value.trim(),email=document.getElementById('reqEmail').value.trim(),msg=document.getElementById('reqMsg');
+  if(!idea){msg.className='req-msg err';msg.textContent='Please type your tool idea first. 🙂';return;}
+  var body='Tool idea: '+idea+(email?'\n\nFrom: '+email:'');
+  window.location.href='mailto:xniperbuilds@gmail.com?subject='+encodeURIComponent('Tool request — Xnipertools')+'&body='+encodeURIComponent(body);
+  msg.className='req-msg ok';msg.textContent='Thanks! Your email app will open — just hit send. 🙌';
 });}
 </script>
 </body>

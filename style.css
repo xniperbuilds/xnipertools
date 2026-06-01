@@ -279,6 +279,14 @@ footer.site{margin-top:80px;border-top:1px solid var(--border);background:rgba(6
 .sub-msg{max-width:440px;margin:14px auto 0;font-size:.9rem;min-height:1.1em;font-weight:500}
 .sub-msg.ok{color:#34d399}
 .sub-msg.err{color:#f87171}
+.req-form{max-width:520px;margin:18px auto 0;text-align:left}
+.req-form>input{width:100%;margin-bottom:10px}
+.req-row{display:flex;gap:10px}
+.req-row input{flex:1;min-width:0}
+.req-row .btn{width:auto;flex-shrink:0}
+@media(max-width:460px){.req-row{flex-direction:column}.req-row .btn{width:100%}}
+.req-msg{max-width:520px;margin:12px auto 0;font-size:.9rem;font-weight:500;min-height:1em}
+.req-msg.ok{color:#34d399}.req-msg.err{color:#f87171}
 
 /* ===== FF invisible-space toggle + blank box ===== */
 .ff-toggle{display:inline-flex;align-items:center;gap:11px;cursor:pointer;margin-top:16px;font-size:.9rem;color:#d2d6e4;user-select:none}
