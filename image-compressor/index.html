@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Compressor, Resizer &amp; Converter — JPG, PNG, WEBP | Xnipertools</title>
+<meta name="description" content="Free image compressor, resizer and converter. Shrink image size, resize dimensions, and convert between JPG, PNG and WEBP — right in your browser. Nothing is uploaded.">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/image-compressor/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xnipertools.com/image-compressor/">
+<meta property="og:title" content="Image Compressor, Resizer & Converter">
+<meta property="og:description" content="Compress, resize and convert images (JPG, PNG, WEBP) right in your browser. Free, private, no upload.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Compressor, Resizer & Converter","url":"https://xnipertools.com/image-compressor/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Image</span><span class="sep">/</span><span>Compressor &amp; Resizer</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🗜️</div>
+    <div>
+      <h1>Image Compressor &amp; Resizer</h1>
+      <p><b>Compress</b>, <b>resize</b> and <b>convert</b> (JPG · PNG · WEBP) — all in your browser. Nothing is uploaded.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="drop" id="drop">
+      <input type="file" id="file" accept="image/*" hidden>
+      <div class="drop-inner">📁 <b>Click to upload</b> or drag &amp; drop an image<br><span class="muted">JPG, PNG, WEBP — processed privately on your device</span></div>
+    </div>
+
+    <div id="editor" style="display:none">
+      <div class="img-preview"><img id="prev" alt="preview"></div>
+      <div class="row cols-2 mt">
+        <div><label for="fmt">Output format</label><select id="fmt"><option value="image/jpeg">JPG (smallest)</option><option value="image/webp">WEBP (modern)</option><option value="image/png">PNG (lossless)</option></select></div>
+        <div><label for="quality">Quality <span class="muted" id="qval">80%</span></label><input type="range" id="quality" min="10" max="100" value="80"></div>
+      </div>
+      <div class="row cols-3 mt">
+        <div><label for="w">Width (px)</label><input type="number" id="w" min="1"></div>
+        <div><label for="h">Height (px)</label><input type="number" id="h" min="1"></div>
+        <div><label>Aspect</label><label class="ff-toggle" style="margin-top:8px"><input type="checkbox" id="lock" checked><span class="tg"></span><span>Lock ratio</span></label></div>
+      </div>
+      <div class="result-bar" id="resultBar"></div>
+      <div class="ff-actions mt">
+        <a class="btn" id="dl">📥 Download</a>
+        <button class="btn ghost" id="newImg">↺ New image</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>About this Image Compressor</h2>
+    <p>Need to shrink an image for WhatsApp, email or a website? This free tool compresses, resizes and converts your images instantly — and everything happens right inside your browser, so your photos are never uploaded to any server.</p>
+    <h3>How to use it</h3>
+    <ol>
+      <li>Upload an image (or drag &amp; drop it).</li>
+      <li>Pick an <b>output format</b> — JPG for the smallest size, WEBP for great quality at low size, or PNG for lossless/transparent images.</li>
+      <li>Drag the <b>quality</b> slider, or set a new <b>width/height</b> to resize.</li>
+      <li>Tap <b>Download</b> — you'll see exactly how much smaller it got.</li>
+    </ol>
+    <h3>Is it safe and private?</h3>
+    <p>Yes — your image is processed locally on your device using your browser. It is never sent or stored anywhere.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">🖼️</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../free-fire-name-generator/" class="card"><div class="ico">🔥</div><h3>Free Fire Name Generator</h3><p>Stylish FF names &amp; symbols.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../image-compressor/">Image Compressor</a><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var drop=document.getElementById('drop'),file=document.getElementById('file'),editor=document.getElementById('editor'),prev=document.getElementById('prev');
+var fmtI=document.getElementById('fmt'),qualityI=document.getElementById('quality'),qval=document.getElementById('qval');
+var wI=document.getElementById('w'),hI=document.getElementById('h'),lockI=document.getElementById('lock');
+var dl=document.getElementById('dl'),resultBar=document.getElementById('resultBar');
+var origImg=null,origW=0,origH=0,origSize=0,origName='image',curURL='';
+
+function fmtSize(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(2)+' MB';}
+function loadFile(f){
+  if(!f||!/^image\//.test(f.type)){alert('Please choose an image file.');return;}
+  origSize=f.size;origName=(f.name||'image').replace(/\.[^.]+$/,'').replace(/\s+/g,'-');
+  var url=URL.createObjectURL(f),img=new Image();
+  img.onload=function(){origImg=img;origW=img.naturalWidth;origH=img.naturalHeight;wI.value=origW;hI.value=origH;drop.style.display='none';editor.style.display='';prev.src=url;updateFmt();process();};
+  img.onerror=function(){alert('Could not read that image.');};
+  img.src=url;
+}
+function updateFmt(){
+  var png=fmtI.value==='image/png';
+  qualityI.disabled=png;qualityI.style.opacity=png?'.4':'1';
+  qval.textContent=png?'lossless':(qualityI.value+'%');
+}
+function process(){
+  if(!origImg)return;
+  var w=Math.max(1,parseInt(wI.value)||origW),h=Math.max(1,parseInt(hI.value)||origH);
+  var fmt=fmtI.value,q=(+qualityI.value)/100;
+  var c=document.createElement('canvas');c.width=w;c.height=h;var ctx=c.getContext('2d');
+  if(fmt==='image/jpeg'){ctx.fillStyle='#ffffff';ctx.fillRect(0,0,w,h);}
+  ctx.imageSmoothingQuality='high';ctx.drawImage(origImg,0,0,w,h);
+  c.toBlob(function(blob){
+    if(!blob){resultBar.textContent='This browser can\'t export that format — try JPG or PNG.';return;}
+    if(curURL)URL.revokeObjectURL(curURL);
+    curURL=URL.createObjectURL(blob);
+    var ext=fmt==='image/jpeg'?'jpg':fmt==='image/webp'?'webp':'png';
+    dl.href=curURL;dl.setAttribute('download',origName+'-xnipertools.'+ext);
+    prev.src=curURL;
+    var pct=origSize?Math.round((1-blob.size/origSize)*100):0;
+    var diff=pct>0?' · <span class="save">'+pct+'% smaller ✓</span>':(pct<0?' · <span style="color:#f87171">'+(-pct)+'% larger</span>':'');
+    resultBar.innerHTML='Original <b>'+fmtSize(origSize)+'</b> ('+origW+'×'+origH+')  →  New <b>'+fmtSize(blob.size)+'</b> ('+w+'×'+h+')'+diff;
+  },fmt,q);
+}
+drop.addEventListener('click',function(){file.click();});
+file.addEventListener('change',function(e){loadFile(e.target.files[0]);});
+drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
+drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
+drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');loadFile(e.dataTransfer.files[0]);});
+wI.addEventListener('input',function(){if(lockI.checked&&origW){hI.value=Math.round((parseInt(wI.value)||0)*origH/origW)||'';}process();});
+hI.addEventListener('input',function(){if(lockI.checked&&origH){wI.value=Math.round((parseInt(hI.value)||0)*origW/origH)||'';}process();});
+fmtI.addEventListener('change',function(){updateFmt();process();});
+qualityI.addEventListener('input',function(){qval.textContent=qualityI.value+'%';process();});
+document.getElementById('newImg').addEventListener('click',function(){origImg=null;file.value='';editor.style.display='none';drop.style.display='';});
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl')return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
