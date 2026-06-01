@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Free Fire Name Generator — Stylish FF Names &amp; Symbols | Xnipertools</title>
-<meta name="description" content="Free Fire name generator with stylish fonts, cool symbols and fancy nicknames. Type your name and copy the best stylish FF names in one tap. 100% free.">
+<title>Free Fire Name Generator — Stylish FF Names, Symbols &amp; Invisible Name | Xnipertools</title>
+<meta name="description" content="Free Fire name generator with stylish fonts, cool symbols and fancy nicknames — plus an invisible name / blank space character. Copy stylish FF names in one tap. 100% free.">
 <meta name="theme-color" content="#0a0a12">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,8 +42,17 @@
   <div class="tool-box">
     <label for="name">Enter your name</label>
     <input type="text" id="name" placeholder="e.g. Xniper" value="Xniper" maxlength="20" autocomplete="off">
+    <label class="ff-toggle"><input type="checkbox" id="ffSpace"><span class="tg"></span><span>Use Free Fire <b>invisible space</b> — keeps real spaces in-game</span></label>
     <button class="btn block mt" id="genBtn">Generate Stylish Names 🔥</button>
     <div class="style-list" id="out"></div>
+  </div>
+
+  <div class="tool-box blank-box">
+    <div>
+      <h3>🫥 Invisible Name / Blank Space</h3>
+      <p class="muted">A special blank character that Free Fire accepts where normal spaces get removed. Copy it for an <b>invisible name</b>, or to put real spaces between words.</p>
+    </div>
+    <button class="btn" id="copyBlank">Copy Blank Space</button>
   </div>
 
   <div class="ad-slot">Advertisement</div>
@@ -59,6 +68,8 @@
     </ol>
     <h3>Are these stylish names safe to use?</h3>
     <p>Yes — these are just normal Unicode characters and symbols, so they work in Free Fire, PUBG, BGMI, Instagram, TikTok and most games and apps.</p>
+    <h3>How do I make an invisible Free Fire name?</h3>
+    <p>Free Fire removes normal spaces, so an invisible or blank name needs a special character. Tap <b>Copy Blank Space</b> above and paste it as your name for a fully invisible name — or turn on <b>Use Free Fire invisible space</b> to keep real spaces between words in your stylish name.</p>
   </article>
 
   <section class="section">
@@ -147,15 +158,23 @@ function build(n){
   ];
 }
 const out=document.getElementById('out'),name=document.getElementById('name');
+const BLANK='ㅤ'; // Hangul Filler — invisible space that works in Free Fire
+const ffSpace=document.getElementById('ffSpace');
 function render(){
-  out.innerHTML=build(name.value).map(v=>
+  const useBlank=ffSpace.checked;
+  const arr=build(name.value).map(v=>useBlank?v.replace(/ /g,BLANK):v);
+  out.innerHTML=arr.map(v=>
     `<div class="style-item"><span class="txt">${v.replace(/</g,'&lt;')}</span><button class="copy" data-v="${v.replace(/"/g,'&quot;')}">Copy</button></div>`).join('');
   out.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
     navigator.clipboard.writeText(b.dataset.v).then(()=>{b.textContent='Copied!';b.classList.add('done');setTimeout(()=>{b.textContent='Copy';b.classList.remove('done');},1200);});
   }));
 }
 name.addEventListener('input',render);
+ffSpace.addEventListener('change',render);
 document.getElementById('genBtn').addEventListener('click',render);
+document.getElementById('copyBlank').addEventListener('click',function(){
+  var b=this; navigator.clipboard.writeText(BLANK).then(()=>{b.textContent='Copied! ✓';setTimeout(()=>{b.textContent='Copy Blank Space';},1400);});
+});
 render();
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){
