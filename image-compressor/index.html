@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Image Compressor, Resizer &amp; Converter — JPG, PNG, WEBP | Xnipertools</title>
-<meta name="description" content="Free image compressor, resizer and converter. Shrink image size, resize dimensions, and convert between JPG, PNG and WEBP — right in your browser. Nothing is uploaded.">
+<title>Image Compressor, Resizer, Converter, Crop &amp; Rotate | Xnipertools</title>
+<meta name="description" content="Free all-in-one image tool: compress, resize, convert (JPG/PNG/WEBP), crop and rotate images — all in your browser. Nothing is uploaded.">
 <meta name="theme-color" content="#0a0a12">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="canonical" href="https://xnipertools.com/image-compressor/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://xnipertools.com/image-compressor/">
-<meta property="og:title" content="Image Compressor, Resizer & Converter">
-<meta property="og:description" content="Compress, resize and convert images (JPG, PNG, WEBP) right in your browser. Free, private, no upload.">
+<meta property="og:title" content="Image Compressor, Resizer, Converter, Crop & Rotate">
+<meta property="og:description" content="Compress, resize, convert, crop and rotate images right in your browser. Free, private, no upload.">
 <meta property="og:image" content="https://xnipertools.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -34,13 +34,13 @@
 </header>
 
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Image</span><span class="sep">/</span><span>Compressor &amp; Resizer</span></div>
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Image</span><span class="sep">/</span><span>Image Tools</span></div>
 
   <div class="tool-head">
-    <div class="ic">🗜️</div>
+    <div class="ic">🖼️</div>
     <div>
-      <h1>Image Compressor &amp; Resizer</h1>
-      <p><b>Compress</b>, <b>resize</b> and <b>convert</b> (JPG · PNG · WEBP) — all in your browser. Nothing is uploaded.</p>
+      <h1>Image Tools — All in One</h1>
+      <p><b>Compress · Resize · Convert · Crop · Rotate</b> — all in your browser. Nothing is uploaded.</p>
     </div>
   </div>
 
@@ -51,7 +51,25 @@
     </div>
 
     <div id="editor" style="display:none">
-      <div class="img-preview"><img id="prev" alt="preview"></div>
+      <div class="img-preview">
+        <div class="crop-wrap" id="cropWrap">
+          <img id="prev" alt="preview">
+          <div class="crop-box" id="cropBox" style="display:none"><span class="crop-h tl"></span><span class="crop-h tr"></span><span class="crop-h bl"></span><span class="crop-h br"></span></div>
+        </div>
+      </div>
+
+      <div class="tf-row mt">
+        <button type="button" class="tf-btn" id="rotL">↺ Rotate</button>
+        <button type="button" class="tf-btn" id="rotR">↻ Rotate</button>
+        <button type="button" class="tf-btn" id="flipH">⇋ Flip</button>
+        <button type="button" class="tf-btn" id="flipV">⇅ Flip</button>
+        <button type="button" class="tf-btn" id="cropBtn">✂️ Crop</button>
+      </div>
+      <div class="ff-actions mt" id="cropActions" style="display:none">
+        <button class="btn" id="applyCrop">✓ Apply crop</button>
+        <button class="btn ghost" id="cancelCrop">✕ Cancel</button>
+      </div>
+
       <div class="row cols-2 mt">
         <div><label for="fmt">Output format</label><select id="fmt"><option value="image/jpeg">JPG (smallest)</option><option value="image/webp">WEBP (modern)</option><option value="image/png">PNG (lossless)</option></select></div>
         <div><label for="quality">Quality <span class="muted" id="qval">80%</span></label><input type="range" id="quality" min="10" max="100" value="80"></div>
@@ -72,17 +90,17 @@
   <div class="ad-slot">Advertisement</div>
 
   <article class="article reveal">
-    <h2>About this Image Compressor</h2>
-    <p>Need to shrink an image for WhatsApp, email or a website? This free tool compresses, resizes and converts your images instantly — and everything happens right inside your browser, so your photos are never uploaded to any server.</p>
+    <h2>About this Image Tool</h2>
+    <p>One free tool for everything you need to do with an image: <b>compress</b> it to a smaller size, <b>resize</b> its dimensions, <b>convert</b> between JPG, PNG and WEBP, and <b>crop</b> or <b>rotate</b> it. Everything happens right inside your browser — your image is never uploaded to any server.</p>
     <h3>How to use it</h3>
     <ol>
       <li>Upload an image (or drag &amp; drop it).</li>
-      <li>Pick an <b>output format</b> — JPG for the smallest size, WEBP for great quality at low size, or PNG for lossless/transparent images.</li>
-      <li>Drag the <b>quality</b> slider, or set a new <b>width/height</b> to resize.</li>
+      <li><b>Rotate</b>, <b>flip</b> or <b>crop</b> it if you want.</li>
+      <li>Pick an <b>output format</b>, drag the <b>quality</b> slider, or set a new <b>width/height</b>.</li>
       <li>Tap <b>Download</b> — you'll see exactly how much smaller it got.</li>
     </ol>
-    <h3>Is it safe and private?</h3>
-    <p>Yes — your image is processed locally on your device using your browser. It is never sent or stored anywhere.</p>
+    <h3>Is it private?</h3>
+    <p>Yes — your image is processed locally on your device. It is never sent or stored anywhere.</p>
   </article>
 
   <section class="section">
@@ -98,7 +116,7 @@
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
-      <div class="foot-col"><h4>Tools</h4><a href="../image-compressor/">Image Compressor</a><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../image-compressor/">Image Tools</a><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../index.html#tools">All Tools</a></div>
       <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
     </div>
     <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
@@ -112,55 +130,93 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-var drop=document.getElementById('drop'),file=document.getElementById('file'),editor=document.getElementById('editor'),prev=document.getElementById('prev');
-var fmtI=document.getElementById('fmt'),qualityI=document.getElementById('quality'),qval=document.getElementById('qval');
-var wI=document.getElementById('w'),hI=document.getElementById('h'),lockI=document.getElementById('lock');
-var dl=document.getElementById('dl'),resultBar=document.getElementById('resultBar');
-var origImg=null,origW=0,origH=0,origSize=0,origName='image',curURL='';
+var $=function(id){return document.getElementById(id);};
+var drop=$('drop'),file=$('file'),editor=$('editor'),prev=$('prev'),cropWrap=$('cropWrap'),cropBox=$('cropBox');
+var fmtI=$('fmt'),qualityI=$('quality'),qval=$('qval'),wI=$('w'),hI=$('h'),lockI=$('lock'),dl=$('dl'),resultBar=$('resultBar');
+var base=null,origSize=0,origName='image',curURL='',prevURL='';
 
 function fmtSize(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(2)+' MB';}
+function canvasOf(img){var c=document.createElement('canvas');c.width=img.naturalWidth||img.width;c.height=img.naturalHeight||img.height;c.getContext('2d').drawImage(img,0,0);return c;}
+function showBase(){if(prevURL)URL.revokeObjectURL(prevURL);base.toBlob(function(b){if(b){prevURL=URL.createObjectURL(b);prev.src=prevURL;}else{prev.src=base.toDataURL();}},'image/png');}
+function afterEdit(){wI.value=base.width;hI.value=base.height;showBase();process();}
+
 function loadFile(f){
   if(!f||!/^image\//.test(f.type)){alert('Please choose an image file.');return;}
   origSize=f.size;origName=(f.name||'image').replace(/\.[^.]+$/,'').replace(/\s+/g,'-');
   var url=URL.createObjectURL(f),img=new Image();
-  img.onload=function(){origImg=img;origW=img.naturalWidth;origH=img.naturalHeight;wI.value=origW;hI.value=origH;drop.style.display='none';editor.style.display='';prev.src=url;updateFmt();process();};
+  img.onload=function(){base=canvasOf(img);URL.revokeObjectURL(url);drop.style.display='none';editor.style.display='';wI.value=base.width;hI.value=base.height;updateFmt();showBase();process();};
   img.onerror=function(){alert('Could not read that image.');};
   img.src=url;
 }
-function updateFmt(){
-  var png=fmtI.value==='image/png';
-  qualityI.disabled=png;qualityI.style.opacity=png?'.4':'1';
-  qval.textContent=png?'lossless':(qualityI.value+'%');
-}
+function updateFmt(){var png=fmtI.value==='image/png';qualityI.disabled=png;qualityI.style.opacity=png?'.4':'1';qval.textContent=png?'lossless':(qualityI.value+'%');}
 function process(){
-  if(!origImg)return;
-  var w=Math.max(1,parseInt(wI.value)||origW),h=Math.max(1,parseInt(hI.value)||origH);
+  if(!base)return;
+  var w=Math.max(1,parseInt(wI.value)||base.width),h=Math.max(1,parseInt(hI.value)||base.height);
   var fmt=fmtI.value,q=(+qualityI.value)/100;
   var c=document.createElement('canvas');c.width=w;c.height=h;var ctx=c.getContext('2d');
   if(fmt==='image/jpeg'){ctx.fillStyle='#ffffff';ctx.fillRect(0,0,w,h);}
-  ctx.imageSmoothingQuality='high';ctx.drawImage(origImg,0,0,w,h);
+  ctx.imageSmoothingQuality='high';ctx.drawImage(base,0,0,w,h);
   c.toBlob(function(blob){
     if(!blob){resultBar.textContent='This browser can\'t export that format — try JPG or PNG.';return;}
-    if(curURL)URL.revokeObjectURL(curURL);
-    curURL=URL.createObjectURL(blob);
+    if(curURL)URL.revokeObjectURL(curURL);curURL=URL.createObjectURL(blob);
     var ext=fmt==='image/jpeg'?'jpg':fmt==='image/webp'?'webp':'png';
     dl.href=curURL;dl.setAttribute('download',origName+'-xnipertools.'+ext);
-    prev.src=curURL;
     var pct=origSize?Math.round((1-blob.size/origSize)*100):0;
     var diff=pct>0?' · <span class="save">'+pct+'% smaller ✓</span>':(pct<0?' · <span style="color:#f87171">'+(-pct)+'% larger</span>':'');
-    resultBar.innerHTML='Original <b>'+fmtSize(origSize)+'</b> ('+origW+'×'+origH+')  →  New <b>'+fmtSize(blob.size)+'</b> ('+w+'×'+h+')'+diff;
+    resultBar.innerHTML='Original <b>'+fmtSize(origSize)+'</b>  →  <b>'+fmtSize(blob.size)+'</b> ('+w+'×'+h+')'+diff;
   },fmt,q);
 }
+
+/* transforms */
+function rotate(dir){var c=document.createElement('canvas');c.width=base.height;c.height=base.width;var x=c.getContext('2d');x.translate(c.width/2,c.height/2);x.rotate(dir*Math.PI/2);x.drawImage(base,-base.width/2,-base.height/2);base=c;afterEdit();}
+function flip(horiz){var c=document.createElement('canvas');c.width=base.width;c.height=base.height;var x=c.getContext('2d');if(horiz){x.translate(c.width,0);x.scale(-1,1);}else{x.translate(0,c.height);x.scale(1,-1);}x.drawImage(base,0,0);base=c;afterEdit();}
+$('rotL').onclick=function(){rotate(-1);};$('rotR').onclick=function(){rotate(1);};
+$('flipH').onclick=function(){flip(true);};$('flipV').onclick=function(){flip(false);};
+
+/* crop */
+var cropping=false,drag=null;
+function showCrop(on){cropping=on;cropBox.style.display=on?'block':'none';$('cropActions').style.display=on?'flex':'none';$('cropBtn').classList.toggle('active',on);if(on)initCropBox();}
+function initCropBox(){var W=prev.clientWidth,H=prev.clientHeight,m=Math.round(Math.min(W,H)*0.12);setBox(m,m,W-2*m,H-2*m);}
+function setBox(x,y,w,h){cropBox.style.left=x+'px';cropBox.style.top=y+'px';cropBox.style.width=w+'px';cropBox.style.height=h+'px';}
+$('cropBtn').onclick=function(){showCrop(!cropping);};
+$('cancelCrop').onclick=function(){showCrop(false);};
+$('applyCrop').onclick=function(){
+  var bx=cropBox.offsetLeft,by=cropBox.offsetTop,bw=cropBox.offsetWidth,bh=cropBox.offsetHeight;
+  var s=base.width/prev.clientWidth;
+  var cx=Math.max(0,Math.round(bx*s)),cy=Math.max(0,Math.round(by*s)),cw=Math.min(base.width-cx,Math.round(bw*s)),ch=Math.min(base.height-cy,Math.round(bh*s));
+  if(cw<1||ch<1){showCrop(false);return;}
+  var c=document.createElement('canvas');c.width=cw;c.height=ch;c.getContext('2d').drawImage(base,cx,cy,cw,ch,0,0,cw,ch);
+  base=c;showCrop(false);afterEdit();
+};
+function startDrag(e,type){e.preventDefault();e.stopPropagation();var r=cropWrap.getBoundingClientRect();drag={type:type,sx:e.clientX-r.left,sy:e.clientY-r.top,box:{x:cropBox.offsetLeft,y:cropBox.offsetTop,w:cropBox.offsetWidth,h:cropBox.offsetHeight}};}
+cropBox.addEventListener('pointerdown',function(e){if(e.target.classList.contains('crop-h'))return;startDrag(e,'move');});
+['tl','tr','bl','br'].forEach(function(p){cropBox.querySelector('.'+p).addEventListener('pointerdown',function(e){startDrag(e,p);});});
+window.addEventListener('pointermove',function(e){
+  if(!drag)return;e.preventDefault();
+  var r=cropWrap.getBoundingClientRect(),px=e.clientX-r.left,py=e.clientY-r.top,dx=px-drag.sx,dy=py-drag.sy,b=drag.box;
+  var W=prev.clientWidth,H=prev.clientHeight,min=28,x=b.x,y=b.y,w=b.w,h=b.h;
+  if(drag.type==='move'){x=Math.max(0,Math.min(b.x+dx,W-b.w));y=Math.max(0,Math.min(b.y+dy,H-b.h));}
+  else{
+    if(drag.type.indexOf('l')>-1){var rt=b.x+b.w;x=Math.max(0,Math.min(b.x+dx,rt-min));w=rt-x;}
+    if(drag.type.indexOf('r')>-1){w=Math.max(min,Math.min(b.w+dx,W-b.x));}
+    if(drag.type.indexOf('t')>-1){var bt=b.y+b.h;y=Math.max(0,Math.min(b.y+dy,bt-min));h=bt-y;}
+    if(drag.type.indexOf('b')>-1){h=Math.max(min,Math.min(b.h+dy,H-b.y));}
+  }
+  setBox(x,y,w,h);
+});
+window.addEventListener('pointerup',function(){drag=null;});
+
+/* inputs */
 drop.addEventListener('click',function(){file.click();});
 file.addEventListener('change',function(e){loadFile(e.target.files[0]);});
 drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
 drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
 drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');loadFile(e.dataTransfer.files[0]);});
-wI.addEventListener('input',function(){if(lockI.checked&&origW){hI.value=Math.round((parseInt(wI.value)||0)*origH/origW)||'';}process();});
-hI.addEventListener('input',function(){if(lockI.checked&&origH){wI.value=Math.round((parseInt(hI.value)||0)*origW/origH)||'';}process();});
+wI.addEventListener('input',function(){if(lockI.checked&&base){hI.value=Math.round((parseInt(wI.value)||0)*base.height/base.width)||'';}process();});
+hI.addEventListener('input',function(){if(lockI.checked&&base){wI.value=Math.round((parseInt(hI.value)||0)*base.width/base.height)||'';}process();});
 fmtI.addEventListener('change',function(){updateFmt();process();});
 qualityI.addEventListener('input',function(){qval.textContent=qualityI.value+'%';process();});
-document.getElementById('newImg').addEventListener('click',function(){origImg=null;file.value='';editor.style.display='none';drop.style.display='';});
+$('newImg').addEventListener('click',function(){base=null;file.value='';editor.style.display='none';drop.style.display='';showCrop(false);});
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl')return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
