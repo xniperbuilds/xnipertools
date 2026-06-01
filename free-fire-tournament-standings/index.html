@@ -69,6 +69,7 @@
     <div class="mt">
       <label>Optional columns <span class="muted">(only show if you use them)</span></label>
       <div class="ff-toggles" style="margin-top:8px">
+        <label class="ff-toggle"><input type="checkbox" id="optBooyah"><span class="tg"></span><span>Booyah wins 🏆</span></label>
         <label class="ff-toggle"><input type="checkbox" id="optDmg"><span class="tg"></span><span>Total damage</span></label>
         <label class="ff-toggle"><input type="checkbox" id="optMatches"><span class="tg"></span><span>Matches played</span></label>
         <label class="ff-toggle"><input type="checkbox" id="optSurv"><span class="tg"></span><span>Survival time</span></label>
@@ -137,19 +138,21 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const BADGE="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236f97f5'/%3E%3Cstop offset='1' stop-color='%233f63d8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='15' fill='url(%23b)'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E";
 var BADGE_PNG='';
 (function(){try{var im=new Image();im.onload=function(){try{var c=document.createElement('canvas');c.width=120;c.height=120;c.getContext('2d').drawImage(im,0,0,120,120);BADGE_PNG=c.toDataURL('image/png');}catch(e){BADGE_PNG='../logo.png';}};im.onerror=function(){BADGE_PNG='../logo.png';};im.src='../logo.png';}catch(e){}})();
+var BOOYAH_PNG='';
+(function(){try{var im=new Image();im.onload=function(){try{var c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext('2d').drawImage(im,0,0);BOOYAH_PNG=c.toDataURL('image/png');}catch(e){BOOYAH_PNG='../booyah.png';}};im.onerror=function(){BOOYAH_PNG='../booyah.png';};im.src='../booyah.png';}catch(e){}})();
 const KEY="ff_tourny_v1";
-const S={org:'',logo:'',count:12,opt:{dmg:false,matches:false,surv:false},teams:[]};
-function blankTeam(){return{name:'',pos:'',kills:'',dmg:'',matches:'',surv:''};}
+const S={org:'',logo:'',count:12,opt:{booyah:false,dmg:false,matches:false,surv:false},teams:[]};
+function blankTeam(){return{name:'',pos:'',kills:'',booyah:'',dmg:'',matches:'',surv:''};}
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 const orgI=document.getElementById('org'),teamCountI=document.getElementById('teamCount'),teamsEl=document.getElementById('teams'),standingsEl=document.getElementById('standings');
-const optDmg=document.getElementById('optDmg'),optMatches=document.getElementById('optMatches'),optSurv=document.getElementById('optSurv');
+const optDmg=document.getElementById('optDmg'),optMatches=document.getElementById('optMatches'),optSurv=document.getElementById('optSurv'),optBooyah=document.getElementById('optBooyah');
 
 (function load(){
   try{var o=JSON.parse(localStorage.getItem(KEY));if(o){S.org=o.org||'';S.logo=o.logo||'';S.count=o.count||12;S.opt=o.opt||S.opt;S.teams=o.teams||[];}}catch(e){}
   while(S.teams.length<S.count)S.teams.push(blankTeam());
   S.teams=S.teams.slice(0,S.count);
-  orgI.value=S.org;teamCountI.value=S.count;optDmg.checked=!!S.opt.dmg;optMatches.checked=!!S.opt.matches;optSurv.checked=!!S.opt.surv;
+  orgI.value=S.org;teamCountI.value=S.count;optDmg.checked=!!S.opt.dmg;optMatches.checked=!!S.opt.matches;optSurv.checked=!!S.opt.surv;optBooyah.checked=!!S.opt.booyah;
   if(S.logo)showLogo();
   renderTeams();renderStandings();
 })();
@@ -164,6 +167,7 @@ function renderTeams(){
       (S.opt.matches?'<div class="tm-f"><label>Matches</label><input type="number" inputmode="numeric" value="'+esc(t.matches)+'" oninput="upd('+i+',\'matches\',this.value)"></div>':'')+
       '<div class="tm-f"><label>Pos pts</label><input type="number" inputmode="numeric" value="'+esc(t.pos)+'" oninput="upd('+i+',\'pos\',this.value)"></div>'+
       '<div class="tm-f"><label>Kills</label><input type="number" inputmode="numeric" value="'+esc(t.kills)+'" oninput="upd('+i+',\'kills\',this.value)"></div>'+
+      (S.opt.booyah?'<div class="tm-f"><label>Booyah</label><input type="number" inputmode="numeric" value="'+esc(t.booyah)+'" oninput="upd('+i+',\'booyah\',this.value)"></div>':'')+
       (S.opt.dmg?'<div class="tm-f"><label>Damage</label><input type="number" inputmode="numeric" value="'+esc(t.dmg)+'" oninput="upd('+i+',\'dmg\',this.value)"></div>':'')+
       (S.opt.surv?'<div class="tm-f"><label>Survival</label><input type="text" placeholder="mm:ss" value="'+esc(t.surv)+'" oninput="upd('+i+',\'surv\',this.value)"></div>':'')+
       '<div class="tm-tot"><label>Total</label><span id="tot'+i+'">'+tot+'</span></div></div></div>';
@@ -173,7 +177,7 @@ function renderTeams(){
 function upd(i,k,v){S.teams[i][k]=v;if(k==='pos'||k==='kills'){var tt=document.getElementById('tot'+i);if(tt)tt.textContent=(+S.teams[i].pos||0)+(+S.teams[i].kills||0);}renderStandings();save();}
 
 function standings(){
-  var a=S.teams.map(function(t,i){return{name:t.name,idx:i,pos:+t.pos||0,kills:+t.kills||0,dmg:+t.dmg||0,matches:+t.matches||0,surv:t.surv||'',total:(+t.pos||0)+(+t.kills||0)};});
+  var a=S.teams.map(function(t,i){return{name:t.name,idx:i,pos:+t.pos||0,kills:+t.kills||0,booyah:+t.booyah||0,dmg:+t.dmg||0,matches:+t.matches||0,surv:t.surv||'',total:(+t.pos||0)+(+t.kills||0)};});
   a.sort(function(x,y){return y.total-x.total||y.pos-x.pos||y.kills-x.kills;});
   a.forEach(function(t,i){t.rank=i+1;});
   return a;
@@ -187,8 +191,10 @@ function renderStandings(){
     p.push('Pos '+t.pos);p.push(t.kills+' kills');
     if(S.opt.dmg)p.push((t.dmg||0)+' dmg');
     if(S.opt.surv&&t.surv)p.push(t.surv);
+    var nm=esc(t.name||('Team '+(t.idx+1)));
+    if(S.opt.booyah&&t.booyah>0)nm+=' <img class="booyah-mini" src="../booyah.png" alt="Booyah"><span class="booyah-x">'+t.booyah+'x</span>';
     return '<div class="st-row'+(t.rank<=3?' st-r'+t.rank:'')+'"><div class="st-rank">'+medal(t.rank)+'</div>'+
-      '<div class="st-team"><div class="st-name">'+esc(t.name||('Team '+(t.idx+1)))+'</div><div class="st-sub">'+p.join(' · ')+'</div></div>'+
+      '<div class="st-team"><div class="st-name">'+nm+'</div><div class="st-sub">'+p.join(' · ')+'</div></div>'+
       '<div class="st-total">'+t.total+'<span>pts</span></div></div>';
   }).join('');
 }
@@ -206,7 +212,7 @@ document.getElementById('logoRm').addEventListener('click',function(){S.logo='';
 /* settings listeners */
 orgI.addEventListener('input',function(){S.org=orgI.value;save();});
 teamCountI.addEventListener('change',function(){var n=Math.max(2,Math.min(25,parseInt(teamCountI.value)||12));teamCountI.value=n;S.count=n;while(S.teams.length<n)S.teams.push(blankTeam());S.teams=S.teams.slice(0,n);renderTeams();renderStandings();save();});
-[optDmg,optMatches,optSurv].forEach(function(el){el.addEventListener('change',function(){S.opt.dmg=optDmg.checked;S.opt.matches=optMatches.checked;S.opt.surv=optSurv.checked;renderTeams();renderStandings();save();});});
+[optDmg,optMatches,optSurv,optBooyah].forEach(function(el){el.addEventListener('change',function(){S.opt.dmg=optDmg.checked;S.opt.matches=optMatches.checked;S.opt.surv=optSurv.checked;S.opt.booyah=optBooyah.checked;renderTeams();renderStandings();save();});});
 function resetAll(){if(confirm('Reset all teams and scores?')){S.teams=[];for(var i=0;i<S.count;i++)S.teams.push(blankTeam());renderTeams();renderStandings();save();}}
 document.getElementById('resetBtn').addEventListener('click',resetAll);
 
@@ -219,7 +225,9 @@ function buildCard(){
   function cc(t,cs){return cs.map(function(c){return '<td>'+(c[1]==='surv'?esc(t.surv||'-'):(t[c[1]]||0))+'</td>';}).join('');}
   var thead='<tr><th class="l">#</th><th class="l">TEAM</th>'+hh(before)+'<th>POS</th><th>K</th>'+hh(after)+'<th>TOTAL</th></tr>';
   var tbody=a.map(function(t){
-    return '<tr'+(t.rank<=3?' class="r'+t.rank+'"':'')+'><td class="l card-rank">'+medal(t.rank)+'</td><td class="l">'+esc(t.name||('Team '+(t.idx+1)))+'</td>'+cc(t,before)+'<td>'+t.pos+'</td><td>'+t.kills+'</td>'+cc(t,after)+'<td class="tot">'+t.total+'</td></tr>';
+    var nm=esc(t.name||('Team '+(t.idx+1)));
+    if(S.opt.booyah&&t.booyah>0)nm+=' <img class="card-booyah" src="'+(BOOYAH_PNG||'../booyah.png')+'"><span class="card-booyah-x">'+t.booyah+'x</span>';
+    return '<tr'+(t.rank<=3?' class="r'+t.rank+'"':'')+'><td class="l card-rank">'+medal(t.rank)+'</td><td class="l">'+nm+'</td>'+cc(t,before)+'<td>'+t.pos+'</td><td>'+t.kills+'</td>'+cc(t,after)+'<td class="tot">'+t.total+'</td></tr>';
   }).join('');
   var logoImg=S.logo?'<img class="card-logo" src="'+S.logo+'">':'';
   document.getElementById('card').innerHTML=

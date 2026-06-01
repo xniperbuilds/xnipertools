@@ -412,3 +412,7 @@ input[type=number]{-moz-appearance:textfield}
 .card-foot-txt{text-align:left}
 .card-foot .lnk{color:#22d3ee;font-size:26px;font-weight:800;font-family:'Space Grotesk',sans-serif;line-height:1.1}
 .card-foot-sub{color:#6f7ba8;font-size:17px;font-weight:500;margin-top:3px}
+.booyah-mini{height:18px;vertical-align:middle;margin-left:5px}
+.booyah-x{color:#ffb020;font-weight:800;font-size:.88rem;margin-left:2px;vertical-align:middle}
+.card-booyah{height:32px;vertical-align:middle;margin-left:12px}
+.card-booyah-x{color:#ffb020;font-weight:800;font-size:26px;margin-left:5px;vertical-align:middle}
