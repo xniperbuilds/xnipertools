@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Xnipertools</title>
+<meta name="description" content="Contact Xnipertools — questions, feedback, tool requests or business enquiries. We'd love to hear from you.">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+<header class="site"><div class="container nav">
+  <a href="index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+  <nav class="nav-links"><a href="index.html#tools">Tools</a><a href="about.html">About</a><a href="index.html#tools" class="btn">All Tools</a></nav>
+</div></header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Contact</span></div>
+  <div class="tool-head"><div class="ic">✉️</div><div><h1>Contact Us</h1><p>Questions, feedback or a tool request? Reach out.</p></div></div>
+
+  <div class="tool-box">
+    <p class="muted" style="margin-bottom:18px">Fill in the form and it'll open in your email app, or write to us directly at
+      <a href="mailto:xniperbuilds@gmail.com" style="color:#a855f7;font-weight:600">xniperbuilds@gmail.com</a>.</p>
+    <div class="row cols-2">
+      <div><label for="cname">Your name</label><input type="text" id="cname" placeholder="Name"></div>
+      <div><label for="cemail">Your email</label><input type="text" id="cemail" placeholder="you@example.com"></div>
+    </div>
+    <div class="mt"><label for="cmsg">Message</label><textarea id="cmsg" rows="5" placeholder="How can we help?"></textarea></div>
+    <button class="btn block mt" id="sendBtn">Send Message ✈️</button>
+  </div>
+
+  <article class="article">
+    <h2>Other ways to reach us</h2>
+    <ul>
+      <li><b>Tool requests:</b> tell us which tool you'd like next — we add new ones every week.</li>
+      <li><b>Feedback &amp; bugs:</b> found something broken? Let us know and we'll fix it fast.</li>
+      <li><b>Business:</b> partnerships and enquiries are welcome at the email above.</li>
+    </ul>
+    <p>We usually reply within 1–2 business days.</p>
+  </article>
+</div>
+
+<footer class="site"><div class="container">
+  <div class="foot-grid">
+    <div class="foot-brand"><a href="index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+    <div class="foot-col"><h4>Tools</h4><a href="age-calculator/">Age Calculator</a><a href="free-fire-name-generator/">Free Fire Name</a><a href="index.html#tools">All Tools</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a></div>
+  </div>
+  <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+</div></footer>
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('sendBtn').addEventListener('click',()=>{
+  const n=document.getElementById('cname').value,e=document.getElementById('cemail').value,m=document.getElementById('cmsg').value;
+  const body=encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\n'+m);
+  window.location.href='mailto:xniperbuilds@gmail.com?subject='+encodeURIComponent('Xnipertools — message from '+(n||'visitor'))+'&body='+body;
+});
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){
+  const r=document.createElement('span');r.className='ripple';const rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);
+  r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';
+  this.appendChild(r);setTimeout(()=>r.remove(),600);
+}));
+</script>
+</body>
+</html>

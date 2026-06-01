@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About — Xnipertools</title>
+<meta name="description" content="About Xnipertools — a growing collection of free, fast and beautiful online tools, calculators and generators. No signup, no charges.">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+<header class="site"><div class="container nav">
+  <a href="index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+  <nav class="nav-links"><a href="index.html#tools">Tools</a><a href="contact.html">Contact</a><a href="index.html#tools" class="btn">All Tools</a></nav>
+</div></header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>About</span></div>
+  <div class="tool-head"><div class="ic">💡</div><div><h1>About Xnipertools</h1><p>Free, fast and beautiful tools for everyone.</p></div></div>
+
+  <article class="article">
+    <p>Xnipertools is a growing collection of <b>free online tools</b> built to make everyday tasks quick and effortless. From calculators to generators to gaming tools, our goal is simple: give you the tool you need, instantly — with a clean, modern experience that feels great on any device.</p>
+
+    <h2>What we offer</h2>
+    <ul>
+      <li><b>Calculators</b> — age, percentages, loans and more, with clear results.</li>
+      <li><b>Generators</b> — stylish text, passwords, QR codes and other handy creators.</li>
+      <li><b>Gaming tools</b> — stylish name generators and helpers for Free Fire, PUBG and more.</li>
+    </ul>
+
+    <h2>Our mission</h2>
+    <p>We believe simple tools should be <b>fast, free and beautiful</b>. No clutter, no forced signups, no nonsense — just open a tool and get your result. Every tool is designed mobile-first, because that's where most of you are.</p>
+
+    <h2>Who builds this?</h2>
+    <p>Xnipertools is built and maintained by <b>Xniper</b>, an independent maker focused on crafting simple, genuinely useful tools. New tools are added regularly based on what people actually need.</p>
+
+    <h2>Got an idea?</h2>
+    <p>We're always adding new tools. If there's something you'd love to see, <a href="contact.html" style="color:#a855f7">tell us here</a> — your suggestion might be the next tool we build.</p>
+  </article>
+
+  <section class="cta reveal" style="margin-top:48px">
+    <h2>Explore the tools</h2>
+    <p>Dozens of free tools, ready to use right now.</p>
+    <a href="index.html#tools" class="btn">Browse All Tools</a>
+  </section>
+</div>
+
+<footer class="site"><div class="container">
+  <div class="foot-grid">
+    <div class="foot-brand"><a href="index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+    <div class="foot-col"><h4>Tools</h4><a href="age-calculator/">Age Calculator</a><a href="free-fire-name-generator/">Free Fire Name</a><a href="index.html#tools">All Tools</a></div>
+    <div class="foot-col"><h4>Company</h4><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a></div>
+  </div>
+  <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+</div></footer>
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
