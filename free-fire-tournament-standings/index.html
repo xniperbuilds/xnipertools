@@ -151,7 +151,7 @@ function renderTeams(){
   var h='';
   for(var i=0;i<S.count;i++){
     var t=S.teams[i],tot=(+t.pos||0)+(+t.kills||0);
-    h+='<div class="tm-card"><div class="tm-top"><span class="tm-no">'+(i+1)+'</span><input class="tm-name" placeholder="Team name" value="'+esc(t.name)+'" oninput="upd('+i+',\'name\',this.value)"></div>'+
+    h+='<div class="tm-card"><div class="tm-top"><span class="tm-no">'+(i+1)+'</span><input type="text" class="tm-name" placeholder="Team name" value="'+esc(t.name)+'" oninput="upd('+i+',\'name\',this.value)"></div>'+
       '<div class="tm-fields">'+
       (S.opt.matches?'<div class="tm-f"><label>Matches</label><input type="number" inputmode="numeric" value="'+esc(t.matches)+'" oninput="upd('+i+',\'matches\',this.value)"></div>':'')+
       '<div class="tm-f"><label>Pos pts</label><input type="number" inputmode="numeric" value="'+esc(t.pos)+'" oninput="upd('+i+',\'pos\',this.value)"></div>'+

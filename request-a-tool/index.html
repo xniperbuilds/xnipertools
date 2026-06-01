@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Request a Tool — Xnipertools</title>
+<meta name="description" content="Request a new tool or a change to an existing tool on Xnipertools. Tell us your idea — approved tools go live every Sunday.">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='27' y='13' width='10' height='13' rx='4'/%3E%3Crect x='30' y='26' width='4' height='21'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4.5' fill='none' stroke-linecap='round'%3E%3Cpath d='M28 15 A6 6 0 1 0 36 15'/%3E%3Cline x1='32' y1='19' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='49' r='5'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/request-a-tool/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Request a Tool</span></div>
+
+  <div class="tool-head">
+    <div class="ic">📬</div>
+    <div>
+      <h1>Request a Tool</h1>
+      <p>Got an idea for a new tool — or a change to one we already have? Tell us, and we'll review it.</p>
+    </div>
+  </div>
+
+  <article class="article" style="margin-top:18px;max-width:760px">
+    <p>Xnipertools is shaped by the people who use it. If there's a tool you wish existed, or something you'd improve in an existing one, send it our way. Every request is read and seriously considered — the most useful ideas become real tools on the site.</p>
+  </article>
+
+  <div class="tool-box">
+    <h3>How your request becomes a tool</h3>
+    <p class="muted" style="margin-bottom:16px">Here's the exact journey every request goes through:</p>
+    <div class="process">
+      <div class="phase"><div class="phase-no">1</div><div><h3>Submit</h3><p>You send your idea using the form below — it only takes a minute.</p></div></div>
+      <div class="phase"><div class="phase-no">2</div><div><h3>Review</h3><p>We review every request for usefulness, demand and feasibility. This usually takes a few days.</p></div></div>
+      <div class="phase"><div class="phase-no">3</div><div><h3>Approval</h3><p>If your idea is a good fit, it's approved and added to our build queue. We may email you to confirm details.</p></div></div>
+      <div class="phase"><div class="phase-no">4</div><div><h3>Build &amp; Test</h3><p>The tool is carefully built and tested to meet our quality and speed standards.</p></div></div>
+      <div class="phase"><div class="phase-no">5</div><div><h3>Launch</h3><p>Once it passes testing, it goes live — new and updated tools are released every <b>Sunday</b>.</p></div></div>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <h3>Send your request</h3>
+    <label class="mt" style="display:block;margin-bottom:0">What would you like?</label>
+    <div class="seg" id="reqType">
+      <button type="button" class="seg-btn active" data-v="New tool">✨ New tool</button>
+      <button type="button" class="seg-btn" data-v="Change to an existing tool">🔧 Change to an existing tool</button>
+    </div>
+
+    <div class="row cols-2 mt">
+      <div><label for="rName">Your name <span style="color:#f87171">*</span></label><input type="text" id="rName" placeholder="Name" autocomplete="name"></div>
+      <div><label for="rEmail">Email <span style="color:#f87171">*</span></label><input type="email" id="rEmail" placeholder="you@example.com" autocomplete="email"></div>
+    </div>
+    <div class="mt"><label for="rWa">WhatsApp number <span class="muted">(optional)</span></label><input type="tel" id="rWa" placeholder="+92 3XX XXXXXXX" autocomplete="tel"></div>
+    <div class="mt"><label for="rIdea">Your idea <span style="color:#f87171">*</span></label><textarea id="rIdea" rows="4" placeholder="Describe the tool you'd like — or the change you want in an existing tool. A simple one-liner is fine."></textarea></div>
+
+    <button class="btn block mt" id="rSubmit">Send Request ✈️</button>
+    <div class="req-msg center" id="rMsg"></div>
+    <p class="muted center" style="font-size:.84rem;margin-top:14px">✅ Approved tools go live every <b>Sunday</b>. We'll only contact you about your request.</p>
+  </div>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>Meanwhile…</h2></div>
+    <div class="grid">
+      <a href="../index.html#tools" class="card"><div class="ico">🧰</div><h3>Browse all tools</h3><p>See what's already live on Xnipertools.</p><span class="go">Explore →</span></a>
+      <a href="../free-fire-name-generator/" class="card"><div class="ico">🔥</div><h3>Free Fire Name Generator</h3><p>Stylish FF names &amp; symbols.</p><span class="go">Open tool →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../free-fire-points-calculator/">FF Points</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+
+var reqType='New tool';
+document.querySelectorAll('#reqType .seg-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#reqType .seg-btn').forEach(function(x){x.classList.remove('active');});b.classList.add('active');reqType=b.dataset.v;});});
+function v(id){return (document.getElementById(id).value||'').trim();}
+document.getElementById('rSubmit').addEventListener('click',function(){
+  var name=v('rName'),email=v('rEmail'),wa=v('rWa'),idea=v('rIdea'),msg=document.getElementById('rMsg');
+  if(!name||!email||!idea){msg.className='req-msg center err';msg.textContent='Please fill in your name, email and idea.';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.className='req-msg center err';msg.textContent='Please enter a valid email address.';return;}
+  var body='Request type: '+reqType+'\nName: '+name+'\nEmail: '+email+(wa?'\nWhatsApp: '+wa:'')+'\n\nIdea / details:\n'+idea;
+  window.location.href='mailto:xniperbuilds@gmail.com?subject='+encodeURIComponent('Tool request ('+reqType+') — '+name)+'&body='+encodeURIComponent(body);
+  msg.className='req-msg center ok';msg.textContent='Thanks, '+name+'! Your email app will open — just hit send and we’ll take it from there. 🙌';
+});
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
