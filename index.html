@@ -127,9 +127,13 @@
   </section>
 
   <section class="cta liquid-glass reveal">
-    <h2>Can't find the tool you need?</h2>
-    <p>New tools drop every week. Tell us what you want next and we'll build it.</p>
-    <a href="about.html" class="btn white">Request a Tool →</a>
+    <h2>Stay in the loop</h2>
+    <p>New tools every week — subscribe to get notified. No spam, unsubscribe anytime.</p>
+    <form class="sub-form" id="subForm" novalidate>
+      <input type="email" id="subEmail" placeholder="you@example.com" required autocomplete="email" aria-label="Email address">
+      <button type="submit" class="btn" id="subBtn">Subscribe</button>
+    </form>
+    <div class="sub-msg" id="subMsg"></div>
   </section>
 
 </main>
@@ -194,6 +198,20 @@ document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function
   r.style.width=r.style.height=d+'px';r.style.left=(e.clientX-rect.left-d/2)+'px';r.style.top=(e.clientY-rect.top-d/2)+'px';
   this.appendChild(r);setTimeout(()=>r.remove(),600);
 }));
+
+// subscribe form -> MailerLite
+var subForm=document.getElementById('subForm');
+if(subForm){subForm.addEventListener('submit',function(e){
+  e.preventDefault();
+  var email=document.getElementById('subEmail').value.trim(),msg=document.getElementById('subMsg'),btn=document.getElementById('subBtn');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.className='sub-msg err';msg.textContent='Please enter a valid email address.';return;}
+  var orig=btn.textContent;btn.disabled=true;btn.textContent='Subscribing…';
+  fetch('https://assets.mailerlite.com/jsonp/2396055/forms/189059123229230497/subscribe',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'fields[email]='+encodeURIComponent(email)+'&ml-submit=1&anticsrf=true'})
+  .then(function(r){return r.json();}).then(function(d){btn.disabled=false;btn.textContent=orig;
+    if(d&&d.success){msg.className='sub-msg ok';msg.textContent='🎉 Subscribed! Please check your inbox to confirm.';subForm.reset();}
+    else{msg.className='sub-msg err';msg.textContent='Could not subscribe — please try again or use another email.';}})
+  .catch(function(){btn.disabled=false;btn.textContent=orig;msg.className='sub-msg err';msg.textContent='Network error — please try again.';});
+});}
 </script>
 </body>
 </html>

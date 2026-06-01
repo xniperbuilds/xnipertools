@@ -261,3 +261,14 @@ footer.site{margin-top:80px;border-top:1px solid var(--border);background:rgba(6
 .tilt{transition:transform .25s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d;will-change:transform}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* ===== Custom subscribe form ===== */
+.sub-form{display:flex;gap:10px;max-width:460px;margin:10px auto 0;flex-wrap:wrap}
+.sub-form input{flex:1;min-width:200px;padding:14px 16px;border-radius:13px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:#fff;font:500 1rem 'Inter',sans-serif;outline:none;transition:.18s}
+.sub-form input:focus{border-color:var(--accent);background:rgba(255,255,255,.08);box-shadow:0 0 0 3px rgba(94,139,255,.15)}
+.sub-form input::placeholder{color:var(--muted-2)}
+.sub-form .btn{width:auto;flex-shrink:0}
+@media(max-width:480px){.sub-form{flex-direction:column}.sub-form .btn{width:100%}}
+.sub-msg{max-width:460px;margin:12px auto 0;font-size:.92rem;min-height:1.1em;font-weight:500}
+.sub-msg.ok{color:#34d399}
+.sub-msg.err{color:#f87171}
