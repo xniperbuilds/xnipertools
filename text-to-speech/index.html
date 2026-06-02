@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Text to Speech — Free Online TTS Voice Reader | Xnipertools</title>
+<meta name="description" content="Free text to speech online. Paste text, pick a voice, adjust speed and pitch, and listen instantly. Natural TTS that reads aloud in your browser — no signup.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/text-to-speech/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/text-to-speech/">
+<meta property="og:title" content="Text to Speech — Free Online TTS Voice Reader">
+<meta property="og:description" content="Paste text, pick a voice, adjust speed and pitch, and listen instantly. Free TTS that reads aloud in your browser.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Text to Speech — Free Online TTS Voice Reader">
+<meta name="twitter:description" content="Paste text, pick a voice, adjust speed and pitch, and listen instantly. Free TTS in your browser.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Text to Speech","url":"https://xnipertools.com/text-to-speech/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the text to speech free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up and no limits. It uses your browser's built-in speech engine, so there is nothing to install."}},{"@type":"Question","name":"Can I download the audio as MP3?","acceptedAnswer":{"@type":"Answer","text":"This tool reads the text aloud live in your browser using your device's voices; it does not export an audio file. You can screen-record the playback if you need to save it."}},{"@type":"Question","name":"Which voices are available?","acceptedAnswer":{"@type":"Answer","text":"The voices shown come from your own device and browser, so the list varies by phone or computer. Most devices include several English voices plus other languages."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Text Tools</span><span class="sep">/</span><span>Text to Speech</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🔊</div>
+    <div>
+      <h1>Text to Speech</h1>
+      <p>Paste any text, pick a <b>voice</b>, set the <b>speed</b> and <b>pitch</b>, and listen — it reads aloud right in your browser.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <label for="text">Your text</label>
+    <textarea id="text" rows="6" placeholder="Type or paste the text you want read aloud…"></textarea>
+
+    <div class="mt"><label for="voice">Voice</label><select id="voice"><option>Loading voices…</option></select></div>
+
+    <div class="row cols-3 mt">
+      <div><label>Speed <span class="muted" id="rateV">1.0×</span></label><input type="range" id="rate" min="0.5" max="2" step="0.1" value="1"></div>
+      <div><label>Pitch <span class="muted" id="pitchV">1.0</span></label><input type="range" id="pitch" min="0" max="2" step="0.1" value="1"></div>
+      <div><label>Volume <span class="muted" id="volV">100%</span></label><input type="range" id="vol" min="0" max="1" step="0.05" value="1"></div>
+    </div>
+
+    <div class="ff-actions mt">
+      <button class="btn" id="play">▶ Play</button>
+      <button class="btn ghost" id="pause" disabled>⏸ Pause</button>
+      <button class="btn ghost" id="resume" disabled>▶ Resume</button>
+      <button class="btn ghost" id="stop" disabled>⏹ Stop</button>
+    </div>
+    <div class="wa-hint ok" id="hint"></div>
+
+    <div class="tts-view" id="view"></div>
+
+    <div class="secure-note">🔒 100% Private: your text is spoken on your device and never uploaded.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>Why use our Text to Speech?</h2>
+    <p>This free <b>Text to Speech</b> (TTS) tool reads any text out loud in a natural voice — perfect for proofreading your writing by ear, learning pronunciation, listening to articles or notes hands-free, accessibility, or turning a script into a voiceover you can screen-record. Just paste your text, choose a voice, and press play.</p>
+    <p>You're in control of the delivery: pick from the voices installed on your device, then fine-tune the <b>speed</b>, <b>pitch</b> and <b>volume</b>. As it speaks, the current word is highlighted so you can follow along. Everything runs locally using your browser's built-in speech engine, so it's fast, free, works with no sign-up, and your text never leaves your device.</p>
+    <h3>How to use it</h3>
+    <ol>
+      <li>Type or paste your <b>text</b>.</li>
+      <li>Choose a <b>voice</b> and adjust speed, pitch and volume.</li>
+      <li>Press <b>Play</b> — use Pause, Resume or Stop any time.</li>
+    </ol>
+    <h3>Is the text to speech free?</h3>
+    <p>Yes — completely free, no sign-up, no limits. It uses your browser's built-in speech engine.</p>
+    <h3>Can I download the audio as MP3?</h3>
+    <p>It reads the text aloud live in your browser and doesn't export a file. If you need to save it, screen-record the playback.</p>
+    <h3>Which voices are available?</h3>
+    <p>The voices come from your own device, so the list varies by phone or computer. Most devices include several English voices and other languages.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../word-counter/" class="card"><div class="ico">📝</div><h3>Word Counter</h3><p>Words, characters &amp; AI tokens.</p><span class="go">Open tool →</span></a>
+      <a href="../qr-code-generator/" class="card"><div class="ico">🔳</div><h3>QR Code Generator</h3><p>Custom QR with colours &amp; logo.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../text-to-speech/">Text to Speech</a><a href="../word-counter/">Word Counter</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(id){return document.getElementById(id);};
+var text=$('text'),voiceSel=$('voice'),rate=$('rate'),pitch=$('pitch'),vol=$('vol'),hint=$('hint'),view=$('view');
+var playB=$('play'),pauseB=$('pause'),resumeB=$('resume'),stopB=$('stop');
+var synth=window.speechSynthesis;
+var voices=[],queue=[],qi=0,speaking=false,paused=false,wordSpans=[],activeSpan=null;
+
+function setHint(m,err){hint.innerHTML=m||'';hint.classList.toggle('ok',!err);}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+if(!synth||typeof SpeechSynthesisUtterance==='undefined'){
+  setHint('Your browser does not support text to speech. Try Chrome, Edge or Safari.',true);
+  playB.disabled=true;
+}else{
+  function loadVoices(){
+    voices=synth.getVoices()||[];
+    if(!voices.length){voiceSel.innerHTML='<option value="-1">Default voice</option>';return;}
+    voices.sort(function(a,b){return (a.lang+a.name).localeCompare(b.lang+b.name);});
+    var prev=voiceSel.value;
+    voiceSel.innerHTML=voices.map(function(v,i){return '<option value="'+i+'"'+(v.default?' data-def="1"':'')+'>'+esc(v.name)+' ('+v.lang+')'+(v.default?' — default':'')+'</option>';}).join('');
+    // restore saved or pick a default English voice
+    var saved=null;try{saved=localStorage.getItem('tts_voice');}catch(e){}
+    var pick=-1;
+    if(saved!==null){for(var i=0;i<voices.length;i++)if(voices[i].name===saved){pick=i;break;}}
+    if(pick<0){for(i=0;i<voices.length;i++)if(voices[i].default){pick=i;break;}}
+    if(pick<0){for(i=0;i<voices.length;i++)if(/^en/i.test(voices[i].lang)){pick=i;break;}}
+    if(pick<0)pick=0;
+    voiceSel.value=(prev&&voices[+prev])?prev:String(pick);
+  }
+  loadVoices();
+  if(typeof synth.onvoiceschanged!=='undefined')synth.onvoiceschanged=loadVoices;
+
+  function makeChunks(t){
+    var res=[],start=0,buf='';
+    function push(tx,s){if(tx.trim().length)res.push({text:tx,start:s});}
+    for(var i=0;i<t.length;i++){buf+=t[i];if(/[.!?\n]/.test(t[i])){push(buf,start);start=i+1;buf='';}}
+    push(buf,start);
+    var out=[];
+    res.forEach(function(c){
+      if(c.text.length<=240){out.push(c);return;}
+      var s=c.start,str=c.text;
+      while(str.length>240){var br=str.lastIndexOf(' ',240);if(br<60)br=240;out.push({text:str.slice(0,br),start:s});s+=br;str=str.slice(br);}
+      if(str.trim().length)out.push({text:str,start:s});
+    });
+    return out;
+  }
+  function buildView(t){
+    var rx=/\S+/g,m,cursor=0,h='';
+    while((m=rx.exec(t))){h+=esc(t.slice(cursor,m.index))+'<span class="w" data-s="'+m.index+'" data-e="'+(m.index+m[0].length)+'">'+esc(m[0])+'</span>';cursor=m.index+m[0].length;}
+    h+=esc(t.slice(cursor));
+    view.innerHTML=h.replace(/\n/g,'<br>');
+    view.style.display='block';
+    wordSpans=[].slice.call(view.querySelectorAll('.w'));activeSpan=null;
+  }
+  function setActive(k){if(activeSpan)activeSpan.classList.remove('on');activeSpan=wordSpans[k]||null;if(activeSpan){activeSpan.classList.add('on');activeSpan.scrollIntoView({block:'nearest'});}}
+  function highlightAt(gi){
+    for(var k=0;k<wordSpans.length;k++){var s=+wordSpans[k].dataset.s,e=+wordSpans[k].dataset.e;if(gi>=s&&gi<e){setActive(k);return;}}
+    for(k=0;k<wordSpans.length;k++){if(+wordSpans[k].dataset.s>=gi){setActive(k);return;}}
+  }
+  function clearHighlight(){if(activeSpan)activeSpan.classList.remove('on');activeSpan=null;}
+  function setState(){
+    playB.disabled=speaking&&!paused;
+    pauseB.disabled=!speaking||paused;
+    resumeB.disabled=!paused;
+    stopB.disabled=!speaking;
+  }
+  function curVoice(){var i=+voiceSel.value;return (i>=0&&voices[i])?voices[i]:null;}
+
+  function speakNext(){
+    if(!speaking)return;
+    if(qi>=queue.length){finish();return;}
+    var c=queue[qi];
+    var u=new SpeechSynthesisUtterance(c.text);
+    var v=curVoice();if(v)u.voice=v;
+    u.rate=parseFloat(rate.value);u.pitch=parseFloat(pitch.value);u.volume=parseFloat(vol.value);
+    u.onstart=function(){highlightAt(c.start);};
+    u.onboundary=function(e){if(e.charIndex!=null)highlightAt(c.start+e.charIndex);};
+    u.onend=function(){qi++;speakNext();};
+    u.onerror=function(){qi++;speakNext();};
+    synth.speak(u);
+  }
+  function play(){
+    var t=text.value;
+    if(!t.trim()){setHint('Type or paste some text first.',true);return;}
+    setHint('',false);
+    if(synth.speaking||synth.paused)synth.cancel();
+    buildView(t);queue=makeChunks(t);qi=0;speaking=true;paused=false;setState();
+    speakNext();
+  }
+  function finish(){speaking=false;paused=false;clearHighlight();setState();}
+
+  playB.addEventListener('click',play);
+  pauseB.addEventListener('click',function(){if(speaking&&!paused){synth.pause();paused=true;setState();}});
+  resumeB.addEventListener('click',function(){if(paused){synth.resume();paused=false;setState();}});
+  stopB.addEventListener('click',function(){speaking=false;paused=false;synth.cancel();clearHighlight();setState();});
+
+  rate.addEventListener('input',function(){$('rateV').textContent=parseFloat(rate.value).toFixed(1)+'×';});
+  pitch.addEventListener('input',function(){$('pitchV').textContent=parseFloat(pitch.value).toFixed(1);});
+  vol.addEventListener('input',function(){$('volV').textContent=Math.round(vol.value*100)+'%';});
+  voiceSel.addEventListener('change',function(){var v=curVoice();if(v){try{localStorage.setItem('tts_voice',v.name);}catch(e){}}});
+  text.addEventListener('input',function(){try{localStorage.setItem('tts_text',text.value);}catch(e){}});
+
+  try{var st=localStorage.getItem('tts_text');if(st)text.value=st;}catch(e){}
+  window.addEventListener('beforeunload',function(){try{synth.cancel();}catch(e){}});
+}
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.disabled)return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
