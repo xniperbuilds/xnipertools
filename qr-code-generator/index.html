@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free QR Code Generator Online - Create Custom QR Codes | Xnipertools</title>
+<meta name="description" content="Generate high-quality QR codes for URLs, text, or business cards for free. Fast, secure, and easy to use.">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/qr-code-generator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xnipertools.com/qr-code-generator/">
+<meta property="og:title" content="Free QR Code Generator - Create Custom QR Codes">
+<meta property="og:description" content="Generate high-quality QR codes for URLs, text, or business cards for free. Custom shapes, colours, gradients and logo. Fast, secure, and easy to use.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free QR Code Generator","url":"https://xnipertools.com/qr-code-generator/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I use these QR codes for business?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every code you create is free for personal and commercial use — menus, flyers, packaging, marketing, anywhere."}},{"@type":"Question","name":"Do these QR codes expire?","acceptedAnswer":{"@type":"Answer","text":"No. These are static QR codes, so they never expire and keep working forever, as long as the link they point to stays live."}},{"@type":"Question","name":"How to download the QR code?","acceptedAnswer":{"@type":"Answer","text":"Generate your code, then click Download PNG to save a high-resolution image to your device. You can also export an SVG."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Generators</span><span class="sep">/</span><span>QR Code Generator</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🔳</div>
+    <div>
+      <h1>Free QR Code Generator</h1>
+      <p>Turn any link or text into a custom QR code — pick <b>shapes, colours, gradients</b> and add your <b>logo</b>. Download in HD.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <label for="data">Enter URL or text</label>
+    <textarea id="data" rows="2" placeholder="https://xnipertools.com  ·  or any text, Wi-Fi or message"></textarea>
+    <button class="btn block mt" id="genBtn">⚡ Generate QR Code</button>
+
+    <div class="mt"><label>Futuristic themes</label><div class="theme-chips" id="themes"></div></div>
+
+    <div class="row cols-2 mt">
+      <div><label for="size">Size</label><select id="size"><option value="256">Small (256px)</option><option value="512" selected>Medium (512px)</option><option value="1024">Large (1024px)</option></select></div>
+      <div><label for="style">Shape style</label><select id="style"><option value="rounded" selected>Rounded</option><option value="square">Square</option><option value="dots">Dots</option><option value="classy">Classy</option><option value="classy-rounded">Classy Rounded</option><option value="extra-rounded">Extra Rounded</option></select></div>
+    </div>
+
+    <div class="row cols-2 mt">
+      <div><label for="fg">QR colour</label><div class="color-field"><input type="color" id="fg" value="#5e8bff"><span class="hex" id="fgHex">#5E8BFF</span></div></div>
+      <div><label for="bg">Background</label><div class="color-field"><input type="color" id="bg" value="#ffffff"><span class="hex" id="bgHex">#FFFFFF</span><label class="ff-toggle" style="margin-left:auto"><input type="checkbox" id="trans"><span class="tg"></span><span>Transparent</span></label></div></div>
+    </div>
+
+    <div class="qr-logo-row mt">
+      <label class="btn ghost" for="logo" style="width:auto">🖼️ Add logo</label>
+      <input type="file" id="logo" accept="image/*" hidden>
+      <span class="fname" id="fname"></span>
+      <button class="btn ghost" id="rmLogo" style="width:auto;display:none">✕ Remove</button>
+    </div>
+
+    <div id="out" style="display:none">
+      <div class="qr-stage mt" id="stage"></div>
+      <div class="ff-actions mt" style="justify-content:center">
+        <button class="btn" id="dlPng">📥 Download PNG</button>
+        <button class="btn ghost" id="dlSvg">⬇ SVG</button>
+      </div>
+    </div>
+    <div class="wa-hint ok" id="hint"></div>
+
+    <div class="secure-note">🔒 100% Secure: Your data is processed locally in your browser and never leaves your device.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>Why use our QR Code Generator?</h2>
+    <p>Our free QR Code Generator turns any link, text, Wi-Fi password or contact detail into a scannable QR code in seconds — right inside your browser. Unlike many online tools, <b>nothing is uploaded to a server</b>: your data is processed locally on your device, so it stays completely private.</p>
+    <p>What makes it different is control over how your code looks. Choose from multiple dot shapes — square, rounded, dots, classy and extra-rounded — pick any foreground and background colour, apply a futuristic <b>gradient theme</b>, or drop your own <b>logo</b> in the centre. You can export a high-resolution PNG (up to 1024×1024) that's crisp enough for posters, packaging, business cards and billboards.</p>
+    <p>QR codes are everywhere: menus, payments, product packaging, event check-ins, Instagram bios and WhatsApp links. A clean, well-branded code helps people trust and scan it. Because our generator uses high error-correction, your codes stay reliable even with a logo in the middle or a little print damage. No sign-up, no watermark, no limits — generate as many codes as you like, free forever.</p>
+    <h3>Can I use these QR codes for business?</h3>
+    <p>Yes. Every code you create is free for personal and commercial use — menus, flyers, packaging, marketing, anywhere.</p>
+    <h3>Do these QR codes expire?</h3>
+    <p>No. These are static QR codes, so they never expire and keep working forever, as long as the link they point to stays live.</p>
+    <h3>How to download the QR code?</h3>
+    <p>Generate your code, then tap <b>Download PNG</b> to save a high-resolution image to your device. You can also export an <b>SVG</b> for print.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../whatsapp-link-generator/" class="card"><div class="ico">💬</div><h3>WhatsApp Link Generator</h3><p>Create wa.me chat links.</p><span class="go">Open tool →</span></a>
+      <a href="../image-compressor/" class="card"><div class="ico">🗜️</div><h3>Image Tools</h3><p>Compress, resize, convert &amp; crop.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../qr-code-generator/">QR Code Generator</a><a href="../whatsapp-link-generator/">WhatsApp Link</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(id){return document.getElementById(id);};
+var dataEl=$('data'),genBtn=$('genBtn'),sizeSel=$('size'),styleSel=$('style'),fgEl=$('fg'),bgEl=$('bg'),fgHex=$('fgHex'),bgHex=$('bgHex'),transEl=$('trans'),logoEl=$('logo'),rmLogo=$('rmLogo'),fname=$('fname'),stage=$('stage'),out=$('out'),hint=$('hint'),themesWrap=$('themes');
+
+var S={data:'',size:512,dot:'rounded',fg:'#5e8bff',bg:'#ffffff',gradient:null,transparent:false,logo:null};
+var qr=null,activeTheme=null;
+
+var THEMES=[
+  {k:'classic',label:'Classic',dot:'square',fg:'#111418',bg:'#ffffff',grad:null},
+  {k:'brand',label:'Brand',dot:'rounded',fg:'#5e8bff',bg:'#ffffff',grad:['#5e8bff','#8fb0ff']},
+  {k:'neon',label:'Neon',dot:'rounded',fg:'#00f0ff',bg:'#070b14',grad:['#00f0ff','#7c3aed']},
+  {k:'cyber',label:'Cyber',dot:'classy-rounded',fg:'#22d3ee',bg:'#06080f',grad:['#22d3ee','#3f63d8']},
+  {k:'sunset',label:'Sunset',dot:'classy-rounded',fg:'#ff8a00',bg:'#ffffff',grad:['#ff8a00','#e52e71']},
+  {k:'matrix',label:'Matrix',dot:'dots',fg:'#22c55e',bg:'#06100a',grad:['#22c55e','#16a34a']},
+  {k:'ink',label:'Ink',dot:'dots',fg:'#0a0b0e',bg:'#ffffff',grad:null}
+];
+
+function setHint(msg,err){hint.innerHTML=msg||'';hint.classList.toggle('ok',!err);}
+function stylePreset(dot){if(dot==='square')return{corner:'square',cdot:'square'};if(dot==='dots')return{corner:'dot',cdot:'dot'};return{corner:'extra-rounded',cdot:'dot'};}
+function grad(stops){return{type:'linear',rotation:0.7853981634,colorStops:[{offset:0,color:stops[0]},{offset:1,color:stops[1]}]};}
+
+function buildOpts(){
+  var sp=stylePreset(S.dot);
+  var dots=S.gradient?{type:S.dot,gradient:grad(S.gradient)}:{type:S.dot,color:S.fg};
+  var cs=S.gradient?{type:sp.corner,gradient:grad(S.gradient)}:{type:sp.corner,color:S.fg};
+  var cd={type:sp.cdot,color:S.gradient?S.gradient[1]:S.fg};
+  var o={width:S.size,height:S.size,type:'canvas',data:S.data,margin:Math.round(S.size*0.04),
+    qrOptions:{errorCorrectionLevel:'H'},
+    dotsOptions:dots,backgroundOptions:{color:S.transparent?'rgba(0,0,0,0)':S.bg},
+    cornersSquareOptions:cs,cornersDotOptions:cd};
+  if(S.logo){o.image=S.logo;o.imageOptions={crossOrigin:'anonymous',margin:6,imageSize:0.38,hideBackgroundDots:true};}
+  return o;
+}
+
+function render(){
+  if(typeof QRCodeStyling==='undefined'){setHint('Could not load the QR engine — please check your connection and refresh.',true);return;}
+  S.data=dataEl.value.trim();
+  if(!S.data){setHint('Enter a URL or text to generate your QR code.',true);out.style.display='none';return;}
+  try{
+    var o=buildOpts();
+    if(!qr){qr=new QRCodeStyling(o);stage.innerHTML='';qr.append(stage);}
+    else qr.update(o);
+    out.style.display='block';setHint('',false);
+  }catch(e){setHint('That text is too long for a single QR code — try shortening it.',true);}
+}
+
+function paintChips(){[].forEach.call(themesWrap.children,function(c){c.classList.toggle('active',c.dataset.k===activeTheme);});}
+function applyTheme(t){
+  activeTheme=t.k;
+  S.dot=t.dot;S.fg=t.fg;S.bg=t.bg;S.gradient=t.grad?t.grad.slice():null;S.transparent=false;
+  styleSel.value=t.dot;fgEl.value=t.grad?t.grad[0]:t.fg;fgHex.textContent=fgEl.value.toUpperCase();
+  bgEl.value=t.bg;bgHex.textContent=t.bg.toUpperCase();transEl.checked=false;
+  paintChips();render();
+}
+THEMES.forEach(function(t){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=t.label;b.dataset.k=t.k;b.addEventListener('click',function(){applyTheme(t);});themesWrap.appendChild(b);});
+
+genBtn.addEventListener('click',render);
+sizeSel.addEventListener('change',function(){S.size=+sizeSel.value;render();});
+styleSel.addEventListener('change',function(){S.dot=styleSel.value;activeTheme=null;paintChips();render();});
+fgEl.addEventListener('input',function(){S.fg=fgEl.value;S.gradient=null;fgHex.textContent=fgEl.value.toUpperCase();activeTheme=null;paintChips();render();});
+bgEl.addEventListener('input',function(){S.bg=bgEl.value;S.transparent=false;transEl.checked=false;bgHex.textContent=bgEl.value.toUpperCase();activeTheme=null;paintChips();render();});
+transEl.addEventListener('change',function(){S.transparent=transEl.checked;activeTheme=null;paintChips();render();});
+
+logoEl.addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.logo=r.result;fname.textContent=f.name;rmLogo.style.display='';render();};r.readAsDataURL(f);});
+rmLogo.addEventListener('click',function(){S.logo=null;logoEl.value='';fname.textContent='';rmLogo.style.display='none';render();});
+
+$('dlPng').addEventListener('click',function(){if(qr)qr.download({name:'xnipertools-qr',extension:'png'});});
+$('dlSvg').addEventListener('click',function(){if(qr)qr.download({name:'xnipertools-qr',extension:'svg'});});
+
+// ripple
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
