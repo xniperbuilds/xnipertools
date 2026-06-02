@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Image Upscaler — Enlarge &amp; Enhance Images Free | Xnipertools</title>
+<meta name="description" content="Free image upscaler. Enlarge images up to 4× with high-quality upscaling and sharpening, right in your browser. No upload, no signup — download a sharper image.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/image-upscaler/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/image-upscaler/">
+<meta property="og:title" content="Image Upscaler — Enlarge & Enhance Images Free">
+<meta property="og:description" content="Enlarge images up to 4× with high-quality upscaling and sharpening, in your browser. No upload, no signup.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Image Upscaler — Enlarge & Enhance Images Free">
+<meta name="twitter:description" content="Enlarge images up to 4× with high-quality upscaling and sharpening, in your browser. Free.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Upscaler & Enhancer","url":"https://xnipertools.com/image-upscaler/","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the image upscaler free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up and no watermark. Upscale as many images as you like."}},{"@type":"Question","name":"Are my images uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Images are enlarged locally in your browser using canvas, so nothing is uploaded or stored."}},{"@type":"Question","name":"How much can I enlarge an image?","acceptedAnswer":{"@type":"Answer","text":"Up to 4× the original size, capped to keep the result sharp and fast. The tool uses high-quality upscaling plus sharpening for the best clarity."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Image Tools</span><span class="sep">/</span><span>Image Upscaler</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🔍</div>
+    <div>
+      <h1>Image Upscaler &amp; Enhancer</h1>
+      <p>Enlarge images up to <b>4×</b> with high-quality upscaling and <b>sharpening</b> — in your browser, nothing uploaded.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="drop" id="drop">
+      <input type="file" id="file" accept="image/*" hidden>
+      <div class="drop-inner">📁 <b>Click to upload</b> or drag &amp; drop an image<br><span class="muted">Photos, logos, product shots — JPG, PNG, WEBP</span></div>
+    </div>
+
+    <div id="editor" style="display:none">
+      <div class="img-preview"><img id="prev" alt="upscaled preview"></div>
+      <div class="row cols-2 mt">
+        <div><label for="scale">Enlarge by</label><select id="scale"><option value="2" selected>2× (double)</option><option value="3">3×</option><option value="4">4×</option></select></div>
+        <div><label>Sharpen <span class="muted" id="shV">40%</span></label><input type="range" id="sharp" min="0" max="100" value="40"></div>
+      </div>
+      <div class="result-bar" id="resultBar"></div>
+      <div class="ff-actions mt">
+        <a class="btn" id="dl">📥 Download</a>
+        <button class="btn ghost" id="newImg">↺ New image</button>
+      </div>
+    </div>
+    <div class="wa-hint ok" id="hint"></div>
+
+    <div class="secure-note">🔒 100% Private: your image is enhanced on your device and never uploaded.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>Why use our Image Upscaler?</h2>
+    <p>Small or low-resolution image? This free <b>Image Upscaler &amp; Enhancer</b> enlarges it up to <b>4× </b> using high-quality step-by-step upscaling, then applies <b>smart sharpening</b> to bring back crisp edges and detail — so your enlarged image looks clean instead of blurry. Great for making product photos, logos, thumbnails and old pictures bigger and sharper.</p>
+    <p>It all happens right in your browser using HTML canvas, so it's fast, completely free, needs no sign-up, has no watermark, and your image is never uploaded. Just pick how much to enlarge and how much to sharpen, then download.</p>
+    <h3>Is the image upscaler free?</h3>
+    <p>Yes — completely free, no sign-up and no watermark.</p>
+    <h3>Are my images uploaded?</h3>
+    <p>No. Everything is processed locally in your browser; your image never leaves your device.</p>
+    <h3>How much can I enlarge an image?</h3>
+    <p>Up to 4× the original, capped to keep results sharp and fast, with high-quality upscaling plus sharpening.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../background-remover/" class="card"><div class="ico">🪄</div><h3>Background Remover</h3><p>AI cutout — remove background.</p><span class="go">Open tool →</span></a>
+      <a href="../image-compressor/" class="card"><div class="ico">🗜️</div><h3>Image Tools</h3><p>Compress, resize, convert &amp; crop.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../image-upscaler/">Image Upscaler</a><a href="../background-remover/">Background Remover</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(id){return document.getElementById(id);};
+var drop=$('drop'),file=$('file'),editor=$('editor'),prev=$('prev'),scaleSel=$('scale'),sharpI=$('sharp'),hint=$('hint'),resultBar=$('resultBar'),dl=$('dl');
+var base=null,origName='image',curURL='',MAXOUT=4096;
+
+function setHint(m,err){hint.innerHTML=m||'';hint.classList.toggle('ok',!err);}
+function canvasOf(img){var c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;c.getContext('2d').drawImage(img,0,0);return c;}
+function stepUp(src){var c=document.createElement('canvas');c.width=src.width*2;c.height=src.height*2;var x=c.getContext('2d');x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';x.drawImage(src,0,0,c.width,c.height);return c;}
+
+function sharpen(cv,amount){
+  if(amount<=0)return;
+  var ctx=cv.getContext('2d'),w=cv.width,h=cv.height;
+  if(w*h>14000000)return; // skip on very large images to stay fast
+  var src=ctx.getImageData(0,0,w,h),s=src.data,out=ctx.createImageData(w,h),d=out.data;
+  var c=1+4*amount,e=-amount,row=w*4;
+  for(var y=0;y<h;y++){
+    for(var x=0;x<w;x++){
+      var i=(y*w+x)*4;
+      if(x===0||y===0||x===w-1||y===h-1){d[i]=s[i];d[i+1]=s[i+1];d[i+2]=s[i+2];d[i+3]=s[i+3];continue;}
+      for(var ch=0;ch<3;ch++){var p=i+ch,v=s[p]*c+s[p-4]*e+s[p+4]*e+s[p-row]*e+s[p+row]*e;d[p]=v<0?0:v>255?255:v;}
+      d[i+3]=s[i+3];
+    }
+  }
+  ctx.putImageData(out,0,0);
+}
+
+function process(){
+  if(!base)return;
+  var scale=parseInt(scaleSel.value);
+  var eff=Math.max(1,Math.min(scale,MAXOUT/Math.max(base.width,base.height)));
+  var tw=Math.round(base.width*eff),th=Math.round(base.height*eff);
+  setHint('Enhancing…',false);
+  setTimeout(function(){
+    var cur=base;
+    while(cur.width*2<=tw&&cur.height*2<=th)cur=stepUp(cur);
+    var out=document.createElement('canvas');out.width=tw;out.height=th;var x=out.getContext('2d');x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';x.drawImage(cur,0,0,tw,th);
+    sharpen(out,parseInt(sharpI.value)/100*0.6);
+    out.toBlob(function(blob){
+      if(!blob){setHint('Could not process this image.',true);return;}
+      if(curURL)URL.revokeObjectURL(curURL);curURL=URL.createObjectURL(blob);
+      prev.src=curURL;dl.href=curURL;dl.setAttribute('download',origName+'-upscaled-xnipertools.png');
+      var capped=eff<scale?' (capped to keep it sharp)':'';
+      resultBar.innerHTML='<b>'+base.width+'×'+base.height+'</b>  →  <b>'+tw+'×'+th+'</b> · '+eff.toFixed(eff%1?1:0)+'×'+capped;
+      setHint('',false);
+    },'image/png');
+  },30);
+}
+
+function loadFile(f){
+  if(!f||!/^image\//.test(f.type)){setHint('Please choose an image file.',true);return;}
+  setHint('',false);
+  origName=(f.name||'image').replace(/\.[^.]+$/,'').replace(/\s+/g,'-');
+  var url=URL.createObjectURL(f),img=new Image();
+  img.onload=function(){URL.revokeObjectURL(url);base=canvasOf(img);drop.style.display='none';editor.style.display='';process();};
+  img.onerror=function(){setHint('Could not read that image.',true);};
+  img.src=url;
+}
+
+drop.addEventListener('click',function(){file.click();});
+file.addEventListener('change',function(e){loadFile(e.target.files[0]);});
+drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
+drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
+drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');loadFile(e.dataTransfer.files[0]);});
+scaleSel.addEventListener('change',process);
+sharpI.addEventListener('input',function(){$('shV').textContent=sharpI.value+'%';process();});
+$('newImg').addEventListener('click',function(){base=null;file.value='';editor.style.display='none';drop.style.display='';setHint('',false);});
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl')return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
