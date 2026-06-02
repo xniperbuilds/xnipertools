@@ -135,7 +135,6 @@ var $=function(id){return document.getElementById(id);};
 var drop=$('drop'),file=$('file'),editor=$('editor'),canvas=$('canvas'),ctx=canvas.getContext('2d');
 var topI=$('top'),botI=$('bottom'),sizeI=$('size'),fillI=$('fill'),strokeI=$('stroke'),capsI=$('caps'),hint=$('hint'),dl=$('dl');
 var baseImg=null,curURL='';
-var logo=new Image();logo.src='../logo.png';logo.onload=function(){if(baseImg)render();};
 
 function setHint(m,err){hint.innerHTML=m||'';hint.classList.toggle('ok',!err);}
 
@@ -175,18 +174,6 @@ function drawBlock(text,pos,fs){
   var startY=pos==='top'?H*0.03:H-H*0.03-totalH;
   lines.forEach(function(ln,i){var y=startY+i*lh;ctx.strokeText(ln,W/2,y);ctx.fillText(ln,W/2,y);});
 }
-function watermark(){
-  var W=canvas.width,H=canvas.height,pad=Math.round(W*0.014),fs=Math.max(13,Math.round(H*0.032));
-  ctx.save();ctx.globalAlpha=0.85;ctx.textAlign='right';ctx.textBaseline='bottom';
-  ctx.font='600 '+fs+'px Inter, Arial, sans-serif';ctx.fillStyle='#fff';
-  ctx.shadowColor='rgba(0,0,0,.65)';ctx.shadowBlur=4;
-  ctx.fillText('xnipertools.com',W-pad,H-pad);
-  if(logo.complete&&logo.naturalWidth){
-    var lw=ctx.measureText('xnipertools.com').width,ls=Math.round(fs*1.25);
-    ctx.shadowBlur=0;ctx.drawImage(logo,W-pad-lw-ls-6,H-pad-ls,ls,ls);
-  }
-  ctx.restore();
-}
 function render(){
   if(!baseImg)return;
   var W=canvas.width,H=canvas.height,fs=H*(parseFloat(sizeI.value)/100);
@@ -194,7 +181,6 @@ function render(){
   ctx.drawImage(baseImg,0,0,W,H);
   drawBlock(topI.value,'top',fs);
   drawBlock(botI.value,'bottom',fs);
-  watermark();
   if(curURL)URL.revokeObjectURL(curURL);
   canvas.toBlob(function(b){if(b){curURL=URL.createObjectURL(b);dl.href=curURL;dl.setAttribute('download','meme-xnipertools.png');}},'image/png');
 }

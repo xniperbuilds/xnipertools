@@ -33,6 +33,15 @@
 <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 <div class="grain"></div>
 
+<div class="modal-overlay" id="introModal">
+  <div class="modal-card">
+    <div class="modal-ic">🪄</div>
+    <h3>One-time setup 👋</h3>
+    <p>The <span class="hl">first time</span> you remove a background, your browser downloads the AI engine once — about <span class="hl">40&nbsp;MB</span>. It may pause for a few seconds — that's normal, <b>not stuck</b>.<br><br>After that, every photo is <span class="hl">super fast</span>, and it all runs on your device — <b>nothing is uploaded</b>.</p>
+    <button class="btn" id="introOk" type="button">Got it 👍</button>
+  </div>
+</div>
+
 <header class="site">
   <div class="container nav">
     <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
@@ -63,6 +72,7 @@
       <div class="ff-actions mt">
         <button class="btn" id="remove">🪄 Remove Background</button>
         <a class="btn wa" id="dl" style="display:none">📥 Download PNG</a>
+        <a class="btn ghost" id="enhance" href="../image-upscaler/" style="display:none">🔍 Enhance</a>
         <button class="btn ghost" id="newImg">↺ New image</button>
       </div>
     </div>
@@ -116,7 +126,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 var $=function(id){return document.getElementById(id);};
 var drop=$('drop'),file=$('file'),editor=$('editor'),prev=$('prev'),removeBtn=$('remove'),dl=$('dl'),prog=$('prog'),bar=$('bar'),hint=$('hint');
-var originalFile=null,resultURL='',origURL='';
+var originalFile=null,resultURL='',origURL='',resultBlob=null;
 var bgMod=null;
 function ensureBg(){if(!bgMod)bgMod=import('https://esm.sh/@imgly/background-removal@1.5.5');return bgMod;}
 
@@ -134,29 +144,44 @@ function loadFile(f){
 
 removeBtn.addEventListener('click',function(){
   if(!originalFile)return;
-  removeBtn.disabled=true;prog.style.display='';bar.style.width='0';
-  setHint('Loading AI model… (first use downloads ~40&nbsp;MB, please wait)',false);
+  removeBtn.disabled=true;prog.style.display='';bar.style.width='3%';
+  var shown=3,creep=setInterval(function(){if(shown<90){shown+=Math.max(0.25,(92-shown)*0.022);bar.style.width=shown.toFixed(1)+'%';}},220);
+  setHint("Loading AI engine… first use downloads ~40&nbsp;MB. It may pause a few seconds — it's working, not stuck.",false);
   ensureBg().then(function(mod){
     return mod.removeBackground(originalFile,{
       progress:function(key,cur,tot){
-        var pct=tot?Math.round(cur/tot*100):0;bar.style.width=pct+'%';
-        setHint((/^fetch|download/i.test(key)?'Downloading AI model… ':'Processing your image… ')+pct+'%',false);
+        var real=tot?(cur/tot*100):0;if(real>shown)shown=Math.min(95,real);
+        bar.style.width=Math.min(95,shown).toFixed(1)+'%';
+        setHint((/fetch|download/i.test(key)?'Downloading AI engine…':'Removing background…')+' please wait',false);
       },
       output:{format:'image/png'}
     });
   }).then(function(blob){
+    clearInterval(creep);resultBlob=blob;
     if(resultURL)URL.revokeObjectURL(resultURL);resultURL=URL.createObjectURL(blob);
-    prev.src=resultURL;dl.href=resultURL;dl.setAttribute('download','no-bg-xnipertools.png');dl.style.display='';
-    removeBtn.disabled=false;prog.style.display='';bar.style.width='100%';
-    setHint('✓ Background removed — download your transparent PNG.',false);
-    setTimeout(function(){prog.style.display='none';},800);
+    prev.src=resultURL;dl.href=resultURL;dl.setAttribute('download','no-bg-xnipertools.png');dl.style.display='';$('enhance').style.display='';
+    removeBtn.disabled=false;bar.style.width='100%';
+    setHint('✓ Background removed — download your transparent PNG, or tap Enhance to upscale it.',false);
+    setTimeout(function(){prog.style.display='none';bar.style.width='0';},900);
   }).catch(function(e){
-    removeBtn.disabled=false;prog.style.display='none';
+    clearInterval(creep);removeBtn.disabled=false;prog.style.display='none';bar.style.width='0';
     setHint('Could not process this image. Please try another photo or refresh. '+(e&&e.message?'('+e.message+')':''),true);
   });
 });
 
-$('newImg').addEventListener('click',function(){originalFile=null;file.value='';editor.style.display='none';drop.style.display='';dl.style.display='none';prog.style.display='none';setHint('',false);});
+$('newImg').addEventListener('click',function(){originalFile=null;resultBlob=null;file.value='';editor.style.display='none';drop.style.display='';dl.style.display='none';$('enhance').style.display='none';prog.style.display='none';setHint('',false);});
+
+(function(){var seen=null;try{seen=localStorage.getItem('xt_bg_intro');}catch(e){}
+  if(!seen)$('introModal').classList.add('show');
+  function dismiss(){$('introModal').classList.remove('show');try{localStorage.setItem('xt_bg_intro','1');}catch(e){}}
+  $('introOk').addEventListener('click',dismiss);
+  $('introModal').addEventListener('click',function(e){if(e.target===this)dismiss();});
+})();
+
+$('enhance').addEventListener('click',function(e){
+  if(!resultBlob)return;
+  if(window.caches){e.preventDefault();caches.open('xt-handoff').then(function(c){return c.put('img',new Response(resultBlob,{headers:{'Content-Type':'image/png'}}));}).then(function(){location.href='../image-upscaler/?from=bg';}).catch(function(){location.href='../image-upscaler/';});}
+});
 
 drop.addEventListener('click',function(){file.click();});
 file.addEventListener('change',function(e){loadFile(e.target.files[0]);});

@@ -70,6 +70,13 @@
       <div class="cval-row"><span class="k">HSL</span><span class="v" id="vHsl">hsl(223, 100%, 68%)</span><button data-copy="vHsl" type="button">Copy</button></div>
       <button class="btn ghost mt" id="eyedrop" style="display:none;width:auto" type="button">💧 Pick from screen</button>
       <div class="swatch-grid" id="presets"></div>
+      <div class="mt" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <label class="btn ghost" for="ciFile" style="width:auto">🖼️ Pick from image</label>
+        <input type="file" id="ciFile" accept="image/*" hidden>
+        <button class="btn ghost" id="ciClear" style="width:auto;display:none" type="button">✕ Remove image</button>
+        <span class="muted" id="ciHint" style="font-size:.85rem;display:none">👆 Tap anywhere on the image to grab its colour.</span>
+      </div>
+      <div class="ci-stage" id="ciStage" style="display:none"><img id="ciImg" alt="uploaded image to pick a colour from"></div>
     </div>
 
     <!-- GRADIENT -->
@@ -165,6 +172,12 @@ var PRESETS=['#000000','#ffffff','#ef4444','#f59e0b','#eab308','#22c55e','#10b98
 $('presets').innerHTML=PRESETS.map(function(c){return '<span style="background:'+c+'" data-set="'+c+'" title="'+c+'"></span>';}).join('');
 $('presets').addEventListener('click',function(e){if(e.target.dataset.set)setColor(e.target.dataset.set);});
 if(window.EyeDropper){$('eyedrop').style.display='';$('eyedrop').addEventListener('click',function(){new EyeDropper().open().then(function(r){setColor(r.sRGBHex);}).catch(function(){});});}
+
+/* pick colour from an uploaded image */
+var ciFile=$('ciFile'),ciImg=$('ciImg'),ciStage=$('ciStage'),ciCanvas=document.createElement('canvas'),cictx=ciCanvas.getContext('2d',{willReadFrequently:true});
+ciFile.addEventListener('change',function(e){var f=e.target.files[0];if(!f||!/^image\//.test(f.type))return;var url=URL.createObjectURL(f),img=new Image();img.onload=function(){ciCanvas.width=img.naturalWidth;ciCanvas.height=img.naturalHeight;cictx.drawImage(img,0,0);ciImg.src=url;ciStage.style.display='';$('ciClear').style.display='';$('ciHint').style.display='';};img.onerror=function(){};img.src=url;});
+ciImg.addEventListener('click',function(e){if(!ciCanvas.width)return;var r=ciImg.getBoundingClientRect();var x=Math.floor((e.clientX-r.left)/r.width*ciCanvas.width),y=Math.floor((e.clientY-r.top)/r.height*ciCanvas.height);x=Math.max(0,Math.min(ciCanvas.width-1,x));y=Math.max(0,Math.min(ciCanvas.height-1,y));var p=cictx.getImageData(x,y,1,1).data;setColor(rgbToHex(p[0],p[1],p[2]));});
+$('ciClear').addEventListener('click',function(){ciStage.style.display='none';$('ciClear').style.display='none';$('ciHint').style.display='none';ciFile.value='';});
 
 /* GRADIENT */
 var gtype=$('gtype'),gang=$('gang'),gc1=$('gc1'),gp1=$('gp1'),gc2=$('gc2'),gp2=$('gp2');
