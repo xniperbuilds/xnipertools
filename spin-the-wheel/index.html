@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spin the Wheel — Random Name Picker &amp; Giveaway Tool | Xnipertools</title>
+<meta name="description" content="Free spin the wheel — add names and let the wheel pick a random winner. Perfect for giveaways, raffles and classroom picks. Fair, fun and 100% free.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/spin-the-wheel/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/spin-the-wheel/">
+<meta property="og:title" content="Spin the Wheel — Random Name Picker & Giveaway Tool">
+<meta property="og:description" content="Add names and let the wheel pick a random winner. Perfect for giveaways, raffles and classroom picks. Fair, fun and 100% free.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Spin the Wheel — Random Name Picker & Giveaway Tool">
+<meta name="twitter:description" content="Add names and let the wheel pick a random winner. Perfect for giveaways and raffles. 100% free.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Spin the Wheel — Random Name Picker","url":"https://xnipertools.com/spin-the-wheel/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the wheel truly random and fair?","acceptedAnswer":{"@type":"Answer","text":"Yes. The winner is chosen with your browser's cryptographically secure random generator, so every entry has an exactly equal chance — nothing is rigged."}},{"@type":"Question","name":"Can I use it for giveaways?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. Paste your participants, spin, and screen-record the result for a transparent, fair giveaway draw. Turn on 'remove winner' to draw multiple unique winners."}},{"@type":"Question","name":"Can I add my own names?","acceptedAnswer":{"@type":"Answer","text":"Yes. Type or paste any names, one per line. Your list is saved in your browser so it is still there when you come back."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Generators</span><span class="sep">/</span><span>Spin the Wheel</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🎡</div>
+    <div>
+      <h1>Spin the Wheel</h1>
+      <p>Add names and let the wheel pick a <b>random winner</b> — perfect for <b>giveaways</b>, raffles and picking who's next.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <label for="entries">Entries — one name per line</label>
+    <textarea id="entries" rows="5" placeholder="Type names here, one per line…"></textarea>
+    <div class="ff-actions mt" style="align-items:center">
+      <button class="btn ghost" id="shuffle">🔀 Shuffle</button>
+      <button class="btn ghost" id="clear">🗑️ Clear</button>
+      <label class="ff-toggle" style="margin-left:auto"><input type="checkbox" id="removeWin"><span class="tg"></span><span>Remove winner after spin</span></label>
+    </div>
+    <div class="muted mt" id="count" style="text-align:center">0 entries</div>
+
+    <div class="wheel-wrap">
+      <div class="wheel-pointer"></div>
+      <canvas class="wheel-canvas" id="wheel" width="480" height="480"></canvas>
+      <button class="wheel-hub" id="spin">SPIN</button>
+    </div>
+
+    <button class="btn block mt" id="spinBig">🎯 SPIN THE WHEEL</button>
+    <div class="wheel-result" id="result"></div>
+    <div class="wa-hint ok" id="hint"></div>
+
+    <div class="secure-note">🔒 Fair &amp; private: the winner is picked with secure randomness, right in your browser.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>Why use our Spin the Wheel?</h2>
+    <p>The <b>Spin the Wheel</b> tool is the fun, fair way to pick a random name from a list. Add your entries, hit spin, and watch the wheel land on a winner. It's perfect for <b>giveaways and raffles</b>, choosing who goes first in a game, classroom random picks, team selections, or just settling "who's paying?" — and it's completely free with no sign-up.</p>
+    <p>Because the winner is chosen with your browser's <b>cryptographically secure</b> random generator, every name has an exactly equal chance — so your draws are genuinely fair. Hosting a giveaway? Turn on <b>"Remove winner after spin"</b> to keep spinning for multiple unique winners, and screen-record the spin so your audience can see the result is real and transparent.</p>
+    <h3>How to use it</h3>
+    <ol>
+      <li>Type or paste your names in the box — <b>one per line</b>.</li>
+      <li>Tap <b>SPIN</b> (the centre button or the big one below).</li>
+      <li>The wheel lands on a <b>random winner</b> 🎉.</li>
+      <li>For multiple winners, switch on <b>Remove winner after spin</b> and spin again.</li>
+    </ol>
+    <h3>Is the wheel truly random and fair?</h3>
+    <p>Yes. It uses secure randomness, so nothing is rigged and every entry has an equal chance.</p>
+    <h3>Can I use it for giveaways?</h3>
+    <p>Definitely — paste your participants, spin, and record it. It's a clean, transparent way to draw winners.</p>
+    <h3>Can I add my own names?</h3>
+    <p>Yes, add as many as you like. Your list is saved in your browser for next time.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../qr-code-generator/" class="card"><div class="ico">🔳</div><h3>QR Code Generator</h3><p>Custom QR with colours &amp; logo.</p><span class="go">Open tool →</span></a>
+      <a href="../password-generator/" class="card"><div class="ico">🔑</div><h3>Password Generator</h3><p>Strong, secure passwords.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../spin-the-wheel/">Spin the Wheel</a><a href="../qr-code-generator/">QR Code Generator</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(id){return document.getElementById(id);};
+var entriesEl=$('entries'),wheel=$('wheel'),hub=$('spin'),spinBig=$('spinBig'),result=$('result'),countEl=$('count'),removeWin=$('removeWin'),hintEl=$('hint');
+var ctx=wheel.getContext('2d');
+var DPR=window.devicePixelRatio||1,SIZE=480,C=240,R=232;
+wheel.width=SIZE*DPR;wheel.height=SIZE*DPR;ctx.scale(DPR,DPR);
+var PALETTE=['#5e8bff','#ff6b6b','#feca57','#1dd1a1','#9b6cff','#ff9ff3','#54a0ff','#00d2d3','#ff9f43','#48dbfb','#ee5253','#10ac84'];
+var names=[],rotation=0,spinning=false;
+
+function setHint(m,err){hintEl.innerHTML=m||'';hintEl.classList.toggle('ok',!err);}
+function esc(s){return s.replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function secureRand(max){if(max<=0)return 0;var a=new Uint32Array(1),lim=Math.floor(0x100000000/max)*max,x;do{crypto.getRandomValues(a);x=a[0];}while(x>=lim);return x%max;}
+function parse(){names=entriesEl.value.split('\n').map(function(s){return s.trim();}).filter(Boolean);}
+function save(){try{localStorage.setItem('wheel_entries',entriesEl.value);}catch(e){}}
+
+function draw(){
+  ctx.clearRect(0,0,SIZE,SIZE);
+  var n=names.length;
+  if(n===0){
+    ctx.beginPath();ctx.arc(C,C,R,0,7);ctx.fillStyle='rgba(255,255,255,.05)';ctx.fill();
+    ctx.lineWidth=6;ctx.strokeStyle='rgba(255,255,255,.5)';ctx.stroke();
+    ctx.fillStyle='#9398a6';ctx.font='600 18px Inter,system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('Add names below',C,C);
+    countEl.textContent='0 entries';return;
+  }
+  var seg=2*Math.PI/n,fs=Math.max(10,Math.min(18,Math.round(240/n)+4));
+  for(var i=0;i<n;i++){
+    var s=-Math.PI/2+i*seg,e=s+seg;
+    ctx.beginPath();ctx.moveTo(C,C);ctx.arc(C,C,R,s,e);ctx.closePath();
+    ctx.fillStyle=PALETTE[i%PALETTE.length];ctx.fill();
+    ctx.lineWidth=2;ctx.strokeStyle='rgba(255,255,255,.2)';ctx.stroke();
+    if(n<=40){
+      ctx.save();ctx.translate(C,C);ctx.rotate(s+seg/2);
+      ctx.textAlign='right';ctx.textBaseline='middle';
+      ctx.fillStyle='#fff';ctx.shadowColor='rgba(0,0,0,.4)';ctx.shadowBlur=3;
+      ctx.font='700 '+fs+'px Inter,system-ui,sans-serif';
+      var lab=names[i].length>14?names[i].slice(0,12)+'…':names[i];
+      ctx.fillText(lab,R-14,0);
+      ctx.shadowBlur=0;ctx.restore();
+    }
+  }
+  ctx.beginPath();ctx.arc(C,C,R,0,7);ctx.lineWidth=6;ctx.strokeStyle='rgba(255,255,255,.85)';ctx.stroke();
+  countEl.textContent=n+' entr'+(n===1?'y':'ies');
+}
+
+function announce(win){
+  spinning=false;hub.disabled=false;spinBig.disabled=false;
+  var name=names[win];
+  result.innerHTML='🎉 Winner: <b>'+esc(name)+'</b>'+(removeWin.checked?'':' <span class="rm" id="rmBtn">remove</span>');
+  result.classList.add('show');
+  confetti();
+  var rm=$('rmBtn');if(rm)rm.addEventListener('click',function(){removeAt(win);});
+  if(removeWin.checked){setTimeout(function(){removeAt(win,true);},1000);}
+}
+function removeAt(i,keepResult){
+  if(i<0||i>=names.length)return;
+  names.splice(i,1);entriesEl.value=names.join('\n');save();draw();
+  if(!keepResult){result.classList.remove('show');result.innerHTML='';}
+}
+
+function spin(){
+  parse();var n=names.length;
+  if(spinning)return;
+  if(n<2){setHint('Add at least 2 names to spin the wheel.',true);return;}
+  setHint('',false);
+  spinning=true;hub.disabled=true;spinBig.disabled=true;result.classList.remove('show');
+  var win=secureRand(n),seg=360/n;
+  var center=(win+0.5)*seg;
+  var jitter=(secureRand(1000)/1000-0.5)*seg*0.7;
+  var targetMod=((-center-jitter)%360+360)%360;
+  var currentMod=((rotation%360)+360)%360;
+  var delta=targetMod-currentMod;if(delta<0)delta+=360;
+  rotation+=360*6+delta;
+  wheel.style.transform='rotate('+rotation+'deg)';
+  var done=false;
+  function finish(){if(done)return;done=true;wheel.removeEventListener('transitionend',finish);announce(win);}
+  wheel.addEventListener('transitionend',finish);
+  setTimeout(finish,5300);
+}
+
+function confetti(){
+  var cv=document.createElement('canvas');cv.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9999';
+  cv.width=window.innerWidth;cv.height=window.innerHeight;document.body.appendChild(cv);
+  var x=cv.getContext('2d'),P=[];
+  for(var i=0;i<130;i++)P.push({x:cv.width/2,y:cv.height*0.32,vx:(Math.random()-.5)*13,vy:Math.random()*-9-4,g:.28+Math.random()*.2,s:5+Math.random()*7,c:PALETTE[i%PALETTE.length],r:Math.random()*6,vr:(Math.random()-.5)*.45});
+  var t=0;
+  (function frame(){t++;x.clearRect(0,0,cv.width,cv.height);
+    P.forEach(function(p){p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.s/2,-p.s/2,p.s,p.s*.6);x.restore();});
+    if(t<150)requestAnimationFrame(frame);else cv.remove();
+  })();
+}
+
+entriesEl.addEventListener('input',function(){parse();draw();save();});
+hub.addEventListener('click',spin);
+spinBig.addEventListener('click',spin);
+$('shuffle').addEventListener('click',function(){parse();for(var i=names.length-1;i>0;i--){var j=secureRand(i+1),t=names[i];names[i]=names[j];names[j]=t;}entriesEl.value=names.join('\n');save();draw();});
+$('clear').addEventListener('click',function(){names=[];entriesEl.value='';save();draw();result.classList.remove('show');result.innerHTML='';entriesEl.focus();});
+
+// init
+try{var saved=localStorage.getItem('wheel_entries');}catch(e){}
+entriesEl.value=(saved&&saved.trim())?saved:'Xniper\nAli\nHassan\nSara\nBilal\nZain\nAyesha\nUsman';
+parse();draw();
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
