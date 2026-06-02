@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WhatsApp Direct Link Generator | Create wa.me Links | Xnipertools</title>
+<meta name="description" content="Create direct WhatsApp chat links with pre-filled messages without saving numbers. 100% free and fast.">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/whatsapp-link-generator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xnipertools.com/whatsapp-link-generator/">
+<meta property="og:title" content="WhatsApp Direct Link Generator | Create wa.me Links">
+<meta property="og:description" content="Create direct WhatsApp chat links with pre-filled messages without saving numbers. 100% free and fast.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"WhatsApp Direct Link Generator","url":"https://xnipertools.com/whatsapp-link-generator/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs in your browser — your number and message are never uploaded, stored or shared. The link uses WhatsApp's official wa.me format."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Absolutely. The link opens WhatsApp on Android and iPhone, and WhatsApp Web on computers, for anyone who has WhatsApp installed."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Utility</span><span class="sep">/</span><span>WhatsApp Link Generator</span></div>
+
+  <div class="tool-head">
+    <div class="ic">💬</div>
+    <div>
+      <h1>WhatsApp Direct Link Generator</h1>
+      <p>Create a <b>wa.me</b> click-to-chat link with an optional pre-filled message — no need to save the number.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="row mt">
+      <div>
+        <label for="phone">Phone number <span class="muted">(with country code)</span></label>
+        <input type="tel" id="phone" placeholder="e.g. +92 300 1234567" autocomplete="off" inputmode="tel">
+      </div>
+      <div>
+        <label for="msg">Pre-filled message <span class="muted">(optional)</span></label>
+        <textarea id="msg" rows="3" placeholder="Hi! I'd like to know more about…"></textarea>
+      </div>
+    </div>
+    <button class="btn block mt" id="genBtn">⚡ Generate Link</button>
+    <div class="wa-hint ok" id="hint">Tip: include the country code and drop the leading 0 — e.g. +92&nbsp;300&nbsp;1234567.</div>
+
+    <div id="out" style="display:none">
+      <div class="mt"><label for="linkBox">Your WhatsApp link</label>
+        <div class="wa-link-row">
+          <input type="text" id="linkBox" readonly>
+          <button class="btn" id="copyBtn">Copy</button>
+        </div>
+      </div>
+      <div class="ff-actions mt">
+        <a class="btn wa" id="testBtn" target="_blank" rel="noopener noreferrer">Test on WhatsApp ↗</a>
+        <button class="btn ghost" id="resetBtn">↺ Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>About this tool</h2>
+    <p>The <b>WhatsApp Direct Link Generator</b> turns any phone number into a click-to-chat <b>wa.me</b> link — with an optional message ready to send. Share it in your bio, website, ad, or status and people can message you on WhatsApp instantly, <b>without saving your number first</b>. Perfect for businesses, online sellers and support.</p>
+    <h3>How to use it</h3>
+    <ol>
+      <li>Enter the phone number with its <b>country code</b> (for example +92 for Pakistan, +91 for India).</li>
+      <li>Optionally type a <b>message</b> you want pre-filled in the chat.</li>
+      <li>Tap <b>Generate Link</b>.</li>
+      <li><b>Copy</b> your wa.me link, or tap <b>Test on WhatsApp</b> to try it.</li>
+      <li>Paste it anywhere — bio, website, poster or status.</li>
+    </ol>
+    <h3>Is it safe?</h3>
+    <p>Yes. Everything runs locally in your browser — your number and message are never uploaded, stored or shared. The generated link uses WhatsApp's official <b>wa.me</b> format.</p>
+    <h3>Does it work on mobile?</h3>
+    <p>Absolutely. The link opens WhatsApp on Android and iPhone, and WhatsApp Web/Desktop on computers — for anyone who has WhatsApp installed.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../image-compressor/" class="card"><div class="ico">🗜️</div><h3>Image Tools</h3><p>Compress, resize, convert &amp; crop.</p><span class="go">Open tool →</span></a>
+      <a href="../free-fire-name-generator/" class="card"><div class="ico">🔥</div><h3>Free Fire Name Generator</h3><p>Stylish FF names &amp; symbols.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../whatsapp-link-generator/">WhatsApp Link</a><a href="../image-compressor/">Image Tools</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(id){return document.getElementById(id);};
+var phone=$('phone'),msg=$('msg'),genBtn=$('genBtn'),out=$('out'),linkBox=$('linkBox'),copyBtn=$('copyBtn'),testBtn=$('testBtn'),resetBtn=$('resetBtn'),hint=$('hint');
+var DEFAULT_HINT='Tip: include the country code and drop the leading 0 — e.g. +92&nbsp;300&nbsp;1234567.';
+
+function setHint(html,err){hint.innerHTML=html;hint.classList.toggle('ok',!err);}
+function digitsOnly(s){return (s||'').replace(/\D/g,'');}
+
+function generate(){
+  var num=digitsOnly(phone.value);
+  if(!num){setHint('Please enter a phone number with its country code.',true);out.style.display='none';return false;}
+  if(num.length<7||num.length>15){setHint('That number looks off — use the full international format, e.g. +92&nbsp;300&nbsp;1234567.',true);out.style.display='none';return false;}
+  var text=(msg.value||'').trim();
+  var link='https://wa.me/'+num+(text?('?text='+encodeURIComponent(text)):'');
+  linkBox.value=link;
+  testBtn.href=link;
+  out.style.display='block';
+  setHint('✓ Link ready — copy it or test it on WhatsApp.',false);
+  try{localStorage.setItem('wa_phone',phone.value);localStorage.setItem('wa_msg',msg.value);}catch(e){}
+  return true;
+}
+
+genBtn.addEventListener('click',generate);
+phone.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();generate();}});
+// live update once a link is already showing
+function liveUpdate(){if(out.style.display!=='none'){var num=digitsOnly(phone.value);if(num.length>=7&&num.length<=15){generate();}}}
+phone.addEventListener('input',liveUpdate);
+msg.addEventListener('input',liveUpdate);
+
+function fallbackCopy(v,cb){var ta=linkBox;ta.removeAttribute('readonly');ta.select();ta.setSelectionRange(0,99999);try{document.execCommand('copy');cb&&cb();}catch(e){}ta.setAttribute('readonly','readonly');window.getSelection&&window.getSelection().removeAllRanges();}
+function copiedFx(){copyBtn.classList.add('copied');copyBtn.textContent='Copied ✓';setTimeout(function(){copyBtn.classList.remove('copied');copyBtn.textContent='Copy';},1600);}
+copyBtn.addEventListener('click',function(){
+  var v=linkBox.value;if(!v)return;
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(copiedFx).catch(function(){fallbackCopy(v,copiedFx);});}
+  else{fallbackCopy(v,copiedFx);}
+});
+
+resetBtn.addEventListener('click',function(){phone.value='';msg.value='';out.style.display='none';linkBox.value='';setHint(DEFAULT_HINT,false);try{localStorage.removeItem('wa_phone');localStorage.removeItem('wa_msg');}catch(e){}phone.focus();});
+
+// restore last used
+try{var sp=localStorage.getItem('wa_phone'),sm=localStorage.getItem('wa_msg');if(sp){phone.value=sp;}if(sm){msg.value=sm;}}catch(e){}
+
+// ripple
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='testBtn')return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
