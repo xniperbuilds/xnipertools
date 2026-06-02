@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Image to PDF Converter — JPG &amp; PNG to PDF Free | Xnipertools</title>
-<meta name="description" content="Free image to PDF converter. Combine JPG, PNG and WEBP images into a single PDF — reorder pages, choose page size, all in your browser. No upload, no signup.">
+<title>Image to PDF, Merge &amp; Split PDF — Free PDF Tools | Xnipertools</title>
+<meta name="description" content="Free PDF tools in your browser: convert JPG/PNG images to PDF, merge multiple PDFs into one, and split or extract PDF pages. No upload, no signup, 100% private.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -14,16 +14,16 @@
 <meta property="og:site_name" content="Xnipertools">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://xnipertools.com/image-to-pdf/">
-<meta property="og:title" content="Image to PDF Converter — JPG & PNG to PDF Free">
-<meta property="og:description" content="Combine JPG, PNG and WEBP images into a single PDF — reorder pages, choose page size, all in your browser.">
+<meta property="og:title" content="Image to PDF, Merge & Split PDF — Free PDF Tools">
+<meta property="og:description" content="Convert images to PDF, merge multiple PDFs into one, and split or extract PDF pages — all in your browser.">
 <meta property="og:image" content="https://xnipertools.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Image to PDF Converter — JPG & PNG to PDF Free">
-<meta name="twitter:description" content="Combine JPG, PNG and WEBP images into a single PDF, all in your browser. Free, no signup.">
+<meta name="twitter:title" content="Image to PDF, Merge & Split PDF — Free PDF Tools">
+<meta name="twitter:description" content="Convert images to PDF, merge PDFs, and split PDF pages — free, in your browser.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image to PDF Converter","url":"https://xnipertools.com/image-to-pdf/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the image to PDF converter free and safe?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up. Your images are converted locally in your browser and are never uploaded to any server."}},{"@type":"Question","name":"Can I combine multiple images into one PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add as many images as you like, drag the order with the arrows, and they become one multi-page PDF — one image per page."}},{"@type":"Question","name":"Will my images be uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything happens on your device. Nothing is uploaded, stored or shared."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PDF Tools — Image to PDF, Merge & Split","url":"https://xnipertools.com/image-to-pdf/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it free and safe?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up. Your files are processed locally in your browser and are never uploaded to any server."}},{"@type":"Question","name":"Can I merge multiple PDFs into one?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the Merge tab, add your PDF files, drag them into order with the arrows, and download them as a single combined PDF."}},{"@type":"Question","name":"How do I split or extract pages from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Open the Split tab, upload a PDF, then type the pages or ranges you want (for example 1-3, 5) to extract them into a new PDF."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
@@ -42,60 +42,99 @@
 </header>
 
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Text Tools</span><span class="sep">/</span><span>Image to PDF</span></div>
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Text Tools</span><span class="sep">/</span><span>PDF Tools</span></div>
 
   <div class="tool-head">
     <div class="ic">📄</div>
     <div>
-      <h1>Image to PDF Converter</h1>
-      <p>Combine <b>JPG, PNG &amp; WEBP</b> images into one PDF — reorder the pages and pick a size. All in your browser.</p>
+      <h1>PDF Tools — Image to PDF, Merge &amp; Split</h1>
+      <p>Convert <b>images to PDF</b>, <b>merge</b> multiple PDFs into one, or <b>split</b> and extract PDF pages — all in your browser.</p>
     </div>
   </div>
 
   <div class="tool-box">
-    <div class="drop" id="drop">
-      <input type="file" id="file" accept="image/*" multiple hidden>
-      <div class="drop-inner">📁 <b>Click to add images</b> or drag &amp; drop<br><span class="muted">JPG, PNG, WEBP — add as many as you like, in any order</span></div>
+    <div class="tabs">
+      <button class="tab active" data-tab="img" type="button">🖼️ Image → PDF</button>
+      <button class="tab" data-tab="merge" type="button">🔗 Merge PDF</button>
+      <button class="tab" data-tab="split" type="button">✂️ Split PDF</button>
     </div>
 
-    <div class="itp-grid" id="grid"></div>
-
-    <div id="opts" style="display:none">
-      <div class="row cols-3 mt">
-        <div><label for="pageSize">Page size</label><select id="pageSize"><option value="a4" selected>A4</option><option value="letter">Letter</option><option value="fit">Fit to image</option></select></div>
-        <div><label for="orient">Orientation</label><select id="orient"><option value="auto" selected>Auto</option><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div>
-        <div><label for="margin">Margin</label><select id="margin"><option value="20" selected>Small</option><option value="0">None</option><option value="40">Large</option></select></div>
+    <!-- IMAGE -> PDF -->
+    <div class="panel" id="panel-img">
+      <div class="drop" id="drop">
+        <input type="file" id="file" accept="image/*" multiple hidden>
+        <div class="drop-inner">📁 <b>Click to add images</b> or drag &amp; drop<br><span class="muted">JPG, PNG, WEBP — add as many as you like, in any order</span></div>
       </div>
-      <div class="result-bar" id="resultBar"></div>
-      <div class="ff-actions mt">
-        <button class="btn" id="make">📄 Download PDF</button>
-        <button class="btn ghost" id="clear">🗑️ Clear all</button>
+      <div class="itp-grid" id="grid"></div>
+      <div id="opts" style="display:none">
+        <div class="row cols-3 mt">
+          <div><label for="pageSize">Page size</label><select id="pageSize"><option value="a4" selected>A4</option><option value="letter">Letter</option><option value="fit">Fit to image</option></select></div>
+          <div><label for="orient">Orientation</label><select id="orient"><option value="auto" selected>Auto</option><option value="portrait">Portrait</option><option value="landscape">Landscape</option></select></div>
+          <div><label for="margin">Margin</label><select id="margin"><option value="20" selected>Small</option><option value="0">None</option><option value="40">Large</option></select></div>
+        </div>
+        <div class="result-bar" id="resultBar"></div>
+        <div class="ff-actions mt">
+          <button class="btn" id="make">📄 Download PDF</button>
+          <button class="btn ghost" id="clear">🗑️ Clear all</button>
+        </div>
       </div>
     </div>
+
+    <!-- MERGE -->
+    <div class="panel" id="panel-merge" style="display:none">
+      <div class="drop" id="mdrop">
+        <input type="file" id="mfile" accept="application/pdf,.pdf" multiple hidden>
+        <div class="drop-inner">📁 <b>Add PDF files</b> or drag &amp; drop<br><span class="muted">They'll be joined into one PDF, top to bottom</span></div>
+      </div>
+      <div class="pdf-list" id="mlist"></div>
+      <div id="mopts" style="display:none">
+        <div class="result-bar" id="mbar"></div>
+        <div class="ff-actions mt">
+          <button class="btn" id="mmake">🔗 Merge &amp; Download</button>
+          <button class="btn ghost" id="mclear">🗑️ Clear all</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPLIT -->
+    <div class="panel" id="panel-split" style="display:none">
+      <div class="drop" id="sdrop">
+        <input type="file" id="sfile" accept="application/pdf,.pdf" hidden>
+        <div class="drop-inner">📁 <b>Upload a PDF</b> or drag &amp; drop<br><span class="muted">Then pick the pages you want to extract</span></div>
+      </div>
+      <div id="sopts" style="display:none">
+        <div class="result-bar" id="sinfo"></div>
+        <div class="mt"><label for="srange">Pages to extract</label><input type="text" id="srange" placeholder="e.g. 1-3, 5, 8-10"></div>
+        <div class="ff-actions mt">
+          <button class="btn" id="smake">✂️ Extract &amp; Download</button>
+          <button class="btn ghost" id="sclear">🗑️ Clear</button>
+        </div>
+      </div>
+    </div>
+
     <div class="wa-hint ok" id="hint"></div>
-
-    <div class="secure-note">🔒 100% Private: your images are converted on your device and never uploaded.</div>
+    <div class="secure-note">🔒 100% Private: your files are processed on your device and never uploaded.</div>
   </div>
 
   <div class="ad-slot">Advertisement</div>
 
   <article class="article reveal">
-    <h2>Why use our Image to PDF converter?</h2>
-    <p>Need to turn photos or screenshots into a clean, shareable document? This free <b>Image to PDF</b> tool combines any number of <b>JPG, PNG or WEBP</b> images into a single PDF — one image per page — so you can send assignments, receipts, ID scans, notes or a photo album as one tidy file. It's perfect when an upload form only accepts PDFs.</p>
-    <p>You stay in control: add images in any order and rearrange them with the arrows, remove any you don't want, then choose <b>A4</b>, <b>Letter</b> or <b>Fit to image</b> page size, set the orientation and the margin. Everything is processed right in your browser, so it's fast, completely free, needs no sign-up, and your images are never uploaded.</p>
+    <h2>Free PDF tools, all in one place</h2>
+    <p>Three handy <b>PDF tools</b> that run entirely in your browser — nothing is uploaded, so your documents stay private. <b>Image to PDF</b> turns JPG, PNG or WEBP images into a single multi-page PDF, one image per page, with your choice of A4, Letter or fit-to-image size. <b>Merge PDF</b> joins several PDF files into one in the exact order you set. <b>Split PDF</b> pulls out the pages you need — single pages or ranges like 1-3, 5 — into a fresh PDF.</p>
+    <p>It's perfect for assignments, receipts, ID scans, contracts and reports — combine, reorganise and tidy up your PDFs in seconds, completely free and with no sign-up.</p>
     <h3>How to use it</h3>
     <ol>
-      <li><b>Add images</b> (click or drag &amp; drop) — JPG, PNG or WEBP.</li>
-      <li><b>Reorder</b> with the arrows and remove any you don't need.</li>
-      <li>Pick the <b>page size</b>, orientation and margin.</li>
-      <li>Tap <b>Download PDF</b> — your images become one file.</li>
+      <li>Pick a tab: <b>Image → PDF</b>, <b>Merge PDF</b> or <b>Split PDF</b>.</li>
+      <li>Add your images or PDF files (click or drag &amp; drop).</li>
+      <li>Reorder, choose options or type the pages to extract.</li>
+      <li>Tap the button to <b>download</b> your new PDF.</li>
     </ol>
     <h3>Is it free and safe?</h3>
-    <p>Yes — completely free, no sign-up, and your images are converted locally and never uploaded.</p>
-    <h3>Can I combine multiple images into one PDF?</h3>
-    <p>Yes. Add as many as you like; they become a single multi-page PDF, one image per page.</p>
-    <h3>Will my images be uploaded anywhere?</h3>
-    <p>No — everything happens on your device. Nothing is uploaded or stored.</p>
+    <p>Yes — completely free, no sign-up, and your files are processed locally and never uploaded.</p>
+    <h3>Can I merge multiple PDFs into one?</h3>
+    <p>Yes. Use the Merge tab, add your PDFs, set the order with the arrows, and download one combined file.</p>
+    <h3>How do I split or extract pages?</h3>
+    <p>Use the Split tab, upload a PDF, and type the pages or ranges (like 1-3, 5) to pull them into a new PDF.</p>
   </article>
 
   <section class="section">
@@ -112,7 +151,7 @@
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
-      <div class="foot-col"><h4>Tools</h4><a href="../image-to-pdf/">Image to PDF</a><a href="../image-compressor/">Image Tools</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../image-to-pdf/">PDF Tools</a><a href="../image-compressor/">Image Tools</a><a href="../index.html#tools">All Tools</a></div>
       <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
     </div>
     <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
@@ -127,51 +166,50 @@ const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.ta
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 var $=function(id){return document.getElementById(id);};
-var drop=$('drop'),file=$('file'),grid=$('grid'),opts=$('opts'),hint=$('hint'),resultBar=$('resultBar');
-var images=[],uid=0;
-
+var hint=$('hint');
 function setHint(m,err){hint.innerHTML=m||'';hint.classList.toggle('ok',!err);}
 function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function downloadBlob(blob,name){var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},2000);}
 
+/* lazy-load pdf-lib */
+var pdfLibP=null;
+function ensurePdfLib(){if(!pdfLibP){pdfLibP=new Promise(function(res,rej){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js';s.onload=function(){res(window.PDFLib);};s.onerror=function(){rej(new Error('load'));};document.head.appendChild(s);});}return pdfLibP;}
+
+/* tabs */
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
+  t.classList.add('active');
+  ['img','merge','split'].forEach(function(k){$('panel-'+k).style.display=(k===t.dataset.tab)?'':'none';});
+  setHint('',false);
+});});
+
+/* ===== IMAGE -> PDF ===== */
+var drop=$('drop'),file=$('file'),grid=$('grid'),opts=$('opts'),resultBar=$('resultBar');
+var images=[],uid=0;
 function addFiles(list){
   var arr=Array.prototype.slice.call(list).filter(function(f){return /^image\//.test(f.type);});
   if(!arr.length){setHint('Please choose image files (JPG, PNG, WEBP).',true);return;}
   setHint('',false);
-  arr.forEach(function(f){
-    var url=URL.createObjectURL(f),img=new Image();
-    img.onload=function(){
-      URL.revokeObjectURL(url);
+  arr.forEach(function(f){var url=URL.createObjectURL(f),img=new Image();
+    img.onload=function(){URL.revokeObjectURL(url);
       var MAX=2200,w=img.naturalWidth,h=img.naturalHeight,sc=Math.min(1,MAX/Math.max(w,h));
       var cw=Math.max(1,Math.round(w*sc)),ch=Math.max(1,Math.round(h*sc));
       var c=document.createElement('canvas');c.width=cw;c.height=ch;var x=c.getContext('2d');
       x.fillStyle='#ffffff';x.fillRect(0,0,cw,ch);x.drawImage(img,0,0,cw,ch);
-      images.push({id:++uid,data:c.toDataURL('image/jpeg',0.92),w:cw,h:ch,name:f.name});
-      render();
-    };
-    img.onerror=function(){URL.revokeObjectURL(url);};
-    img.src=url;
-  });
+      images.push({id:++uid,data:c.toDataURL('image/jpeg',0.92),w:cw,h:ch,name:f.name});renderImg();};
+    img.onerror=function(){URL.revokeObjectURL(url);};img.src=url;});
 }
-function render(){
+function renderImg(){
   opts.style.display=images.length?'':'none';
-  grid.innerHTML=images.map(function(im,i){
-    return '<div class="itp-item"><span class="itp-idx">'+(i+1)+'</span>'+
-      '<button class="itp-x" data-x="'+im.id+'" title="Remove">✕</button>'+
-      '<img src="'+im.data+'" alt="'+esc(im.name)+'">'+
-      '<div class="itp-move"><button data-up="'+im.id+'"'+(i===0?' disabled':'')+'>↑</button>'+
-      '<button data-down="'+im.id+'"'+(i===images.length-1?' disabled':'')+'>↓</button></div></div>';
-  }).join('');
+  grid.innerHTML=images.map(function(im,i){return '<div class="itp-item"><span class="itp-idx">'+(i+1)+'</span><button class="itp-x" data-x="'+im.id+'" title="Remove">✕</button><img src="'+im.data+'" alt="'+esc(im.name)+'"><div class="itp-move"><button data-up="'+im.id+'"'+(i===0?' disabled':'')+'>↑</button><button data-down="'+im.id+'"'+(i===images.length-1?' disabled':'')+'>↓</button></div></div>';}).join('');
   resultBar.textContent=images.length?(images.length+' image'+(images.length===1?'':'s')+' → '+images.length+'-page PDF'):'';
 }
-function idx(id){for(var i=0;i<images.length;i++)if(images[i].id===id)return i;return -1;}
-
-grid.addEventListener('click',function(e){
-  var t=e.target;
-  if(t.dataset.x){var i=idx(+t.dataset.x);if(i>-1){images.splice(i,1);render();}}
-  else if(t.dataset.up){var i=idx(+t.dataset.up);if(i>0){var tmp=images[i-1];images[i-1]=images[i];images[i]=tmp;render();}}
-  else if(t.dataset.down){var i=idx(+t.dataset.down);if(i>-1&&i<images.length-1){var tmp=images[i+1];images[i+1]=images[i];images[i]=tmp;render();}}
+function idxOf(id){for(var i=0;i<images.length;i++)if(images[i].id===id)return i;return -1;}
+grid.addEventListener('click',function(e){var t=e.target;
+  if(t.dataset.x){var i=idxOf(+t.dataset.x);if(i>-1){images.splice(i,1);renderImg();}}
+  else if(t.dataset.up){var i=idxOf(+t.dataset.up);if(i>0){var m=images[i-1];images[i-1]=images[i];images[i]=m;renderImg();}}
+  else if(t.dataset.down){var i=idxOf(+t.dataset.down);if(i>-1&&i<images.length-1){var m=images[i+1];images[i+1]=images[i];images[i]=m;renderImg();}}
 });
-
 function pageFor(im){
   var ps=$('pageSize').value,or=$('orient').value;
   if(ps==='fit'){var o=im.w>=im.h?'landscape':'portrait';return {format:[im.w,im.h],orient:o,pw:im.w,ph:im.h,margin:0};}
@@ -184,26 +222,118 @@ function makePdf(){
   if(!images.length){setHint('Add at least one image first.',true);return;}
   if(!(window.jspdf&&window.jspdf.jsPDF)){setHint('PDF engine failed to load — please refresh.',true);return;}
   var doc=null;
-  for(var i=0;i<images.length;i++){
-    var im=images[i],p=pageFor(im);
-    if(!doc)doc=new window.jspdf.jsPDF({orientation:p.orient,unit:'pt',format:p.format});
-    else doc.addPage(p.format,p.orient);
-    var availW=p.pw-2*p.margin,availH=p.ph-2*p.margin;
-    var sc=Math.min(availW/im.w,availH/im.h);
-    var w=im.w*sc,h=im.h*sc,x=(p.pw-w)/2,y=(p.ph-h)/2;
-    doc.addImage(im.data,'JPEG',x,y,w,h);
-  }
-  doc.save('images-xnipertools.pdf');
-  setHint('✓ PDF ready — check your downloads.',false);
+  for(var i=0;i<images.length;i++){var im=images[i],p=pageFor(im);
+    if(!doc)doc=new window.jspdf.jsPDF({orientation:p.orient,unit:'pt',format:p.format});else doc.addPage(p.format,p.orient);
+    var aW=p.pw-2*p.margin,aH=p.ph-2*p.margin,sc=Math.min(aW/im.w,aH/im.h);
+    doc.addImage(im.data,'JPEG',(p.pw-im.w*sc)/2,(p.ph-im.h*sc)/2,im.w*sc,im.h*sc);}
+  doc.save('images-xnipertools.pdf');setHint('✓ PDF ready — check your downloads.',false);
 }
-
 drop.addEventListener('click',function(){file.click();});
 file.addEventListener('change',function(e){addFiles(e.target.files);file.value='';});
 drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
 drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
 drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');addFiles(e.dataTransfer.files);});
 $('make').addEventListener('click',makePdf);
-$('clear').addEventListener('click',function(){images=[];render();setHint('',false);});
+$('clear').addEventListener('click',function(){images=[];renderImg();setHint('',false);});
+
+/* ===== MERGE ===== */
+var mdrop=$('mdrop'),mfile=$('mfile'),mlist=$('mlist'),mopts=$('mopts'),mbar=$('mbar');
+var pdfs=[],muid=0;
+function isPdf(f){return f&&(f.type==='application/pdf'||/\.pdf$/i.test(f.name));}
+function addPdfs(list){
+  var arr=Array.prototype.slice.call(list).filter(isPdf);
+  if(!arr.length){setHint('Please choose PDF files.',true);return;}
+  setHint('',false);
+  ensurePdfLib().then(function(PDFLib){
+    arr.forEach(function(f){f.arrayBuffer().then(function(buf){
+      PDFLib.PDFDocument.load(buf,{ignoreEncryption:true}).then(function(doc){
+        pdfs.push({id:++muid,name:f.name,buf:buf,pages:doc.getPageCount()});renderMerge();
+      }).catch(function(){setHint('Could not read "'+esc(f.name)+'" (it may be password-protected).',true);});
+    });});
+  }).catch(function(){setHint('PDF engine failed to load — please refresh.',true);});
+}
+function renderMerge(){
+  mopts.style.display=pdfs.length?'':'none';
+  mlist.innerHTML=pdfs.map(function(p,i){return '<div class="pdf-row"><span class="nm">'+(i+1)+'. '+esc(p.name)+'</span><span class="pg">'+p.pages+'p</span><button data-mup="'+p.id+'"'+(i===0?' disabled':'')+'>↑</button><button data-mdown="'+p.id+'"'+(i===pdfs.length-1?' disabled':'')+'>↓</button><button class="rm" data-mx="'+p.id+'">✕</button></div>';}).join('');
+  var tot=pdfs.reduce(function(a,p){return a+p.pages;},0);
+  mbar.textContent=pdfs.length?(pdfs.length+' file'+(pdfs.length===1?'':'s')+' · '+tot+' pages total'):'';
+}
+function midx(id){for(var i=0;i<pdfs.length;i++)if(pdfs[i].id===id)return i;return -1;}
+mlist.addEventListener('click',function(e){var t=e.target;
+  if(t.dataset.mx){var i=midx(+t.dataset.mx);if(i>-1){pdfs.splice(i,1);renderMerge();}}
+  else if(t.dataset.mup){var i=midx(+t.dataset.mup);if(i>0){var m=pdfs[i-1];pdfs[i-1]=pdfs[i];pdfs[i]=m;renderMerge();}}
+  else if(t.dataset.mdown){var i=midx(+t.dataset.mdown);if(i>-1&&i<pdfs.length-1){var m=pdfs[i+1];pdfs[i+1]=pdfs[i];pdfs[i]=m;renderMerge();}}
+});
+function mergePdfs(){
+  if(pdfs.length<1){setHint('Add at least one PDF.',true);return;}
+  setHint('Merging…',false);
+  ensurePdfLib().then(function(PDFLib){
+    return PDFLib.PDFDocument.create().then(function(out){
+      var chain=Promise.resolve();
+      pdfs.forEach(function(p){chain=chain.then(function(){return PDFLib.PDFDocument.load(p.buf,{ignoreEncryption:true}).then(function(src){return out.copyPages(src,src.getPageIndices()).then(function(cp){cp.forEach(function(pg){out.addPage(pg);});});});});});
+      return chain.then(function(){return out.save();}).then(function(bytes){
+        downloadBlob(new Blob([bytes],{type:'application/pdf'}),'merged-xnipertools.pdf');
+        setHint('✓ Merged PDF downloaded.',false);
+      });
+    });
+  }).catch(function(){setHint('Merge failed — please try again.',true);});
+}
+mdrop.addEventListener('click',function(){mfile.click();});
+mfile.addEventListener('change',function(e){addPdfs(e.target.files);mfile.value='';});
+mdrop.addEventListener('dragover',function(e){e.preventDefault();mdrop.classList.add('over');});
+mdrop.addEventListener('dragleave',function(){mdrop.classList.remove('over');});
+mdrop.addEventListener('drop',function(e){e.preventDefault();mdrop.classList.remove('over');addPdfs(e.dataTransfer.files);});
+$('mmake').addEventListener('click',mergePdfs);
+$('mclear').addEventListener('click',function(){pdfs=[];renderMerge();setHint('',false);});
+
+/* ===== SPLIT ===== */
+var sdrop=$('sdrop'),sfile=$('sfile'),sopts=$('sopts'),sinfo=$('sinfo');
+var splitDoc=null;
+function loadSplit(f){
+  if(!isPdf(f)){setHint('Please choose a PDF file.',true);return;}
+  setHint('',false);
+  ensurePdfLib().then(function(PDFLib){
+    return f.arrayBuffer().then(function(buf){return PDFLib.PDFDocument.load(buf,{ignoreEncryption:true}).then(function(doc){
+      splitDoc={buf:buf,pages:doc.getPageCount(),name:f.name};
+      sopts.style.display='';sinfo.textContent='“'+f.name+'” · '+splitDoc.pages+' pages. Enter pages to extract below.';
+      $('srange').value='1-'+splitDoc.pages;
+    });});
+  }).catch(function(){setHint('Could not read that PDF (it may be password-protected).',true);});
+}
+function parseRange(str,max){
+  var out=[],seen={};
+  (str||'').split(',').forEach(function(p){p=p.trim();if(!p)return;
+    var m=p.match(/^(\d+)\s*-\s*(\d+)$/);
+    if(m){var a=+m[1],b=+m[2];if(a>b){var t=a;a=b;b=t;}for(var i=a;i<=b;i++){if(i>=1&&i<=max&&!seen[i]){seen[i]=1;out.push(i-1);}}}
+    else if(/^\d+$/.test(p)){var n=+p;if(n>=1&&n<=max&&!seen[n]){seen[n]=1;out.push(n-1);}}
+  });
+  return out;
+}
+function splitPdf(){
+  if(!splitDoc){setHint('Upload a PDF first.',true);return;}
+  var idxs=parseRange($('srange').value,splitDoc.pages);
+  if(!idxs.length){setHint('Enter valid pages, e.g. 1-3, 5 (max '+splitDoc.pages+').',true);return;}
+  setHint('Extracting…',false);
+  ensurePdfLib().then(function(PDFLib){
+    return PDFLib.PDFDocument.load(splitDoc.buf,{ignoreEncryption:true}).then(function(src){
+      return PDFLib.PDFDocument.create().then(function(out){
+        return out.copyPages(src,idxs).then(function(cp){cp.forEach(function(pg){out.addPage(pg);});
+          return out.save().then(function(bytes){
+            downloadBlob(new Blob([bytes],{type:'application/pdf'}),'extracted-xnipertools.pdf');
+            setHint('✓ Extracted '+idxs.length+' page'+(idxs.length===1?'':'s')+' — downloaded.',false);
+          });
+        });
+      });
+    });
+  }).catch(function(){setHint('Extract failed — please try again.',true);});
+}
+sdrop.addEventListener('click',function(){sfile.click();});
+sfile.addEventListener('change',function(e){loadSplit(e.target.files[0]);sfile.value='';});
+sdrop.addEventListener('dragover',function(e){e.preventDefault();sdrop.classList.add('over');});
+sdrop.addEventListener('dragleave',function(){sdrop.classList.remove('over');});
+sdrop.addEventListener('drop',function(e){e.preventDefault();sdrop.classList.remove('over');loadSplit(e.dataTransfer.files[0]);});
+$('smake').addEventListener('click',splitPdf);
+$('sclear').addEventListener('click',function(){splitDoc=null;sopts.style.display='none';$('srange').value='';setHint('',false);});
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
