@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Image to PDF, Merge &amp; Split PDF — Free PDF Tools | Xnipertools</title>
-<meta name="description" content="Free PDF tools in your browser: convert JPG/PNG images to PDF, merge multiple PDFs into one, and split or extract PDF pages. No upload, no signup, 100% private.">
+<title>Image to PDF, Merge, Split &amp; PDF to Image — PDF Tools | Xnipertools</title>
+<meta name="description" content="Free PDF tools in your browser: convert images to PDF, merge multiple PDFs, split or extract pages, and convert PDF pages to JPG/PNG images. No upload, no signup.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -14,16 +14,17 @@
 <meta property="og:site_name" content="Xnipertools">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://xnipertools.com/image-to-pdf/">
-<meta property="og:title" content="Image to PDF, Merge & Split PDF — Free PDF Tools">
-<meta property="og:description" content="Convert images to PDF, merge multiple PDFs into one, and split or extract PDF pages — all in your browser.">
+<meta property="og:title" content="Image to PDF, Merge, Split & PDF to Image — PDF Tools">
+<meta property="og:description" content="Convert images to PDF, merge PDFs, split or extract pages, and convert PDF pages to JPG/PNG — all in your browser.">
 <meta property="og:image" content="https://xnipertools.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Image to PDF, Merge & Split PDF — Free PDF Tools">
-<meta name="twitter:description" content="Convert images to PDF, merge PDFs, and split PDF pages — free, in your browser.">
+<meta name="twitter:title" content="Image to PDF, Merge, Split & PDF to Image — PDF Tools">
+<meta name="twitter:description" content="Convert images to PDF, merge PDFs, split pages, and turn PDF pages into JPG/PNG — free, in your browser.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PDF Tools — Image to PDF, Merge & Split","url":"https://xnipertools.com/image-to-pdf/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it free and safe?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up. Your files are processed locally in your browser and are never uploaded to any server."}},{"@type":"Question","name":"Can I merge multiple PDFs into one?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the Merge tab, add your PDF files, drag them into order with the arrows, and download them as a single combined PDF."}},{"@type":"Question","name":"How do I split or extract pages from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Open the Split tab, upload a PDF, then type the pages or ranges you want (for example 1-3, 5) to extract them into a new PDF."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PDF Tools — Image to PDF, Merge, Split & PDF to Image","url":"https://xnipertools.com/image-to-pdf/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it free and safe?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up. Your files are processed locally in your browser and are never uploaded to any server."}},{"@type":"Question","name":"Can I merge multiple PDFs into one?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the Merge tab, add your PDF files, drag them into order with the arrows, and download them as a single combined PDF."}},{"@type":"Question","name":"How do I split or extract pages from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Open the Split tab, upload a PDF, then type the pages or ranges you want (for example 1-3, 5) to extract them into a new PDF."}},{"@type":"Question","name":"Can I convert a PDF to images (JPG or PNG)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the PDF to Image tab, upload a PDF, and each page is rendered as an image you can download as JPG or PNG."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"PDF Tools","item":"https://xnipertools.com/image-to-pdf/"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
@@ -47,8 +48,8 @@
   <div class="tool-head">
     <div class="ic">📄</div>
     <div>
-      <h1>PDF Tools — Image to PDF, Merge &amp; Split</h1>
-      <p>Convert <b>images to PDF</b>, <b>merge</b> multiple PDFs into one, or <b>split</b> and extract PDF pages — all in your browser.</p>
+      <h1>PDF Tools — Image to PDF, Merge, Split &amp; PDF to Image</h1>
+      <p>Convert <b>images to PDF</b>, <b>merge</b> PDFs, <b>split</b> &amp; extract pages, or turn a <b>PDF into images</b> — all in your browser.</p>
     </div>
   </div>
 
@@ -57,6 +58,7 @@
       <button class="tab active" data-tab="img" type="button">🖼️ Image → PDF</button>
       <button class="tab" data-tab="merge" type="button">🔗 Merge PDF</button>
       <button class="tab" data-tab="split" type="button">✂️ Split PDF</button>
+      <button class="tab" data-tab="pdfimg" type="button">📷 PDF → Image</button>
     </div>
 
     <!-- IMAGE -> PDF -->
@@ -112,6 +114,21 @@
       </div>
     </div>
 
+    <!-- PDF -> IMAGE -->
+    <div class="panel" id="panel-pdfimg" style="display:none">
+      <div class="drop" id="idrop">
+        <input type="file" id="ifile" accept="application/pdf,.pdf" hidden>
+        <div class="drop-inner">📁 <b>Upload a PDF</b> or drag &amp; drop<br><span class="muted">Each page becomes an image you can download (JPG or PNG)</span></div>
+      </div>
+      <div id="iopts" style="display:none">
+        <div class="row cols-2 mt">
+          <div><label for="ifmt">Image format</label><select id="ifmt"><option value="image/jpeg" selected>JPG</option><option value="image/png">PNG</option></select></div>
+          <div style="display:flex;align-items:flex-end"><button class="btn ghost" id="iclear" style="width:auto">🗑️ Clear</button></div>
+        </div>
+        <div class="itp-grid" id="igrid"></div>
+      </div>
+    </div>
+
     <div class="wa-hint ok" id="hint"></div>
     <div class="secure-note">🔒 100% Private: your files are processed on your device and never uploaded.</div>
   </div>
@@ -120,7 +137,7 @@
 
   <article class="article reveal">
     <h2>Free PDF tools, all in one place</h2>
-    <p>Three handy <b>PDF tools</b> that run entirely in your browser — nothing is uploaded, so your documents stay private. <b>Image to PDF</b> turns JPG, PNG or WEBP images into a single multi-page PDF, one image per page, with your choice of A4, Letter or fit-to-image size. <b>Merge PDF</b> joins several PDF files into one in the exact order you set. <b>Split PDF</b> pulls out the pages you need — single pages or ranges like 1-3, 5 — into a fresh PDF.</p>
+    <p>Four handy <b>PDF tools</b> that run entirely in your browser — nothing is uploaded, so your documents stay private. <b>Image to PDF</b> turns JPG, PNG or WEBP images into a single multi-page PDF, one image per page, with your choice of A4, Letter or fit-to-image size. <b>Merge PDF</b> joins several PDF files into one in the exact order you set. <b>Split PDF</b> pulls out the pages you need — single pages or ranges like 1-3, 5 — into a fresh PDF. And <b>PDF to Image</b> renders each page as a downloadable JPG or PNG.</p>
     <p>It's perfect for assignments, receipts, ID scans, contracts and reports — combine, reorganise and tidy up your PDFs in seconds, completely free and with no sign-up.</p>
     <h3>How to use it</h3>
     <ol>
@@ -135,6 +152,8 @@
     <p>Yes. Use the Merge tab, add your PDFs, set the order with the arrows, and download one combined file.</p>
     <h3>How do I split or extract pages?</h3>
     <p>Use the Split tab, upload a PDF, and type the pages or ranges (like 1-3, 5) to pull them into a new PDF.</p>
+    <h3>Can I convert a PDF to images?</h3>
+    <p>Yes. Use the PDF to Image tab, upload a PDF, and download each page as a JPG or PNG.</p>
   </article>
 
   <section class="section">
@@ -179,7 +198,7 @@ function ensurePdfLib(){if(!pdfLibP){pdfLibP=new Promise(function(res,rej){var s
 document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
   document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
   t.classList.add('active');
-  ['img','merge','split'].forEach(function(k){$('panel-'+k).style.display=(k===t.dataset.tab)?'':'none';});
+  ['img','merge','split','pdfimg'].forEach(function(k){$('panel-'+k).style.display=(k===t.dataset.tab)?'':'none';});
   setHint('',false);
 });});
 
@@ -334,6 +353,60 @@ sdrop.addEventListener('dragleave',function(){sdrop.classList.remove('over');});
 sdrop.addEventListener('drop',function(e){e.preventDefault();sdrop.classList.remove('over');loadSplit(e.dataTransfer.files[0]);});
 $('smake').addEventListener('click',splitPdf);
 $('sclear').addEventListener('click',function(){splitDoc=null;sopts.style.display='none';$('srange').value='';setHint('',false);});
+
+/* ===== PDF -> IMAGE ===== */
+var idrop=$('idrop'),ifile=$('ifile'),igrid=$('igrid'),iopts=$('iopts');
+var ipages=[],pdfjsP=null;
+function ensurePdfjs(){
+  if(!pdfjsP){pdfjsP=new Promise(function(res,rej){
+    var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
+    s.onload=function(){
+      fetch('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js').then(function(r){return r.text();}).then(function(code){
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc=URL.createObjectURL(new Blob([code],{type:'application/javascript'}));res(window.pdfjsLib);
+      }).catch(function(){window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';res(window.pdfjsLib);});
+    };
+    s.onerror=function(){rej(new Error('load'));};document.head.appendChild(s);
+  });}
+  return pdfjsP;
+}
+function addThumb(c,n){
+  var div=document.createElement('div');div.className='itp-item';
+  div.innerHTML='<span class="itp-idx">'+n+'</span><div class="itp-move"><button data-dlpage="'+n+'">↓ Save</button></div>';
+  var img=new Image();img.alt='page '+n;img.src=c.toDataURL('image/png');div.insertBefore(img,div.firstChild.nextSibling);
+  igrid.appendChild(div);
+}
+function renderPdf(file){
+  if(!isPdf(file)){setHint('Please choose a PDF file.',true);return;}
+  setHint('Loading PDF engine…',false);igrid.innerHTML='';ipages=[];
+  ensurePdfjs().then(function(pdfjsLib){
+    setHint('Rendering pages…',false);
+    return file.arrayBuffer().then(function(buf){
+      return pdfjsLib.getDocument({data:buf}).promise.then(function(pdf){
+        iopts.style.display='';
+        var chain=Promise.resolve();
+        var _loop=function(n){chain=chain.then(function(){return pdf.getPage(n).then(function(page){
+          var v1=page.getViewport({scale:1}),scale=Math.min(2.5,2200/Math.max(v1.width,v1.height)),vp=page.getViewport({scale:scale});
+          var c=document.createElement('canvas');c.width=Math.round(vp.width);c.height=Math.round(vp.height);
+          return page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise.then(function(){ipages[n-1]=c;addThumb(c,n);});
+        });});};
+        for(var n=1;n<=pdf.numPages;n++)_loop(n);
+        return chain.then(function(){setHint('✓ '+pdf.numPages+' page'+(pdf.numPages===1?'':'s')+' rendered — tap “Save” on a page to download.',false);});
+      });
+    });
+  }).catch(function(){setHint('Could not render this PDF in your browser. Try refreshing or a different file.',true);});
+}
+igrid.addEventListener('click',function(e){
+  if(!e.target.dataset.dlpage)return;
+  var n=+e.target.dataset.dlpage,c=ipages[n-1];if(!c)return;
+  var fmt=$('ifmt').value,ext=fmt==='image/png'?'png':'jpg';
+  c.toBlob(function(b){if(b)downloadBlob(b,'page-'+n+'-xnipertools.'+ext);},fmt,0.92);
+});
+idrop.addEventListener('click',function(){ifile.click();});
+ifile.addEventListener('change',function(e){renderPdf(e.target.files[0]);ifile.value='';});
+idrop.addEventListener('dragover',function(e){e.preventDefault();idrop.classList.add('over');});
+idrop.addEventListener('dragleave',function(){idrop.classList.remove('over');});
+idrop.addEventListener('drop',function(e){e.preventDefault();idrop.classList.remove('over');renderPdf(e.dataTransfer.files[0]);});
+$('iclear').addEventListener('click',function(){ipages=[];igrid.innerHTML='';iopts.style.display='none';setHint('',false);});
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
