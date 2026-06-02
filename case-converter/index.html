@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Converter — UPPERCASE, lowercase, Title &amp; camelCase | Xnipertools</title>
+<meta name="description" content="Free case converter. Instantly change text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case, kebab-case and more. Copy in one tap.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/case-converter/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/case-converter/">
+<meta property="og:title" content="Case Converter — UPPERCASE, lowercase, Title & camelCase">
+<meta property="og:description" content="Instantly change text to UPPERCASE, lowercase, Title Case, camelCase, snake_case and more. Free, in your browser.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Case Converter — UPPERCASE, lowercase, Title & camelCase">
+<meta name="twitter:description" content="Change text case instantly: UPPERCASE, lowercase, Title, camelCase, snake_case & more. Free.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Case Converter","url":"https://xnipertools.com/case-converter/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert text case?","acceptedAnswer":{"@type":"Answer","text":"Type or paste your text, then tap a case button such as UPPERCASE, lowercase, Title Case or camelCase. The text updates instantly and you can copy it."}},{"@type":"Question","name":"What is the difference between Title Case and Sentence case?","acceptedAnswer":{"@type":"Answer","text":"Title Case capitalises the first letter of every word, while Sentence case only capitalises the first letter of each sentence."}},{"@type":"Question","name":"Is my text private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything is processed locally in your browser and your text is never uploaded or stored."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Text Tools</span><span class="sep">/</span><span>Case Converter</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🔠</div>
+    <div>
+      <h1>Case Converter</h1>
+      <p>Instantly change your text to <b>UPPERCASE</b>, <b>lowercase</b>, <b>Title Case</b>, <b>camelCase</b>, <b>snake_case</b> and more.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="ff-actions" style="margin-bottom:10px;align-items:center">
+      <span class="muted" id="stats">0 words · 0 characters</span>
+      <button class="btn ghost" id="paste" style="width:auto;margin-left:auto">📋 Paste</button>
+      <button class="btn ghost" id="copy" style="width:auto">⧉ Copy</button>
+      <button class="btn ghost" id="clear" style="width:auto">🗑️ Clear</button>
+    </div>
+    <textarea id="text" rows="7" placeholder="Type or paste your text here…"></textarea>
+
+    <div class="tf-row mt">
+      <button class="tf-btn" data-case="upper" type="button">UPPER CASE</button>
+      <button class="tf-btn" data-case="lower" type="button">lower case</button>
+      <button class="tf-btn" data-case="title" type="button">Title Case</button>
+      <button class="tf-btn" data-case="sentence" type="button">Sentence case</button>
+      <button class="tf-btn" data-case="camel" type="button">camelCase</button>
+      <button class="tf-btn" data-case="pascal" type="button">PascalCase</button>
+      <button class="tf-btn" data-case="snake" type="button">snake_case</button>
+      <button class="tf-btn" data-case="kebab" type="button">kebab-case</button>
+      <button class="tf-btn" data-case="constant" type="button">CONSTANT_CASE</button>
+      <button class="tf-btn" data-case="alternate" type="button">aLtErNaTe</button>
+      <button class="tf-btn" data-case="inverse" type="button">InVeRsE cAsE</button>
+    </div>
+    <div class="wa-hint ok" id="hint"></div>
+
+    <div class="secure-note">🔒 100% Private: your text is processed in your browser and never uploaded.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>Why use our Case Converter?</h2>
+    <p>Retyping text just to fix its capitalisation is a waste of time. This free <b>Case Converter</b> changes your text to any style in one tap — <b>UPPERCASE</b>, <b>lowercase</b>, <b>Title Case</b>, <b>Sentence case</b>, plus developer styles like <b>camelCase</b>, <b>PascalCase</b>, <b>snake_case</b>, <b>kebab-case</b> and <b>CONSTANT_CASE</b>. There are even fun ones like aLtErNaTiNg and InVeRsE case.</p>
+    <p>It's perfect for writers fixing accidental caps lock, students formatting headings, and developers naming variables. Everything runs in your browser — fast, free, no sign-up, and your text never leaves your device.</p>
+    <h3>How do I convert text case?</h3>
+    <p>Type or paste your text, then tap a case button. The text updates instantly and you can copy it.</p>
+    <h3>What is the difference between Title Case and Sentence case?</h3>
+    <p>Title Case capitalises the first letter of every word; Sentence case only capitalises the first letter of each sentence.</p>
+    <h3>Is my text private?</h3>
+    <p>Yes — everything is processed locally in your browser and is never uploaded.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../word-counter/" class="card"><div class="ico">📝</div><h3>Word Counter</h3><p>Words, characters &amp; AI tokens.</p><span class="go">Open tool →</span></a>
+      <a href="../text-to-speech/" class="card"><div class="ico">🔊</div><h3>Text to Speech</h3><p>Reads any text aloud.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../case-converter/">Case Converter</a><a href="../word-counter/">Word Counter</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(id){return document.getElementById(id);};
+var text=$('text');
+
+function cap(x){return x.charAt(0).toUpperCase()+x.slice(1).toLowerCase();}
+function words(s){return s.match(/[A-Z]+(?=[A-Z][a-z])|[A-Z]?[a-z]+|[A-Z]+|[0-9]+/g)||[];}
+var T={
+  upper:function(s){return s.toUpperCase();},
+  lower:function(s){return s.toLowerCase();},
+  title:function(s){return s.replace(/\w\S*/g,function(t){return t.charAt(0).toUpperCase()+t.slice(1).toLowerCase();});},
+  sentence:function(s){return s.toLowerCase().replace(/(^\s*[a-z])|([.!?]\s+[a-z])/g,function(m){return m.toUpperCase();});},
+  camel:function(s){return words(s).map(function(x,i){return i===0?x.toLowerCase():cap(x);}).join('');},
+  pascal:function(s){return words(s).map(cap).join('');},
+  snake:function(s){return words(s).map(function(x){return x.toLowerCase();}).join('_');},
+  kebab:function(s){return words(s).map(function(x){return x.toLowerCase();}).join('-');},
+  constant:function(s){return words(s).map(function(x){return x.toUpperCase();}).join('_');},
+  alternate:function(s){var r='',u=false;for(var i=0;i<s.length;i++){var c=s[i];if(/[a-z]/i.test(c)){r+=u?c.toUpperCase():c.toLowerCase();u=!u;}else r+=c;}return r;},
+  inverse:function(s){return s.replace(/[a-zA-Z]/g,function(c){return c===c.toUpperCase()?c.toLowerCase():c.toUpperCase();});}
+};
+
+function updateStats(){
+  var t=text.value,w=t.trim().length?t.trim().split(/\s+/).length:0;
+  $('stats').textContent=w+' word'+(w===1?'':'s')+' · '+t.length+' character'+(t.length===1?'':'s');
+  try{localStorage.setItem('cc_text',t);}catch(e){}
+}
+function setHint(m,err){$('hint').innerHTML=m||'';$('hint').classList.toggle('ok',!err);}
+
+document.querySelector('.tf-row').addEventListener('click',function(e){
+  var b=e.target.closest('[data-case]');if(!b)return;
+  if(!text.value.trim()){setHint('Type or paste some text first.',true);return;}
+  setHint('',false);
+  text.value=T[b.dataset.case](text.value);
+  updateStats();
+});
+
+text.addEventListener('input',updateStats);
+$('clear').addEventListener('click',function(){text.value='';updateStats();setHint('',false);text.focus();});
+$('copy').addEventListener('click',function(){
+  if(!text.value)return;var btn=$('copy');
+  function ok(){var o=btn.textContent;btn.textContent='Copied ✓';setTimeout(function(){btn.textContent=o;},1300);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text.value).then(ok).catch(function(){text.select();try{document.execCommand('copy');ok();}catch(e){}});}
+  else{text.select();try{document.execCommand('copy');ok();}catch(e){}}
+});
+$('paste').addEventListener('click',function(){
+  if(navigator.clipboard&&navigator.clipboard.readText){navigator.clipboard.readText().then(function(t){text.value+=t;updateStats();text.focus();}).catch(function(){text.focus();});}
+  else text.focus();
+});
+
+try{var saved=localStorage.getItem('cc_text');if(saved)text.value=saved;}catch(e){}
+updateStats();
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
