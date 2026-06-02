@@ -532,6 +532,7 @@ input[type=color]::-moz-color-swatch{border:none;border-radius:8px}
 .pal-swatch:hover .hx{color:#fff}
 .swatch-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .swatch-grid span{width:32px;height:32px;border-radius:8px;cursor:pointer;border:1px solid rgba(255,255,255,.14)}
+.code-area{font-family:ui-monospace,'Space Grotesk',Consolas,monospace!important;font-size:.9rem;line-height:1.5;tab-size:2}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .tab{flex:1;min-width:128px;cursor:pointer;background:var(--surface-2);border:1px solid var(--border);color:#c3c8d6;font-weight:600;font-size:.9rem;padding:12px 10px;border-radius:12px;font-family:inherit;transition:.15s;text-align:center}
 .tab:hover{border-color:var(--accent);color:#fff}
