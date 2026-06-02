@@ -514,6 +514,24 @@ input[type=color]::-moz-color-swatch{border:none;border-radius:8px}
 .meme-wrap canvas{max-width:100%;max-height:440px;border-radius:12px;border:1px solid var(--border);background:#0b0d12}
 .itp-chk{position:absolute;top:6px;left:6px;z-index:2;line-height:0}
 .itp-chk input{width:20px;height:20px;accent-color:#5e8bff;cursor:pointer;margin:0;display:block}
+.swatch{height:120px;border-radius:14px;border:1px solid var(--border);box-shadow:inset 0 1px 1px rgba(255,255,255,.08)}
+.cval-row{display:flex;align-items:center;gap:10px;background:var(--surface-2);border:1px solid var(--border);border-radius:11px;padding:10px 14px;margin-top:10px}
+.cval-row .k{font-size:.74rem;color:var(--muted);width:40px;flex-shrink:0;text-transform:uppercase;letter-spacing:.04em}
+.cval-row .v{flex:1;min-width:0;font-family:'Space Grotesk',ui-monospace,monospace;font-size:.95rem;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cval-row button{background:var(--surface);border:1px solid var(--border);color:#cbd2e0;border-radius:8px;padding:6px 12px;font-size:.8rem;cursor:pointer;font-family:inherit;white-space:nowrap;transition:.15s}
+.cval-row button:hover{border-color:var(--accent);color:#fff}
+.grad-preview{height:170px;border-radius:14px;border:1px solid var(--border)}
+.grad-stops{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+.grad-stop{display:flex;align-items:center;gap:10px}
+.grad-stop input[type=range]{flex:1}
+.grad-stop .pv{font-size:.78rem;color:var(--muted);width:42px;text-align:right}
+.palette{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:12px;margin-top:16px}
+.pal-swatch{border-radius:12px;overflow:hidden;border:1px solid var(--border);cursor:pointer}
+.pal-swatch .clr{height:84px}
+.pal-swatch .hx{font-size:.78rem;text-align:center;padding:7px 4px;font-family:'Space Grotesk',ui-monospace,monospace;color:#cbd2e0;background:var(--surface-2);transition:.15s}
+.pal-swatch:hover .hx{color:#fff}
+.swatch-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.swatch-grid span{width:32px;height:32px;border-radius:8px;cursor:pointer;border:1px solid rgba(255,255,255,.14)}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .tab{flex:1;min-width:128px;cursor:pointer;background:var(--surface-2);border:1px solid var(--border);color:#c3c8d6;font-weight:600;font-size:.9rem;padding:12px 10px;border-radius:12px;font-family:inherit;transition:.15s;text-align:center}
 .tab:hover{border-color:var(--accent);color:#fff}

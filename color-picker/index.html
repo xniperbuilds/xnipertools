@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Color Picker, Gradient Generator &amp; Palette Tool | Xnipertools</title>
+<meta name="description" content="Free color tools: pick a colour and copy HEX, RGB and HSL, build CSS gradients, and generate matching colour palettes — fast and free, right in your browser.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/color-picker/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/color-picker/">
+<meta property="og:title" content="Color Picker, Gradient Generator & Palette Tool">
+<meta property="og:description" content="Pick a colour and copy HEX/RGB/HSL, build CSS gradients, and generate matching palettes. Free, in your browser.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Color Picker, Gradient Generator & Palette Tool">
+<meta name="twitter:description" content="Pick colours (HEX/RGB/HSL), build CSS gradients, and generate palettes. Free, in your browser.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Color Picker, Gradient & Palette Tool","url":"https://xnipertools.com/color-picker/","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I copy a colour code?","acceptedAnswer":{"@type":"Answer","text":"Pick a colour, then tap Copy next to the HEX, RGB or HSL value to copy that code to your clipboard."}},{"@type":"Question","name":"Can I create a CSS gradient?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the Gradient tab, choose linear or radial, set your colours and angle, and copy the ready-made CSS background code."}},{"@type":"Question","name":"What is a colour palette generator?","acceptedAnswer":{"@type":"Answer","text":"It creates a set of colours that go well together from one base colour — complementary, analogous, triadic and more — so your designs look balanced."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Design Tools</span><span class="sep">/</span><span>Color Picker</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🎨</div>
+    <div>
+      <h1>Color Picker, Gradient &amp; Palette</h1>
+      <p>Pick a colour and copy <b>HEX / RGB / HSL</b>, build <b>CSS gradients</b>, and generate matching <b>palettes</b>.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="tabs">
+      <button class="tab active" data-tab="pick" type="button">🎨 Picker</button>
+      <button class="tab" data-tab="grad" type="button">🌈 Gradient</button>
+      <button class="tab" data-tab="pal" type="button">🎭 Palette</button>
+    </div>
+
+    <!-- PICKER -->
+    <div class="panel" id="panel-pick">
+      <div class="row cols-2">
+        <div><label for="pick">Pick a colour</label><input type="color" id="pick" value="#5e8bff" style="width:100%;height:54px"></div>
+        <div><label for="hexIn">Or paste HEX</label><input type="text" id="hexIn" value="#5E8BFF" maxlength="7" autocomplete="off" spellcheck="false"></div>
+      </div>
+      <div class="swatch mt" id="sw"></div>
+      <div class="cval-row"><span class="k">HEX</span><span class="v" id="vHex">#5E8BFF</span><button data-copy="vHex" type="button">Copy</button></div>
+      <div class="cval-row"><span class="k">RGB</span><span class="v" id="vRgb">rgb(94, 139, 255)</span><button data-copy="vRgb" type="button">Copy</button></div>
+      <div class="cval-row"><span class="k">HSL</span><span class="v" id="vHsl">hsl(223, 100%, 68%)</span><button data-copy="vHsl" type="button">Copy</button></div>
+      <button class="btn ghost mt" id="eyedrop" style="display:none;width:auto" type="button">💧 Pick from screen</button>
+      <div class="swatch-grid" id="presets"></div>
+    </div>
+
+    <!-- GRADIENT -->
+    <div class="panel" id="panel-grad" style="display:none">
+      <div class="grad-preview" id="gradPrev"></div>
+      <div class="row cols-2 mt">
+        <div><label for="gtype">Type</label><select id="gtype"><option value="linear">Linear</option><option value="radial">Radial</option></select></div>
+        <div><label>Angle <span class="muted" id="gangV">90°</span></label><input type="range" id="gang" min="0" max="360" value="90"></div>
+      </div>
+      <div class="grad-stops">
+        <div class="grad-stop"><input type="color" id="gc1" value="#5e8bff"><input type="range" id="gp1" min="0" max="100" value="0"><span class="pv" id="gp1v">0%</span></div>
+        <div class="grad-stop"><input type="color" id="gc2" value="#9b6cff"><input type="range" id="gp2" min="0" max="100" value="100"><span class="pv" id="gp2v">100%</span></div>
+      </div>
+      <div class="cval-row mt"><span class="k">CSS</span><span class="v" id="gradCss"></span><button data-copy="gradCss" type="button">Copy</button></div>
+      <button class="btn ghost mt" id="grandom" style="width:auto" type="button">🎲 Random gradient</button>
+    </div>
+
+    <!-- PALETTE -->
+    <div class="panel" id="panel-pal" style="display:none">
+      <div class="row cols-2">
+        <div><label for="palBase">Base colour</label><input type="color" id="palBase" value="#5e8bff" style="width:100%;height:54px"></div>
+        <div><label for="palType">Harmony</label><select id="palType"><option value="complementary">Complementary</option><option value="analogous">Analogous</option><option value="triadic" selected>Triadic</option><option value="tetradic">Tetradic</option><option value="monochromatic">Monochromatic (shades)</option></select></div>
+      </div>
+      <div class="palette" id="palette"></div>
+      <div class="muted mt" style="font-size:.85rem">Tap any colour to copy its HEX.</div>
+      <button class="btn ghost mt" id="palRandom" style="width:auto" type="button">🎲 Random base</button>
+    </div>
+
+    <div class="wa-hint ok" id="hint"></div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>Why use our Color tools?</h2>
+    <p>Three colour tools in one place for designers, developers and anyone who works with colour. The <b>Color Picker</b> lets you pick any colour and instantly copy its <b>HEX</b>, <b>RGB</b> and <b>HSL</b> codes — and on supported browsers you can even eyedrop a colour from anywhere on your screen. The <b>Gradient Generator</b> builds linear and radial CSS gradients with a live preview and ready-to-paste <code>background</code> code. The <b>Palette Generator</b> turns one base colour into a balanced set — complementary, analogous, triadic, tetradic or monochromatic shades.</p>
+    <p>Everything runs in your browser, free, with no sign-up — perfect for websites, UI design, branding, posters and social graphics.</p>
+    <h3>How do I copy a colour code?</h3>
+    <p>Pick a colour, then tap <b>Copy</b> next to the HEX, RGB or HSL value.</p>
+    <h3>Can I create a CSS gradient?</h3>
+    <p>Yes — open the Gradient tab, set your colours, type and angle, and copy the generated CSS.</p>
+    <h3>What is a colour palette generator?</h3>
+    <p>It builds a set of colours that work well together from one base colour, so your designs stay balanced.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../qr-code-generator/" class="card"><div class="ico">🔳</div><h3>QR Code Generator</h3><p>Custom QR with colours &amp; logo.</p><span class="go">Open tool →</span></a>
+      <a href="../image-compressor/" class="card"><div class="ico">🗜️</div><h3>Image Tools</h3><p>Compress, resize, convert &amp; crop.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../color-picker/">Color Picker</a><a href="../qr-code-generator/">QR Code Generator</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(id){return document.getElementById(id);};
+
+function hexToRgb(h){h=(h||'').replace('#','');if(h.length===3)h=h.split('').map(function(c){return c+c;}).join('');var n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255];}
+function rgbToHex(r,g,b){return '#'+[r,g,b].map(function(x){return ('0'+Math.round(x).toString(16)).slice(-2);}).join('').toUpperCase();}
+function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;var mx=Math.max(r,g,b),mn=Math.min(r,g,b),h,s,l=(mx+mn)/2;if(mx===mn){h=s=0;}else{var d=mx-mn;s=l>0.5?d/(2-mx-mn):d/(mx+mn);switch(mx){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;default:h=(r-g)/d+4;}h/=6;}return [Math.round(h*360),Math.round(s*100),Math.round(l*100)];}
+function hslToRgb(h,s,l){h=((h%360)+360)%360;h/=360;s/=100;l/=100;var r,g,b;if(s===0){r=g=b=l;}else{var f=function(p,q,t){if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;};var q=l<0.5?l*(1+s):l+s-l*s,p=2*l-q;r=f(p,q,h+1/3);g=f(p,q,h);b=f(p,q,h-1/3);}return [r*255,g*255,b*255];}
+function hslHex(h,s,l){var c=hslToRgb(h,s,Math.max(0,Math.min(100,l)));return rgbToHex(c[0],c[1],c[2]);}
+
+/* PICKER */
+var pick=$('pick'),hexIn=$('hexIn'),sw=$('sw');
+function setColor(hex){
+  if(!/^#?[0-9a-fA-F]{3}$|^#?[0-9a-fA-F]{6}$/.test(hex))return;
+  var rgb=hexToRgb(hex);hex=rgbToHex(rgb[0],rgb[1],rgb[2]);var hsl=rgbToHsl(rgb[0],rgb[1],rgb[2]);
+  pick.value=hex.toLowerCase();hexIn.value=hex;sw.style.background=hex;
+  $('vHex').textContent=hex;$('vRgb').textContent='rgb('+rgb[0]+', '+rgb[1]+', '+rgb[2]+')';$('vHsl').textContent='hsl('+hsl[0]+', '+hsl[1]+'%, '+hsl[2]+'%)';
+}
+pick.addEventListener('input',function(){setColor(pick.value);});
+hexIn.addEventListener('input',function(){var v=hexIn.value.trim();if(/^#?[0-9a-fA-F]{6}$/.test(v)||/^#?[0-9a-fA-F]{3}$/.test(v))setColor(v.charAt(0)==='#'?v:'#'+v);});
+var PRESETS=['#000000','#ffffff','#ef4444','#f59e0b','#eab308','#22c55e','#10b981','#06b6d4','#3b82f6','#5e8bff','#8b5cf6','#ec4899'];
+$('presets').innerHTML=PRESETS.map(function(c){return '<span style="background:'+c+'" data-set="'+c+'" title="'+c+'"></span>';}).join('');
+$('presets').addEventListener('click',function(e){if(e.target.dataset.set)setColor(e.target.dataset.set);});
+if(window.EyeDropper){$('eyedrop').style.display='';$('eyedrop').addEventListener('click',function(){new EyeDropper().open().then(function(r){setColor(r.sRGBHex);}).catch(function(){});});}
+
+/* GRADIENT */
+var gtype=$('gtype'),gang=$('gang'),gc1=$('gc1'),gp1=$('gp1'),gc2=$('gc2'),gp2=$('gp2');
+function buildGrad(){
+  $('gp1v').textContent=gp1.value+'%';$('gp2v').textContent=gp2.value+'%';$('gangV').textContent=gang.value+'°';
+  var stops=gc1.value+' '+gp1.value+'%, '+gc2.value+' '+gp2.value+'%';
+  var css=gtype.value==='linear'?'linear-gradient('+gang.value+'deg, '+stops+')':'radial-gradient(circle, '+stops+')';
+  $('gradPrev').style.background=css;$('gradCss').textContent='background: '+css+';';
+  gang.disabled=(gtype.value==='radial');gang.style.opacity=gang.disabled?'.4':'1';
+}
+[gtype,gang,gc1,gp1,gc2,gp2].forEach(function(el){el.addEventListener('input',buildGrad);});
+$('grandom').addEventListener('click',function(){
+  gc1.value=hslHex(Math.floor(Math.random()*360),70,60).toLowerCase();
+  gc2.value=hslHex(Math.floor(Math.random()*360),70,55).toLowerCase();
+  gang.value=Math.floor(Math.random()*360);buildGrad();
+});
+
+/* PALETTE */
+var palBase=$('palBase'),palType=$('palType');
+function buildPalette(){
+  var rgb=hexToRgb(palBase.value),hsl=rgbToHsl(rgb[0],rgb[1],rgb[2]),h=hsl[0],s=hsl[1],l=hsl[2],t=palType.value,cols;
+  if(t==='complementary')cols=[hslHex(h,s,l),hslHex(h+180,s,l)];
+  else if(t==='analogous')cols=[hslHex(h-30,s,l),hslHex(h,s,l),hslHex(h+30,s,l)];
+  else if(t==='triadic')cols=[hslHex(h,s,l),hslHex(h+120,s,l),hslHex(h+240,s,l)];
+  else if(t==='tetradic')cols=[hslHex(h,s,l),hslHex(h+90,s,l),hslHex(h+180,s,l),hslHex(h+270,s,l)];
+  else {cols=[];for(var i=0;i<5;i++)cols.push(hslHex(h,s,18+i*16));}
+  $('palette').innerHTML=cols.map(function(c){return '<div class="pal-swatch" data-hex="'+c+'"><div class="clr" style="background:'+c+'"></div><div class="hx">'+c+'</div></div>';}).join('');
+}
+[palBase,palType].forEach(function(el){el.addEventListener('input',buildPalette);});
+$('palRandom').addEventListener('click',function(){palBase.value=hslHex(Math.floor(Math.random()*360),65,55).toLowerCase();buildPalette();});
+
+/* COPY (generic) */
+function flash(btn,txt){if(!btn)return;var o=btn.textContent;btn.textContent=txt||'Copied ✓';setTimeout(function(){btn.textContent=o;},1300);}
+function copyText(t,btn,txt){if(!t)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){flash(btn,txt);}).catch(function(){fb();});}else fb();function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');flash(btn,txt);}catch(e){}ta.remove();}}
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('[data-copy]');
+  if(b){var el=$(b.dataset.copy);if(el)copyText(el.textContent,b);return;}
+  var swt=e.target.closest&&e.target.closest('.pal-swatch');
+  if(swt&&swt.dataset.hex)copyText(swt.dataset.hex,swt.querySelector('.hx'),'Copied ✓');
+});
+
+/* TABS */
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});t.classList.add('active');
+  ['pick','grad','pal'].forEach(function(k){$('panel-'+k).style.display=(k===t.dataset.tab)?'':'none';});
+});});
+
+setColor('#5e8bff');buildGrad();buildPalette();
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.disabled)return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
