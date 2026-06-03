@@ -72,8 +72,11 @@
       <div class="ff-actions mt">
         <button class="btn" id="remove">🪄 Remove Background</button>
         <a class="btn wa" id="dl" style="display:none">📥 Download PNG</a>
-        <a class="btn ghost" id="enhance" href="../image-upscaler/" style="display:none">🔍 Enhance</a>
         <button class="btn ghost" id="newImg">↺ New image</button>
+      </div>
+      <div id="enhanceBox" class="mt" style="display:none;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.03);text-align:center">
+        <p style="font-size:.92rem;color:#c3c8d6;margin-bottom:13px;line-height:1.6">✨ <b style="color:#fff">Want a sharper, higher-resolution result?</b><br>First download your transparent PNG above. Then enhance it with our free <b>Image Upscaler</b> — it opens on a new page with your image ready to go.</p>
+        <a class="btn ghost" id="enhance" href="../image-upscaler/" style="width:auto">🔍 Enhance this image →</a>
       </div>
     </div>
     <div class="wa-hint ok" id="hint"></div>
@@ -159,9 +162,9 @@ removeBtn.addEventListener('click',function(){
   }).then(function(blob){
     clearInterval(creep);resultBlob=blob;
     if(resultURL)URL.revokeObjectURL(resultURL);resultURL=URL.createObjectURL(blob);
-    prev.src=resultURL;dl.href=resultURL;dl.setAttribute('download','no-bg-xnipertools.png');dl.style.display='';$('enhance').style.display='';
+    prev.src=resultURL;dl.href=resultURL;dl.setAttribute('download','no-bg-xnipertools.png');dl.style.display='';$('enhanceBox').style.display='';
     removeBtn.disabled=false;bar.style.width='100%';
-    setHint('✓ Background removed — download your transparent PNG, or tap Enhance to upscale it.',false);
+    setHint('✓ Background removed — download your transparent PNG below.',false);
     setTimeout(function(){prog.style.display='none';bar.style.width='0';},900);
   }).catch(function(e){
     clearInterval(creep);removeBtn.disabled=false;prog.style.display='none';bar.style.width='0';
@@ -169,7 +172,7 @@ removeBtn.addEventListener('click',function(){
   });
 });
 
-$('newImg').addEventListener('click',function(){originalFile=null;resultBlob=null;file.value='';editor.style.display='none';drop.style.display='';dl.style.display='none';$('enhance').style.display='none';prog.style.display='none';setHint('',false);});
+$('newImg').addEventListener('click',function(){originalFile=null;resultBlob=null;file.value='';editor.style.display='none';drop.style.display='';dl.style.display='none';$('enhanceBox').style.display='none';prog.style.display='none';setHint('',false);});
 
 (function(){var seen=null;try{seen=localStorage.getItem('xt_bg_intro');}catch(e){}
   if(!seen)$('introModal').classList.add('show');
