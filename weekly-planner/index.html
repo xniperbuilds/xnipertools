@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Weekly Planner Online - Plan Your Week | Xnipertools</title>
+<meta name="description" content="Plan your week with a free online weekly planner. Add daily tasks, track progress with rings, pick a colour theme, auto-save and download your plan as an image.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="canonical" href="https://xnipertools.com/weekly-planner/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/weekly-planner/">
+<meta property="og:title" content="Free Weekly Planner - Plan Your Week Online">
+<meta property="og:description" content="A beautiful free weekly planner. Daily tasks, progress rings, colour themes, auto-save and a downloadable image. No signup.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Weekly Planner - Plan Your Week Online">
+<meta name="twitter:description" content="A beautiful free weekly planner. Daily tasks, progress rings, colour themes, auto-save and a downloadable image. No signup.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Weekly Planner","url":"https://xnipertools.com/weekly-planner/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this weekly planner free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The weekly planner is 100% free with no signup, no watermark and no limits. Add as many tasks as you like, every week."}},{"@type":"Question","name":"Will my tasks be saved?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your plan is saved automatically in your browser, so it stays on this device even after you close the tab. Nothing is uploaded to any server."}},{"@type":"Question","name":"Can I download or print my weekly planner?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can download your plan as a high-resolution image to share or set as a wallpaper, or print it straight from the page."}},{"@type":"Question","name":"Can I change the look of the planner?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pick from several colour themes — Indigo, Emerald, Violet, Rose, Amber, Cyan, Sunset and Slate. Your choice is saved automatically."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Weekly Planner","item":"https://xnipertools.com/weekly-planner/"}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+/* ===== Weekly Planner (theme-driven) ===== */
+.planner{--pa:#5e8bff;--pa2:#8fb0ff;--pg1:#6f97f5;--pg2:#3f63d8;--pglow:rgba(94,139,255,.3)}
+.plan-top{display:flex;flex-direction:column;gap:14px}
+.plan-titles{display:grid;gap:12px}
+@media(min-width:680px){.plan-titles{grid-template-columns:1fr 1.3fr}}
+.plan-titles .fld{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:13px;padding:0 14px;transition:.18s}
+.plan-titles .fld:focus-within{border-color:var(--pa);box-shadow:0 0 0 3px var(--pglow)}
+.plan-titles .fld svg{color:var(--pa2);flex-shrink:0}
+.plan-titles input{border:none!important;background:transparent!important;box-shadow:none!important;padding:14px 0!important}
+.plan-titles input:focus{box-shadow:none!important}
+#planTitle{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem}
+
+.plan-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px}
+.weekpick{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;padding:4px}
+.weekpick button{width:38px;height:38px;border:none;background:transparent;color:var(--pa2);font-size:1.2rem;cursor:pointer;border-radius:9px;display:grid;place-items:center;transition:.15s}
+.weekpick button:hover{background:rgba(255,255,255,.08);color:#fff}
+.week-range{font-weight:600;font-size:.92rem;color:#d2d6e4;min-width:150px;text-align:center;padding:0 6px;font-variant-numeric:tabular-nums}
+.week-range small{display:block;font-size:.7rem;color:var(--muted);font-weight:500}
+.plan-bar .spacer{flex:1 1 0;min-width:8px}
+.icon-btn{display:inline-flex;align-items:center;gap:7px;cursor:pointer;border:1px solid var(--border);background:var(--surface-2);color:#e7eaf2;font-weight:600;font-size:.86rem;font-family:inherit;padding:10px 14px;border-radius:11px;transition:.15s;min-height:42px}
+.icon-btn:hover{border-color:var(--border-2);background:rgba(255,255,255,.08);transform:translateY(-1px)}
+.icon-btn.prime{background:linear-gradient(135deg,var(--pg1),var(--pg2));border-color:transparent;color:#fff;box-shadow:0 8px 22px var(--pglow)}
+.icon-btn.danger:hover{border-color:rgba(248,113,113,.5);color:#f87171}
+.icon-btn svg{width:16px;height:16px}
+
+/* theme panel */
+.theme-panel{margin-top:14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:none}
+.theme-panel.open{display:block;animation:popIn .3s cubic-bezier(.2,.8,.2,1)}
+.theme-panel .tp-lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+.theme-row{display:flex;flex-wrap:wrap;gap:9px}
+.tchip{display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,.04);color:#cfd4e0;font-weight:600;font-size:.84rem;font-family:inherit;padding:8px 13px;border-radius:30px;transition:.15s}
+.tchip:hover{border-color:var(--border-2);transform:translateY(-2px)}
+.tchip .sw{width:15px;height:15px;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.12)}
+.tchip.active{color:#fff;border-color:transparent;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+
+/* overview */
+.overview{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:18px;padding:18px 20px;border-radius:16px;
+  background:linear-gradient(135deg,var(--pglow),rgba(255,255,255,.02));border:1px solid var(--border)}
+.ov-ring{flex-shrink:0}
+.ov-stats{display:flex;gap:26px;flex-wrap:wrap;flex:1;min-width:200px}
+.ov-stat .n{font-family:'Space Grotesk',sans-serif;font-size:1.7rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.ov-stat .l{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:4px}
+.ov-done .n{color:var(--pa2)}
+.ov-msg{width:100%;margin-top:2px;font-weight:600;color:var(--pa2);font-size:.95rem;display:none}
+.ov-msg.show{display:block;animation:popIn .4s}
+
+/* rings */
+.ringwrap{position:relative;display:grid;place-items:center}
+.ringwrap.ov{width:86px;height:86px}
+.ringwrap.dring{width:46px;height:46px}
+.ring{width:100%;height:100%;transform:rotate(-90deg)}
+.ring-track{fill:none;stroke:rgba(255,255,255,.1);stroke-width:3}
+.ring-fill{fill:none;stroke:var(--pa);stroke-width:3;stroke-linecap:round;stroke-dasharray:100;transition:stroke-dashoffset .65s cubic-bezier(.3,.8,.3,1)}
+.ringwrap.dring .ring-track,.ringwrap.dring .ring-fill{stroke-width:3.4}
+.ring-lbl{position:absolute;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
+.ringwrap.ov .ring-lbl{font-size:1.4rem}
+.ringwrap.dring .ring-lbl{font-size:.74rem;color:#cfd4e0}
+.ring-lbl i{font-style:normal;font-size:.6em;opacity:.7;margin-left:1px}
+
+/* week grid */
+.week-grid{display:grid;gap:12px;margin-top:18px;grid-template-columns:1fr}
+@media(min-width:480px){.week-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:720px){.week-grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1024px){.week-grid{grid-template-columns:repeat(7,1fr)}}
+.day{display:flex;flex-direction:column;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:15px;padding:13px;min-height:150px;transition:border-color .2s,box-shadow .2s}
+.day.today{border-color:var(--pa);box-shadow:0 0 0 1px var(--pa),0 10px 30px var(--pglow)}
+.day.complete{background:linear-gradient(160deg,var(--pglow),rgba(255,255,255,.02))}
+.day-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+.day-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;display:flex;align-items:center;gap:6px}
+.day-name em{font-style:normal;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#fff;background:linear-gradient(135deg,var(--pg1),var(--pg2));padding:2px 6px;border-radius:20px}
+.day-date{font-size:.74rem;color:var(--muted);margin-top:1px;font-variant-numeric:tabular-nums}
+.tasks{display:flex;flex-direction:column;gap:6px;flex:1}
+.task{display:flex;align-items:flex-start;gap:8px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:7px 8px;transition:.15s}
+.task:hover{border-color:var(--border-2)}
+.task.star{border-color:var(--pa);background:var(--pglow)}
+.t-check{flex-shrink:0;width:22px;height:22px;border-radius:7px;border:2px solid var(--muted-2);background:transparent;cursor:pointer;display:grid;place-items:center;padding:0;transition:.15s;margin-top:1px;position:relative}
+.t-check:hover{border-color:var(--pa)}
+.t-check svg{width:13px;height:13px;color:#fff;opacity:0;transform:scale(.5);transition:.18s;stroke-width:3.4}
+.task.done .t-check{background:linear-gradient(135deg,var(--pg1),var(--pg2));border-color:transparent}
+.task.done .t-check svg{opacity:1;transform:scale(1)}
+/* expand tap target */
+.t-check::after{content:"";position:absolute;inset:-9px}
+.t-text{flex:1;font-size:.86rem;color:#e7eaf2;line-height:1.4;overflow-wrap:anywhere;padding-top:1px}
+.task.done .t-text{color:var(--muted-2);text-decoration:line-through}
+.t-star,.t-del{flex-shrink:0;width:24px;height:24px;border:none;background:transparent;cursor:pointer;color:var(--muted-2);display:grid;place-items:center;padding:0;border-radius:6px;transition:.15s}
+.t-star svg,.t-del svg{width:14px;height:14px}
+.t-star:hover{color:#f5b400}.task.star .t-star{color:#f5b400}.task.star .t-star svg{fill:#f5b400}
+.t-del:hover{color:#f87171}
+.day-empty{font-size:.8rem;color:var(--muted-2);text-align:center;padding:10px 4px;border:1px dashed var(--border);border-radius:10px}
+.add-row{display:flex;gap:6px;margin-top:9px}
+.add-input{flex:1;min-width:0;padding:9px 11px!important;font-size:.84rem!important;border-radius:10px!important}
+.add-btn{flex-shrink:0;width:38px;height:38px;border:none;border-radius:10px;cursor:pointer;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--pg1),var(--pg2));box-shadow:0 5px 14px var(--pglow);transition:.15s}
+.add-btn:hover{transform:translateY(-1px);filter:brightness(1.07)}
+.add-btn svg{width:17px;height:17px;stroke-width:2.6}
+.day-clear{margin-top:9px;align-self:flex-start;background:none;border:none;color:var(--muted-2);font-size:.74rem;font-weight:600;cursor:pointer;font-family:inherit;padding:2px}
+.day-clear:hover{color:#f87171}
+
+/* habit tracker */
+.habits{margin-top:22px;padding-top:20px;border-top:1px solid var(--border)}
+.habit-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.habit-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;display:flex;align-items:center;gap:9px}
+.habit-title .hi{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:.9rem;background:var(--surface-2);border:1px solid var(--border)}
+.habit-hint{font-size:.8rem;color:var(--muted)}
+.habit-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px}
+.habit-table{min-width:430px}
+.ht-row{display:grid;grid-template-columns:minmax(110px,1.4fr) repeat(7,1fr) 48px;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid var(--border)}
+.ht-row:last-child{border-bottom:none}
+.ht-row.ht-h{border-bottom:1px solid var(--border-2);padding-bottom:8px}
+.ht-d-lbl{text-align:center;font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase}
+.ht-name{display:flex;align-items:center;gap:5px;font-size:.88rem;font-weight:600;color:#e7eaf2;overflow:hidden}
+.ht-name>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ht-del{flex-shrink:0;width:23px;height:23px;border:none;background:transparent;color:var(--muted-2);cursor:pointer;display:grid;place-items:center;padding:0;border-radius:6px}
+.ht-del svg{width:13px;height:13px}.ht-del:hover{color:#f87171}
+.ht-cell{width:30px;height:30px;margin:0 auto;border-radius:8px;border:2px solid var(--muted-2);background:transparent;cursor:pointer;display:grid;place-items:center;padding:0;transition:.15s;position:relative}
+.ht-cell::after{content:"";position:absolute;inset:-6px}
+.ht-cell:hover{border-color:var(--pa)}
+.ht-cell.on{background:linear-gradient(135deg,var(--pg1),var(--pg2));border-color:transparent}
+.ht-cell svg{width:15px;height:15px;color:#fff;stroke-width:3.4}
+.ht-sum{text-align:center;font-weight:700;font-size:.82rem;color:var(--pa2);font-variant-numeric:tabular-nums}
+.ht-sum.full{font-size:1rem}
+.ht-h .ht-sum{color:var(--muted);font-size:.72rem;text-transform:uppercase}
+.habit-add{display:flex;gap:8px;margin-top:14px;max-width:430px}
+.habit-add input{flex:1;min-width:0;padding:11px 13px!important;font-size:.88rem!important;border-radius:11px!important}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:120;display:flex;align-items:center;gap:14px;
+  background:#14161f;border:1px solid var(--border-2);border-radius:13px;padding:12px 16px;box-shadow:0 16px 40px rgba(0,0,0,.5);
+  opacity:0;pointer-events:none;transition:.3s;font-size:.9rem;color:#e7eaf2}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.toast button{background:none;border:none;color:var(--pa2);font-weight:700;cursor:pointer;font-family:inherit;font-size:.9rem}
+
+/* ===== off-screen download card ===== */
+#cardHolder{position:fixed;left:-99999px;top:0;pointer-events:none}
+#plannerCard{width:1080px;background:#0b0d14;color:#fff;font-family:'Inter',Arial,sans-serif;box-sizing:border-box;overflow:hidden}
+#plannerCard .pc-top{height:10px}
+#plannerCard .pc-in{padding:48px 50px 40px}
+#plannerCard .pc-title{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;letter-spacing:-1px;line-height:1.05}
+#plannerCard .pc-range{font-size:22px;font-weight:600;margin-top:10px}
+#plannerCard .pc-focus{display:inline-block;margin-top:18px;font-size:24px;font-weight:600;padding:12px 22px;border-radius:14px}
+#plannerCard .pc-ov{display:flex;align-items:center;gap:22px;margin-top:26px;padding:22px 26px;border-radius:18px;border:1px solid rgba(255,255,255,.1)}
+#plannerCard .pc-ov .big{font-family:'Space Grotesk',sans-serif;font-size:54px;font-weight:700;line-height:1}
+#plannerCard .pc-ov .sub{font-size:22px;color:#aab0c4}
+#plannerCard .pc-bar{flex:1;height:16px;border-radius:10px;background:rgba(255,255,255,.1);overflow:hidden;min-width:180px}
+#plannerCard .pc-bar i{display:block;height:100%;border-radius:10px}
+#plannerCard .pc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+#plannerCard .pc-day{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:20px 22px;background:rgba(255,255,255,.02)}
+#plannerCard .pc-dh{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:12px;margin-bottom:14px}
+#plannerCard .pc-dn{font-family:'Space Grotesk',sans-serif;font-size:27px;font-weight:700}
+#plannerCard .pc-dd{font-size:18px;color:#8088a0}
+#plannerCard .pc-dc{font-size:18px;font-weight:700}
+#plannerCard .pc-t{display:flex;align-items:flex-start;gap:12px;margin:11px 0;font-size:22px;line-height:1.35}
+#plannerCard .pc-box{width:26px;height:26px;border-radius:7px;flex-shrink:0;margin-top:1px;display:grid;place-items:center;font-size:18px;font-weight:800;color:#fff}
+#plannerCard .pc-t.done span{color:#7b8299;text-decoration:line-through}
+#plannerCard .pc-empty{color:#6c7390;font-size:20px;padding:6px 0}
+#plannerCard .pc-foot{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:36px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
+#plannerCard .pc-foot img{width:42px;height:42px}
+#plannerCard .pc-foot .ft{text-align:left}
+#plannerCard .pc-foot .lnk{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700}
+#plannerCard .pc-foot .tag{font-size:16px;color:#7b8299}
+#plannerCard .pc-habits{margin-top:30px}
+#plannerCard .pc-hh{font-family:'Space Grotesk',sans-serif;font-size:32px;font-weight:700;margin-bottom:14px}
+#plannerCard .pc-hrow{display:grid;grid-template-columns:1fr repeat(7,44px) 76px;align-items:center;gap:8px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+#plannerCard .pc-hrow:last-child{border-bottom:none}
+#plannerCard .pc-hname{font-size:23px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#plannerCard .pc-hlbl{font-size:16px;color:#8088a0;text-align:center;font-weight:700}
+#plannerCard .pc-hd{width:36px;height:36px;border-radius:9px;margin:0 auto;display:grid;place-items:center;font-size:21px;font-weight:800;color:#fff}
+#plannerCard .pc-hsum{text-align:center;font-size:23px;font-weight:800}
+
+/* ===== print ===== */
+@media print{
+  #loader,.aurora,.grain,header.site,footer.site,.breadcrumb,.ad-slot,.article,.section,.tool-head .ic,.tool-head p,.plan-bar,.theme-panel,.secure-note,.add-row,.day-clear,.t-del,.t-star,.habit-add,.ht-del,.toast,body::after{display:none!important}
+  body{background:#fff!important;color:#000!important}
+  .container{max-width:100%}
+  .tool-box{background:#fff!important;border:none!important;box-shadow:none!important;backdrop-filter:none!important;padding:0!important;margin-top:6px!important}
+  .tool-head h1{color:#000}
+  .plan-titles input{color:#000!important}
+  .overview{background:#f4f6fb!important;border:1px solid #ccc!important}
+  .ov-stat .n,.ring-lbl{color:#000!important}.ov-done .n{color:#000!important}
+  .week-grid{grid-template-columns:repeat(2,1fr)!important;gap:8px}
+  .day{border:1px solid #bbb!important;background:#fff!important;break-inside:avoid;min-height:0}
+  .day-name,.t-text{color:#000!important}
+  .task{border:1px solid #ddd!important;background:#fff!important}
+  .task.done .t-text{color:#888!important}
+  .t-check{border-color:#000!important}
+  .habits{border-top:1px solid #bbb!important}
+  .habit-title,.ht-name>span,.ht-d-lbl,.ht-sum,.pc-hh{color:#000!important}
+  .ht-cell{border-color:#000!important}.habit-scroll{overflow:visible!important}
+}
+</style>
+</head>
+<body>
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Productivity</span><span class="sep">/</span><span>Weekly Planner</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🗓️</div>
+    <div>
+      <h1>Free Weekly Planner</h1>
+      <p>Plan your whole week in one place — add daily tasks, watch your <b>progress rings</b> fill up, pick a <b>colour theme</b>, and download or print your plan. Saved automatically.</p>
+    </div>
+  </div>
+
+  <div class="tool-box planner" id="planner">
+    <div class="plan-top">
+      <div class="plan-titles">
+        <div class="fld">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
+          <input id="planTitle" type="text" maxlength="40" placeholder="My Week" aria-label="Planner title">
+        </div>
+        <div class="fld">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>
+          <input id="planFocus" type="text" maxlength="70" placeholder="This week's focus (optional)" aria-label="This week's focus">
+        </div>
+      </div>
+    </div>
+
+    <div class="plan-bar">
+      <div class="weekpick">
+        <button id="prevWk" aria-label="Previous week" title="Previous week">‹</button>
+        <span class="week-range" id="weekRange">—</span>
+        <button id="nextWk" aria-label="Next week" title="Next week">›</button>
+      </div>
+      <button class="icon-btn" id="todayBtn">Today</button>
+      <span class="spacer"></span>
+      <button class="icon-btn" id="themeBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2a10 10 0 1 0 0 20 2.5 2.5 0 0 0 2-4 2.5 2.5 0 0 1 2-4h2a4 4 0 0 0 4-4 10 10 0 0 0-10-8Z"/></svg>Themes</button>
+      <button class="icon-btn prime" id="dlBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 21h14"/></svg>Download</button>
+      <button class="icon-btn" id="printBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M8 14h8v7H8z"/></svg>Print</button>
+      <button class="icon-btn danger" id="resetBtn" title="Uncheck everything for a fresh week">New week</button>
+      <button class="icon-btn danger" id="clearBtn">Clear all</button>
+    </div>
+
+    <div class="theme-panel" id="themePanel">
+      <div class="tp-lbl">Planner theme</div>
+      <div class="theme-row" id="themeRow"></div>
+    </div>
+
+    <div class="overview">
+      <div class="ringwrap ov" id="weekRingWrap">
+        <svg viewBox="0 0 36 36" class="ring"><circle class="ring-track" cx="18" cy="18" r="15.915"/><circle class="ring-fill" id="weekRingFill" cx="18" cy="18" r="15.915" style="stroke-dashoffset:100"/></svg>
+        <span class="ring-lbl" id="weekPct">0<i>%</i></span>
+      </div>
+      <div class="ov-stats">
+        <div class="ov-stat"><div class="n" id="statTotal">0</div><div class="l">Tasks</div></div>
+        <div class="ov-stat ov-done"><div class="n" id="statDone">0</div><div class="l">Done</div></div>
+        <div class="ov-stat"><div class="n" id="statLeft">0</div><div class="l">Left</div></div>
+      </div>
+      <div class="ov-msg" id="ovMsg">🎉 Week complete — well done!</div>
+    </div>
+
+    <div class="week-grid" id="weekGrid"></div>
+
+    <div class="habits">
+      <div class="habit-bar">
+        <div class="habit-title"><span class="hi">✅</span> Habit Tracker</div>
+        <span class="habit-hint">Tick each day you keep the habit</span>
+      </div>
+      <div class="habit-scroll"><div class="habit-table" id="habitTable"></div></div>
+      <div class="habit-add">
+        <input id="habitInput" type="text" maxlength="40" placeholder="Add a habit… (e.g. Drink water)" aria-label="Add a habit">
+        <button class="add-btn" id="habitAdd" aria-label="Add habit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      </div>
+    </div>
+
+    <div class="secure-note">🔒 100% private: your plan is saved only in this browser and never leaves your device.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>A free weekly planner that actually feels good to use</h2>
+    <p>Most weekly planners are either a paid spreadsheet or a cluttered app that wants your email first. This one is different: open it, type your tasks under each day, and tick them off as you go. Your plan saves <b>automatically</b> in your browser, so it's still here when you come back — no account, no signup, no cost.</p>
+    <p>Each day has its own <b>progress ring</b> that fills as you complete tasks, and the ring at the top shows how your whole week is going at a glance. It turns a boring to-do list into something you actually want to finish. Pick a <b>colour theme</b> that matches your mood, and make it yours.</p>
+    <h3>How to use the weekly planner</h3>
+    <ol>
+      <li>Give your week a title and an optional focus or goal.</li>
+      <li>Type a task under any day and press Enter (or tap +) to add it.</li>
+      <li>Tap the circle to mark a task done — the rings update instantly.</li>
+      <li>Star important tasks so they stand out.</li>
+      <li>Download your plan as an image to share, or print it for your desk.</li>
+      <li>Hit <b>New week</b> to uncheck everything and start fresh, keeping your routine.</li>
+    </ol>
+    <h3>Is this weekly planner free?</h3>
+    <p>Yes — completely free, with no signup, no watermark and no limits. Use it every single week.</p>
+    <h3>Will my tasks be saved?</h3>
+    <p>Yes. Everything is stored locally in your browser, so your plan stays on this device even after you close the tab. Nothing is ever uploaded to a server.</p>
+    <h3>Can I download or print it?</h3>
+    <p>Yes. Download a high-resolution image to share or use as a phone wallpaper, or print the planner directly from the page.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">✨</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../word-counter/" class="card"><div class="ico">📝</div><h3>Word Counter</h3><p>Words, characters &amp; reading time.</p><span class="go">Open tool →</span></a>
+      <a href="../color-picker/" class="card"><div class="ico">🎨</div><h3>Color Picker</h3><p>Pick colours, gradients &amp; palettes.</p><span class="go">Open tool →</span></a>
+      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../weekly-planner/">Weekly Planner</a><a href="../word-counter/">Word Counter</a><a href="../index.html#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><span id="toastMsg"></span><button id="toastUndo">Undo</button></div>
+<div id="cardHolder"><div id="plannerCard"></div></div>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(s){return document.querySelector(s);};
+var KEY='xt_weekly_planner_v1';
+var DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+var DAYFULL=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var THEMES=[
+  {k:'indigo',label:'Indigo',a:'#5e8bff',a2:'#8fb0ff',g1:'#6f97f5',g2:'#3f63d8',gl:'rgba(94,139,255,.3)'},
+  {k:'emerald',label:'Emerald',a:'#10b981',a2:'#6ee7b7',g1:'#10b981',g2:'#059669',gl:'rgba(16,185,129,.3)'},
+  {k:'violet',label:'Violet',a:'#a855f7',a2:'#c4b5fd',g1:'#a855f7',g2:'#7c3aed',gl:'rgba(168,85,247,.3)'},
+  {k:'rose',label:'Rose',a:'#fb7185',a2:'#fda4af',g1:'#fb7185',g2:'#e11d48',gl:'rgba(251,113,133,.3)'},
+  {k:'amber',label:'Amber',a:'#f59e0b',a2:'#fcd34d',g1:'#f59e0b',g2:'#d97706',gl:'rgba(245,158,11,.3)'},
+  {k:'cyan',label:'Cyan',a:'#22d3ee',a2:'#67e8f9',g1:'#22d3ee',g2:'#0891b2',gl:'rgba(34,211,238,.3)'},
+  {k:'sunset',label:'Sunset',a:'#ff8a5b',a2:'#ffc59e',g1:'#ff8a00',g2:'#e52e71',gl:'rgba(255,138,91,.3)'},
+  {k:'slate',label:'Slate',a:'#94a3b8',a2:'#cbd5e1',g1:'#64748b',g2:'#334155',gl:'rgba(148,163,184,.3)'}
+];
+var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+var PLUS='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>';
+var STAR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2"/></svg>';
+var TRASH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
+
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function mondayOf(d){d=new Date(d);var k=(d.getDay()+6)%7;d.setHours(0,0,0,0);d.setDate(d.getDate()-k);return iso(d);}
+function dateFor(i){var d=new Date(S.weekStart+'T00:00:00');d.setDate(d.getDate()+i);return d;}
+function uid(){return 't'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+function defaults(){return {title:'',focus:'',theme:'indigo',weekStart:mondayOf(new Date()),days:[[],[],[],[],[],[],[]],habits:[]};}
+function load(){try{var r=JSON.parse(localStorage.getItem(KEY));if(r&&Array.isArray(r.days)&&r.days.length===7){if(!Array.isArray(r.habits))r.habits=[];return r;}}catch(e){}return defaults();}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+var S=load();
+
+function theme(){for(var i=0;i<THEMES.length;i++){if(THEMES[i].k===S.theme)return THEMES[i];}return THEMES[0];}
+function applyTheme(){var t=theme(),p=$('#planner');p.style.setProperty('--pa',t.a);p.style.setProperty('--pa2',t.a2);p.style.setProperty('--pg1',t.g1);p.style.setProperty('--pg2',t.g2);p.style.setProperty('--pglow',t.gl);document.querySelector('meta[name=theme-color]').setAttribute('content',t.a);paintThemes();}
+function paintThemes(){[].forEach.call(document.querySelectorAll('.tchip'),function(c){var on=c.dataset.k===S.theme;c.classList.toggle('active',on);var t=THEMES.filter(function(x){return x.k===c.dataset.k;})[0];c.style.background=on?'linear-gradient(135deg,'+t.g1+','+t.g2+')':'';});}
+THEMES.forEach(function(t){var b=document.createElement('button');b.type='button';b.className='tchip';b.dataset.k=t.k;b.innerHTML='<span class="sw" style="background:linear-gradient(135deg,'+t.g1+','+t.g2+')"></span>'+t.label;b.addEventListener('click',function(){S.theme=t.k;applyTheme();save();});$('#themeRow').appendChild(b);});
+
+function weekTotals(){var tot=0,done=0;S.days.forEach(function(ts){tot+=ts.length;done+=ts.filter(function(t){return t.done;}).length;});return {tot:tot,done:done,pct:tot?Math.round(done/tot*100):0};}
+
+function ringHTML(pct){return '<div class="ringwrap dring"><svg viewBox="0 0 36 36" class="ring"><circle class="ring-track" cx="18" cy="18" r="15.915"/><circle class="ring-fill" cx="18" cy="18" r="15.915" style="stroke-dashoffset:'+(100-pct)+'"/></svg><span class="ring-lbl">'+(pct===100?'✓':pct+'<i>%</i>')+'</span></div>';}
+
+function buildWeek(){
+  var wrap=$('#weekGrid'),pend={};
+  [].forEach.call(wrap.querySelectorAll('.add-input'),function(i){if(i.value)pend[i.dataset.d]=i.value;});
+  wrap.innerHTML='';
+  var todayIso=iso(new Date());
+  S.days.forEach(function(tasks,i){
+    var d=dateFor(i),isToday=iso(d)===todayIso,done=tasks.filter(function(t){return t.done;}).length,total=tasks.length,pct=total?Math.round(done/total*100):0;
+    var card=document.createElement('div');
+    card.className='day'+(isToday?' today':'')+(total&&done===total?' complete':'');
+    var rows=tasks.map(function(t,j){
+      return '<div class="task'+(t.done?' done':'')+(t.star?' star':'')+'" data-d="'+i+'" data-i="'+j+'">'+
+        '<button class="t-check" data-act="done" aria-label="'+(t.done?'Mark not done':'Mark done')+'">'+CHECK+'</button>'+
+        '<span class="t-text">'+esc(t.text)+'</span>'+
+        '<button class="t-star" data-act="star" aria-label="Star task" title="Important">'+STAR+'</button>'+
+        '<button class="t-del" data-act="del" aria-label="Delete task" title="Delete">'+TRASH+'</button></div>';
+    }).join('');
+    card.innerHTML='<div class="day-head"><div><div class="day-name">'+DAYS[i]+(isToday?'<em>Today</em>':'')+'</div><div class="day-date">'+d.getDate()+' '+MON[d.getMonth()]+'</div></div>'+ringHTML(pct)+'</div>'+
+      '<div class="tasks">'+(rows||'<div class="day-empty">No tasks yet</div>')+'</div>'+
+      '<div class="add-row"><input class="add-input" data-d="'+i+'" type="text" maxlength="120" placeholder="Add a task…" aria-label="Add task to '+DAYFULL[i]+'"><button class="add-btn" data-d="'+i+'" aria-label="Add task">'+PLUS+'</button></div>'+
+      (total?'<button class="day-clear" data-d="'+i+'">Clear day</button>':'');
+    wrap.appendChild(card);
+  });
+  Object.keys(pend).forEach(function(d){var i=wrap.querySelector('.add-input[data-d="'+d+'"]');if(i)i.value=pend[d];});
+}
+
+function updateOverview(){
+  var w=weekTotals();
+  $('#weekRingFill').style.strokeDashoffset=100-w.pct;
+  $('#weekPct').innerHTML=w.pct+'<i>%</i>';
+  $('#statTotal').textContent=w.tot;$('#statDone').textContent=w.done;$('#statLeft').textContent=w.tot-w.done;
+  $('#ovMsg').classList.toggle('show',w.tot>0&&w.done===w.tot);
+}
+
+function rangeLabel(){
+  var a=dateFor(0),b=dateFor(6);
+  var s=a.getDate()+(a.getMonth()!==b.getMonth()?' '+MON[a.getMonth()]:'')+' – '+b.getDate()+' '+MON[b.getMonth()];
+  $('#weekRange').innerHTML=s+'<small>'+b.getFullYear()+'</small>';
+}
+
+function render(){applyTheme();$('#planTitle').value=S.title||'';$('#planFocus').value=S.focus||'';rangeLabel();buildWeek();buildHabits();updateOverview();}
+
+function habitCount(h){return h.days.filter(Boolean).length;}
+function buildHabits(){
+  var wrap=$('#habitTable'),rows='';
+  if(S.habits.length){
+    rows+='<div class="ht-row ht-h"><div class="ht-name"></div>'+DAYS.map(function(d){return '<span class="ht-d-lbl">'+d.charAt(0)+'</span>';}).join('')+'<div class="ht-sum">Wk</div></div>';
+    S.habits.forEach(function(h,hi){
+      var cells=h.days.map(function(on,di){return '<button class="ht-cell'+(on?' on':'')+'" data-h="'+hi+'" data-d="'+di+'" aria-label="'+esc(h.name)+' '+DAYFULL[di]+'">'+(on?CHECK:'')+'</button>';}).join('');
+      var c=habitCount(h);
+      rows+='<div class="ht-row"><div class="ht-name"><button class="ht-del" data-h="'+hi+'" aria-label="Delete habit">'+TRASH+'</button><span>'+esc(h.name)+'</span></div>'+cells+'<div class="ht-sum'+(c===7?' full':'')+'">'+(c===7?'🔥':c+'/7')+'</div></div>';
+    });
+  }else{
+    rows='<div class="day-empty" style="margin:2px 0">No habits yet — add one below (e.g. Drink water, Read, Exercise).</div>';
+  }
+  wrap.innerHTML=rows;
+}
+$('#habitTable').addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  if(b.classList.contains('ht-del')){var hi=+b.dataset.h;if(S.habits[hi]&&confirm('Delete the habit "'+S.habits[hi].name+'"?')){S.habits.splice(hi,1);save();buildHabits();}return;}
+  if(b.classList.contains('ht-cell')){var h=+b.dataset.h,d=+b.dataset.d;if(S.habits[h]){S.habits[h].days[d]=!S.habits[h].days[d];save();buildHabits();}}
+});
+function addHabit(){var i=$('#habitInput'),v=i.value.trim();if(!v)return;S.habits.push({id:uid(),name:v,days:[false,false,false,false,false,false,false]});i.value='';save();buildHabits();i.focus();}
+$('#habitAdd').addEventListener('click',addHabit);
+$('#habitInput').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();addHabit();}});
+
+/* events */
+$('#weekGrid').addEventListener('click',function(e){
+  var btn=e.target.closest('button');if(!btn)return;
+  if(btn.classList.contains('add-btn')){addTask(+btn.dataset.d);return;}
+  if(btn.classList.contains('day-clear')){var d=+btn.dataset.d;if(S.days[d].length&&confirm('Clear all tasks for '+DAYFULL[d]+'?')){S.days[d]=[];save();buildWeek();updateOverview();}return;}
+  var row=btn.closest('.task');if(!row)return;var di=+row.dataset.d,ti=+row.dataset.i,act=btn.dataset.act,t=S.days[di][ti];if(!t)return;
+  if(act==='done')t.done=!t.done;else if(act==='star')t.star=!t.star;else if(act==='del')S.days[di].splice(ti,1);
+  save();buildWeek();updateOverview();
+});
+$('#weekGrid').addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.classList.contains('add-input')){e.preventDefault();addTask(+e.target.dataset.d);}});
+function addTask(d){var inp=$('#weekGrid .add-input[data-d="'+d+'"]');if(!inp)return;var v=inp.value.trim();if(!v)return;S.days[d].push({id:uid(),text:v,done:false,star:false});inp.value='';save();buildWeek();updateOverview();var ni=$('#weekGrid .add-input[data-d="'+d+'"]');if(ni)ni.focus();}
+
+$('#planTitle').addEventListener('input',function(){S.title=this.value;save();});
+$('#planFocus').addEventListener('input',function(){S.focus=this.value;save();});
+$('#prevWk').addEventListener('click',function(){shiftWeek(-7);});
+$('#nextWk').addEventListener('click',function(){shiftWeek(7);});
+$('#todayBtn').addEventListener('click',function(){S.weekStart=mondayOf(new Date());save();rangeLabel();buildWeek();});
+function shiftWeek(n){var d=new Date(S.weekStart+'T00:00:00');d.setDate(d.getDate()+n);S.weekStart=iso(d);save();rangeLabel();buildWeek();}
+$('#themeBtn').addEventListener('click',function(){$('#themePanel').classList.toggle('open');});
+
+$('#resetBtn').addEventListener('click',function(){
+  var any=S.days.some(function(ts){return ts.some(function(t){return t.done;});})||S.habits.some(function(h){return h.days.some(Boolean);});
+  if(!any){toast('Nothing to reset yet.');return;}
+  backup=JSON.stringify(S);S.days.forEach(function(ts){ts.forEach(function(t){t.done=false;});});S.habits.forEach(function(h){h.days=[false,false,false,false,false,false,false];});save();buildWeek();buildHabits();updateOverview();toast('Fresh week — all unchecked.',true);
+});
+$('#clearBtn').addEventListener('click',function(){
+  if(weekTotals().tot===0&&S.habits.length===0){toast('Planner is already empty.');return;}
+  if(!confirm('Delete ALL tasks and habits? You can still Undo right after.'))return;
+  backup=JSON.stringify(S);S.days=[[],[],[],[],[],[],[]];S.habits=[];save();buildWeek();buildHabits();updateOverview();toast('Everything cleared.',true);
+});
+
+/* toast + undo */
+var backup=null,toastT=null;
+function toast(msg,undo){var el=$('#toast');$('#toastMsg').textContent=msg;$('#toastUndo').style.display=undo?'':'none';el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){el.classList.remove('show');},5000);}
+$('#toastUndo').addEventListener('click',function(){if(backup){S=JSON.parse(backup);backup=null;save();render();$('#toast').classList.remove('show');}});
+
+/* download as image */
+var BADGE='../logo.png';
+(function(){var im=new Image();im.onload=function(){try{var c=document.createElement('canvas');c.width=100;c.height=100;c.getContext('2d').drawImage(im,0,0,100,100);BADGE=c.toDataURL('image/png');}catch(e){}};im.src='../logo.png';})();
+
+function buildCard(){
+  var t=theme(),w=weekTotals(),a=dateFor(0),b=dateFor(6);
+  var range=a.getDate()+' '+MON[a.getMonth()]+' – '+b.getDate()+' '+MON[b.getMonth()]+' '+b.getFullYear();
+  var html='<div class="pc-top" style="background:linear-gradient(90deg,'+t.g1+','+t.g2+')"></div><div class="pc-in">';
+  html+='<div class="pc-title">'+esc(S.title||'My Weekly Plan')+'</div>';
+  html+='<div class="pc-range" style="color:'+t.a2+'">'+range+'</div>';
+  if(S.focus)html+='<div class="pc-focus" style="background:'+t.gl+';color:'+t.a2+'">🎯 '+esc(S.focus)+'</div>';
+  html+='<div class="pc-ov" style="background:'+t.gl+'"><div><div class="big" style="color:'+t.a2+'">'+w.pct+'%</div><div class="sub">'+w.done+' of '+w.tot+' tasks done</div></div><div class="pc-bar"><i style="width:'+w.pct+'%;background:linear-gradient(90deg,'+t.g1+','+t.g2+')"></i></div></div>';
+  html+='<div class="pc-grid">';
+  S.days.forEach(function(tasks,i){
+    var d=dateFor(i),done=tasks.filter(function(x){return x.done;}).length;
+    html+='<div class="pc-day"><div class="pc-dh"><div class="pc-dn">'+DAYFULL[i]+'</div><div class="pc-dd">'+d.getDate()+' '+MON[d.getMonth()]+'</div><div class="pc-dc" style="color:'+t.a2+'">'+done+'/'+tasks.length+'</div></div>';
+    if(tasks.length){tasks.forEach(function(x){
+      var box=x.done?'<span class="pc-box" style="background:linear-gradient(135deg,'+t.g1+','+t.g2+')">✓</span>':'<span class="pc-box" style="border:2px solid '+t.a+'"></span>';
+      html+='<div class="pc-t'+(x.done?' done':'')+'">'+box+'<span>'+(x.star?'★ ':'')+esc(x.text)+'</span></div>';
+    });}else{html+='<div class="pc-empty">— no tasks —</div>';}
+    html+='</div>';
+  });
+  html+='</div>';
+  if(S.habits.length){
+    html+='<div class="pc-habits"><div class="pc-hh">Habit Tracker</div>';
+    html+='<div class="pc-hrow"><div class="pc-hname"></div>'+DAYS.map(function(d){return '<div class="pc-hlbl">'+d.charAt(0)+'</div>';}).join('')+'<div class="pc-hlbl">Week</div></div>';
+    S.habits.forEach(function(h){
+      var cells=h.days.map(function(on){return on?'<div class="pc-hd" style="background:linear-gradient(135deg,'+t.g1+','+t.g2+')">✓</div>':'<div class="pc-hd" style="border:2px solid '+t.a+'"></div>';}).join('');
+      html+='<div class="pc-hrow"><div class="pc-hname">'+esc(h.name)+'</div>'+cells+'<div class="pc-hsum" style="color:'+t.a2+'">'+h.days.filter(Boolean).length+'/7</div></div>';
+    });
+    html+='</div>';
+  }
+  html+='<div class="pc-foot"><img src="'+BADGE+'" alt="Xnipertools"><div class="ft"><div class="lnk" style="color:'+t.a2+'">xnipertools.com</div><div class="tag">Free Weekly Planner</div></div></div>';
+  html+='</div>';
+  $('#plannerCard').innerHTML=html;
+}
+$('#dlBtn').addEventListener('click',function(){
+  if(typeof html2canvas==='undefined'){toast('Still loading — try again in a second.');return;}
+  var btn=this,o=btn.innerHTML;btn.style.opacity=.6;btn.style.pointerEvents='none';
+  buildCard();
+  setTimeout(function(){
+    html2canvas($('#plannerCard'),{backgroundColor:'#0b0d14',scale:2,useCORS:true,logging:false}).then(function(canvas){
+      var a=document.createElement('a');a.download=((S.title||'my-weekly-planner').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'weekly-planner')+'.png';
+      a.href=canvas.toDataURL('image/png');document.body.appendChild(a);a.click();a.remove();
+      btn.style.opacity='';btn.style.pointerEvents='';toast('Saved! Check your downloads. 📥');
+    }).catch(function(){btn.style.opacity='';btn.style.pointerEvents='';toast('Could not create the image — please try again.');});
+  },60);
+});
+$('#printBtn').addEventListener('click',function(){window.print();});
+
+render();
+</script>
+</body>
+</html>
