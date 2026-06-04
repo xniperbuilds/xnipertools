@@ -34,7 +34,7 @@
 <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 <div class="grain"></div>
 
-<div class="modal-overlay" id="introModal">
+<div class="modal-overlay" id="introModal" style="display:none!important">
   <div class="modal-card">
     <div class="modal-ic">🪄</div>
     <h3>One-time setup 👋</h3>
@@ -61,29 +61,11 @@
     </div>
   </div>
 
-  <div class="tool-box">
-    <div class="drop" id="drop">
-      <input type="file" id="file" accept="image/*" hidden>
-      <div class="drop-inner">📁 <b>Click to upload</b> or drag &amp; drop a photo<br><span class="muted">A person, product or object on any background — JPG, PNG, WEBP</span></div>
-    </div>
-
-    <div id="editor" style="display:none">
-      <div class="bg-stage"><img id="prev" alt="preview"></div>
-      <div class="bg-progress" id="prog"><i id="bar"></i></div>
-      <div class="ff-actions mt">
-        <button class="btn" id="remove">🪄 Remove Background</button>
-        <a class="btn wa" id="dl" style="display:none">📥 Download PNG</a>
-        <button class="btn ghost" id="newImg">↺ New image</button>
-      </div>
-      <div id="enhanceBox" class="mt" style="display:none;padding:16px 18px;border:1px solid var(--border);border-radius:14px;background:rgba(255,255,255,.03);text-align:center">
-        <p style="font-size:.92rem;color:#c3c8d6;margin-bottom:13px;line-height:1.6">✨ <b style="color:#fff">Want a sharper, higher-resolution result?</b><br>First download your transparent PNG above. Then enhance it with our free <b>Image Upscaler</b> — it opens on a new page with your image ready to go.</p>
-        <a class="btn ghost" id="enhance" href="../image-upscaler/" style="width:auto">🔍 Enhance this image →</a>
-      </div>
-    </div>
-    <div class="wa-hint ok" id="hint"></div>
-
-    <div class="secure-note">🔒 100% Private: the AI runs on your device — your photo is never uploaded.</div>
-    <div class="tts-note">First use downloads a one-time AI model (~40&nbsp;MB). After that it's cached and much faster.</div>
+  <div class="tool-box" style="text-align:center;padding:48px 24px;">
+    <div style="font-size:2.8rem;margin-bottom:16px">🔧</div>
+    <h2 style="font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px">Under Maintenance</h2>
+    <p style="color:#9aa0b4;font-size:0.97rem;max-width:420px;margin:0 auto 24px;line-height:1.7">We're improving the AI Background Remover. It'll be back soon — better and faster than before.</p>
+    <a href="../image-compressor/" class="btn ghost" style="width:auto;display:inline-flex">Try Image Tools instead →</a>
   </div>
 
   <div class="ad-slot">Advertisement</div>
