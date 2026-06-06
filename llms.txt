@@ -1,0 +1,40 @@
+# Xnipertools
+
+> Free online tools, calculators and generators — fast, clean, and no signup. Most tools run entirely in your browser, so your files stay private.
+
+Xnipertools (https://xnipertools.com) is a free web-tools hub. No sign-up, no watermarks, no limits. Built mobile-first.
+
+## Image & PDF tools
+- [Background Remover](https://xnipertools.com/background-remover/): AI removes a photo's background in your browser; add a solid colour background or download a transparent PNG.
+- [Image Compressor & Tools](https://xnipertools.com/image-compressor/): Compress, resize, convert and crop images.
+- [Image to PDF / PDF Tools](https://xnipertools.com/image-to-pdf/): Convert images to PDF, merge, split, and turn PDF pages back into images.
+- [Image Upscaler](https://xnipertools.com/image-upscaler/): Enlarge and sharpen images up to 4x.
+- [Meme Generator](https://xnipertools.com/meme-generator/): Add multiple draggable text boxes with custom fonts, colours and outlines, plus your own watermark, then download a PNG.
+- [QR Code Generator](https://xnipertools.com/qr-code-generator/): Custom QR codes with colours, shapes and a centre logo.
+
+## Text & utility tools
+- [Text to Speech](https://xnipertools.com/text-to-speech/): Read any text aloud with multiple device voices, adjustable speed and pitch.
+- [Word Counter](https://xnipertools.com/word-counter/): Word, character, reading-time and AI-token counts.
+- [Case Converter](https://xnipertools.com/case-converter/): UPPERCASE, lowercase, Title Case, camelCase, snake_case and more.
+- [JSON Formatter](https://xnipertools.com/json-formatter/): Beautify, minify and validate JSON.
+- [Color Picker](https://xnipertools.com/color-picker/): Colour picker plus CSS gradient and palette generator.
+- [Password Generator](https://xnipertools.com/password-generator/): Strong, secure random passwords.
+- [Spin the Wheel](https://xnipertools.com/spin-the-wheel/): Random name picker for giveaways and raffles.
+- [WhatsApp Link Generator](https://xnipertools.com/whatsapp-link-generator/): Create wa.me click-to-chat links with a prefilled message.
+
+## Calculators
+- [Age Calculator](https://xnipertools.com/age-calculator/): Your exact age in years, months and days.
+- [BMI Calculator](https://xnipertools.com/bmi-calculator/): Body Mass Index with an animated gauge (metric & imperial).
+- [Weekly Planner](https://xnipertools.com/weekly-planner/): Plan your week with daily tasks, progress rings and colour themes.
+
+## Gaming tools (Free Fire)
+- [Free Fire Name Generator](https://xnipertools.com/free-fire-name-generator/): Stylish FF names, fonts, symbols and an invisible / blank name.
+- [Free Fire Points Calculator](https://xnipertools.com/free-fire-points-calculator/): Tournament points with a downloadable result image.
+- [Free Fire Tournament Standings](https://xnipertools.com/free-fire-tournament-standings/): For organizers — auto-rank teams and export a standings image.
+
+## About
+- [Request a Tool](https://xnipertools.com/request-a-tool/): Suggest a new tool.
+- [Report a Bug](https://xnipertools.com/report-bug/): Report an issue with any tool.
+- [About](https://xnipertools.com/about.html)
+- [Contact](https://xnipertools.com/contact.html)
+- [Privacy Policy](https://xnipertools.com/privacy.html)

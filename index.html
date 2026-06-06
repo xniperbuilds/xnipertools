@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="canonical" href="https://xnipertools.com/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Xnipertools","url":"https://xnipertools.com/","logo":"https://xnipertools.com/logo.png"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Xnipertools","url":"https://xnipertools.com/","description":"Free online tools — calculators, generators and gaming tools. Fast, simple and beautiful."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Xnipertools","url":"https://xnipertools.com/","description":"Free online tools — calculators, generators and gaming tools. Fast, simple and beautiful.","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://xnipertools.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Free Online Tools by Xnipertools","itemListElement":[{"@type":"ListItem","position":1,"name":"Age Calculator","url":"https://xnipertools.com/age-calculator/"},{"@type":"ListItem","position":2,"name":"BMI Calculator","url":"https://xnipertools.com/bmi-calculator/"},{"@type":"ListItem","position":3,"name":"Weekly Planner","url":"https://xnipertools.com/weekly-planner/"},{"@type":"ListItem","position":4,"name":"Password Generator","url":"https://xnipertools.com/password-generator/"},{"@type":"ListItem","position":5,"name":"QR Code Generator","url":"https://xnipertools.com/qr-code-generator/"},{"@type":"ListItem","position":6,"name":"WhatsApp Link Generator","url":"https://xnipertools.com/whatsapp-link-generator/"},{"@type":"ListItem","position":7,"name":"Spin the Wheel","url":"https://xnipertools.com/spin-the-wheel/"},{"@type":"ListItem","position":8,"name":"Meme Generator","url":"https://xnipertools.com/meme-generator/"},{"@type":"ListItem","position":9,"name":"Word Counter","url":"https://xnipertools.com/word-counter/"},{"@type":"ListItem","position":10,"name":"Text to Speech","url":"https://xnipertools.com/text-to-speech/"},{"@type":"ListItem","position":11,"name":"Case Converter","url":"https://xnipertools.com/case-converter/"},{"@type":"ListItem","position":12,"name":"JSON Formatter","url":"https://xnipertools.com/json-formatter/"},{"@type":"ListItem","position":13,"name":"Color Picker","url":"https://xnipertools.com/color-picker/"},{"@type":"ListItem","position":14,"name":"Image Compressor","url":"https://xnipertools.com/image-compressor/"},{"@type":"ListItem","position":15,"name":"Image to PDF","url":"https://xnipertools.com/image-to-pdf/"},{"@type":"ListItem","position":16,"name":"Background Remover","url":"https://xnipertools.com/background-remover/"},{"@type":"ListItem","position":17,"name":"Image Upscaler","url":"https://xnipertools.com/image-upscaler/"},{"@type":"ListItem","position":18,"name":"Free Fire Name Generator","url":"https://xnipertools.com/free-fire-name-generator/"},{"@type":"ListItem","position":19,"name":"Free Fire Points Calculator","url":"https://xnipertools.com/free-fire-points-calculator/"},{"@type":"ListItem","position":20,"name":"Free Fire Tournament Standings","url":"https://xnipertools.com/free-fire-tournament-standings/"}]}</script>
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon-192.png">
@@ -272,6 +272,7 @@ function filterTools(q){
 if(search){
   search.addEventListener('input',e=>filterTools(e.target.value));
   document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{search.value=ch.dataset.q;filterTools(ch.dataset.q);document.getElementById('tools').scrollIntoView({behavior:'smooth'});}));
+  try{var q0=new URLSearchParams(location.search).get('q');if(q0){search.value=q0;filterTools(q0);}}catch(e){}
 }
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){
@@ -280,18 +281,26 @@ document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function
   this.appendChild(r);setTimeout(()=>r.remove(),600);
 }));
 
-// subscribe form -> MailerLite
+// subscribe form -> MailerLite (JSONP via <script> — the old fetch/POST was blocked by CORS)
 var subForm=document.getElementById('subForm');
 if(subForm){subForm.addEventListener('submit',function(e){
   e.preventDefault();
   var email=document.getElementById('subEmail').value.trim(),msg=document.getElementById('subMsg'),btn=document.getElementById('subBtn');
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.className='sub-msg err';msg.textContent='Please enter a valid email address.';return;}
-  var orig=btn.textContent;btn.disabled=true;btn.textContent='Subscribing…';
-  fetch('https://assets.mailerlite.com/jsonp/2396055/forms/189059123229230497/subscribe',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'fields[email]='+encodeURIComponent(email)+'&ml-submit=1&anticsrf=true'})
-  .then(function(r){return r.json();}).then(function(d){btn.disabled=false;btn.textContent=orig;
+  var orig=btn.textContent;btn.disabled=true;btn.textContent='Subscribing…';msg.className='sub-msg';msg.textContent='';
+  var done=false,cb='mlSub'+Date.now(),s=document.createElement('script');
+  function cleanup(){try{delete window[cb];}catch(_){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
+  function finish(d){
+    if(done)return;done=true;cleanup();
+    btn.disabled=false;btn.textContent=orig;
     if(d&&d.success){msg.className='sub-msg ok';msg.textContent='🎉 Subscribed! Please check your inbox to confirm.';subForm.reset();}
-    else{msg.className='sub-msg err';msg.textContent='Could not subscribe — please try again or use another email.';}})
-  .catch(function(){btn.disabled=false;btn.textContent=orig;msg.className='sub-msg err';msg.textContent='Network error — please try again.';});
+    else{msg.className='sub-msg err';msg.textContent='Could not subscribe — please try again or use another email.';}
+  }
+  window[cb]=function(d){finish(d);};
+  s.onerror=function(){finish(null);};
+  s.src='https://assets.mailerlite.com/jsonp/2396055/forms/189059123229230497/subscribe?callback='+cb+'&fields%5Bemail%5D='+encodeURIComponent(email)+'&ml-submit=1&anticsrf=true';
+  document.body.appendChild(s);
+  setTimeout(function(){finish(null);},12000);
 });}
 
 // request a tool
