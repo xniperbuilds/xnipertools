@@ -29,20 +29,28 @@
 <link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Free Fire Points Calculator","item":"https://xnipertools.com/free-fire-points-calculator/"}]}</script>
 </head>
-<body>
+<body data-tool="free-fire-points-calculator">
 <div id="loader"><div class="loader-x">X</div></div>
 <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 <div class="grain"></div>
 
 <header class="site">
   <div class="container nav">
-    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
-    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+    <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="nav-links">
+      <a href="/#why">Why us</a>
+      <a href="/request-a-tool/">Request a Tool</a>
+      <a href="/report-bug/">Report a Bug</a>
+      <a href="/about.html">About</a>
+      <a href="/#tools" class="btn">Explore Tools</a>
+    </nav>
   </div>
 </header>
 
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Gaming</span><span class="sep">/</span><span>FF Points Calculator</span></div>
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Gaming</span><span class="sep">/</span><span>FF Points Calculator</span></div>
 
   <div class="tool-head">
     <div class="ic">🏆</div>
@@ -76,7 +84,8 @@
       <div><div class="ffp-tl">Total Points</div><div class="ffp-tn" id="grandTotal">0</div></div>
       <div class="ffp-tb">Placement <b id="placeTotal">0</b><br>Kills <b id="killTotal">0</b></div>
     </div>
-    <button class="btn block mt" id="dlBtn">📥 Download Result (JPG)</button>
+    <button class="btn block mt" id="shareBtn">📤 Share Result</button>
+    <button class="btn ghost block mt" id="dlBtn">📥 Download Result (JPG)</button>
     <p class="muted center" style="font-size:.8rem;margin-top:10px">A clean result card with your team name &amp; xnipertools.com.</p>
   </div>
 
@@ -97,7 +106,7 @@
     <div class="sec-head"><div class="ic">🎮</div><h2>More tools</h2></div>
     <div class="grid">
       <a href="../free-fire-name-generator/" class="card"><div class="ico">🔥</div><h3>Free Fire Name Generator</h3><p>Stylish FF names, fonts &amp; symbols.</p><span class="go">Open tool →</span></a>
-      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+      <a href="/#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
     </div>
   </section>
 </div>
@@ -105,9 +114,9 @@
 <footer class="site">
   <div class="container">
     <div class="foot-grid">
-      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
-      <div class="foot-col"><h4>Tools</h4><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../free-fire-points-calculator/">FF Points</a><a href="../index.html#tools">All Tools</a></div>
-      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../free-fire-points-calculator/">FF Points</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
     </div>
     <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
   </div>
@@ -133,9 +142,9 @@ let state, count=6;
   render();
 })();
 
-function blank(n){var a=[];for(var i=0;i<n;i++)a.push({rank:"",kills:0});return a;}
+function blank(n){var a=[];for(var i=0;i<n;i++)a.push({rank:"",kills:""});return a;}
 function save(){try{localStorage.setItem(KEY,JSON.stringify({count:count,team:teamInput.value,state:state}));}catch(e){}}
-function setCount(n){n=parseInt(n)||6;if(n>state.length){while(state.length<n)state.push({rank:"",kills:0});}else state=state.slice(0,n);count=n;render();}
+function setCount(n){n=parseInt(n)||6;if(n>state.length){while(state.length<n)state.push({rank:"",kills:""});}else state=state.slice(0,n);count=n;render();}
 
 function render(){
   var html='';
@@ -145,7 +154,7 @@ function render(){
     for(var r=1;r<=12;r++)opts+='<option value="'+r+'"'+(m.rank===r?' selected':'')+'>#'+r+(r===1?' 👑':'')+' · '+PLACEMENT[r]+' pts</option>';
     html+='<div class="ffp-match"><div class="ffp-head"><div class="ffp-mt"><span class="ffp-no">'+(i+1)+'</span><span class="ffp-map">'+map+'</span></div><span class="ffp-mpts" id="mp'+i+'">'+(p+k)+' pts</span></div>'+
       '<div class="ffp-row"><div class="ffp-f"><label>Placement</label><select onchange="setRank('+i+',this.value)">'+opts+'</select></div>'+
-      '<div class="ffp-f"><label>Kills</label><div class="killbox"><button type="button" onclick="addKill('+i+',-1)">−</button><input type="number" inputmode="numeric" min="0" value="'+k+'" id="k'+i+'" oninput="setKills('+i+',this.value)" onblur="clampField('+i+')"><button type="button" onclick="addKill('+i+',1)">+</button></div></div></div></div>';
+      '<div class="ffp-f"><label>Kills</label><div class="killbox"><button type="button" aria-label="Decrease kills" onclick="addKill('+i+',-1)">−</button><input type="number" inputmode="numeric" min="0" placeholder="0" value="'+(m.kills===''||m.kills==null?'':m.kills)+'" id="k'+i+'" oninput="setKills('+i+',this.value)" onfocus="this.select()" onblur="clampField('+i+')"><button type="button" aria-label="Increase kills" onclick="addKill('+i+',1)">+</button></div></div></div></div>';
   }
   matchesEl.innerHTML=html;
   updateTotals();
@@ -159,9 +168,9 @@ function updateTotals(){
   save();
 }
 function setRank(i,v){state[i].rank=(v===''?'':parseInt(v));updateTotals();}
-function setKills(i,v){var n=parseInt(v);if(isNaN(n)||n<0)n=0;state[i].kills=n;updateTotals();}
-function clampField(i){document.getElementById('k'+i).value=state[i].kills;}
-function addKill(i,d){var n=(parseInt(state[i].kills)||0)+d;if(n<0)n=0;state[i].kills=n;var f=document.getElementById('k'+i);if(f)f.value=n;updateTotals();}
+function setKills(i,v){var clean=(''+v).replace(/[^0-9]/g,'').replace(/^0+(?=\d)/,'');if(clean.length>3)clean=clean.slice(0,3);state[i].kills=clean;updateTotals();}
+function clampField(i){var f=document.getElementById('k'+i);if(f)f.value=(state[i].kills===''||state[i].kills==null?'':state[i].kills);}
+function addKill(i,d){var n=(parseInt(state[i].kills)||0)+d;if(n<0)n=0;state[i].kills=String(n);var f=document.getElementById('k'+i);if(f)f.value=n;updateTotals();}
 function resetAll(){if(confirm('Reset all matches?')){state=blank(count);render();}}
 
 teamInput.addEventListener('input',save);
@@ -216,18 +225,31 @@ function drawCard(){
   x.textAlign='center';x.fillStyle='#6f74a0';x.font='500 24px Inter,sans-serif';x.fillText('Free Fire Points Calculator',W/2,fy+46);
   return cv;
 }
-function downloadJPG(){
-  var go=function(){
-    var cv=drawCard();
-    var a=document.createElement('a');
-    a.download=((teamInput.value.trim()||'xnipertools')+'-ff-points.jpg').replace(/\s+/g,'-');
-    a.href=cv.toDataURL('image/jpeg',0.95);
-    document.body.appendChild(a);a.click();a.remove();
-  };
+function fileName(){return ((teamInput.value.trim()||'xnipertools')+'-ff-points.jpg').replace(/\s+/g,'-');}
+function ready(cb){
+  var go=function(){cb(drawCard());};
   var fontsThen=function(){if(document.fonts&&document.fonts.ready)document.fonts.ready.then(go);else go();};
   if(LOGO.complete&&LOGO.naturalWidth)fontsThen();else{LOGO.onload=fontsThen;LOGO.onerror=fontsThen;}
 }
-document.getElementById('dlBtn').addEventListener('click',downloadJPG);
+function downloadJPG(){ready(function(cv){var a=document.createElement('a');a.download=fileName();a.href=cv.toDataURL('image/jpeg',0.95);document.body.appendChild(a);a.click();a.remove();});}
+function shareResult(){
+  var link='https://xnipertools.com/free-fire-points-calculator/';
+  var txt=(teamInput.value.trim()||'My team')+' — Free Fire tournament points. Calculate & share yours free at '+link;
+  ready(function(cv){
+    cv.toBlob(function(blob){
+      var file=blob?new File([blob],fileName(),{type:'image/jpeg'}):null;
+      if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
+        navigator.share({files:[file],title:'Free Fire Points',text:txt}).catch(function(){});
+      }else if(navigator.share){
+        navigator.share({title:'Free Fire Points',text:txt,url:link}).catch(function(){});
+      }else{downloadJPG();}
+    },'image/jpeg',0.95);
+  });
+}
+var shareBtn=document.getElementById('shareBtn'),dlBtn=document.getElementById('dlBtn');
+if(!navigator.share){shareBtn.style.display='none';dlBtn.classList.remove('ghost');}
+shareBtn.addEventListener('click',shareResult);
+dlBtn.addEventListener('click',downloadJPG);
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>

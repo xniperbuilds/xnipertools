@@ -270,7 +270,7 @@
 }
 </style>
 </head>
-<body>
+<body data-tool="bmi-calculator">
 
 <div id="loader"><div class="loader-x">X</div></div>
 <div class="aurora"><span class="a1"></span><span class="a2"></span></div>
@@ -278,13 +278,15 @@
 
 <header class="site">
   <div class="container nav">
-    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
     <nav class="nav-links">
-      <a href="../index.html#tools">Tools</a>
-      <a href="../index.html#why">Why us</a>
-      <a href="../request-a-tool/">Request a Tool</a>
-      <a href="../about.html">About</a>
-      <a href="../index.html#tools" class="btn">Explore Tools</a>
+      <a href="/#why">Why us</a>
+      <a href="/request-a-tool/">Request a Tool</a>
+      <a href="/report-bug/">Report a Bug</a>
+      <a href="/about.html">About</a>
+      <a href="/#tools" class="btn">Explore Tools</a>
     </nav>
   </div>
 </header>
@@ -293,7 +295,7 @@
 
   <!-- Breadcrumb -->
   <div class="bmi-breadcrumb">
-    <a href="../index.html">Home</a>
+    <a href="/">Home</a>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
     <span>BMI Calculator</span>
   </div>

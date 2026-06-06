@@ -29,20 +29,28 @@
 <link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Spin the Wheel","item":"https://xnipertools.com/spin-the-wheel/"}]}</script>
 </head>
-<body>
+<body data-tool="spin-the-wheel">
 <div id="loader"><div class="loader-x">X</div></div>
 <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 <div class="grain"></div>
 
 <header class="site">
   <div class="container nav">
-    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
-    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+    <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="nav-links">
+      <a href="/#why">Why us</a>
+      <a href="/request-a-tool/">Request a Tool</a>
+      <a href="/report-bug/">Report a Bug</a>
+      <a href="/about.html">About</a>
+      <a href="/#tools" class="btn">Explore Tools</a>
+    </nav>
   </div>
 </header>
 
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Generators</span><span class="sep">/</span><span>Spin the Wheel</span></div>
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Generators</span><span class="sep">/</span><span>Spin the Wheel</span></div>
 
   <div class="tool-head">
     <div class="ic">🎡</div>
@@ -101,7 +109,7 @@
     <div class="grid">
       <a href="../qr-code-generator/" class="card"><div class="ico">🔳</div><h3>QR Code Generator</h3><p>Custom QR with colours &amp; logo.</p><span class="go">Open tool →</span></a>
       <a href="../password-generator/" class="card"><div class="ico">🔑</div><h3>Password Generator</h3><p>Strong, secure passwords.</p><span class="go">Open tool →</span></a>
-      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+      <a href="/#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
     </div>
   </section>
 </div>
@@ -109,9 +117,9 @@
 <footer class="site">
   <div class="container">
     <div class="foot-grid">
-      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
-      <div class="foot-col"><h4>Tools</h4><a href="../spin-the-wheel/">Spin the Wheel</a><a href="../qr-code-generator/">QR Code Generator</a><a href="../index.html#tools">All Tools</a></div>
-      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../spin-the-wheel/">Spin the Wheel</a><a href="../qr-code-generator/">QR Code Generator</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
     </div>
     <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
   </div>

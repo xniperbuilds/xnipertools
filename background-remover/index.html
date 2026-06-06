@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Background Remover — Remove Image Background Free (AI) | Xnipertools</title>
-<meta name="description" content="Free AI background remover. Erase the background from any photo automatically, right in your browser — no upload, no signup. Download a transparent PNG.">
+<meta name="description" content="Free AI background remover. Erase the background from any photo automatically, right in your browser — no upload, no signup. Add a solid color background or download a transparent PNG.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -15,71 +15,116 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://xnipertools.com/background-remover/">
 <meta property="og:title" content="Background Remover — Remove Image Background Free (AI)">
-<meta property="og:description" content="Erase the background from any photo automatically in your browser. No upload, no signup. Download a transparent PNG.">
+<meta property="og:description" content="Erase the background from any photo automatically in your browser. No upload, no signup. Add a color background or download a transparent PNG.">
 <meta property="og:image" content="https://xnipertools.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Background Remover — Remove Image Background Free (AI)">
-<meta name="twitter:description" content="Erase a photo's background automatically in your browser. No upload. Transparent PNG download.">
+<meta name="twitter:description" content="Erase a photo's background automatically in your browser. No upload. Color background or transparent PNG download.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"AI Background Remover","url":"https://xnipertools.com/background-remover/","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the background remover free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up and no watermark. Remove backgrounds from as many images as you like."}},{"@type":"Question","name":"Are my photos uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. The AI runs entirely on your device inside your browser, so your photo is never uploaded, stored or shared."}},{"@type":"Question","name":"Why does it download something the first time?","acceptedAnswer":{"@type":"Answer","text":"The first time you use it, your browser downloads the AI model once (around 40 MB). After that it is cached, so the next images are much faster."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the background remover free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up and no watermark. Remove backgrounds from as many images as you like."}},{"@type":"Question","name":"Are my photos uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. The AI runs entirely on your device inside your browser, so your photo is never uploaded, stored or shared."}},{"@type":"Question","name":"Why does it download something the first time?","acceptedAnswer":{"@type":"Answer","text":"The first time you use it, your browser downloads the AI model once (around 40 MB). After that it is cached, so the next images are much faster."}},{"@type":"Question","name":"Can I add a colored background?","acceptedAnswer":{"@type":"Answer","text":"Yes. After the background is removed you can keep it transparent or pick a solid color background — white, black, blue or any custom color — then download the result."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Background Remover","item":"https://xnipertools.com/background-remover/"}]}</script>
 </head>
-<body>
+<body data-tool="background-remover">
 <div id="loader"><div class="loader-x">X</div></div>
 <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 <div class="grain"></div>
 
-<div class="modal-overlay" id="introModal" style="display:none!important">
+<div class="modal-overlay" id="introModal">
   <div class="modal-card">
     <div class="modal-ic">🪄</div>
     <h3>One-time setup 👋</h3>
-    <p>The <span class="hl">first time</span> you remove a background, your browser downloads the AI engine once — about <span class="hl">40&nbsp;MB</span>. It may pause for a few seconds — that's normal, <b>not stuck</b>.<br><br>After that, every photo is <span class="hl">super fast</span>, and it all runs on your device — <b>nothing is uploaded</b>.</p>
+    <p>The <span class="hl">first time</span> you remove a background, your browser downloads the AI engine once — about <span class="hl">40&nbsp;MB</span>. You'll see a live <span class="hl">percentage</span> while it loads — it may pause for a few seconds, that's normal, <b>not stuck</b>.<br><br>After that, every photo is <span class="hl">super fast</span>, and it all runs on your device — <b>nothing is uploaded</b>.</p>
     <button class="btn" id="introOk" type="button">Got it 👍</button>
   </div>
 </div>
 
 <header class="site">
   <div class="container nav">
-    <a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
-    <nav class="nav-links"><a href="../index.html#tools">Tools</a><a href="../about.html">About</a><a href="../index.html#tools" class="btn">All Tools</a></nav>
+    <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="nav-links">
+      <a href="/#why">Why us</a>
+      <a href="/request-a-tool/">Request a Tool</a>
+      <a href="/report-bug/">Report a Bug</a>
+      <a href="/about.html">About</a>
+      <a href="/#tools" class="btn">Explore Tools</a>
+    </nav>
   </div>
 </header>
 
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><span>Image Tools</span><span class="sep">/</span><span>Background Remover</span></div>
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Image Tools</span><span class="sep">/</span><span>Background Remover</span></div>
 
   <div class="tool-head">
     <div class="ic">🪄</div>
     <div>
       <h1>AI Background Remover</h1>
-      <p>Erase the background from any photo <b>automatically</b> — the AI runs in your browser, so nothing is uploaded.</p>
+      <p>Erase the background from any photo <b>automatically</b> — then keep it transparent or add a color. The AI runs in your browser, so nothing is uploaded.</p>
     </div>
   </div>
 
-  <div class="tool-box" style="text-align:center;padding:48px 24px;">
-    <div style="font-size:2.8rem;margin-bottom:16px">🔧</div>
-    <h2 style="font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px">Under Maintenance</h2>
-    <p style="color:#9aa0b4;font-size:0.97rem;max-width:420px;margin:0 auto 24px;line-height:1.7">We're improving the AI Background Remover. It'll be back soon — better and faster than before.</p>
-    <a href="../image-compressor/" class="btn ghost" style="width:auto;display:inline-flex">Try Image Tools instead →</a>
+  <div class="tool-box">
+    <div class="drop" id="drop">
+      <div class="drop-inner">
+        <div style="font-size:2.4rem;margin-bottom:10px">🖼️</div>
+        <b style="color:#fff;font-size:1.06rem">Tap to upload an image</b><br>
+        or drag &amp; drop it here<br>
+        <span class="muted" style="font-size:.84rem;display:inline-block;margin-top:9px">PNG · JPG · WEBP — your photo never leaves your device</span>
+      </div>
+    </div>
+    <input type="file" id="file" accept="image/*" style="display:none">
+
+    <div id="editor" style="display:none">
+      <div class="bg-stage" id="stage">
+        <img id="prev" alt="Image preview">
+      </div>
+
+      <div class="bg-progress" id="prog"><i id="bar"></i></div>
+      <p id="progText" style="text-align:center;font-size:.9rem;color:var(--muted);margin-top:11px;display:none"></p>
+      <p id="hint" style="margin-top:14px;text-align:center;font-size:.92rem;font-weight:500;min-height:1em;line-height:1.6;color:#f87171"></p>
+
+      <div id="bgOpts" style="display:none;margin-top:8px">
+        <label style="margin-top:8px">🎨 Background color</label>
+        <div class="swatch-grid" id="swatches"></div>
+        <div class="color-field" style="margin-top:13px">
+          <input type="color" id="customColor" value="#5e8bff">
+          <span class="muted" style="font-size:.85rem">Pick any custom color</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px">
+        <button class="btn block" id="remove" type="button">✨ Remove Background</button>
+        <a class="btn block" id="dl" style="display:none" download>⬇ Download PNG</a>
+        <div id="enhanceBox" style="display:none">
+          <div class="result-bar" style="margin-top:0">
+            Want it sharper &amp; bigger? <a id="enhance" href="../image-upscaler/" style="color:#8fb0ff;font-weight:700;white-space:nowrap">Upscale it →</a>
+          </div>
+        </div>
+        <button class="btn ghost block" id="newImg" type="button">↺ Try another image</button>
+      </div>
+    </div>
   </div>
 
   <div class="ad-slot">Advertisement</div>
 
   <article class="article reveal">
     <h2>Why use our Background Remover?</h2>
-    <p>Cut out the background of any photo in seconds — no design skills, no Photoshop. This free <b>AI Background Remover</b> automatically detects the main subject (a person, product or object) and erases everything behind it, leaving a clean <b>transparent PNG</b> you can drop onto any new background. Great for online store product shots, profile pictures, stickers, thumbnails and logos.</p>
-    <p>What makes it special: the AI runs <b>entirely in your browser</b>. Your photo is never uploaded to a server, so it's completely private — and there's no sign-up and no watermark. The first time, your browser downloads the AI model once (about 40&nbsp;MB); after that, every image is fast.</p>
+    <p>Cut out the background of any photo in seconds — no design skills, no Photoshop. This free <b>AI Background Remover</b> automatically detects the main subject (a person, product or object) and erases everything behind it, leaving a clean <b>transparent PNG</b> — or you can drop in a <b>solid color background</b> right here. Great for online store product shots, profile pictures, stickers, thumbnails and logos.</p>
+    <p>What makes it special: the AI runs <b>entirely in your browser</b>. Your photo is never uploaded to a server, so it's completely private — and there's no sign-up and no watermark. The first time, your browser downloads the AI model once (about 40&nbsp;MB) with a live progress percentage; after that, every image is fast.</p>
     <h3>Is the background remover free?</h3>
     <p>Yes — completely free, no sign-up and no watermark.</p>
     <h3>Are my photos uploaded to a server?</h3>
     <p>No. The AI runs on your own device, so your photo never leaves your browser.</p>
     <h3>Why does it download something the first time?</h3>
     <p>It downloads the AI model once (~40&nbsp;MB). After that it's cached, so the next photos are much quicker.</p>
+    <h3>Can I add a colored background?</h3>
+    <p>Yes. Once the background is removed, pick transparent or any solid color — white, black, blue or a custom shade — then download.</p>
   </article>
 
   <section class="section">
@@ -87,7 +132,7 @@
     <div class="grid">
       <a href="../image-compressor/" class="card"><div class="ico">🗜️</div><h3>Image Tools</h3><p>Compress, resize, convert &amp; crop.</p><span class="go">Open tool →</span></a>
       <a href="../meme-generator/" class="card"><div class="ico">😂</div><h3>Meme Generator</h3><p>Add text to any image.</p><span class="go">Open tool →</span></a>
-      <a href="../index.html#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+      <a href="/#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
     </div>
   </section>
 </div>
@@ -95,9 +140,9 @@
 <footer class="site">
   <div class="container">
     <div class="foot-grid">
-      <div class="foot-brand"><a href="../index.html" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
-      <div class="foot-col"><h4>Tools</h4><a href="../background-remover/">Background Remover</a><a href="../image-compressor/">Image Tools</a><a href="../index.html#tools">All Tools</a></div>
-      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a></div>
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../background-remover/">Background Remover</a><a href="../image-compressor/">Image Tools</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
     </div>
     <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
   </div>
@@ -111,70 +156,214 @@ const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.ta
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 var $=function(id){return document.getElementById(id);};
-var drop=$('drop'),file=$('file'),editor=$('editor'),prev=$('prev'),removeBtn=$('remove'),dl=$('dl'),prog=$('prog'),bar=$('bar'),hint=$('hint');
-var originalFile=null,resultURL='',origURL='',resultBlob=null;
+var drop=$('drop'),file=$('file'),editor=$('editor'),prev=$('prev'),removeBtn=$('remove'),dl=$('dl'),
+    prog=$('prog'),bar=$('bar'),progText=$('progText'),hint=$('hint'),
+    bgOpts=$('bgOpts'),swatches=$('swatches'),customColor=$('customColor'),enhanceBox=$('enhanceBox');
+
+var originalFile=null, origURL='', resultBlob=null, resultURL='', composedURL='', busy=false;
 var bgMod=null;
-function ensureBg(){if(!bgMod)bgMod=import('https://esm.sh/@imgly/background-removal@1.5.5');return bgMod;}
+function ensureBg(){ if(!bgMod) bgMod=import('https://esm.sh/@imgly/background-removal@1.5.5'); return bgMod; }
 
-function setHint(m,err){hint.innerHTML=m||'';hint.classList.toggle('ok',!err);}
+function setHint(m,err){ hint.innerHTML=m||''; hint.style.color=err?'#f87171':'#34d399'; }
 
-function loadFile(f){
-  if(!f||!/^image\//.test(f.type)){setHint('Please choose an image file.',true);return;}
+/* ---- background color choices ---- */
+var COLORS=[
+  {name:'Transparent',val:null},
+  {name:'White',val:'#ffffff'},
+  {name:'Black',val:'#0b0d12'},
+  {name:'Royal Blue',val:'#3f63d8'},
+  {name:'Sky',val:'#5e8bff'},
+  {name:'Red',val:'#ef4444'},
+  {name:'Green',val:'#22c55e'},
+  {name:'Yellow',val:'#facc15'},
+  {name:'Pink',val:'#ec4899'},
+  {name:'Purple',val:'#a855f7'}
+];
+function buildSwatches(){
+  swatches.innerHTML='';
+  COLORS.forEach(function(c){
+    var s=document.createElement('span');
+    s.title=c.name; s.setAttribute('role','button'); s.setAttribute('aria-label',c.name);
+    if(c.val===null){
+      s.style.backgroundColor='#fff';
+      s.style.backgroundImage='linear-gradient(45deg,#9aa0b4 25%,transparent 25%),linear-gradient(-45deg,#9aa0b4 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#9aa0b4 75%),linear-gradient(-45deg,transparent 75%,#9aa0b4 75%)';
+      s.style.backgroundSize='10px 10px'; s.style.backgroundPosition='0 0,0 5px,5px -5px,-5px 0';
+    } else { s.style.background=c.val; }
+    s.addEventListener('click',function(){ selectSwatch(c.val,s); });
+    swatches.appendChild(s);
+  });
+}
+function clearSwatchActive(){
+  Array.prototype.forEach.call(swatches.children,function(ch){ ch.style.boxShadow=''; ch.style.transform=''; });
+}
+function selectSwatch(val,el){
+  clearSwatchActive();
+  if(el){ el.style.boxShadow='0 0 0 3px #5e8bff'; el.style.transform='scale(1.12)'; }
+  compose(val);
+}
+/* composite transparent result onto chosen color, update preview + download */
+function compose(color){
+  if(!resultBlob) return;
+  if(color===null){
+    var oldT=composedURL; composedURL='';
+    prev.src=resultURL;
+    setDownload(resultURL,'no-bg-xnipertools.png');
+    if(oldT) URL.revokeObjectURL(oldT);
+    return;
+  }
+  var img=new Image();
+  img.onload=function(){
+    var c=document.createElement('canvas');
+    c.width=img.naturalWidth; c.height=img.naturalHeight;
+    var ctx=c.getContext('2d');
+    ctx.fillStyle=color; ctx.fillRect(0,0,c.width,c.height);
+    ctx.drawImage(img,0,0);
+    c.toBlob(function(b){
+      var oldC=composedURL;
+      composedURL=URL.createObjectURL(b);
+      prev.src=composedURL;
+      setDownload(composedURL,'bg-color-xnipertools.png');
+      if(oldC) URL.revokeObjectURL(oldC);   // revoke only after the new one is live → no flicker
+    },'image/png');
+  };
+  img.src=resultURL;
+}
+function setDownload(url,name){ dl.href=url; dl.setAttribute('download',name); dl.style.display=''; }
+
+/* ---- reset / load ---- */
+function clearResult(){
+  if(resultURL){ URL.revokeObjectURL(resultURL); resultURL=''; }
+  if(composedURL){ URL.revokeObjectURL(composedURL); composedURL=''; }
+  resultBlob=null;
+  dl.style.display='none';
+  bgOpts.style.display='none';
+  enhanceBox.style.display='none';
+  clearSwatchActive();
+}
+function resetAll(){
+  clearResult();
+  originalFile=null;
+  if(origURL){ URL.revokeObjectURL(origURL); origURL=''; }
+  prev.removeAttribute('src');
+  file.value='';
+  editor.style.display='none';
+  drop.style.display='';
+  prog.style.display='none'; progText.style.display='none'; bar.style.width='0';
+  removeBtn.style.display=''; removeBtn.disabled=false;
   setHint('',false);
+}
+function loadFile(f){
+  if(!f){ return; }
+  if(!/^image\//.test(f.type)){ editor.style.display='none'; drop.style.display=''; setHint('Please choose an image file (PNG, JPG or WEBP).',true); return; }
+  clearResult();                          // kill any previous result so the old image can never linger
   originalFile=f;
-  if(origURL)URL.revokeObjectURL(origURL);origURL=URL.createObjectURL(f);
+  if(origURL) URL.revokeObjectURL(origURL);
+  origURL=URL.createObjectURL(f);
   prev.src=origURL;
-  drop.style.display='none';editor.style.display='';
-  dl.style.display='none';removeBtn.disabled=false;removeBtn.style.display='';
+  drop.style.display='none'; editor.style.display='';
+  removeBtn.style.display=''; removeBtn.disabled=false;
+  prog.style.display='none'; progText.style.display='none'; bar.style.width='0';
+  setHint('Tap “Remove Background” to start.',false);
 }
 
+/* ---- the main action ---- */
 removeBtn.addEventListener('click',function(){
-  if(!originalFile)return;
-  removeBtn.disabled=true;prog.style.display='';bar.style.width='3%';
-  var shown=3,creep=setInterval(function(){if(shown<90){shown+=Math.max(0.25,(92-shown)*0.022);bar.style.width=shown.toFixed(1)+'%';}},220);
-  setHint("Loading AI engine… first use downloads ~40&nbsp;MB. It may pause a few seconds — it's working, not stuck.",false);
+  if(!originalFile||busy) return;
+  busy=true; removeBtn.disabled=true;
+  clearResult();                          // reprocessing: drop stale result first
+  prev.src=origURL;
+  setHint('',false);
+  prog.style.display='block'; progText.style.display='block';
+  var shown=2, hadDownload=false, computePhase=false, dlFiles={};
+  bar.style.width='2%'; progText.innerHTML='Starting…';
+
+  var creep=setInterval(function(){
+    if(computePhase){ var cap=95; if(shown<cap){ shown+=Math.max(0.3,(cap+1-shown)*0.035); bar.style.width=shown.toFixed(1)+'%'; } }
+  },180);
+
   ensureBg().then(function(mod){
     return mod.removeBackground(originalFile,{
       progress:function(key,cur,tot){
-        var real=tot?(cur/tot*100):0;if(real>shown)shown=Math.min(95,real);
-        bar.style.width=Math.min(95,shown).toFixed(1)+'%';
-        setHint((/fetch|download/i.test(key)?'Downloading AI engine…':'Removing background…')+' please wait',false);
+        if(/fetch|download/i.test(key)){
+          hadDownload=true;
+          if(tot) dlFiles[key]={cur:cur,tot:tot};
+          var c=0,t=0; for(var k in dlFiles){ c+=dlFiles[k].cur; t+=dlFiles[k].tot; }
+          var pct=t?Math.round(c/t*100):null;
+          if(pct!=null){ shown=pct*0.7; bar.style.width=shown.toFixed(1)+'%'; }
+          progText.innerHTML='⬇ Downloading AI engine (one-time)…'+(pct!=null?' <b style="color:#8fb0ff">'+pct+'%</b>':'');
+        } else {
+          computePhase=true;
+          var base=hadDownload?70:0, span=hadDownload?30:100;
+          var pct=tot?Math.round(cur/tot*100):null;
+          if(pct!=null){ shown=base+pct/100*span; bar.style.width=shown.toFixed(1)+'%'; }
+          progText.innerHTML='✨ Removing background…'+(pct!=null?' <b style="color:#8fb0ff">'+pct+'%</b>':'');
+        }
       },
       output:{format:'image/png'}
     });
   }).then(function(blob){
-    clearInterval(creep);resultBlob=blob;
-    if(resultURL)URL.revokeObjectURL(resultURL);resultURL=URL.createObjectURL(blob);
-    prev.src=resultURL;dl.href=resultURL;dl.setAttribute('download','no-bg-xnipertools.png');dl.style.display='';$('enhanceBox').style.display='';
-    removeBtn.disabled=false;bar.style.width='100%';
-    setHint('✓ Background removed — download your transparent PNG below.',false);
-    setTimeout(function(){prog.style.display='none';bar.style.width='0';},900);
+    clearInterval(creep);
+    resultBlob=blob;
+    if(resultURL) URL.revokeObjectURL(resultURL);
+    resultURL=URL.createObjectURL(blob);
+    prev.src=resultURL;
+    bar.style.width='100%'; progText.innerHTML='✓ Done — <b style="color:#34d399">100%</b>';
+    bgOpts.style.display='block';
+    selectSwatch(null, swatches.firstChild);   // default = transparent
+    enhanceBox.style.display='';
+    removeBtn.style.display='none';
+    setHint('✓ Background removed! Pick a background color below, or download the transparent PNG.',false);
+    busy=false;
+    setTimeout(function(){ prog.style.display='none'; progText.style.display='none'; bar.style.width='0'; },1300);
   }).catch(function(e){
-    clearInterval(creep);removeBtn.disabled=false;prog.style.display='none';bar.style.width='0';
-    setHint('Could not process this image. Please try another photo or refresh. '+(e&&e.message?'('+e.message+')':''),true);
+    clearInterval(creep);
+    bgMod=null;                              // FIX: drop the failed engine so the next try re-loads cleanly
+    busy=false; removeBtn.disabled=false; removeBtn.style.display='';
+    prog.style.display='none'; progText.style.display='none'; bar.style.width='0';
+    var offline=!navigator.onLine;
+    setHint(offline
+      ? '⚠ Internet connection lost during the one-time download. Reconnect, then tap “Remove Background” again — it will pick up where it left off.'
+      : 'Couldn\'t process this image. Tap “Remove Background” to try again, or pick another photo.'+(e&&e.message?' <span style="opacity:.6">('+e.message+')</span>':''),
+      true);
   });
 });
 
-$('newImg').addEventListener('click',function(){originalFile=null;resultBlob=null;file.value='';editor.style.display='none';drop.style.display='';dl.style.display='none';$('enhanceBox').style.display='none';prog.style.display='none';setHint('',false);});
+/* custom color picker */
+customColor.addEventListener('input',function(){ if(resultBlob){ clearSwatchActive(); compose(this.value); } });
 
-(function(){var seen=null;try{seen=localStorage.getItem('xt_bg_intro');}catch(e){}
-  if(!seen)$('introModal').classList.add('show');
-  function dismiss(){$('introModal').classList.remove('show');try{localStorage.setItem('xt_bg_intro','1');}catch(e){}}
-  $('introOk').addEventListener('click',dismiss);
-  $('introModal').addEventListener('click',function(e){if(e.target===this)dismiss();});
-})();
+/* new image */
+$('newImg').addEventListener('click',resetAll);
 
+/* upscale handoff (keeps transparent master) */
 $('enhance').addEventListener('click',function(e){
-  if(!resultBlob)return;
-  if(window.caches){e.preventDefault();caches.open('xt-handoff').then(function(c){return c.put('img',new Response(resultBlob,{headers:{'Content-Type':'image/png'}}));}).then(function(){location.href='../image-upscaler/?from=bg';}).catch(function(){location.href='../image-upscaler/';});}
+  if(!resultBlob) return;
+  if(window.caches){
+    e.preventDefault();
+    caches.open('xt-handoff').then(function(c){ return c.put('img',new Response(resultBlob,{headers:{'Content-Type':'image/png'}})); })
+      .then(function(){ location.href='../image-upscaler/?from=bg'; })
+      .catch(function(){ location.href='../image-upscaler/'; });
+  }
 });
 
-drop.addEventListener('click',function(){file.click();});
-file.addEventListener('change',function(e){loadFile(e.target.files[0]);});
-drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
-drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
-drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');loadFile(e.dataTransfer.files[0]);});
+/* intro modal — first use only */
+(function(){
+  var seen=null; try{ seen=localStorage.getItem('xt_bg_intro'); }catch(e){}
+  if(!seen) $('introModal').classList.add('show');
+  function dismiss(){ $('introModal').classList.remove('show'); try{ localStorage.setItem('xt_bg_intro','1'); }catch(e){} }
+  $('introOk').addEventListener('click',dismiss);
+  $('introModal').addEventListener('click',function(e){ if(e.target===this) dismiss(); });
+})();
 
+/* file pickers + drag/drop */
+drop.addEventListener('click',function(){ file.click(); });
+file.addEventListener('change',function(e){ loadFile(e.target.files[0]); });
+drop.addEventListener('dragover',function(e){ e.preventDefault(); drop.classList.add('over'); });
+drop.addEventListener('dragleave',function(){ drop.classList.remove('over'); });
+drop.addEventListener('drop',function(e){ e.preventDefault(); drop.classList.remove('over'); loadFile(e.dataTransfer.files[0]); });
+
+buildSwatches();
+
+/* button ripple */
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl'||this.disabled)return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
 </body>
