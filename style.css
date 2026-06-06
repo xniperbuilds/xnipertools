@@ -273,6 +273,12 @@ footer.site{margin-top:80px;border-top:1px solid var(--border);background:rgba(6
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:30px}
 @media(max-width:640px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
 .foot-brand p{color:var(--muted);font-size:.9rem;margin-top:14px;max-width:300px}
+.socials{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.social-ig{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:50px;font-size:.86rem;font-weight:600;color:#fff;
+  background:linear-gradient(135deg,#feda75,#fa7e1e 28%,#d62976 58%,#962fbf 78%,#4f5bd5);
+  box-shadow:0 6px 20px rgba(214,41,118,.32);transition:transform .15s,box-shadow .2s,filter .15s}
+.social-ig:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(214,41,118,.5);filter:brightness(1.06);color:#fff}
+.social-ig svg{width:18px;height:18px;flex-shrink:0}
 .foot-col h4{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-2);margin-bottom:14px}
 .foot-col a{display:block;color:var(--muted);font-size:.92rem;margin-bottom:10px;transition:.2s}
 .foot-col a:hover{color:#fff;transform:translateX(3px)}
@@ -612,3 +618,20 @@ input[type=color]::-moz-color-swatch{border:none;border-radius:8px}
 .pdf-row button:disabled{opacity:.3;cursor:default}
 .pdf-row button:not(:disabled):hover{border-color:var(--accent)}
 .pdf-row .rm:hover{border-color:#ee5253;color:#ee5253}
+
+/* ===== Hero tool marquee (replaces old browser mockup) ===== */
+.mq{position:relative;margin:48px auto 0;max-width:1000px;display:flex;flex-direction:column;gap:14px;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.mq-row{display:flex;overflow:hidden}
+.mq-track{display:flex;flex-shrink:0;animation:mqScroll 44s linear infinite;will-change:transform}
+.mq-row.rev .mq-track{animation-direction:reverse}
+.mq:hover .mq-track{animation-play-state:paused}
+@keyframes mqScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mq-pill{flex-shrink:0;margin-right:14px;display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:50px;white-space:nowrap;
+  font-weight:600;font-size:.95rem;color:#e7eaf5;text-decoration:none;
+  background:var(--surface-2);background:color-mix(in srgb,var(--ic,#5e8bff) 16%,#0c0e15);
+  border:1px solid var(--border);border-color:color-mix(in srgb,var(--ic,#5e8bff) 42%,transparent);
+  transition:transform .2s,box-shadow .2s}
+.mq-pill:hover{transform:translateY(-3px);box-shadow:0 8px 24px color-mix(in srgb,var(--ic,#5e8bff) 40%,transparent)}
+.mq-pill .e{font-size:1.15rem;line-height:1}
+@media(max-width:560px){.mq-pill{font-size:.88rem;padding:10px 15px}.mq-track{animation-duration:34s}}

@@ -269,6 +269,13 @@
   .bmi-value{font-size:2.8rem}
 }
 </style>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Xnipertools">
+<script src="/pwa.js" defer></script>
 </head>
 <body data-tool="bmi-calculator">
 
@@ -742,6 +749,17 @@ document.addEventListener('keydown',e=>{if(e.key==='Enter')calculateBMI()});
   document.head.appendChild(s);
 })();
 </script>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p><div class="socials"><a href="https://instagram.com/xniperr" target="_blank" rel="noopener" class="social-ig" aria-label="Follow Xnipertools on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg><span>Follow on Instagram</span></a></div></div>
+      <div class="foot-col"><h4>Tools</h4><a href="/age-calculator/">Age Calculator</a><a href="/bmi-calculator/">BMI Calculator</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
 
 </body>
 </html>

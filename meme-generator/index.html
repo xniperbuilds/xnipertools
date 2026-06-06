@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Meme Generator — Make Memes Online Free (Add Text) | Xnipertools</title>
-<meta name="description" content="Free meme generator. Upload any image, add top and bottom text in the classic bold meme font, and download your meme instantly. Fast, private and 100% free.">
+<title>Meme Generator — Make Memes Free (Drag Text, Fonts &amp; Watermark) | Xnipertools</title>
+<meta name="description" content="Free meme generator. Upload any image, add multiple text boxes, drag them anywhere, pick fonts and colours, add your own watermark, and download. Fast, private, 100% free.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -14,20 +14,37 @@
 <meta property="og:site_name" content="Xnipertools">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://xnipertools.com/meme-generator/">
-<meta property="og:title" content="Meme Generator — Make Memes Online Free">
-<meta property="og:description" content="Upload any image, add top and bottom text in the classic meme font, and download your meme. Free and private.">
+<meta property="og:title" content="Meme Generator — Make Memes Free (Drag Text, Fonts & Watermark)">
+<meta property="og:description" content="Upload any image, add multiple draggable text boxes, pick fonts & colours, add your watermark, and download. Free and private.">
 <meta property="og:image" content="https://xnipertools.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Meme Generator — Make Memes Online Free">
-<meta name="twitter:description" content="Upload any image, add top and bottom text, and download your meme. Free, fast and private.">
+<meta name="twitter:title" content="Meme Generator — Make Memes Free">
+<meta name="twitter:description" content="Upload an image, add draggable text, fonts, colours & a watermark, then download. Free, fast, private.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Meme Generator","url":"https://xnipertools.com/meme-generator/","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the meme generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up and no limits. Make and download as many memes as you like."}},{"@type":"Question","name":"Can I use my own image?","acceptedAnswer":{"@type":"Answer","text":"Yes. Upload any photo, screenshot or picture from your device and add your own top and bottom text."}},{"@type":"Question","name":"Are my images uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Your meme is created locally in your browser using canvas — the image is never uploaded or stored anywhere."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the meme generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up and no limits. Make and download as many memes as you like."}},{"@type":"Question","name":"Can I move the text and use different fonts?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add as many text boxes as you want, drag each one anywhere on the image, and give each its own font, size, colour and outline."}},{"@type":"Question","name":"Can I add my own watermark?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add a text watermark or upload your own logo, set its size and opacity, and drag it to position. Great for branding your memes."}},{"@type":"Question","name":"Are my images uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Your meme is created locally in your browser using canvas — the image is never uploaded or stored anywhere."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Bangers&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Lobster&family=Oswald:wght@500;600;700&family=Pacifico&family=Permanent+Marker&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
+<style>
+#canvas{touch-action:none;cursor:move;max-width:100%;max-height:460px;border-radius:12px;border:1px solid var(--border);background:#0b0d12}
+.ml-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:11px;padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:.15s}
+.ml-row:hover{border-color:var(--border-2)}
+.ml-row.sel{border-color:var(--accent);background:rgba(94,139,255,.12)}
+.ml-txt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600;font-size:.9rem}
+.ml-del{background:transparent;border:none;color:#f87171;cursor:pointer;font-size:.95rem;padding:4px 7px;border-radius:6px;flex-shrink:0}
+.ml-del:hover{background:rgba(248,113,113,.15)}
+.le-box{margin-top:14px;padding:18px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid var(--border)}
+</style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Meme Generator","item":"https://xnipertools.com/meme-generator/"}]}</script>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Xnipertools">
+<script src="/pwa.js" defer></script>
 </head>
 <body data-tool="meme-generator">
 <div id="loader"><div class="loader-x">X</div></div>
@@ -56,34 +73,68 @@
     <div class="ic">😂</div>
     <div>
       <h1>Meme Generator</h1>
-      <p>Upload any image, add <b>top &amp; bottom text</b> in the classic meme font, and download — all in your browser.</p>
+      <p>Upload any image, add <b>text boxes you can drag anywhere</b>, pick <b>fonts &amp; colours</b>, add your <b>watermark</b>, and download — all in your browser.</p>
     </div>
   </div>
 
   <div class="tool-box">
     <div class="drop" id="drop">
       <input type="file" id="file" accept="image/*" hidden>
-      <div class="drop-inner">📁 <b>Click to upload</b> or drag &amp; drop an image<br><span class="muted">Your photo, screenshot or gameplay clip frame — JPG, PNG, WEBP</span></div>
+      <div class="drop-inner">📁 <b>Click to upload</b> or drag &amp; drop an image<br><span class="muted">Your photo, screenshot or gameplay frame — JPG, PNG, WEBP</span></div>
     </div>
 
     <div id="editor" style="display:none">
       <div class="meme-wrap"><canvas id="canvas"></canvas></div>
+      <p class="muted center" style="font-size:.84rem;margin-top:8px">✋ Drag any text (or your watermark) on the image to move it.</p>
 
-      <div class="row cols-2 mt">
-        <div><label for="top">Top text</label><input type="text" id="top" placeholder="TOP TEXT" autocomplete="off"></div>
-        <div><label for="bottom">Bottom text</label><input type="text" id="bottom" placeholder="BOTTOM TEXT" autocomplete="off"></div>
+      <div class="mt" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+        <label style="margin:0">📝 Text layers</label>
+        <button class="btn ghost" id="addText" type="button" style="width:auto;flex:0 0 auto;padding:9px 15px">➕ Add text</button>
+      </div>
+      <div id="layerList" class="mt"></div>
+
+      <div id="layerEdit" class="le-box" style="display:none">
+        <label for="leText">Text</label>
+        <input type="text" id="leText" placeholder="Type your text…" autocomplete="off">
+        <div class="mt"><label for="leFont">Font</label><select id="leFont"></select></div>
+        <div class="row cols-2 mt">
+          <div><label>Size <span class="muted" id="leSizeV"></span></label><input type="range" id="leSize" min="3" max="24" step="0.5"></div>
+          <div><label>Outline <span class="muted" id="leStrokeV"></span></label><input type="range" id="leStroke" min="0" max="20" step="1"></div>
+        </div>
+        <div class="row cols-2 mt">
+          <div><label for="leFill">Text colour</label><div class="color-field"><input type="color" id="leFill"><span class="hex" id="leFillHex"></span></div></div>
+          <div><label for="leStrokeC">Outline colour</label><div class="color-field"><input type="color" id="leStrokeC"><span class="hex" id="leStrokeCHex"></span></div></div>
+        </div>
+        <div class="ff-toggles mt">
+          <label class="ff-toggle"><input type="checkbox" id="leCaps"><span class="tg"></span><span>ALL CAPS</span></label>
+          <label class="ff-toggle"><input type="checkbox" id="leBold"><span class="tg"></span><span>Bold</span></label>
+        </div>
+        <button class="btn ghost mt" id="leDelete" type="button" style="width:auto;color:#f87171">🗑 Delete this text</button>
       </div>
 
-      <div class="row cols-3 mt">
-        <div><label>Font size <span class="muted" id="sizeV">9%</span></label><input type="range" id="size" min="4" max="16" step="0.5" value="9"></div>
-        <div><label for="fill">Text colour</label><div class="color-field"><input type="color" id="fill" value="#ffffff"><span class="hex" id="fillHex">#FFFFFF</span></div></div>
-        <div><label for="stroke">Outline</label><div class="color-field"><input type="color" id="stroke" value="#000000"><span class="hex" id="strokeHex">#000000</span></div></div>
-      </div>
-      <label class="ff-toggle mt"><input type="checkbox" id="caps" checked><span class="tg"></span><span>ALL CAPS</span></label>
+      <details class="ffp-details mt" id="wmBox">
+        <summary>💧 Watermark — brand your meme</summary>
+        <div style="padding:6px 16px 16px">
+          <label class="ff-toggle"><input type="checkbox" id="wmOn"><span class="tg"></span><span>Add a watermark</span></label>
+          <div id="wmCtrls" style="display:none;margin-top:14px">
+            <div class="tabs" style="margin-bottom:12px">
+              <button class="tab active" id="wmTabText" type="button">Text</button>
+              <button class="tab" id="wmTabLogo" type="button">Logo image</button>
+            </div>
+            <div id="wmTextWrap"><input type="text" id="wmText" placeholder="@yourname or yoursite.com" autocomplete="off"></div>
+            <div id="wmLogoWrap" style="display:none"><button class="file-btn" id="wmLogoBtn" type="button">📁 Upload your logo</button><input type="file" id="wmLogoFile" accept="image/*" hidden><span class="fname" id="wmLogoName" style="margin-left:10px;font-size:.82rem;color:var(--muted)"></span></div>
+            <div class="row cols-2 mt">
+              <div><label>Size <span class="muted" id="wmSizeV">4%</span></label><input type="range" id="wmSize" min="2" max="16" step="0.5" value="4"></div>
+              <div><label>Opacity <span class="muted" id="wmOpV">60%</span></label><input type="range" id="wmOp" min="0.1" max="1" step="0.05" value="0.6"></div>
+            </div>
+            <div class="color-field mt" id="wmColorWrap"><input type="color" id="wmColor" value="#ffffff"><span class="hex">Watermark colour</span></div>
+          </div>
+        </div>
+      </details>
 
       <div class="ff-actions mt">
         <a class="btn" id="dl">📥 Download Meme</a>
-        <button class="btn ghost" id="newImg">↺ New image</button>
+        <button class="btn ghost" id="newImg" type="button">↺ New image</button>
       </div>
     </div>
     <div class="wa-hint ok" id="hint"></div>
@@ -95,19 +146,22 @@
 
   <article class="article reveal">
     <h2>Why use our Meme Generator?</h2>
-    <p>Make a meme in seconds — no design skills needed. Upload any image (a photo, a screenshot, or a frame from your gameplay), type your <b>top and bottom text</b>, and it's instantly styled in the classic bold white-with-black-outline meme font. Tweak the size and colours, then download a high-quality PNG ready to post on WhatsApp, Instagram, TikTok or your group chat.</p>
+    <p>Make a meme in seconds — no design skills needed. Upload any image (a photo, a screenshot, or a frame from your gameplay), then add as many <b>text boxes</b> as you like. <b>Drag each one anywhere</b> on the image and give it its own <b>font</b>, <b>size</b>, <b>colour</b> and <b>outline</b>. Add your own <b>watermark</b> — text or a logo — to brand it, then download a high-quality PNG ready for WhatsApp, Instagram, TikTok or your group chat.</p>
     <p>Everything is rendered right in your browser with HTML canvas, so it's fast, completely free, needs no sign-up, and your image is never uploaded anywhere. Perfect for gaming memes, reaction pics and trend templates you can share in a tap.</p>
     <h3>How to use it</h3>
     <ol>
       <li><b>Upload</b> an image (or drag &amp; drop it).</li>
-      <li>Type your <b>top</b> and <b>bottom</b> text.</li>
-      <li>Adjust <b>size</b> and <b>colours</b> if you like.</li>
+      <li>Tap <b>➕ Add text</b>, type, and <b>drag</b> it where you want.</li>
+      <li>Pick a <b>font</b>, <b>colour</b> and <b>outline</b> for each text.</li>
+      <li>Optionally add a <b>watermark</b> (text or your logo).</li>
       <li>Tap <b>Download Meme</b> — done!</li>
     </ol>
     <h3>Is the meme generator free?</h3>
     <p>Yes — completely free, no sign-up, no limits. Make as many memes as you want.</p>
-    <h3>Can I use my own image?</h3>
-    <p>Absolutely. Upload any picture from your device and add your own text.</p>
+    <h3>Can I move text and use different fonts?</h3>
+    <p>Yes. Add multiple text boxes, drag each anywhere, and give each its own font, size, colour and outline.</p>
+    <h3>Can I add my own watermark?</h3>
+    <p>Yes — add a text watermark or upload your logo, set size and opacity, and drag it into place.</p>
     <h3>Are my images uploaded to a server?</h3>
     <p>No. Your meme is created locally in your browser; the image never leaves your device.</p>
   </article>
@@ -125,7 +179,7 @@
 <footer class="site">
   <div class="container">
     <div class="foot-grid">
-      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p></div>
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p><div class="socials"><a href="https://instagram.com/xniperr" target="_blank" rel="noopener" class="social-ig" aria-label="Follow Xnipertools on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg><span>Follow on Instagram</span></a></div></div>
       <div class="foot-col"><h4>Tools</h4><a href="../meme-generator/">Meme Generator</a><a href="../image-compressor/">Image Tools</a><a href="/#tools">All Tools</a></div>
       <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
     </div>
@@ -141,11 +195,26 @@ const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.ta
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 var $=function(id){return document.getElementById(id);};
-var drop=$('drop'),file=$('file'),editor=$('editor'),canvas=$('canvas'),ctx=canvas.getContext('2d');
-var topI=$('top'),botI=$('bottom'),sizeI=$('size'),fillI=$('fill'),strokeI=$('stroke'),capsI=$('caps'),hint=$('hint'),dl=$('dl');
-var baseImg=null,curURL='';
+var drop=$('drop'),file=$('file'),editor=$('editor'),canvas=$('canvas'),ctx=canvas.getContext('2d'),hint=$('hint');
+var baseImg=null, layers=[], sel=null, nextId=1;
+var wm={on:false,type:'text',text:'',img:null,name:'',xf:0.5,yf:0.95,sizePct:4,opacity:0.6,color:'#ffffff',_bbox:null};
+
+var FONTS=[
+  {k:'Anton',label:'Impact (classic meme)',css:'"Anton", Impact, sans-serif',w:'400'},
+  {k:'Archivo Black',label:'Heavy Sans',css:'"Archivo Black", sans-serif',w:'400'},
+  {k:'Bebas Neue',label:'Tall Caps',css:'"Bebas Neue", sans-serif',w:'400'},
+  {k:'Oswald',label:'Condensed',css:'"Oswald", sans-serif',w:'600'},
+  {k:'Bangers',label:'Comic',css:'"Bangers", cursive',w:'400'},
+  {k:'Permanent Marker',label:'Marker',css:'"Permanent Marker", cursive',w:'400'},
+  {k:'Pacifico',label:'Script',css:'"Pacifico", cursive',w:'400'},
+  {k:'Lobster',label:'Bold Script',css:'"Lobster", cursive',w:'400'},
+  {k:'Inter',label:'Clean Sans',css:'"Inter", sans-serif',w:'800'}
+];
+function font(key){for(var i=0;i<FONTS.length;i++)if(FONTS[i].k===key)return FONTS[i];return FONTS[0];}
+$('leFont').innerHTML=FONTS.map(function(f){return '<option value="'+f.k+'">'+f.label+'</option>';}).join('');
 
 function setHint(m,err){hint.innerHTML=m||'';hint.classList.toggle('ok',!err);}
+function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
 function loadFile(f){
   if(!f||!/^image\//.test(f.type)){setHint('Please choose an image file.',true);return;}
@@ -156,57 +225,205 @@ function loadFile(f){
     var MAX=1600,w=img.naturalWidth,h=img.naturalHeight,sc=Math.min(1,MAX/Math.max(w,h));
     canvas.width=Math.max(1,Math.round(w*sc));canvas.height=Math.max(1,Math.round(h*sc));
     baseImg=img;drop.style.display='none';editor.style.display='';
-    if(document.fonts&&document.fonts.load){document.fonts.load('40px "Anton"').then(render).catch(render);}
+    if(!layers.length){
+      layers=[];nextId=1;
+      addLayer('TOP TEXT',0.5,0.11,false);
+      addLayer('BOTTOM TEXT',0.5,0.89,false);
+      selectLayer(layers[0].id);
+    }
+    preloadFonts(render);
     render();
   };
   img.onerror=function(){setHint('Could not read that image.',true);};
   img.src=url;
 }
+function preloadFonts(cb){
+  if(!document.fonts||!document.fonts.load){cb&&cb();return;}
+  var jobs=FONTS.map(function(f){return document.fonts.load('40px '+f.css.split(',')[0]).catch(function(){});});
+  Promise.all(jobs).then(function(){cb&&cb();}).catch(function(){cb&&cb();});
+}
+function ensureFont(key,cb){
+  if(!document.fonts||!document.fonts.load){cb&&cb();return;}
+  document.fonts.load('40px '+font(key).css.split(',')[0]).then(function(){cb&&cb();}).catch(function(){cb&&cb();});
+}
+
+function addLayer(text,xf,yf,select){
+  var L={id:nextId++,text:text||'New text',xf:(xf==null?0.5:xf),yf:(yf==null?0.5:yf),fontKey:'Anton',sizePct:9,color:'#ffffff',stroke:'#000000',strokeW:8,caps:true,bold:false,_bbox:null};
+  layers.push(L);
+  if(select!==false)selectLayer(L.id);else{renderLayerList();}
+  return L;
+}
+function delLayer(id){
+  layers=layers.filter(function(l){return l.id!==id;});
+  if(sel===id)sel=layers.length?layers[layers.length-1].id:null;
+  syncEditor();renderLayerList();render();
+}
+function cur(){for(var i=0;i<layers.length;i++)if(layers[i].id===sel)return layers[i];return null;}
+
+function renderLayerList(){
+  var el=$('layerList');
+  if(!layers.length){el.innerHTML='<p class="muted" style="font-size:.85rem">No text yet — tap “➕ Add text”.</p>';return;}
+  el.innerHTML=layers.map(function(L){
+    return '<div class="ml-row'+(L.id===sel?' sel':'')+'" data-id="'+L.id+'"><span class="ml-txt">'+esc((L.text||'(empty)').slice(0,30))+'</span><button class="ml-del" data-id="'+L.id+'" aria-label="Delete">✕</button></div>';
+  }).join('');
+  el.querySelectorAll('.ml-row').forEach(function(r){r.addEventListener('click',function(e){if(e.target.classList.contains('ml-del'))return;selectLayer(+r.dataset.id);});});
+  el.querySelectorAll('.ml-del').forEach(function(b){b.addEventListener('click',function(e){e.stopPropagation();delLayer(+b.dataset.id);});});
+}
+function selectLayer(id){sel=id;syncEditor();renderLayerList();render();}
+function syncEditor(){
+  var L=cur(),box=$('layerEdit');
+  if(!L){box.style.display='none';return;}
+  box.style.display='';
+  $('leText').value=L.text;$('leFont').value=L.fontKey;
+  $('leSize').value=L.sizePct;$('leSizeV').textContent=L.sizePct+'%';
+  $('leStroke').value=L.strokeW;$('leStrokeV').textContent=L.strokeW;
+  $('leFill').value=L.color;$('leFillHex').textContent=L.color.toUpperCase();
+  $('leStrokeC').value=L.stroke;$('leStrokeCHex').textContent=L.stroke.toUpperCase();
+  $('leCaps').checked=L.caps;$('leBold').checked=L.bold;
+}
 
 function wrapLines(text,maxW){
-  var words=text.split(/\s+/),lines=[],cur='';
-  for(var i=0;i<words.length;i++){
-    var test=cur?cur+' '+words[i]:words[i];
-    if(ctx.measureText(test).width>maxW&&cur){lines.push(cur);cur=words[i];}
-    else cur=test;
-  }
-  if(cur)lines.push(cur);return lines;
+  var paras=text.split('\n'),out=[];
+  paras.forEach(function(p){
+    var words=p.split(/\s+/),curl='';
+    for(var i=0;i<words.length;i++){
+      var test=curl?curl+' '+words[i]:words[i];
+      if(ctx.measureText(test).width>maxW&&curl){out.push(curl);curl=words[i];}
+      else curl=test;
+    }
+    out.push(curl);
+  });
+  return out;
 }
-function drawBlock(text,pos,fs){
-  if(!text)return;
-  if(capsI.checked)text=text.toUpperCase();
-  ctx.font='400 '+fs+'px "Anton", Impact, "Arial Black", sans-serif';
+function drawLayer(L){
+  var W=canvas.width,H=canvas.height,fs=H*(L.sizePct/100);
+  var f=font(L.fontKey);
+  ctx.font=(L.bold?'700 ':f.w+' ')+fs+'px '+f.css;
   ctx.textAlign='center';ctx.textBaseline='top';ctx.lineJoin='round';ctx.miterLimit=2;
-  ctx.lineWidth=Math.max(2,fs/7);ctx.strokeStyle=strokeI.value;ctx.fillStyle=fillI.value;
-  var W=canvas.width,H=canvas.height;
-  var lines=wrapLines(text,W*0.92),lh=fs*1.06,totalH=lines.length*lh;
-  var startY=pos==='top'?H*0.03:H-H*0.03-totalH;
-  lines.forEach(function(ln,i){var y=startY+i*lh;ctx.strokeText(ln,W/2,y);ctx.fillText(ln,W/2,y);});
+  var txt=L.caps?(L.text||'').toUpperCase():(L.text||'');
+  var lines=wrapLines(txt,W*0.94),lh=fs*1.12,totalH=lines.length*lh;
+  var cx=L.xf*W,cy=L.yf*H,startY=cy-totalH/2,maxW=0;
+  ctx.lineWidth=fs*(L.strokeW/100);ctx.strokeStyle=L.stroke;ctx.fillStyle=L.color;
+  lines.forEach(function(ln,i){var y=startY+i*lh;if(L.strokeW>0)ctx.strokeText(ln,cx,y);ctx.fillText(ln,cx,y);var w=ctx.measureText(ln).width;if(w>maxW)maxW=w;});
+  L._bbox={x:cx-maxW/2,y:startY,w:maxW,h:totalH};
 }
-function render(){
+function drawWatermark(){
+  if(!wm.on){wm._bbox=null;return;}
+  var W=canvas.width,H=canvas.height;
+  ctx.save();ctx.globalAlpha=wm.opacity;
+  if(wm.type==='image'&&wm.img){
+    var dh=H*(wm.sizePct/100)*2.4,dw=dh*(wm.img.naturalWidth/wm.img.naturalHeight);
+    var cx=wm.xf*W,cy=wm.yf*H;
+    ctx.drawImage(wm.img,cx-dw/2,cy-dh/2,dw,dh);
+    wm._bbox={x:cx-dw/2,y:cy-dh/2,w:dw,h:dh};
+  }else{
+    var t=wm.text||'';if(!t){ctx.restore();wm._bbox=null;return;}
+    var fs=H*(wm.sizePct/100);
+    ctx.font='700 '+fs+'px "Inter", sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineJoin='round';
+    ctx.lineWidth=Math.max(1,fs/10);ctx.strokeStyle='rgba(0,0,0,.45)';ctx.fillStyle=wm.color;
+    var cx2=wm.xf*W,cy2=wm.yf*H;
+    ctx.strokeText(t,cx2,cy2);ctx.fillText(t,cx2,cy2);
+    var tw=ctx.measureText(t).width;wm._bbox={x:cx2-tw/2,y:cy2-fs/2,w:tw,h:fs};
+  }
+  ctx.restore();
+}
+function drawSelBox(o){
+  if(!o||!o._bbox)return;
+  var b=o._bbox,p=Math.max(6,canvas.height*0.012);
+  ctx.save();ctx.strokeStyle='rgba(94,139,255,.95)';ctx.lineWidth=Math.max(2,canvas.height*0.004);
+  ctx.setLineDash([Math.max(6,canvas.height*0.014),Math.max(4,canvas.height*0.01)]);
+  ctx.strokeRect(b.x-p,b.y-p,b.w+2*p,b.h+2*p);ctx.restore();
+}
+function render(forExport){
   if(!baseImg)return;
-  var W=canvas.width,H=canvas.height,fs=H*(parseFloat(sizeI.value)/100);
-  ctx.clearRect(0,0,W,H);
-  ctx.drawImage(baseImg,0,0,W,H);
-  drawBlock(topI.value,'top',fs);
-  drawBlock(botI.value,'bottom',fs);
-  if(curURL)URL.revokeObjectURL(curURL);
-  canvas.toBlob(function(b){if(b){curURL=URL.createObjectURL(b);dl.href=curURL;dl.setAttribute('download','meme-xnipertools.png');}},'image/png');
+  var W=canvas.width,H=canvas.height;
+  ctx.clearRect(0,0,W,H);ctx.drawImage(baseImg,0,0,W,H);
+  layers.forEach(drawLayer);
+  drawWatermark();
+  if(!forExport){
+    var s=cur();if(s)drawSelBox(s);else if(sel==='wm'&&wm.on)drawSelBox(wm);
+  }
 }
 
+/* ---- dragging ---- */
+var drag=null;
+function pt(e){var r=canvas.getBoundingClientRect();return {x:(e.clientX-r.left)*(canvas.width/r.width),y:(e.clientY-r.top)*(canvas.height/r.height)};}
+function inBox(b,p,pad){if(!b)return false;pad=pad||canvas.height*0.02;return p.x>=b.x-pad&&p.x<=b.x+b.w+pad&&p.y>=b.y-pad&&p.y<=b.y+b.h+pad;}
+function hit(p){
+  if(wm.on&&inBox(wm._bbox,p))return 'wm';
+  for(var i=layers.length-1;i>=0;i--)if(inBox(layers[i]._bbox,p))return layers[i].id;
+  return null;
+}
+canvas.addEventListener('pointerdown',function(e){
+  if(!baseImg)return;
+  var p=pt(e),h=hit(p);
+  if(h==null)return;
+  e.preventDefault();
+  var o=(h==='wm')?wm:layers.filter(function(l){return l.id===h;})[0];
+  if(sel!==h){sel=h;syncEditor();renderLayerList();}
+  drag={o:o,dx:p.x-o.xf*canvas.width,dy:p.y-o.yf*canvas.height};
+  try{canvas.setPointerCapture(e.pointerId);}catch(_){}
+  render();
+});
+canvas.addEventListener('pointermove',function(e){
+  if(!drag)return;e.preventDefault();
+  var p=pt(e);
+  drag.o.xf=Math.min(1,Math.max(0,(p.x-drag.dx)/canvas.width));
+  drag.o.yf=Math.min(1,Math.max(0,(p.y-drag.dy)/canvas.height));
+  render();
+});
+function endDrag(e){if(drag){drag=null;try{canvas.releasePointerCapture(e.pointerId);}catch(_){}}}
+canvas.addEventListener('pointerup',endDrag);
+canvas.addEventListener('pointercancel',endDrag);
+
+/* ---- layer editor controls ---- */
+$('addText').addEventListener('click',function(){addLayer('New text',0.5,0.5,true);});
+$('leText').addEventListener('input',function(){var L=cur();if(L){L.text=this.value;renderLayerList();render();}});
+$('leFont').addEventListener('change',function(){var L=cur();if(L){L.fontKey=this.value;ensureFont(L.fontKey,render);}});
+$('leSize').addEventListener('input',function(){var L=cur();if(L){L.sizePct=parseFloat(this.value);$('leSizeV').textContent=this.value+'%';render();}});
+$('leStroke').addEventListener('input',function(){var L=cur();if(L){L.strokeW=parseFloat(this.value);$('leStrokeV').textContent=this.value;render();}});
+$('leFill').addEventListener('input',function(){var L=cur();if(L){L.color=this.value;$('leFillHex').textContent=this.value.toUpperCase();render();}});
+$('leStrokeC').addEventListener('input',function(){var L=cur();if(L){L.stroke=this.value;$('leStrokeCHex').textContent=this.value.toUpperCase();render();}});
+$('leCaps').addEventListener('change',function(){var L=cur();if(L){L.caps=this.checked;render();}});
+$('leBold').addEventListener('change',function(){var L=cur();if(L){L.bold=this.checked;render();}});
+$('leDelete').addEventListener('click',function(){if(sel!=null&&sel!=='wm')delLayer(sel);});
+
+/* ---- watermark controls ---- */
+$('wmOn').addEventListener('change',function(){wm.on=this.checked;$('wmCtrls').style.display=this.checked?'':'none';if(this.checked)sel='wm';render();});
+$('wmTabText').addEventListener('click',function(){wm.type='text';this.classList.add('active');$('wmTabLogo').classList.remove('active');$('wmTextWrap').style.display='';$('wmLogoWrap').style.display='none';$('wmColorWrap').style.display='';render();});
+$('wmTabLogo').addEventListener('click',function(){wm.type='image';this.classList.add('active');$('wmTabText').classList.remove('active');$('wmTextWrap').style.display='none';$('wmLogoWrap').style.display='';$('wmColorWrap').style.display='none';render();});
+$('wmText').addEventListener('input',function(){wm.text=this.value;render();});
+$('wmLogoBtn').addEventListener('click',function(){$('wmLogoFile').click();});
+$('wmLogoFile').addEventListener('change',function(e){
+  var f=e.target.files[0];if(!f||!/^image\//.test(f.type))return;
+  var u=URL.createObjectURL(f),im=new Image();
+  im.onload=function(){URL.revokeObjectURL(u);wm.img=im;wm.name=f.name;$('wmLogoName').textContent=f.name;render();};
+  im.src=u;
+});
+$('wmSize').addEventListener('input',function(){wm.sizePct=parseFloat(this.value);$('wmSizeV').textContent=this.value+'%';render();});
+$('wmOp').addEventListener('input',function(){wm.opacity=parseFloat(this.value);$('wmOpV').textContent=Math.round(this.value*100)+'%';render();});
+$('wmColor').addEventListener('input',function(){wm.color=this.value;render();});
+
+/* ---- upload + download ---- */
 drop.addEventListener('click',function(){file.click();});
 file.addEventListener('change',function(e){loadFile(e.target.files[0]);});
 drop.addEventListener('dragover',function(e){e.preventDefault();drop.classList.add('over');});
 drop.addEventListener('dragleave',function(){drop.classList.remove('over');});
 drop.addEventListener('drop',function(e){e.preventDefault();drop.classList.remove('over');loadFile(e.dataTransfer.files[0]);});
-[topI,botI].forEach(function(el){el.addEventListener('input',render);});
-sizeI.addEventListener('input',function(){$('sizeV').textContent=sizeI.value+'%';render();});
-fillI.addEventListener('input',function(){$('fillHex').textContent=fillI.value.toUpperCase();render();});
-strokeI.addEventListener('input',function(){$('strokeHex').textContent=strokeI.value.toUpperCase();render();});
-capsI.addEventListener('change',render);
-$('newImg').addEventListener('click',function(){baseImg=null;file.value='';editor.style.display='none';drop.style.display='';topI.value='';botI.value='';});
+$('newImg').addEventListener('click',function(){baseImg=null;file.value='';editor.style.display='none';drop.style.display='';layers=[];sel=null;wm.on=false;$('wmOn').checked=false;$('wmCtrls').style.display='none';syncEditor();renderLayerList();});
+$('dl').addEventListener('click',function(e){
+  e.preventDefault();
+  if(!baseImg)return;
+  render(true);
+  canvas.toBlob(function(b){
+    if(!b)return;
+    var a=document.createElement('a');a.download='meme-xnipertools.png';a.href=URL.createObjectURL(b);
+    document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1500);
+    render();
+  },'image/png');
+});
 
-document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl')return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl'||this.disabled)return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
 </body>
 </html>
