@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-2G2RG8P4CJ');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Test Paper Generator &amp; School Tools for Teachers</title>
+<meta name="description" content="Make exam papers, MCQ worksheets, OMR bubble sheets and date sheets in minutes. Multiple templates, English, Urdu &amp; Arabic, print or download as PDF. Free.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="canonical" href="https://xnipertools.com/school-tools/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/school-tools/">
+<meta property="og:title" content="School Tools for Teachers — Test Paper, MCQ, OMR &amp; Date Sheet Maker">
+<meta property="og:description" content="Create exam papers, MCQ worksheets, OMR bubble answer sheets and exam date sheets. Multiple templates, English/Urdu/Arabic, print or save as PDF. 100% free.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="School Tools for Teachers — Test Paper, MCQ &amp; OMR Maker">
+<meta name="twitter:description" content="Create exam papers, MCQ worksheets, OMR bubble sheets and date sheets. Multiple templates, English/Urdu/Arabic, print or save as PDF. Free.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"School Tools for Teachers","url":"https://xnipertools.com/school-tools/","applicationCategory":"EducationalApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"featureList":["Test and exam paper generator","MCQ worksheet maker","OMR bubble answer sheet generator","Exam date sheet maker","English, Urdu and Arabic support","Print and PDF export"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What can I make with these school tools?","acceptedAnswer":{"@type":"Answer","text":"You can create exam and test papers with sections and marks, MCQ worksheets with an optional answer key, OMR bubble answer sheets for any number of questions, and exam date sheets. Each one has several templates."}},{"@type":"Question","name":"Can I make papers in Urdu or Arabic?","acceptedAnswer":{"@type":"Answer","text":"Yes. Switch the language to Urdu or Arabic and the paper flows right to left with the correct script. Field labels like Name, Roll No, Total Marks and Time are translated for you."}},{"@type":"Question","name":"How do I get a PDF?","acceptedAnswer":{"@type":"Answer","text":"Click Print to save directly as a PDF from your browser, or click Download PDF to get a file. You can choose a colorful template or a clean black-and-white version that saves ink."}},{"@type":"Question","name":"Is it free?","acceptedAnswer":{"@type":"Answer","text":"Yes, every tool here is 100% free with no signup. Everything runs in your browser and nothing you type is uploaded."}}]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Noto+Nastaliq+Urdu:wght@500;700&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"School Tools","item":"https://xnipertools.com/school-tools/"}]}</script>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Xnipertools">
+<script src="/pwa.js" defer></script>
+<style>
+/* ============ School Tools — scoped UI ============ */
+body[data-tool="school-tools"]{--sa:#f59e0b;--sa-l:#fbbf24;--sa-d:#b45309}
+
+/* module tab bar */
+.sm-bar{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:6px}
+.sm-tab{display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border-radius:13px;background:var(--surface);border:1px solid var(--border);color:var(--muted);font-weight:600;font-size:.92rem;cursor:pointer;font-family:inherit;transition:transform .15s cubic-bezier(.23,1,.32,1),border-color .18s,color .18s,background .18s}
+.sm-tab svg{width:18px;height:18px;flex-shrink:0;opacity:.85}
+.sm-tab:active{transform:scale(.97)}
+@media(hover:hover){.sm-tab:hover{color:#fff;border-color:var(--border-2);transform:translateY(-1px)}}
+.sm-tab.active{color:#1a1206;border-color:transparent;background:linear-gradient(135deg,var(--sa-l),var(--sa));box-shadow:0 7px 20px color-mix(in srgb,var(--sa) 40%,transparent)}
+.sm-tab.active svg{opacity:1}
+
+.sm-sub{color:var(--muted);font-size:.92rem;margin:2px 0 20px;max-width:70ch}
+
+/* two-pane work area */
+.sm-work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:22px;align-items:start}
+@media(max-width:920px){.sm-work{grid-template-columns:1fr}}
+
+.sm-panel{display:none}
+.sm-panel.on{display:block}
+
+/* controls column */
+.sm-controls{display:flex;flex-direction:column;gap:18px;min-width:0}
+.sm-card{background:rgba(255,255,255,.022);border:1px solid var(--border);border-radius:16px;padding:18px}
+.sm-card>h3{font-family:'Space Grotesk',sans-serif;font-size:.96rem;font-weight:700;color:#fff;margin-bottom:14px;display:flex;align-items:center;gap:9px}
+.sm-card>h3 .nm{width:23px;height:23px;border-radius:7px;display:grid;place-items:center;font-size:.78rem;background:color-mix(in srgb,var(--sa) 22%,#0c0e15);border:1px solid color-mix(in srgb,var(--sa) 42%,transparent);color:var(--sa-l)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fgrid .full{grid-column:1/-1}
+@media(max-width:480px){.fgrid{grid-template-columns:1fr}}
+.fld label{font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:none}
+.fld input,.fld select,.fld textarea{padding:11px 13px;font-size:.94rem;border-radius:11px}
+.fld textarea{resize:vertical;min-height:62px;line-height:1.5}
+
+/* dynamic list blocks */
+.blk{background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:13px;padding:14px;margin-bottom:12px;position:relative}
+.blk-top{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.blk-top .tag{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.04em;text-transform:uppercase;color:var(--sa-l);background:color-mix(in srgb,var(--sa) 14%,transparent);border:1px solid color-mix(in srgb,var(--sa) 30%,transparent);padding:5px 10px;border-radius:30px}
+.blk-top .spacer{flex:1}
+.icon-btn{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--muted);cursor:pointer;transition:.15s;flex-shrink:0}
+.icon-btn svg{width:15px;height:15px}
+@media(hover:hover){.icon-btn:hover{color:#fff;border-color:var(--border-2);background:rgba(255,255,255,.07)}.icon-btn.del:hover{color:#ff8d8d;border-color:rgba(255,109,109,.5);background:rgba(255,80,80,.1)}}
+.icon-btn:active{transform:scale(.94)}
+.q-row{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+.q-row .qn{flex-shrink:0;width:26px;height:38px;display:grid;place-items:center;font-weight:700;font-size:.84rem;color:var(--muted-2)}
+.q-row .qmain{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.q-row input,.q-row textarea{padding:10px 12px;font-size:.9rem;border-radius:10px}
+.opt-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.opt-grid .opt{display:flex;align-items:center;gap:6px}
+.opt-grid .opt b{font-size:.82rem;color:var(--muted);width:14px;flex-shrink:0}
+.opt-grid .opt input{padding:8px 10px;font-size:.86rem}
+.mini-add{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:10px;border:1px dashed var(--border-2);background:transparent;color:var(--sa-l);font-weight:600;font-size:.85rem;cursor:pointer;font-family:inherit;transition:.15s}
+.mini-add svg{width:14px;height:14px}
+@media(hover:hover){.mini-add:hover{background:color-mix(in srgb,var(--sa) 10%,transparent);border-color:color-mix(in srgb,var(--sa) 45%,transparent)}}
+.mini-add:active{transform:scale(.98)}
+.add-row{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.add-row select{width:auto;flex:1;min-width:120px;padding:10px 12px;font-size:.88rem}
+
+/* checkbox pill */
+.chk{display:inline-flex;align-items:center;gap:9px;cursor:pointer;user-select:none;font-size:.9rem;color:#d2d6e4;font-weight:500}
+.chk input{display:none}
+.chk .box{width:20px;height:20px;border-radius:6px;border:1.5px solid var(--border-2);display:grid;place-items:center;transition:.15s;flex-shrink:0}
+.chk .box svg{width:13px;height:13px;color:#1a1206;opacity:0;transform:scale(.6);transition:.15s}
+.chk input:checked+.box{background:var(--sa);border-color:var(--sa)}
+.chk input:checked+.box svg{opacity:1;transform:scale(1)}
+
+/* preview column */
+.sm-preview{position:sticky;top:14px}
+@media(max-width:920px){.sm-preview{position:static}}
+.sm-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;padding:12px 14px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:14px}
+.tb-group{display:flex;gap:7px;align-items:center}
+.tb-group>span{font-size:.74rem;font-weight:600;color:var(--muted-2);text-transform:uppercase;letter-spacing:.04em}
+.tb-sel{position:relative}
+.tb-sel select{width:auto;padding:9px 30px 9px 12px;font-size:.86rem;border-radius:10px}
+.seg{display:inline-flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:11px;padding:4px}
+.seg button{cursor:pointer;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:.82rem;padding:8px 13px;border-radius:8px;font-family:inherit;transition:.15s}
+.seg button.on{background:linear-gradient(135deg,var(--sa-l),var(--sa));color:#1a1206;box-shadow:0 3px 11px color-mix(in srgb,var(--sa) 38%,transparent)}
+.seg button:active{transform:scale(.96)}
+.tb-spacer{flex:1;min-width:8px}
+.tb-actions{display:flex;gap:9px;flex-wrap:wrap}
+.tb-actions .btn{width:auto;padding:11px 17px;font-size:.88rem;gap:7px}
+.btn.ghost{background:rgba(255,255,255,.04);border:1px solid var(--border-2);box-shadow:none}
+@media(hover:hover){.btn.ghost:hover{background:rgba(255,255,255,.08)}}
+
+/* the scroll stage that holds the white paper */
+.paper-stage{background:repeating-linear-gradient(45deg,#0c0d11,#0c0d11 10px,#0e0f14 10px,#0e0f14 20px);border:1px solid var(--border);border-radius:14px;padding:20px;max-height:calc(100vh - 60px);overflow:auto}
+@media(max-width:920px){.paper-stage{max-height:none}}
+
+/* ===================== THE PAPER ===================== */
+#paper{--p-ink:#15171c;--p-soft:#5c6270;--p-line:#c9ccd4;--p-accent:#b45309;--p-band:#b45309;--p-bandink:#fff;--p-zebra:#faf6ef;
+  width:100%;max-width:780px;margin:0 auto;background:#fff;color:var(--p-ink);
+  font-family:'Inter',Arial,sans-serif;font-size:14px;line-height:1.5;
+  padding:42px 44px;box-shadow:0 10px 40px rgba(0,0,0,.4);border-radius:3px;min-height:520px}
+#paper *{box-sizing:border-box}
+#paper.rtl{direction:rtl;text-align:right;font-family:'Noto Nastaliq Urdu','Inter',Arial,sans-serif;line-height:2.1}
+#paper.ar{font-family:'Noto Naskh Arabic','Inter',Arial,sans-serif;line-height:1.9}
+#paper.bw{--p-accent:#000;--p-band:#1f1f1f;--p-bandink:#fff;--p-zebra:#f1f1f1;--p-line:#999}
+
+/* paper header */
+.ph{margin-bottom:16px}
+.ph-logo{width:60px;height:60px;object-fit:contain;flex-shrink:0}
+.ph-school{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;font-size:23px;color:var(--p-ink);line-height:1.2}
+.ph-exam{font-size:13px;color:var(--p-soft);margin-top:3px;font-weight:500}
+#paper.rtl .ph-school,#paper.ar .ph-school{font-family:inherit}
+.ph-meta{display:flex;flex-wrap:wrap;gap:6px 26px;margin-top:12px;font-size:13px}
+.ph-meta .mi{display:flex;gap:6px}
+.ph-meta .mi b{color:var(--p-soft);font-weight:600}
+.ph-meta .mi span{color:var(--p-ink);font-weight:600;border-bottom:1px solid var(--p-line);min-width:60px;display:inline-block}
+.ph-fill{flex:1}
+.ph-name{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:12px;font-size:13px}
+.ph-name .nf{flex:1;min-width:160px;display:flex;align-items:flex-end;gap:7px}
+.ph-name .nf b{color:var(--p-soft);font-weight:600;white-space:nowrap}
+.ph-name .nf .ln{flex:1;border-bottom:1px dotted var(--p-line);height:17px}
+.p-instr{margin:14px 0;padding:11px 14px;background:#fbfaf7;border:1px solid #eee7da;border-radius:7px;font-size:12.5px;color:#4a4a4a;line-height:1.55}
+#paper.bw .p-instr{background:#f6f6f6;border-color:#ddd}
+.p-instr .it{font-weight:700;color:var(--p-ink);margin-bottom:3px;display:block}
+
+/* sections */
+.p-sec{margin-top:18px;break-inside:avoid}
+.p-sec-h{display:flex;align-items:baseline;gap:10px;padding-bottom:6px;margin-bottom:11px;border-bottom:2px solid var(--p-accent)}
+.p-sec-h .st{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;font-size:15px;color:var(--p-ink)}
+#paper.rtl .p-sec-h .st,#paper.ar .p-sec-h .st{font-family:inherit}
+.p-sec-h .stm{margin-inline-start:auto;font-size:12px;font-weight:600;color:var(--p-soft)}
+.p-q{display:flex;gap:9px;margin-bottom:11px;font-size:13.5px;break-inside:avoid}
+.p-q .num{font-weight:700;color:var(--p-ink);flex-shrink:0;min-width:20px}
+.p-q .qtxt{flex:1;min-width:0}
+.p-q .qm{flex-shrink:0;font-size:11.5px;color:var(--p-soft);font-weight:600;white-space:nowrap}
+.p-opts{display:grid;grid-template-columns:1fr 1fr;gap:3px 18px;margin-top:6px;font-size:13px}
+.p-opt{display:flex;gap:7px}
+.p-opt .ol{font-weight:600;color:var(--p-soft)}
+.ans-lines{margin-top:7px}
+.ans-lines .al{border-bottom:1px solid var(--p-line);height:21px}
+.tf-mark{display:inline-flex;gap:14px;margin-top:5px;font-size:12.5px;color:var(--p-soft)}
+.blank-ln{display:inline-block;min-width:90px;border-bottom:1px solid var(--p-ink)}
+
+/* modern template band */
+#paper.tpl-modern{padding-top:0;overflow:hidden}
+#paper.tpl-modern .ph{margin:0 -44px 16px;padding:26px 44px 22px;background:var(--p-band);color:var(--p-bandink)}
+#paper.tpl-modern .ph-school{color:var(--p-bandink)}
+#paper.tpl-modern .ph-exam{color:rgba(255,255,255,.85)}
+#paper.tpl-modern .ph-meta{color:var(--p-bandink)}
+#paper.tpl-modern .ph-meta .mi b{color:rgba(255,255,255,.8)}
+#paper.tpl-modern .ph-meta .mi span{color:#fff;border-color:rgba(255,255,255,.55)}
+#paper.tpl-modern .ph-name .nf b{color:rgba(255,255,255,.9)}
+#paper.tpl-modern .ph-name .nf .ln{border-color:rgba(255,255,255,.55)}
+
+/* bordered template */
+#paper.tpl-bordered{padding:30px}
+#paper.tpl-bordered .pframe{border:2px solid var(--p-ink);padding:24px 26px;min-height:460px}
+#paper.tpl-bordered .ph{border-bottom:3px double var(--p-ink);padding-bottom:14px}
+
+/* classic already default; minimal-ish header rule */
+#paper.tpl-classic .ph-top{border-bottom:1px solid var(--p-line);padding-bottom:12px}
+
+/* tables (date sheet) */
+.p-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+.p-table th,.p-table td{border:1px solid var(--p-line);padding:9px 11px;text-align:start}
+.p-table thead th{background:var(--p-band);color:var(--p-bandink);font-family:'Space Grotesk','Inter',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.01em}
+#paper.rtl .p-table thead th,#paper.ar .p-table thead th{font-family:inherit}
+#paper.ds-zebra .p-table tbody tr:nth-child(even){background:var(--p-zebra)}
+#paper.ds-bordered .p-table,#paper.ds-bordered .p-table th,#paper.ds-bordered .p-table td{border:1.5px solid var(--p-ink)}
+#paper.ds-plain .p-table thead th{background:transparent;color:var(--p-ink);border-bottom:2px solid var(--p-accent)}
+#paper.ds-plain .p-table th,#paper.ds-plain .p-table td{border-left:none;border-right:none}
+
+/* OMR */
+.omr-wrap{margin-top:6px}
+.omr-head{display:flex;gap:14px;align-items:flex-start;border:1.5px solid var(--p-ink);padding:12px 14px;margin-bottom:14px}
+.omr-head .col{flex:1}
+.omr-roll{display:flex;gap:5px;margin-top:6px}
+.omr-roll .rc{display:flex;flex-direction:column;align-items:center;gap:3px}
+.omr-roll .rc .cell{width:19px;height:19px;border:1px solid var(--p-ink)}
+.omr-bub-col{display:flex;flex-direction:column;align-items:center;gap:2px}
+.omr-bub{width:15px;height:15px;border-radius:50%;border:1.4px solid var(--p-ink);display:grid;place-items:center;font-size:8px;color:var(--p-soft);line-height:1}
+.omr-grid{display:grid;gap:5px 22px}
+.omr-q{display:flex;align-items:center;gap:8px;font-size:12px}
+.omr-q .qn{width:22px;text-align:end;font-weight:700;color:var(--p-ink);flex-shrink:0}
+.omr-q .bubs{display:flex;gap:6px}
+.omr-corner{width:13px;height:13px;background:var(--p-ink);border-radius:2px}
+.omr-marks{display:flex;justify-content:space-between;font-size:9px;color:var(--p-soft);margin-bottom:7px}
+
+/* answer key block */
+.p-key{margin-top:18px;border-top:2px dashed var(--p-line);padding-top:12px}
+.p-key h4{font-family:'Space Grotesk','Inter',sans-serif;font-weight:700;font-size:13px;margin-bottom:8px;color:var(--p-accent)}
+.key-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:5px;font-size:12px}
+.key-grid .kc{border:1px solid var(--p-line);border-radius:5px;padding:4px 6px;text-align:center}
+.key-grid .kc b{color:var(--p-ink)}
+
+.p-foot{margin-top:26px;display:flex;justify-content:space-between;gap:20px;font-size:12px;color:var(--p-soft)}
+.p-foot .sig{flex:1;text-align:center}
+.p-foot .sig .sl{border-top:1px solid var(--p-line);margin-bottom:5px;padding-top:5px}
+.p-watermark{text-align:center;font-size:10px;color:#b7bcc8;margin-top:18px;letter-spacing:.03em}
+#paper.bw .p-watermark{color:#999}
+
+.sm-empty{text-align:center;color:#9aa0ad;padding:40px 16px;font-size:.92rem}
+
+/* toast */
+.sm-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);background:var(--sa);color:#1a1206;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:50px;box-shadow:0 12px 32px color-mix(in srgb,var(--sa) 50%,transparent);opacity:0;pointer-events:none;transition:.26s cubic-bezier(.23,1,.32,1);z-index:300}
+.sm-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* info strip */
+.sm-tip{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding:11px 14px;border-radius:11px;background:color-mix(in srgb,var(--sa) 8%,transparent);border:1px solid color-mix(in srgb,var(--sa) 22%,transparent);color:#cdd2de;font-size:.85rem;line-height:1.5}
+.sm-tip svg{flex-shrink:0;margin-top:1px;color:var(--sa-l);width:17px;height:17px}
+
+@media (prefers-reduced-motion:reduce){.sm-tab,.icon-btn,.seg button,.btn,.mini-add,.sm-toast{transition:none!important}}
+
+/* ===================== PRINT ===================== */
+@media print{
+  @page{margin:12mm}
+  body{background:#fff!important}
+  body *{visibility:hidden!important}
+  #paper,#paper *{visibility:visible!important}
+  #paper{position:absolute;left:0;top:0;width:100%;max-width:100%;margin:0;padding:0 4mm;box-shadow:none;border-radius:0;font-size:12.5px}
+  #paper.tpl-modern .ph{margin:0 0 14px;border-radius:0}
+  #paper.tpl-bordered{padding:0}
+  .p-sec,.p-q,.omr-q,.p-table tr{break-inside:avoid}
+}
+</style>
+</head>
+<body data-tool="school-tools">
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="nav-links">
+      <a href="/#why">Why us</a>
+      <a href="/request-a-tool/">Request a Tool</a>
+      <a href="/report-bug/">Report a Bug</a>
+      <a href="/about.html">About</a>
+      <a href="/#tools" class="btn">Explore Tools</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Productivity</span><span class="sep">/</span><span>School Tools</span></div>
+
+  <div class="tool-head">
+    <div class="ic">🎓</div>
+    <div>
+      <h1>School Tools for Teachers</h1>
+      <p>Build <b>exam papers</b>, <b>MCQ worksheets</b>, <b>OMR bubble sheets</b> and <b>exam date sheets</b> in minutes. Pick a template, write in <b>English, Urdu or Arabic</b>, then print or save a PDF — colorful or ink-saving black &amp; white.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="sm-bar" id="smBar"></div>
+    <p class="sm-sub" id="smSub"></p>
+
+    <div class="sm-work">
+      <!-- CONTROLS -->
+      <div class="sm-controls" id="smControls"></div>
+
+      <!-- PREVIEW -->
+      <div class="sm-preview">
+        <div class="sm-toolbar">
+          <div class="tb-group">
+            <span>Lang</span>
+            <div class="tb-sel">
+              <select id="optLang" aria-label="Paper language">
+                <option value="en">English</option>
+                <option value="ur">اردو Urdu</option>
+                <option value="ar">العربية Arabic</option>
+              </select>
+            </div>
+          </div>
+          <div class="tb-group">
+            <span>Template</span>
+            <div class="tb-sel"><select id="optTpl" aria-label="Template"></select></div>
+          </div>
+          <div class="tb-group">
+            <span>Color</span>
+            <div class="seg" id="segColor">
+              <button data-bw="0" class="on">Colour</button>
+              <button data-bw="1">B&amp;W</button>
+            </div>
+          </div>
+          <div class="tb-spacer"></div>
+          <div class="tb-actions">
+            <button class="btn ghost" id="btnPrint" title="Print or Save as PDF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              Print
+            </button>
+            <button class="btn" id="btnPdf" title="Download as PDF">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PDF
+            </button>
+          </div>
+        </div>
+        <div class="paper-stage">
+          <div id="paper"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sm-tip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <span>Everything updates live as you type. <b>Print</b> opens your browser dialog where you can also <b>Save as PDF</b> for the sharpest result (best for Urdu &amp; Arabic). <b>Download PDF</b> saves a file directly. Nothing you type ever leaves your device.</span>
+    </div>
+  </div>
+
+  <!-- SEO copy -->
+  <article class="tool-box reveal" style="margin-top:24px">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.35rem;margin-bottom:12px">A free all-in-one toolkit for teachers</h2>
+    <p style="color:var(--muted);line-height:1.7;margin-bottom:14px">Stop fighting with Word tables and broken formatting. This free <b>test paper generator</b> lets a teacher create a clean, professional <b>question paper</b> with proper sections, marks and instructions, then print it or save it as a PDF. Switch between several <b>paper templates</b>, write in <b>English, Urdu or Arabic</b>, and toggle a colourful design or an ink-saving black-and-white version for the photocopier.</p>
+    <p style="color:var(--muted);line-height:1.7;margin-bottom:14px">Beyond exam papers you also get an <b>MCQ worksheet maker</b> with an optional answer key, an <b>OMR bubble answer sheet generator</b> for any number of questions, and an <b>exam date sheet maker</b>. Each tool is designed to be quick for non-technical teachers: fill the fields, watch the live preview, and download. More modules — lesson planners, applications, result cards, attendance sheets and admit cards — are on the way.</p>
+    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.05rem;margin:18px 0 8px">Frequently asked questions</h3>
+    <p style="color:var(--muted);line-height:1.7;margin-bottom:10px"><b style="color:#dfe3ee">Can I make papers in Urdu?</b><br>Yes. Choose Urdu and the whole paper flows right-to-left in Nastaliq script, with field labels like Name, Roll No, Total Marks and Time translated automatically. Arabic is supported too.</p>
+    <p style="color:var(--muted);line-height:1.7;margin-bottom:10px"><b style="color:#dfe3ee">How do I get a PDF?</b><br>Click <b>Print</b> to save directly as a PDF from your browser, or <b>Download PDF</b> for a ready file. Pick a colourful template or the clean black-and-white version that saves ink when you print.</p>
+    <p style="color:var(--muted);line-height:1.7"><b style="color:#dfe3ee">Is it really free?</b><br>Yes, 100% free with no signup. Every tool runs in your browser and nothing you type is uploaded anywhere.</p>
+  </article>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p><div class="socials"><a href="https://instagram.com/xniperr" target="_blank" rel="noopener" class="social-ig" aria-label="Follow Xnipertools on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg><span>Follow on Instagram</span></a></div></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../school-tools/">School Tools</a><a href="../cheat-sheets/">Cheat Sheets</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<div class="sm-toast" id="smToast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ============================================================
+   School Tools app
+   ============================================================ */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>(s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const nl=s=>esc(s).replace(/\n/g,'<br>');
+
+/* ---- module definitions ---- */
+const MODULES=[
+  {id:'paper',name:'Test / Exam Paper',sub:'Create a full question paper with sections, marks and instructions. Add MCQs, short and long questions, fill-in-the-blanks and true/false.',
+   icon:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/>',
+   templates:[['classic','Classic'],['modern','Modern band'],['bordered','Bordered']]},
+  {id:'mcq',name:'MCQ Sheet',sub:'Make a multiple-choice worksheet with four options per question and an optional answer key for marking.',
+   icon:'<circle cx="6" cy="7" r="2.2"/><line x1="11" y1="7" x2="20" y2="7"/><circle cx="6" cy="14" r="2.2"/><line x1="11" y1="14" x2="20" y2="14"/>',
+   templates:[['classic','One column'],['twocol','Two columns'],['boxed','Boxed']]},
+  {id:'omr',name:'OMR Bubble Sheet',sub:'Generate a printable bubble answer sheet for any number of questions, with a roll-number grid and name fields.',
+   icon:'<circle cx="7" cy="7" r="2.4"/><circle cx="14" cy="7" r="2.4" fill="currentColor"/><circle cx="7" cy="15" r="2.4"/><circle cx="14" cy="15" r="2.4"/>',
+   templates:[['standard','Standard'],['compact','Compact']]},
+  {id:'datesheet',name:'Date Sheet',sub:'Build a clean exam date sheet or schedule table with dates, days, subjects and timings.',
+   icon:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/>',
+   templates:[['zebra','Striped'],['bordered','Bordered'],['plain','Minimal']]}
+];
+
+/* ---- translated paper labels ---- */
+const L={
+  en:{name:'Name',roll:'Roll No.',cls:'Class',sec:'Section',subject:'Subject',date:'Date',time:'Time',total:'Total Marks',obt:'Marks Obtained',teacher:'Teacher',sno:'No.',day:'Day',sub:'Subject',timing:'Time',instr:'Instructions',key:'Answer Key',inv:'Invigilator',sign:'Signature',ddate:'Date',q:'Q'},
+  ur:{name:'نام',roll:'رول نمبر',cls:'جماعت',sec:'سیکشن',subject:'مضمون',date:'تاریخ',time:'وقت',total:'کل نمبر',obt:'حاصل کردہ نمبر',teacher:'استاد',sno:'نمبر',day:'دن',sub:'مضمون',timing:'وقت',instr:'ہدایات',key:'جوابی کلید',inv:'نگران',sign:'دستخط',ddate:'تاریخ',q:'سوال'},
+  ar:{name:'الاسم',roll:'رقم الجلوس',cls:'الصف',sec:'الشعبة',subject:'المادة',date:'التاريخ',time:'الوقت',total:'الدرجة الكلية',obt:'الدرجة المحصلة',teacher:'المعلم',sno:'م',day:'اليوم',sub:'المادة',timing:'الوقت',instr:'تعليمات',key:'مفتاح الإجابة',inv:'المراقب',sign:'التوقيع',ddate:'التاريخ',q:'سؤال'}
+};
+const QTYPES=[['mcq','Multiple choice'],['short','Short question'],['long','Long question'],['fill','Fill in the blanks'],['tf','True / False']];
+
+/* ---- state (seeded with a light realistic example) ---- */
+const S={
+  mod:'paper',lang:'en',bw:false,
+  tpl:{paper:'classic',mcq:'classic',omr:'standard',datesheet:'zebra'},
+  header:{school:'City Public School',logo:'',exam:'First Term Examination',cls:'8',sec:'A',subject:'Mathematics',date:'',time:'2 Hours',marks:'50',teacher:''},
+  paper:{instr:'Attempt all questions. Write neatly and show your working where needed.',
+    sections:[
+      {type:'mcq',title:'Choose the correct answer',marks:'10',qs:[
+        {t:'The value of π (pi) is approximately',o:['3.14','2.17','1.62','4.13'],a:0,m:'1'},
+        {t:'A triangle has how many sides?',o:['2','3','4','5'],a:1,m:'1'}
+      ]},
+      {type:'short',title:'Short questions',marks:'16',qs:[
+        {t:'Define a prime number with one example.',m:'2'},
+        {t:'Write the formula for the area of a circle.',m:'2'}
+      ]}
+    ]},
+  mcq:{instr:'Tick (✓) the correct option.',showKey:false,
+    items:[
+      {t:'Which planet is known as the Red Planet?',o:['Earth','Mars','Venus','Jupiter'],a:1},
+      {t:'Water boils at what temperature (°C)?',o:['90','100','110','120'],a:1}
+    ]},
+  omr:{count:50,choices:4,rollDigits:5,header:true},
+  datesheet:{rows:[
+    {date:'',day:'Monday',subject:'English',time:'9:00 - 11:00 AM'},
+    {date:'',day:'Wednesday',subject:'Mathematics',time:'9:00 - 11:00 AM'},
+    {date:'',day:'Friday',subject:'Science',time:'9:00 - 11:00 AM'}
+  ]}
+};
+
+/* ============ build module bar ============ */
+const smBar=$('#smBar');
+smBar.innerHTML=MODULES.map(m=>`<button class="sm-tab${m.id===S.mod?' active':''}" data-mod="${m.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${m.icon}</svg>${esc(m.name)}</button>`).join('');
+smBar.addEventListener('click',e=>{const b=e.target.closest('.sm-tab');if(!b)return;S.mod=b.dataset.mod;smBar.querySelectorAll('.sm-tab').forEach(t=>t.classList.toggle('active',t.dataset.mod===S.mod));buildModule();});
+
+/* ============ toolbar ============ */
+const optLang=$('#optLang'),optTpl=$('#optTpl'),segColor=$('#segColor');
+optLang.addEventListener('change',()=>{S.lang=optLang.value;render();});
+optTpl.addEventListener('change',()=>{S.tpl[S.mod]=optTpl.value;render();});
+segColor.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;S.bw=b.dataset.bw==='1';segColor.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));render();});
+function syncToolbar(){
+  const m=MODULES.find(x=>x.id===S.mod);
+  optTpl.innerHTML=m.templates.map(t=>`<option value="${t[0]}">${esc(t[1])}</option>`).join('');
+  optTpl.value=S.tpl[S.mod];
+  optLang.value=S.lang;
+}
+
+/* ============ controls builder ============ */
+const smControls=$('#smControls');
+function buildModule(){
+  $('#smSub').textContent=MODULES.find(m=>m.id===S.mod).sub;
+  syncToolbar();
+  if(S.mod==='paper')buildPaperControls();
+  else if(S.mod==='mcq')buildMcqControls();
+  else if(S.mod==='omr')buildOmrControls();
+  else buildDateControls();
+  render();
+}
+
+/* shared header card */
+function headerCard(opts={}){
+  const h=S.header;
+  const f=(k,lab,ph='',extra='')=>`<div class="fld"><label>${lab}</label><input type="text" data-h="${k}" value="${esc(h[k])}" placeholder="${esc(ph)}" ${extra}></div>`;
+  return `<div class="sm-card">
+    <h3><span class="nm">1</span> School &amp; paper details</h3>
+    <div class="fgrid">
+      <div class="fld full">${''}<label>School / institute name</label><input type="text" data-h="school" value="${esc(h.school)}" placeholder="e.g. City Public School"></div>
+      ${opts.exam!==false?`<div class="fld full"><label>Exam / heading</label><input type="text" data-h="exam" value="${esc(h.exam)}" placeholder="e.g. First Term Examination"></div>`:''}
+      ${f('cls','Class','e.g. 8')}
+      ${f('sec','Section','e.g. A')}
+      ${f('subject','Subject','e.g. Mathematics')}
+      ${opts.marks!==false?f('marks','Total marks','e.g. 50'):''}
+      ${opts.time!==false?f('time','Time allowed','e.g. 2 Hours'):''}
+      ${f('date','Date','e.g. 12 June 2026')}
+    </div>
+    <div class="fld full" style="margin-top:12px"><label>School logo (optional)</label><input type="file" accept="image/*" id="logoUp" style="font-size:.84rem;padding:9px 11px"></div>
+    ${h.logo?`<button class="mini-add" id="logoClear" style="margin-top:9px">Remove logo</button>`:''}
+  </div>`;
+}
+
+function buildPaperControls(){
+  const p=S.paper;
+  smControls.innerHTML=headerCard()+`
+  <div class="sm-card">
+    <h3><span class="nm">2</span> Instructions</h3>
+    <div class="fld"><textarea data-p="instr" placeholder="General instructions for students…">${esc(p.instr)}</textarea></div>
+  </div>
+  <div class="sm-card">
+    <h3><span class="nm">3</span> Sections &amp; questions</h3>
+    <div id="secList"></div>
+    <div class="add-row">
+      <select id="newSecType">${QTYPES.map(q=>`<option value="${q[0]}">${q[1]}</option>`).join('')}</select>
+      <button class="mini-add" id="addSec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add section</button>
+    </div>
+  </div>`;
+  renderSecList();
+}
+function renderSecList(){
+  const wrap=$('#secList');if(!wrap)return;
+  wrap.innerHTML=S.paper.sections.map((s,si)=>{
+    const tname=(QTYPES.find(q=>q[0]===s.type)||['','Section'])[1];
+    const qHtml=s.qs.map((q,qi)=>{
+      let extra='';
+      if(s.type==='mcq'){
+        extra=`<div class="opt-grid">${[0,1,2,3].map(oi=>`<div class="opt"><b>${'ABCD'[oi]}</b><input type="text" data-sq="${si}.${qi}.o.${oi}" value="${esc((q.o&&q.o[oi])||'')}" placeholder="Option ${'ABCD'[oi]}"></div>`).join('')}</div>
+        <div class="add-row" style="margin-top:2px"><label style="font-size:.76rem;color:var(--muted);margin:0">Correct:</label><select data-sq="${si}.${qi}.a" style="flex:0 0 auto;width:auto">${[0,1,2,3].map(oi=>`<option value="${oi}"${q.a===oi?' selected':''}>${'ABCD'[oi]}</option>`).join('')}</select></div>`;
+      }
+      return `<div class="q-row">
+        <div class="qn">${qi+1}</div>
+        <div class="qmain">
+          <input type="text" data-sq="${si}.${qi}.t" value="${esc(q.t)}" placeholder="Question text">
+          ${extra}
+          <div class="add-row"><label style="font-size:.76rem;color:var(--muted);margin:0">Marks</label><input type="text" data-sq="${si}.${qi}.m" value="${esc(q.m||'')}" placeholder="e.g. 1" style="width:70px;flex:0 0 auto"><div class="spacer" style="flex:1"></div><button class="icon-btn del" data-delq="${si}.${qi}" title="Delete question"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button></div>
+        </div>
+      </div>`;
+    }).join('');
+    return `<div class="blk">
+      <div class="blk-top">
+        <span class="tag">${esc(tname)}</span>
+        <input type="text" data-sec="${si}.title" value="${esc(s.title)}" placeholder="Section heading" style="flex:1;padding:8px 11px;font-size:.88rem">
+        <input type="text" data-sec="${si}.marks" value="${esc(s.marks)}" placeholder="Marks" style="width:64px;flex:0 0 auto;padding:8px 10px;font-size:.86rem">
+        <button class="icon-btn del" data-delsec="${si}" title="Delete section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+      </div>
+      ${qHtml}
+      <button class="mini-add" data-addq="${si}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add question</button>
+    </div>`;
+  }).join('')||`<div class="sm-empty">No sections yet. Add one below.</div>`;
+}
+
+function buildMcqControls(){
+  const m=S.mcq;
+  smControls.innerHTML=headerCard({marks:false})+`
+  <div class="sm-card">
+    <h3><span class="nm">2</span> Instructions</h3>
+    <div class="fld"><textarea data-mc="instr" placeholder="e.g. Tick the correct option.">${esc(m.instr)}</textarea></div>
+    <label class="chk" style="margin-top:12px"><input type="checkbox" id="mcqKey" ${m.showKey?'checked':''}><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Include answer key at the end</label>
+  </div>
+  <div class="sm-card">
+    <h3><span class="nm">3</span> Questions</h3>
+    <div id="mcqList"></div>
+    <button class="mini-add" id="addMcq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add question</button>
+  </div>`;
+  renderMcqList();
+}
+function renderMcqList(){
+  const wrap=$('#mcqList');if(!wrap)return;
+  wrap.innerHTML=S.mcq.items.map((q,qi)=>`<div class="blk">
+    <div class="blk-top"><span class="tag">${L.en.q} ${qi+1}</span><div class="spacer"></div><button class="icon-btn del" data-delm="${qi}" title="Delete"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button></div>
+    <input type="text" data-mq="${qi}.t" value="${esc(q.t)}" placeholder="Question text" style="margin-bottom:7px">
+    <div class="opt-grid">${[0,1,2,3].map(oi=>`<div class="opt"><b>${'ABCD'[oi]}</b><input type="text" data-mq="${qi}.o.${oi}" value="${esc(q.o[oi]||'')}" placeholder="Option ${'ABCD'[oi]}"></div>`).join('')}</div>
+    <div class="add-row" style="margin-top:7px"><label style="font-size:.76rem;color:var(--muted);margin:0">Correct answer</label><select data-mq="${qi}.a" style="flex:0 0 auto;width:auto">${[0,1,2,3].map(oi=>`<option value="${oi}"${q.a===oi?' selected':''}>${'ABCD'[oi]}</option>`).join('')}</select></div>
+  </div>`).join('')||`<div class="sm-empty">No questions yet.</div>`;
+}
+
+function buildOmrControls(){
+  const o=S.omr;
+  smControls.innerHTML=headerCard({marks:false,time:false,exam:false})+`
+  <div class="sm-card">
+    <h3><span class="nm">2</span> Sheet setup</h3>
+    <div class="fgrid">
+      <div class="fld"><label>Number of questions</label><input type="number" min="5" max="200" data-o="count" value="${o.count}"></div>
+      <div class="fld"><label>Options per question</label><select data-o="choices"><option value="2"${o.choices==2?' selected':''}>2 (A–B)</option><option value="3"${o.choices==3?' selected':''}>3 (A–C)</option><option value="4"${o.choices==4?' selected':''}>4 (A–D)</option><option value="5"${o.choices==5?' selected':''}>5 (A–E)</option></select></div>
+      <div class="fld"><label>Roll number digits</label><input type="number" min="0" max="10" data-o="rollDigits" value="${o.rollDigits}"></div>
+      <div class="fld" style="display:flex;align-items:flex-end"><label class="chk"><input type="checkbox" data-o="header" ${o.header?'checked':''}><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Name &amp; roll header</label></div>
+    </div>
+    <div class="sm-tip" style="margin-top:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span>Set roll digits to 0 to hide the roll-number bubble grid. Use <b>Print</b> for the most accurate bubble sizing.</span></div>
+  </div>`;
+}
+
+function buildDateControls(){
+  smControls.innerHTML=headerCard({marks:false,time:false})+`
+  <div class="sm-card">
+    <h3><span class="nm">2</span> Schedule rows</h3>
+    <div id="dsRows"></div>
+    <button class="mini-add" id="addRow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add row</button>
+  </div>`;
+  renderDsRows();
+}
+function renderDsRows(){
+  const wrap=$('#dsRows');if(!wrap)return;
+  wrap.innerHTML=S.datesheet.rows.map((r,ri)=>`<div class="blk">
+    <div class="blk-top"><span class="tag">${ri+1}</span><div class="spacer"></div><button class="icon-btn del" data-delrow="${ri}" title="Delete row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button></div>
+    <div class="fgrid">
+      <div class="fld"><label>Date</label><input type="text" data-d="${ri}.date" value="${esc(r.date)}" placeholder="e.g. 12 June"></div>
+      <div class="fld"><label>Day</label><input type="text" data-d="${ri}.day" value="${esc(r.day)}" placeholder="e.g. Monday"></div>
+      <div class="fld"><label>Subject</label><input type="text" data-d="${ri}.subject" value="${esc(r.subject)}" placeholder="e.g. English"></div>
+      <div class="fld"><label>Time</label><input type="text" data-d="${ri}.time" value="${esc(r.time)}" placeholder="e.g. 9–11 AM"></div>
+    </div>
+  </div>`).join('')||`<div class="sm-empty">No rows yet.</div>`;
+}
+
+/* ============ input handling (event delegation) ============ */
+smControls.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.dataset.h){S.header[t.dataset.h]=t.value;return liveRender();}
+  if(t.dataset.p){S.paper[t.dataset.p]=t.value;return liveRender();}
+  if(t.dataset.mc){S.mcq[t.dataset.mc]=t.value;return liveRender();}
+  if(t.dataset.sec){const[si,k]=t.dataset.sec.split('.');S.paper.sections[+si][k]=t.value;return liveRender();}
+  if(t.dataset.sq){const p=t.dataset.sq.split('.');const q=S.paper.sections[+p[0]].qs[+p[1]];
+    if(p[2]==='o')q.o[+p[3]]=t.value;else if(p[2]==='a')q.a=+t.value;else q[p[2]]=t.value;return liveRender();}
+  if(t.dataset.mq){const p=t.dataset.mq.split('.');const q=S.mcq.items[+p[0]];
+    if(p[1]==='o')q.o[+p[2]]=t.value;else if(p[1]==='a')q.a=+t.value;else q[p[1]]=t.value;return liveRender();}
+  if(t.dataset.d){const[ri,k]=t.dataset.d.split('.');S.datesheet.rows[+ri][k]=t.value;return liveRender();}
+  if(t.dataset.o){const k=t.dataset.o;S.omr[k]=t.type==='checkbox'?t.checked:(k==='count'||k==='rollDigits'||k==='choices'?+t.value:t.value);return liveRender();}
+});
+smControls.addEventListener('change',e=>{
+  const t=e.target;
+  if(t.id==='mcqKey'){S.mcq.showKey=t.checked;return liveRender();}
+  if(t.dataset.sq&&t.dataset.sq.endsWith('.a')){const p=t.dataset.sq.split('.');S.paper.sections[+p[0]].qs[+p[1]].a=+t.value;return liveRender();}
+  if(t.dataset.mq&&t.dataset.mq.endsWith('.a')){const p=t.dataset.mq.split('.');S.mcq.items[+p[0]].a=+t.value;return liveRender();}
+  if(t.dataset.o&&t.dataset.o==='choices'){S.omr.choices=+t.value;return liveRender();}
+  if(t.id==='logoUp'&&t.files&&t.files[0]){const fr=new FileReader();fr.onload=()=>{S.header.logo=fr.result;if(S.mod==='paper')buildPaperControls();else if(S.mod==='mcq')buildMcqControls();else if(S.mod==='omr')buildOmrControls();else buildDateControls();render();};fr.readAsDataURL(t.files[0]);}
+});
+smControls.addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  if(b.id==='logoClear'){S.header.logo='';rebuild();return;}
+  if(b.id==='addSec'){const ty=$('#newSecType').value;const t=(QTYPES.find(q=>q[0]===ty)||['','Section'])[1];S.paper.sections.push({type:ty,title:t,marks:'',qs:[ty==='mcq'?{t:'',o:['','','',''],a:0,m:''}:{t:'',m:''}]});renderSecList();liveRender();return;}
+  if(b.dataset.addq!=null){const s=S.paper.sections[+b.dataset.addq];s.qs.push(s.type==='mcq'?{t:'',o:['','','',''],a:0,m:''}:{t:'',m:''});renderSecList();liveRender();return;}
+  if(b.dataset.delq!=null){const[si,qi]=b.dataset.delq.split('.');S.paper.sections[+si].qs.splice(+qi,1);renderSecList();liveRender();return;}
+  if(b.dataset.delsec!=null){S.paper.sections.splice(+b.dataset.delsec,1);renderSecList();liveRender();return;}
+  if(b.id==='addMcq'){S.mcq.items.push({t:'',o:['','','',''],a:0});renderMcqList();liveRender();return;}
+  if(b.dataset.delm!=null){S.mcq.items.splice(+b.dataset.delm,1);renderMcqList();liveRender();return;}
+  if(b.id==='addRow'){S.datesheet.rows.push({date:'',day:'',subject:'',time:''});renderDsRows();liveRender();return;}
+  if(b.dataset.delrow!=null){S.datesheet.rows.splice(+b.dataset.delrow,1);renderDsRows();liveRender();return;}
+});
+function rebuild(){if(S.mod==='paper')buildPaperControls();else if(S.mod==='mcq')buildMcqControls();else if(S.mod==='omr')buildOmrControls();else buildDateControls();render();}
+
+/* ============ rendering the paper ============ */
+const paper=$('#paper');
+let rt=null;
+function liveRender(){clearTimeout(rt);rt=setTimeout(render,90);}
+function render(){
+  const lab=L[S.lang];
+  paper.className='';
+  paper.classList.add('tpl-'+S.tpl[S.mod]);
+  if(S.lang==='ur')paper.classList.add('rtl');
+  if(S.lang==='ar')paper.classList.add('rtl','ar');
+  if(S.bw)paper.classList.add('bw');
+  if(S.mod==='datesheet')paper.classList.add('ds-'+S.tpl.datesheet);
+  if(S.mod==='paper')paper.innerHTML=renderPaper(lab);
+  else if(S.mod==='mcq')paper.innerHTML=renderMcq(lab);
+  else if(S.mod==='omr')paper.innerHTML=renderOmr(lab);
+  else paper.innerHTML=renderDate(lab);
+}
+
+function phHeader(lab,opts={}){
+  const h=S.header;
+  const logo=h.logo?`<img src="${h.logo}" class="ph-logo" alt="">`:'';
+  const meta=[];
+  if(h.cls)meta.push(`<div class="mi"><b>${lab.cls}:</b> <span>${esc(h.cls)}${h.sec?' / '+esc(h.sec):''}</span></div>`);
+  if(h.subject)meta.push(`<div class="mi"><b>${lab.subject}:</b> <span>${esc(h.subject)}</span></div>`);
+  if(opts.time!==false&&h.time)meta.push(`<div class="mi"><b>${lab.time}:</b> <span>${esc(h.time)}</span></div>`);
+  if(opts.marks!==false&&h.marks)meta.push(`<div class="mi"><b>${lab.total}:</b> <span>${esc(h.marks)}</span></div>`);
+  if(h.date)meta.push(`<div class="mi"><b>${lab.date}:</b> <span>${esc(h.date)}</span></div>`);
+  const center=`<div style="flex:1;text-align:center">
+      <div class="ph-school">${esc(h.school)||'&nbsp;'}</div>
+      ${opts.exam!==false&&h.exam?`<div class="ph-exam">${esc(h.exam)}</div>`:''}
+    </div>`;
+  const nameRow=opts.name!==false?`<div class="ph-name">
+      <div class="nf"><b>${lab.name}:</b><span class="ln"></span></div>
+      <div class="nf"><b>${lab.roll}:</b><span class="ln"></span></div>
+    </div>`:'';
+  return `<div class="ph"><div class="ph-top" style="display:flex;align-items:center;gap:14px">${logo}${center}${logo?'<div style="width:60px"></div>':''}</div>
+    ${meta.length?`<div class="ph-meta">${meta.join('')}</div>`:''}
+    ${nameRow}</div>`;
+}
+
+function renderPaper(lab){
+  const p=S.paper;
+  let body=phHeader(lab);
+  if(p.instr)body+=`<div class="p-instr"><span class="it">${lab.instr}</span>${nl(p.instr)}</div>`;
+  let qno=0;
+  p.sections.forEach((s,si)=>{
+    body+=`<div class="p-sec"><div class="p-sec-h"><span class="st">${esc(s.title)||('Section '+(si+1))}</span>${s.marks?`<span class="stm">(${esc(s.marks)} ${lab.q==='Q'?'marks':''})</span>`:''}</div>`;
+    s.qs.forEach(q=>{qno++;
+      let inner=`<div class="qtxt">${nl(q.t)||'&nbsp;'}`;
+      if(s.type==='mcq'&&q.o)inner+=`<div class="p-opts">${q.o.map((o,oi)=>`<div class="p-opt"><span class="ol">${'ABCD'[oi]})</span><span>${nl(o)}</span></div>`).join('')}</div>`;
+      else if(s.type==='fill')inner+='';
+      else if(s.type==='tf')inner+=`<div class="tf-mark">(&nbsp;${lab.q==='Q'?'True':'صحیح'}&nbsp;/&nbsp;${lab.q==='Q'?'False':'غلط'}&nbsp;)</div>`;
+      else if(s.type==='short')inner+=`<div class="ans-lines"><div class="al"></div><div class="al"></div></div>`;
+      else if(s.type==='long')inner+=`<div class="ans-lines"><div class="al"></div><div class="al"></div><div class="al"></div><div class="al"></div></div>`;
+      inner+='</div>';
+      body+=`<div class="p-q"><span class="num">${qno}.</span>${inner}${q.m?`<span class="qm">[${esc(q.m)}]</span>`:''}</div>`;
+    });
+    body+=`</div>`;
+  });
+  body+=foot(lab);
+  return wrapFrame(body);
+}
+
+function renderMcq(lab){
+  const m=S.mcq;
+  let body=phHeader(lab,{marks:false});
+  if(m.instr)body+=`<div class="p-instr"><span class="it">${lab.instr}</span>${nl(m.instr)}</div>`;
+  const cls=S.tpl.mcq==='twocol'?'style="columns:2;column-gap:30px"':'';
+  body+=`<div ${cls}>`+m.items.map((q,qi)=>{
+    const boxed=S.tpl.mcq==='boxed';
+    return `<div class="p-q" style="${boxed?'border:1px solid var(--p-line);border-radius:6px;padding:9px 11px;break-inside:avoid;display:block':'break-inside:avoid'}">
+      <div style="display:flex;gap:9px"><span class="num">${qi+1}.</span><div class="qtxt">${nl(q.t)||'&nbsp;'}
+      <div class="p-opts">${q.o.map((o,oi)=>`<div class="p-opt"><span class="ol">${'ABCD'[oi]})</span><span>${nl(o)}</span></div>`).join('')}</div></div></div>
+    </div>`;
+  }).join('')+`</div>`;
+  if(m.showKey){
+    body+=`<div class="p-key"><h4>${lab.key}</h4><div class="key-grid">${m.items.map((q,qi)=>`<div class="kc">${qi+1}. <b>${'ABCD'[q.a]}</b></div>`).join('')}</div></div>`;
+  }
+  body+=foot(lab,{single:true});
+  return wrapFrame(body);
+}
+
+function renderOmr(lab){
+  const o=S.omr,h=S.header;
+  const letters='ABCDE'.slice(0,o.choices).split('');
+  let head='';
+  if(o.header){
+    let roll='';
+    if(o.rollDigits>0){
+      roll=`<div class="col"><b style="font-size:11px;color:var(--p-soft)">${lab.roll}</b><div class="omr-roll">${Array.from({length:o.rollDigits}).map(()=>`<div class="rc">${'0123456789'.split('').map(d=>`<div class="cell" style="display:grid;place-items:center;font-size:8px;color:var(--p-soft)">${d}</div>`).join('')}</div>`).join('')}</div></div>`;
+    }
+    head=`<div class="omr-head">
+      <div class="col"><div style="font-weight:700;font-size:15px" class="ph-school">${esc(h.school)||'&nbsp;'}</div>${h.subject?`<div style="font-size:12px;color:var(--p-soft);margin-top:3px">${lab.subject}: ${esc(h.subject)}</div>`:''}
+        <div style="margin-top:10px;font-size:12px"><b style="color:var(--p-soft)">${lab.name}:</b> <span style="display:inline-block;border-bottom:1px dotted var(--p-line);min-width:140px"></span></div>
+        ${h.cls?`<div style="margin-top:8px;font-size:12px"><b style="color:var(--p-soft)">${lab.cls}:</b> <span style="display:inline-block;border-bottom:1px dotted var(--p-line);min-width:80px">${esc(h.cls)}</span></div>`:''}
+      </div>
+      ${roll}
+    </div>`;
+  }
+  const cols=o.count>50?4:(o.count>25?2:1);
+  const cells=Array.from({length:o.count}).map((_,i)=>`<div class="omr-q"><span class="qn">${i+1}</span><span class="bubs">${letters.map(l=>`<span class="omr-bub">${l}</span>`).join('')}</span></div>`).join('');
+  const body=`<div class="omr-wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div class="omr-corner"></div>
+      <div style="text-align:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px">${esc(h.exam)||'Answer Sheet'}</div>
+      <div class="omr-corner"></div>
+    </div>
+    ${head}
+    <div class="omr-marks"><span>Fill the bubble completely ●  ·  Use a black/blue pen</span><span>${o.count} ${lab.q==='Q'?'questions':'سوالات'}</span></div>
+    <div class="omr-grid" style="grid-template-columns:repeat(${cols},1fr)">${cells}</div>
+  </div>`;
+  return wrapFrame(body);
+}
+
+function renderDate(lab){
+  let body=phHeader(lab,{marks:false,time:false,name:false});
+  const rows=S.datesheet.rows.map((r,i)=>`<tr><td style="text-align:center;width:42px">${i+1}</td><td>${esc(r.date)}</td><td>${esc(r.day)}</td><td>${esc(r.subject)}</td><td>${esc(r.time)}</td></tr>`).join('');
+  body+=`<table class="p-table"><thead><tr><th style="width:42px">${lab.sno}</th><th>${lab.ddate}</th><th>${lab.day}</th><th>${lab.sub}</th><th>${lab.timing}</th></tr></thead><tbody>${rows}</tbody></table>`;
+  body+=foot(lab);
+  return wrapFrame(body);
+}
+
+function foot(lab,opts={}){
+  if(opts.single)return `<div class="p-watermark">Made with xnipertools.com/school-tools</div>`;
+  return `<div class="p-foot">
+    <div class="sig"><div class="sl"></div>${lab.teacher} / ${lab.sign}</div>
+    <div class="sig"><div class="sl"></div>${lab.inv}</div>
+  </div><div class="p-watermark">Made with xnipertools.com/school-tools</div>`;
+}
+
+function wrapFrame(inner){
+  if(S.tpl[S.mod]==='bordered'&&S.mod!=='omr')return `<div class="pframe">${inner}</div>`;
+  return inner;
+}
+
+/* ============ export ============ */
+$('#btnPrint').addEventListener('click',()=>window.print());
+$('#btnPdf').addEventListener('click',async function(){
+  const btn=this;const old=btn.innerHTML;
+  if(!window.html2canvas||!window.jspdf){toast('Still loading… try again in a second');return;}
+  btn.disabled=true;btn.innerHTML='Generating…';
+  try{
+    const canvas=await html2canvas(paper,{scale:2,backgroundColor:'#ffffff',useCORS:true,windowWidth:820});
+    const {jsPDF}=window.jspdf;
+    const pdf=new jsPDF('p','mm','a4');
+    const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+    const iw=pw,ih=canvas.height*pw/canvas.width;
+    let left=ih,pos=0;
+    const img=canvas.toDataURL('image/jpeg',0.95);
+    pdf.addImage(img,'JPEG',0,pos,iw,ih);left-=ph;
+    while(left>0){pos=left-ih;pdf.addPage();pdf.addImage(img,'JPEG',0,pos,iw,ih);left-=ph;}
+    const fn=(S.mod==='paper'?'Exam-Paper':S.mod==='mcq'?'MCQ-Sheet':S.mod==='omr'?'OMR-Sheet':'Date-Sheet');
+    pdf.save(fn+'.pdf');
+    toast('PDF downloaded');
+  }catch(err){console.error(err);toast('Could not generate PDF — try Print instead');}
+  btn.disabled=false;btn.innerHTML=old;
+});
+
+/* ============ toast ============ */
+const tEl=$('#smToast');let tt=null;
+function toast(msg){tEl.textContent=msg;tEl.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>tEl.classList.remove('show'),2200);}
+
+/* ============ go ============ */
+buildModule();
+</script>
+</body>
+</html>
