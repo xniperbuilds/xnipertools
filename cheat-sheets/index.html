@@ -66,7 +66,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 .cs-cat{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin:26px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:9px}
 .cs-cat::before{content:"";width:14px;height:2px;border-radius:2px;background:var(--ic,#10b981)}
 .cs-list{display:grid;gap:8px}
-@media(min-width:680px){.cs-list{grid-template-columns:1fr 1fr}.cs-list.fx{grid-template-columns:1fr}}
+@media(min-width:680px){.cs-list{grid-template-columns:1fr 1fr}.cs-list.fx,.cs-list.rc{grid-template-columns:1fr}}
 .cs-row{display:flex;align-items:center;gap:14px;padding:11px 14px;border-radius:11px;background:rgba(255,255,255,.025);border:1px solid var(--border);transition:.15s}
 .cs-row:hover{background:rgba(255,255,255,.05);border-color:var(--border-2)}
 .cs-keys{display:flex;flex-wrap:wrap;align-items:center;gap:2px;flex-shrink:0;min-width:130px;cursor:pointer}
@@ -77,10 +77,12 @@ kbd{display:inline-block;padding:4px 8px;border-radius:7px;font-family:'Space Gr
 .cs-fn{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.92rem;color:#fff}
 .cs-syntax{font-family:'Courier New',monospace;font-size:.84rem;color:#7ee6c0;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.22);border-radius:8px;padding:7px 10px;cursor:pointer;overflow-wrap:anywhere;transition:.15s}
 .cs-syntax:hover{background:rgba(16,185,129,.16);border-color:rgba(16,185,129,.4)}
+.cs-row.rc{display:grid;grid-template-columns:minmax(150px,1.15fr) minmax(150px,1.05fr) 1.5fr;align-items:center;gap:14px}
+.cs-goal{font-weight:600;font-size:.9rem;color:#fff;line-height:1.4}
 @media(max-width:679px){
   .cs-row{flex-direction:column;align-items:flex-start;gap:7px}
   .cs-keys{min-width:0}
-  .cs-row.fx{grid-template-columns:1fr;gap:7px}
+  .cs-row.fx,.cs-row.rc{grid-template-columns:1fr;gap:7px}
 }
 .cs-empty{text-align:center;color:var(--muted);padding:40px 16px;font-size:.95rem}
 .cs-toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:#10b981;color:#04130d;font-weight:700;font-size:.9rem;padding:12px 22px;border-radius:50px;box-shadow:0 12px 34px rgba(16,185,129,.45);opacity:0;pointer-events:none;transition:.28s;z-index:200}
@@ -114,7 +116,7 @@ kbd{display:inline-block;padding:4px 8px;border-radius:7px;font-family:'Space Gr
     <div class="ic">⌨️</div>
     <div>
       <h1>Keyboard Shortcuts &amp; Formula Cheat Sheets</h1>
-      <p>Every keyboard shortcut for <b>Excel, Word, PowerPoint, Windows, Chrome, Gmail &amp; VS Code</b> — plus the most-used <b>Excel formulas</b>. Search it, learn it, and download a colorful or print-ready PDF.</p>
+      <p>Every keyboard shortcut for <b>Excel, Word, PowerPoint, Windows, Chrome, Gmail &amp; VS Code</b> — plus the most-used <b>Excel formulas</b> and ready-to-use <b>formula ideas</b>. Search it, learn it, and download a colorful or print-ready PDF.</p>
     </div>
   </div>
 
@@ -129,6 +131,7 @@ kbd{display:inline-block;padding:4px 8px;border-radius:7px;font-family:'Space Gr
       <div class="cs-seg" id="csSeg" style="display:none">
         <button data-type="shortcuts" class="active">⌨️ Shortcuts</button>
         <button data-type="formulas">∑ Formulas</button>
+        <button data-type="recipes">💡 Ideas</button>
       </div>
     </div>
 
@@ -161,6 +164,8 @@ kbd{display:inline-block;padding:4px 8px;border-radius:7px;font-family:'Space Gr
     <p>Every app's sheet exports two ways. The <b>colorful PDF</b> is designed for your screen and for sharing with a team. The <b>black-and-white (B&amp;W) PDF</b> is a clean, ink-friendly layout made for printing and pinning next to your desk.</p>
     <h3>Which shortcuts are included?</h3>
     <p>Hundreds of them — covering workbook and file actions, navigation, selection, editing, formatting, formulas, window management, browser tabs, email and code editing. The Excel formula list spans math, statistical, logical, text, lookup (including <b>VLOOKUP</b>, <b>XLOOKUP</b> and <b>INDEX/MATCH</b>), date, and financial functions.</p>
+    <h3>Excel formula ideas you can copy</h3>
+    <p>Beyond the plain formula list, the Excel tab has a <b>Formula Ideas</b> view — real-world recipes that show you <i>when</i> to use each formula, not just what it is. Instead of numbering rows by hand, you can <b>auto-number rows</b>, <b>look up a price</b>, <b>count or sum by condition</b>, <b>split a full name</b>, <b>flag overdue dates</b>, <b>remove duplicates</b> or work out a <b>percentage</b> — each idea comes with a ready-made formula you click to copy, plus a plain-English explanation. It is the practical "how to use Excel formulas" guide, and it downloads as its own PDF too.</p>
     <h3>Do the Gmail shortcuts need turning on?</h3>
     <p>Yes. Open Gmail → <b>Settings</b> → <b>See all settings</b> → <b>General</b> → set <b>Keyboard shortcuts</b> to <b>on</b>, then save. The VS Code keys are shown for Windows and Linux; on a Mac, use <b>Cmd</b> in place of <b>Ctrl</b> (and <b>Option</b> for <b>Alt</b>).</p>
   </article>
@@ -581,6 +586,58 @@ PV|=PV(rate,n,pmt)|Present value of future cash.
 NPV|=NPV(rate,A1:A5)|Net present value of cash flows.
 IRR|=IRR(A1:A5)|Internal rate of return.`;
 
+const RAW_RECIPES=`@Numbering & filling
+Auto-number rows (renumbers itself)|=ROW()-3|Put this in A4 and drag down — gives 1, 2, 3… and re-counts automatically when you add or delete a row. (The 3 = your header row number.)
+Make a 1-to-N list instantly|=SEQUENCE(100)|Excel 365 — fills 1 to 100 down the column at once. =SEQUENCE(10,1,5,5) starts at 5 and steps by 5.
+Number only the rows that have data|=IF(B4="","",COUNTA($B$4:B4))|Keeps blank rows blank and the numbering continuous.
+Copy a value down to fill gaps|=A3|Points each cell to the one above, so a label repeats down the column.
+@Find & look up data
+Get a price (or any value) for an item|=VLOOKUP(A2,Products!A:C,3,FALSE)|Finds A2 in the first column of Products and returns the 3rd column. FALSE = exact match.
+Modern, flexible lookup|=XLOOKUP(A2,Items,Prices)|Excel 365 — looks up A2 in Items and returns the matching Prices. Works in any direction.
+Two-way lookup (more flexible than VLOOKUP)|=INDEX(D:D,MATCH(A2,C:C,0))|MATCH finds the row, INDEX returns the value from another column.
+Check whether a value exists in a list|=IF(COUNTIF(List,A2)>0,"Yes","No")|Tells you if A2 appears anywhere in List.
+Get the last entry in a column|=LOOKUP(2,1/(B:B<>""),B:B)|Returns the last non-empty value, even as the list keeps growing.
+@Count & sum by condition
+Count how many times something appears|=COUNTIF(A:A,"Apple")|Counts every cell in column A equal to "Apple".
+Count with two conditions|=COUNTIFS(A:A,"Apple",B:B,">10")|Counts rows where A is Apple AND B is over 10.
+Sum only the matching rows|=SUMIF(A:A,"Apple",C:C)|Adds up C for every row where A is "Apple".
+Sum with several conditions|=SUMIFS(C:C,A:A,"Apple",B:B,">10")|Adds C where A is Apple AND B is over 10.
+Average only the matching rows|=AVERAGEIF(A:A,"Apple",C:C)|Average of C for the "Apple" rows only.
+Running (cumulative) total|=SUM($B$2:B2)|Lock the first cell with $ and drag down for a growing total.
+@Clean & split text
+Split a full name — first name|=LEFT(A2,FIND(" ",A2)-1)|Takes everything before the first space.
+Split a full name — last name|=MID(A2,FIND(" ",A2)+1,100)|Takes everything after the first space.
+Join first + last name|=A2&" "&B2|The & sign glues text together, with a space in between.
+Join a whole list into one cell|=TEXTJOIN(", ",TRUE,A2:A10)|Combines a range into one cell, separated by commas.
+Remove extra or double spaces|=TRIM(A2)|Cleans up messy spacing left from copy-paste.
+Fix MIXED case to Proper Case|=PROPER(A2)|Capitalises The First Letter Of Each Word. Use UPPER or LOWER for all-caps / small.
+Pull the first few characters|=LEFT(A2,5)|First 5 characters. Use RIGHT for the end, MID for the middle.
+@Dates & deadlines
+Days between two dates|=B2-A2|Just subtract. Format the result as a number, not a date.
+Age (or years of service) in whole years|=DATEDIF(A2,TODAY(),"Y")|Completed years from a start date up to today.
+Add working days (skip weekends)|=WORKDAY(A2,10)|The date 10 working days after A2 — ignores Saturdays and Sundays.
+Flag overdue items|=IF(TODAY()>B2,"Overdue","On time")|Compares the due date in B2 with today.
+Show the month name from a date|=TEXT(A2,"mmmm")|Turns a date into "January", "February"… Use "ddd" for the weekday.
+Last day of the month|=EOMONTH(A2,0)|Handy for invoice and report cut-off dates.
+@Smart logic & flags
+Pass / Fail result|=IF(A2>=50,"Pass","Fail")|One test, two possible answers.
+Grade bands (A / B / C…)|=IFS(A2>=90,"A",A2>=80,"B",A2>=70,"C",TRUE,"F")|Checks each cut-off in order; TRUE is the catch-all "everything else".
+Hide #DIV/0! and other errors|=IFERROR(A2/B2,0)|Shows 0 (or any value you choose) instead of an error.
+Tick when a target is met|=IF(C2>=D2,"Yes","")|Leaves the cell blank until the target is reached.
+Combine two rules with AND / OR|=IF(AND(A2>0,B2>0),"OK","Check")|AND needs both true; swap in OR if either one is enough.
+@Remove duplicates & uniques
+List the unique values|=UNIQUE(A2:A100)|Excel 365 — spills a clean list with duplicates removed.
+Count how many unique values|=COUNTA(UNIQUE(A2:A100))|Counts distinct entries (older Excel: =SUMPRODUCT(1/COUNTIF(rng,rng))).
+Flag duplicate entries|=IF(COUNTIF($A$2:A2,A2)>1,"Duplicate","")|Marks the 2nd, 3rd… time a value repeats.
+@Percentages & rounding
+Percentage of the grand total|=B2/SUM($B$2:$B$100)|Format the result as % . Lock the total range with $.
+Percentage change (old to new)|=(B2-A2)/A2|Format as % . Positive = increase, negative = decrease.
+Round to 2 decimal places|=ROUND(A2,2)|Use ROUNDUP or ROUNDDOWN to force the direction.
+Add a fixed % (e.g. 15% tax)|=A2*1.15|Multiply by 1 + the rate. For 15% off, use *0.85.
+@Money & loans
+Monthly loan payment (EMI)|=PMT(rate/12,months,-principal)|e.g. =PMT(12%/12,36,-100000). The minus on principal makes the payment come out positive.
+Future value of monthly savings|=FV(rate/12,months,-monthly)|How much regular monthly savings grow to over time.`;
+
 /* ===== parse ===== */
 function parseGroups(raw){
   const out=[];let cur=null;
@@ -592,7 +649,7 @@ function parseGroups(raw){
   });
   return out;
 }
-const SHORTCUTS={},FORMULAS={excel:parseGroups(RAW_FX)};
+const SHORTCUTS={},FORMULAS={excel:parseGroups(RAW_FX)},RECIPES={excel:parseGroups(RAW_RECIPES)};
 Object.keys(RAW_SC).forEach(function(k){SHORTCUTS[k]=parseGroups(RAW_SC[k]);});
 
 /* ===== state ===== */
@@ -641,22 +698,34 @@ function renderNote(){
   var n='';
   if(curApp==='gmail')n='Gmail shortcuts only work after you turn them on: Settings → See all settings → General → <b>Keyboard shortcuts on</b> → Save.';
   else if(curApp==='vscode')n='Keys shown for <b>Windows / Linux</b>. On a Mac, use <b>Cmd</b> instead of Ctrl (and <b>Option</b> for Alt).';
+  else if(curType==='recipes')n='Ready-to-use formulas — click one to copy it, then change the cell references (like <b>A2</b> or <b>B:B</b>) to match your own sheet.';
   else if(curType==='formulas')n='Tip: click any formula to copy it, then paste straight into your sheet.';
   noteEl.innerHTML=n?'<div class="cs-note"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><span>'+n+'</span></div>':'';
 }
+function currentGroups(){
+  if(curType==='formulas')return FORMULAS[curApp];
+  if(curType==='recipes')return RECIPES[curApp];
+  return SHORTCUTS[curApp];
+}
 function render(){
-  var isF=curType==='formulas';
-  var groups=isF?FORMULAS[curApp]:SHORTCUTS[curApp];
+  var groups=currentGroups();
+  if(!groups){curType='shortcuts';groups=SHORTCUTS[curApp];}
+  var mode=curType;
+  var listClass=mode==='formulas'?' fx':mode==='recipes'?' rc':'';
   var q=(searchEl.value||'').trim().toLowerCase();
   var total=0,html='';
   groups.forEach(function(g){
     var items=g.items.filter(function(it){return !q||it.join(' ').toLowerCase().indexOf(q)>-1;});
     if(!items.length)return;
     total+=items.length;
-    html+='<div class="cs-cat">'+esc(g.cat)+'</div><div class="cs-list'+(isF?' fx':'')+'">';
+    html+='<div class="cs-cat">'+esc(g.cat)+'</div><div class="cs-list'+listClass+'">';
     items.forEach(function(it){
-      if(isF){
+      if(mode==='formulas'){
         html+='<div class="cs-row fx"><div class="cs-fn">'+esc(it[0])+'</div>'+
+          '<code class="cs-syntax" data-copy="'+escAttr(it[1])+'" title="Click to copy">'+esc(it[1])+'</code>'+
+          '<div class="cs-desc">'+esc(it[2]||'')+'</div></div>';
+      }else if(mode==='recipes'){
+        html+='<div class="cs-row rc"><div class="cs-goal">'+esc(it[0])+'</div>'+
           '<code class="cs-syntax" data-copy="'+escAttr(it[1])+'" title="Click to copy">'+esc(it[1])+'</code>'+
           '<div class="cs-desc">'+esc(it[2]||'')+'</div></div>';
       }else{
@@ -668,7 +737,7 @@ function render(){
   });
   if(!total)html='<div class="cs-empty">No matches for "'+esc(q)+'". Try another word.</div>';
   listEl.innerHTML=html;
-  countEl.textContent=total+' '+(isF?'formulas':'shortcuts');
+  countEl.textContent=total+' '+(mode==='formulas'?'formulas':mode==='recipes'?'ideas':'shortcuts');
 }
 
 segEl.querySelectorAll('button').forEach(function(btn){
@@ -700,17 +769,22 @@ function exportPDF(colorful){
   var jsPDF=window.jspdf.jsPDF;
   var doc=new jsPDF({unit:'pt',format:'a4'});
   var app=APPS.find(function(a){return a.id===curApp;});
-  var isF=curType==='formulas';
-  var groups=isF?FORMULAS[curApp]:SHORTCUTS[curApp];
-  var title=app.name+' — '+(isF?'Excel Formulas':'Keyboard Shortcuts');
-  var head=isF?[['Function','Syntax (example)','What it does']]:[['Shortcut','What it does']];
+  var mode=curType;
+  var groups=currentGroups();if(!groups){mode='shortcuts';groups=SHORTCUTS[curApp];}
+  var three=(mode==='formulas'||mode==='recipes');
+  var title=app.name+' — '+(mode==='formulas'?'Excel Formulas':mode==='recipes'?'Formula Ideas (Use Cases)':'Keyboard Shortcuts');
+  var head=mode==='formulas'?[['Function','Syntax (example)','What it does']]:mode==='recipes'?[['To do this…','Use this formula','How it works']]:[['Shortcut','What it does']];
   var catFill=colorful?[209,250,229]:[235,235,235];
   var catText=colorful?[6,95,70]:[20,20,20];
   var body=[];
   groups.forEach(function(g){
-    body.push([{content:g.cat,colSpan:isF?3:2,styles:{fillColor:catFill,textColor:catText,fontStyle:'bold',fontSize:9.5,halign:'left',cellPadding:4}}]);
-    g.items.forEach(function(it){ body.push(isF?[it[0],it[1],it[2]||'']:[it[0],it[1]||'']); });
+    body.push([{content:g.cat,colSpan:three?3:2,styles:{fillColor:catFill,textColor:catText,fontStyle:'bold',fontSize:9.5,halign:'left',cellPadding:4}}]);
+    g.items.forEach(function(it){ body.push(three?[it[0],it[1],it[2]||'']:[it[0],it[1]||'']); });
   });
+  var colStyles;
+  if(mode==='formulas')colStyles={0:{fontStyle:'bold',cellWidth:80},1:{font:'courier',cellWidth:165,textColor:colorful?[6,118,90]:[0,0,0]},2:{cellWidth:'auto'}};
+  else if(mode==='recipes')colStyles={0:{fontStyle:'bold',cellWidth:150},1:{font:'courier',cellWidth:150,textColor:colorful?[6,118,90]:[0,0,0]},2:{cellWidth:'auto'}};
+  else colStyles={0:{fontStyle:'bold',cellWidth:175},1:{cellWidth:'auto'}};
   var pageW=doc.internal.pageSize.getWidth(),pageH=doc.internal.pageSize.getHeight();
   doc.autoTable({
     head:head,body:body,startY:48,margin:{top:48,left:32,right:32,bottom:34},
@@ -718,7 +792,7 @@ function exportPDF(colorful){
     styles:{font:'helvetica',fontSize:9,cellPadding:5,textColor:colorful?[31,41,55]:[0,0,0],lineColor:colorful?[224,231,235]:[0,0,0],lineWidth:colorful?0.3:0.5,overflow:'linebreak',valign:'middle'},
     headStyles:{fillColor:colorful?[16,185,129]:[255,255,255],textColor:colorful?[255,255,255]:[0,0,0],fontStyle:'bold',fontSize:9.5,lineColor:[0,0,0],lineWidth:colorful?0:0.5},
     alternateRowStyles:colorful?{fillColor:[240,253,248]}:{fillColor:[255,255,255]},
-    columnStyles:isF?{0:{fontStyle:'bold',cellWidth:80},1:{font:'courier',cellWidth:165,textColor:colorful?[6,118,90]:[0,0,0]},2:{cellWidth:'auto'}}:{0:{fontStyle:'bold',cellWidth:175},1:{cellWidth:'auto'}},
+    columnStyles:colStyles,
     didDrawPage:function(){
       if(colorful)doc.setFillColor(16,185,129);else doc.setFillColor(0,0,0);
       doc.rect(0,0,pageW,34,'F');
@@ -731,7 +805,7 @@ function exportPDF(colorful){
       doc.text('Page '+doc.internal.getNumberOfPages(),pageW-32,pageH-16,{align:'right'});
     }
   });
-  doc.save(app.name.replace(/\s+/g,'-')+'-'+(isF?'Formulas':'Shortcuts')+'-Xnipertools.pdf');
+  doc.save(app.name.replace(/\s+/g,'-')+'-'+(mode==='formulas'?'Formulas':mode==='recipes'?'Formula-Ideas':'Shortcuts')+'-Xnipertools.pdf');
   toast('Downloading PDF…');
 }
 document.getElementById('csPdfColor').addEventListener('click',function(){exportPDF(true);});
