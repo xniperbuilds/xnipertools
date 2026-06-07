@@ -242,8 +242,9 @@ input:-webkit-autofill,input:-webkit-autofill:focus{-webkit-text-fill-color:#fff
 input::placeholder,textarea::placeholder{color:var(--muted-2)}
 input:focus,select:focus,textarea:focus{border-color:var(--accent);background:rgba(255,255,255,.07);box-shadow:0 0 0 3px rgba(94,139,255,.15)}
 select option{background:#12141c;color:#fff}
+select optgroup{background:#0e1018;color:#aab0c6;font-style:normal;font-weight:700;padding:4px 0}
 /* premium custom dropdown chevron (replaces inconsistent native arrow) */
-select{-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%238a90a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;background-size:12px 8px;padding-right:42px;text-overflow:ellipsis}
+select{-webkit-appearance:none;-moz-appearance:none;appearance:none;cursor:pointer;color-scheme:dark;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%238a90a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M1 1.5 6 6.5 11 1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;background-size:12px 8px;padding-right:42px;text-overflow:ellipsis}
 .wa-link-row select{flex:1;min-width:0}
 /* datetime-local: match dark theme + visible picker icon */
 input[type=date],input[type=datetime-local],input[type=time]{color-scheme:dark}
