@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Image Compressor, Resizer, Converter, Crop &amp; Rotate | Xnipertools</title>
-<meta name="description" content="Free all-in-one image tool: compress, resize, convert (JPG/PNG/WEBP), crop and rotate images — all in your browser. Nothing is uploaded.">
+<title>Image Tools — Compress, Resize, Convert, Crop, Rotate &amp; Watermark | Xnipertools</title>
+<meta name="description" content="Free all-in-one image tool: compress, resize, convert (JPG/PNG/WEBP), crop, rotate, flip and add a text or logo watermark — all in your browser. Nothing is uploaded.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -14,13 +14,13 @@
 <meta property="og:site_name" content="Xnipertools">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://xnipertools.com/image-compressor/">
-<meta property="og:title" content="Image Compressor, Resizer, Converter, Crop & Rotate">
-<meta property="og:description" content="Compress, resize, convert, crop and rotate images right in your browser. Free, private, no upload.">
+<meta property="og:title" content="Image Tools — Compress, Resize, Convert, Crop, Rotate & Watermark">
+<meta property="og:description" content="Compress, resize, convert, crop, rotate and watermark images right in your browser. Free, private, no upload.">
 <meta property="og:image" content="https://xnipertools.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Image Compressor, Resizer, Converter, Crop & Rotate">
-<meta name="twitter:description" content="Compress, resize, convert, crop and rotate images right in your browser. Free, private, no upload.">
+<meta name="twitter:title" content="Image Tools — Compress, Resize, Convert, Crop, Rotate & Watermark">
+<meta name="twitter:description" content="Compress, resize, convert, crop, rotate and watermark images right in your browser. Free, private, no upload.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Compressor, Resizer & Converter","url":"https://xnipertools.com/image-compressor/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +62,7 @@
     <div class="ic">🖼️</div>
     <div>
       <h1>Image Tools — All in One</h1>
-      <p><b>Compress · Resize · Convert · Crop · Rotate</b> — all in your browser. Nothing is uploaded.</p>
+      <p><b>Compress · Resize · Convert · Crop · Rotate · Watermark</b> — all in your browser. Nothing is uploaded.</p>
     </div>
   </div>
 
@@ -101,6 +101,25 @@
         <div><label for="h">Height (px)</label><input type="number" id="h" min="1"></div>
         <div><label>Aspect</label><label class="ff-toggle" style="margin-top:8px"><input type="checkbox" id="lock" checked><span class="tg"></span><span>Lock ratio</span></label></div>
       </div>
+
+      <details class="ffp-details mt" id="wmBox">
+        <summary>💧 Add a watermark</summary>
+        <div style="padding:6px 16px 16px">
+          <div class="tabs" style="margin-bottom:12px">
+            <button class="tab active" id="wmTabText" type="button">Text</button>
+            <button class="tab" id="wmTabLogo" type="button">Logo</button>
+          </div>
+          <div id="wmTextWrap"><input type="text" id="wmText" placeholder="© your name or @handle"></div>
+          <div id="wmLogoWrap" style="display:none"><button class="file-btn" id="wmLogoBtn" type="button">📁 Upload logo</button><input type="file" id="wmLogoFile" accept="image/*" hidden><span class="fname" id="wmLogoName" style="margin-left:10px;font-size:.82rem;color:var(--muted)"></span></div>
+          <div class="row cols-3 mt">
+            <div><label for="wmPos">Position</label><select id="wmPos"><option value="br" selected>Bottom right</option><option value="bl">Bottom left</option><option value="tr">Top right</option><option value="tl">Top left</option><option value="c">Center</option></select></div>
+            <div><label>Size <span class="muted" id="wmSzV">5%</span></label><input type="range" id="wmSz" min="2" max="22" step="0.5" value="5"></div>
+            <div><label>Opacity <span class="muted" id="wmOpV">70%</span></label><input type="range" id="wmOp" min="0.1" max="1" step="0.05" value="0.7"></div>
+          </div>
+          <div class="color-field mt" id="wmColorWrap"><input type="color" id="wmColor" value="#ffffff"><span class="hex">text colour</span></div>
+        </div>
+      </details>
+
       <div class="result-bar" id="resultBar"></div>
       <div class="ff-actions mt">
         <a class="btn" id="dl">📥 Download</a>
@@ -113,7 +132,7 @@
 
   <article class="article reveal">
     <h2>About this Image Tool</h2>
-    <p>One free tool for everything you need to do with an image: <b>compress</b> it to a smaller size, <b>resize</b> its dimensions, <b>convert</b> between JPG, PNG and WEBP, and <b>crop</b> or <b>rotate</b> it. Everything happens right inside your browser — your image is never uploaded to any server.</p>
+    <p>One free tool for everything you need to do with an image: <b>compress</b> it to a smaller size, <b>resize</b> its dimensions, <b>convert</b> between JPG, PNG and WEBP, <b>crop</b> or <b>rotate</b> it, and add a <b>text or logo watermark</b>. Everything happens right inside your browser — your image is never uploaded to any server.</p>
     <h3>How to use it</h3>
     <ol>
       <li>Upload an image (or drag &amp; drop it).</li>
@@ -159,7 +178,7 @@ var base=null,origSize=0,origName='image',curURL='',prevURL='';
 
 function fmtSize(b){return b<1024?b+' B':b<1048576?(b/1024).toFixed(1)+' KB':(b/1048576).toFixed(2)+' MB';}
 function canvasOf(img){var c=document.createElement('canvas');c.width=img.naturalWidth||img.width;c.height=img.naturalHeight||img.height;c.getContext('2d').drawImage(img,0,0);return c;}
-function showBase(){if(prevURL)URL.revokeObjectURL(prevURL);base.toBlob(function(b){if(b){prevURL=URL.createObjectURL(b);prev.src=prevURL;}else{prev.src=base.toDataURL();}},'image/png');}
+function showBase(){var c=document.createElement('canvas');c.width=base.width;c.height=base.height;var x=c.getContext('2d');x.drawImage(base,0,0);drawWatermark(x,c.width,c.height);if(prevURL)URL.revokeObjectURL(prevURL);c.toBlob(function(b){if(b){prevURL=URL.createObjectURL(b);prev.src=prevURL;}else{prev.src=c.toDataURL();}},'image/png');}
 function afterEdit(){wI.value=base.width;hI.value=base.height;showBase();process();}
 
 function loadFile(f){
@@ -178,6 +197,7 @@ function process(){
   var c=document.createElement('canvas');c.width=w;c.height=h;var ctx=c.getContext('2d');
   if(fmt==='image/jpeg'){ctx.fillStyle='#ffffff';ctx.fillRect(0,0,w,h);}
   ctx.imageSmoothingQuality='high';ctx.drawImage(base,0,0,w,h);
+  drawWatermark(ctx,w,h);
   c.toBlob(function(blob){
     if(!blob){resultBar.textContent='This browser can\'t export that format — try JPG or PNG.';return;}
     if(curURL)URL.revokeObjectURL(curURL);curURL=URL.createObjectURL(blob);
@@ -194,6 +214,34 @@ function rotate(dir){var c=document.createElement('canvas');c.width=base.height;
 function flip(horiz){var c=document.createElement('canvas');c.width=base.width;c.height=base.height;var x=c.getContext('2d');if(horiz){x.translate(c.width,0);x.scale(-1,1);}else{x.translate(0,c.height);x.scale(1,-1);}x.drawImage(base,0,0);base=c;afterEdit();}
 $('rotL').onclick=function(){rotate(-1);};$('rotR').onclick=function(){rotate(1);};
 $('flipH').onclick=function(){flip(true);};$('flipV').onclick=function(){flip(false);};
+
+/* watermark */
+var wmLogoImg=null,wmModeLogo=false;
+function wmXY(pos,W,H,w,h,m){var x=pos.indexOf('l')>-1?m:pos.indexOf('r')>-1?(W-w-m):(W-w)/2;var y=pos.indexOf('t')>-1?m:pos.indexOf('b')>-1?(H-h-m):(H-h)/2;return {x:x,y:y};}
+function drawWatermark(ctx,W,H){
+  if(typeof $('wmOp')==='undefined'||!$('wmOp'))return;
+  var op=parseFloat($('wmOp').value),szPct=parseFloat($('wmSz').value)/100,pos=$('wmPos').value,m=Math.round(Math.min(W,H)*0.03);
+  if(wmModeLogo&&wmLogoImg){
+    var dh=Math.min(W,H)*szPct*3,dw=dh*(wmLogoImg.naturalWidth/wmLogoImg.naturalHeight),p=wmXY(pos,W,H,dw,dh,m);
+    ctx.save();ctx.globalAlpha=op;ctx.drawImage(wmLogoImg,p.x,p.y,dw,dh);ctx.restore();
+  }else if(!wmModeLogo){
+    var t=($('wmText').value||'').trim();if(!t)return;
+    var fs=Math.max(10,Math.min(W,H)*szPct);ctx.save();ctx.globalAlpha=op;ctx.font='700 '+fs+'px Inter,Arial,sans-serif';ctx.textBaseline='top';
+    var tw=ctx.measureText(t).width,p=wmXY(pos,W,H,tw,fs,m);
+    ctx.lineWidth=Math.max(1,fs/12);ctx.strokeStyle='rgba(0,0,0,.45)';ctx.lineJoin='round';ctx.fillStyle=$('wmColor').value;
+    ctx.strokeText(t,p.x,p.y);ctx.fillText(t,p.x,p.y);ctx.restore();
+  }
+}
+function wmUpdate(){if(base){showBase();process();}}
+$('wmTabText').addEventListener('click',function(){wmModeLogo=false;this.classList.add('active');$('wmTabLogo').classList.remove('active');$('wmTextWrap').style.display='';$('wmLogoWrap').style.display='none';$('wmColorWrap').style.display='';wmUpdate();});
+$('wmTabLogo').addEventListener('click',function(){wmModeLogo=true;this.classList.add('active');$('wmTabText').classList.remove('active');$('wmTextWrap').style.display='none';$('wmLogoWrap').style.display='';$('wmColorWrap').style.display='none';wmUpdate();});
+$('wmText').addEventListener('input',wmUpdate);
+$('wmPos').addEventListener('change',wmUpdate);
+$('wmSz').addEventListener('input',function(){$('wmSzV').textContent=this.value+'%';wmUpdate();});
+$('wmOp').addEventListener('input',function(){$('wmOpV').textContent=Math.round(this.value*100)+'%';wmUpdate();});
+$('wmColor').addEventListener('input',wmUpdate);
+$('wmLogoBtn').addEventListener('click',function(){$('wmLogoFile').click();});
+$('wmLogoFile').addEventListener('change',function(e){var f=e.target.files[0];if(!f||!/^image\//.test(f.type))return;var u=URL.createObjectURL(f),im=new Image();im.onload=function(){URL.revokeObjectURL(u);wmLogoImg=im;$('wmLogoName').textContent=f.name;wmUpdate();};im.src=u;});
 
 /* crop */
 var cropping=false,drag=null;
