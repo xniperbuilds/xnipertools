@@ -200,7 +200,7 @@ header.site{position:sticky;top:0;z-index:40;background:rgba(7,8,9,.65);backdrop
 .card[href*="request-a-tool"],body[data-tool="request-a-tool"]{--ic:#6366f1}
 .card[href*="report-bug"],body[data-tool="report-bug"]{--ic:#ef4444}
 .card[data-name*="love"]{--ic:#ef4444}
-.card[data-name*="loan"]{--ic:#f59e0b}
+.card[href*="loan-calculator"],body[data-tool="loan-calculator"]{--ic:#f59e0b}
 .card[href*="percentage-calculator"],body[data-tool="percentage-calculator"]{--ic:#8b5cf6}
 .card[data-name*="stylish text"]{--ic:#6366f1}
 .card[data-name*="pubg"]{--ic:#84cc16}
