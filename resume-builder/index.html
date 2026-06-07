@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Free Resume Builder — Create &amp; Download a PDF CV | Xnipertools</title>
-<meta name="description" content="Free online resume builder. Fill in your details, see a live preview, pick an accent colour and download a clean professional PDF resume. No signup, no watermark.">
+<title>Free Resume Builder — 10 Templates, Download PDF CV | Xnipertools</title>
+<meta name="description" content="Free online resume builder with 10 professional templates, custom colours and fonts. Live preview, download a clean PDF CV — no signup, no watermark.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -12,21 +12,21 @@
 <link rel="stylesheet" href="../style.css">
 <link rel="canonical" href="https://xnipertools.com/resume-builder/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Xnipertools">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://xnipertools.com/resume-builder/">
-<meta property="og:title" content="Free Resume Builder — Create & Download a PDF CV">
-<meta property="og:description" content="Fill in your details, see a live preview and download a clean professional PDF resume. Free, no signup.">
+<meta property="og:title" content="Free Resume Builder — 10 Templates, Download PDF CV">
+<meta property="og:description" content="10 professional templates, custom colours and fonts, live preview and PDF download. Free, no signup.">
 <meta property="og:image" content="https://xnipertools.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Resume Builder">
-<meta name="twitter:description" content="Build a clean professional CV and download it as a PDF. Free, no signup.">
+<meta name="twitter:title" content="Free Resume Builder — 10 Templates">
+<meta name="twitter:description" content="Build a clean professional CV with 10 templates and download it as a PDF. Free, no signup.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Resume Builder","url":"https://xnipertools.com/resume-builder/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this resume builder free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is completely free with no signup and no watermark on the downloaded PDF."}},{"@type":"Question","name":"Can I download my resume as a PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes, click Download PDF to save a clean, print-ready PDF of your resume."}},{"@type":"Question","name":"Is my resume data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your resume is built entirely in your browser and is never uploaded to a server."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this resume builder free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is completely free with no signup and no watermark on the downloaded PDF."}},{"@type":"Question","name":"How many resume templates are there?","acceptedAnswer":{"@type":"Answer","text":"There are 10 professional templates, plus custom accent colours and font choices, so you can build a unique CV."}},{"@type":"Question","name":"Can I download my resume as a PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes, click Download PDF to save a clean, print-ready PDF of your resume."}},{"@type":"Question","name":"Is my resume data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your resume is built entirely in your browser and is never uploaded to a server."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Resume Builder","item":"https://xnipertools.com/resume-builder/"}]}</script>
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon-192.png">
@@ -36,6 +36,7 @@
 <meta name="apple-mobile-web-app-title" content="Xnipertools">
 <script src="/pwa.js" defer></script>
 <style>
+/* ===== control panel ===== */
 .rb-sec h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;margin:22px 0 12px;font-weight:700}
 .rb-sec h3:first-child{margin-top:4px}
 .rb-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -47,22 +48,42 @@ textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
 .it-del:hover{background:rgba(248,113,113,.12)}
 .it-add{margin-top:2px;background:rgba(94,139,255,.1);border:1px solid rgba(94,139,255,.25);color:#9db8ff;border-radius:10px;padding:10px 16px;cursor:pointer;font-weight:600;font-size:.88rem}
 .it-add:hover{background:rgba(94,139,255,.18)}
-.rb-swatches{display:flex;gap:10px;flex-wrap:wrap}
-.rb-sw{width:34px;height:34px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s}
-.rb-sw:hover{transform:scale(1.1)}
+/* template picker */
+.tpl-pick{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tpl-card{cursor:pointer;border:1.5px solid var(--border);border-radius:12px;padding:10px 8px;background:rgba(255,255,255,.02);text-align:center;transition:transform .15s,border-color .2s,background .2s}
+.tpl-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent,#5e8bff) 45%,transparent)}
+.tpl-card.on{border-color:var(--accent,#5e8bff);background:color-mix(in srgb,var(--accent,#5e8bff) 14%,#0c0e15);box-shadow:0 6px 18px color-mix(in srgb,var(--accent,#5e8bff) 24%,transparent)}
+.tpl-mini{height:54px;border-radius:7px;overflow:hidden;margin-bottom:7px;background:#fff;position:relative;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.tpl-card .nm{font-size:.74rem;font-weight:600;color:#cfd4e4}
+.tpl-card.on .nm{color:#fff}
+/* mini thumbnail bits */
+.tm{position:absolute;background:#c9cfdd}
+.tm.acc{background:var(--mc,#3f63d8)}
+.rb-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{cursor:pointer;font-size:.82rem;font-weight:600;color:#aab0c6;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:30px;padding:8px 15px;transition:transform .15s,color .2s,border-color .2s,background .2s}
+.chip:hover{transform:translateY(-2px);color:#e7eaf5}
+.chip.on{color:#fff;background:color-mix(in srgb,var(--accent,#5e8bff) 22%,#0c0e15);border-color:color-mix(in srgb,var(--accent,#5e8bff) 50%,transparent)}
+.rb-swatches{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.rb-sw{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s}
+.rb-sw:hover{transform:scale(1.12)}
 .rb-sw.on{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+.rb-sw.custom{display:flex;align-items:center;justify-content:center;background:conic-gradient(from 0deg,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);position:relative;overflow:hidden}
+.rb-sw.custom input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .rb-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
 .rb-actions button{flex:1;min-width:150px}
 /* ===== white resume preview ===== */
 .rb-preview-wrap{margin-top:26px}
-.rb-preview-wrap .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;font-weight:700;margin-bottom:12px}
-.rb-paper{background:#fff;color:#23262e;border-radius:14px;padding:46px 48px;font-family:'Inter',sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:760px;margin:0 auto;line-height:1.5;--rc:#3f63d8}
-.rp-name{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;color:#10131c;letter-spacing:-.01em;line-height:1.05}
+.rb-preview-wrap .lbl{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;font-weight:700;margin-bottom:12px}
+.rb-scroll{overflow-x:auto}
+.rb-paper{background:#fff;color:#23262e;border-radius:14px;padding:46px 48px;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:760px;margin:0 auto;line-height:1.5;
+  --rc:#3f63d8;--rf-head:'Space Grotesk',sans-serif;--rf-body:'Inter',sans-serif;font-family:var(--rf-body)}
+.rp-head{margin-bottom:4px}
+.rp-name{font-family:var(--rf-head);font-size:2.2rem;font-weight:700;color:#10131c;letter-spacing:-.01em;line-height:1.05}
 .rp-title{font-size:1.02rem;font-weight:600;color:var(--rc);margin-top:3px}
-.rp-contact{font-size:.82rem;color:#5b6072;margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 14px}
-.rp-contact span{white-space:nowrap}
-.rp-sec{margin-top:26px}
-.rp-sec h4{font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#10131c;padding-bottom:5px;border-bottom:2px solid var(--rc);margin-bottom:12px}
+.rp-contact{font-size:.82rem;color:#5b6072;margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 12px}
+.rp-contact span.sep{color:#c4c8d2}
+.rp-sec{margin-top:24px}
+.rp-sec h4{font-family:var(--rf-head);font-size:.86rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#10131c;padding-bottom:5px;border-bottom:2px solid var(--rc);margin-bottom:12px}
 .rp-summary{font-size:.9rem;color:#3a3d4a}
 .rp-item{margin-bottom:14px}
 .rp-item .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -73,7 +94,99 @@ textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
 .rp-skills{display:flex;flex-wrap:wrap;gap:8px}
 .rp-skill{font-size:.82rem;color:#2a2d38;background:#eef1f8;border-radius:30px;padding:5px 13px}
 .rp-foot{margin-top:30px;text-align:center;font-size:.7rem;color:#aab0bd}
-@media(max-width:560px){.rb-row2{grid-template-columns:1fr}.rb-paper{padding:28px 24px}.rp-name{font-size:1.7rem}}
+
+/* ============ TEMPLATE: MODERN (banner) ============ */
+.tpl-modern{padding:0;overflow:hidden}
+.tpl-modern .rp-banner{background:var(--rc);color:#fff;padding:36px 48px 30px}
+.tpl-modern .rp-name{color:#fff}
+.tpl-modern .rp-title{color:rgba(255,255,255,.85)}
+.tpl-modern .rp-contact{color:rgba(255,255,255,.8)}
+.tpl-modern .rp-contact span.sep{color:rgba(255,255,255,.4)}
+.tpl-modern .rp-body{padding:28px 48px 40px}
+.tpl-modern .rp-foot{padding-bottom:24px}
+
+/* ============ TEMPLATE: BOLD (banner variant) ============ */
+.tpl-bold{padding:0;overflow:hidden}
+.tpl-bold .rp-banner{background:linear-gradient(135deg,var(--rc-dark,#2c47a8),var(--rc));color:#fff;padding:44px 48px 34px}
+.tpl-bold .rp-name{color:#fff;font-size:2.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+.tpl-bold .rp-title{color:rgba(255,255,255,.9);font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em}
+.tpl-bold .rp-contact{color:rgba(255,255,255,.85)}
+.tpl-bold .rp-contact span.sep{color:rgba(255,255,255,.4)}
+.tpl-bold .rp-body{padding:30px 48px 40px}
+.tpl-bold .rp-sec h4{border:none;display:inline-block;background:var(--rc);color:#fff;padding:5px 14px;border-radius:6px;letter-spacing:.06em}
+.tpl-bold .rp-foot{padding-bottom:24px}
+
+/* ============ TEMPLATE: TWO-COLUMN ============ */
+.tpl-twocol,.tpl-sidebar{padding:0;overflow:hidden}
+.rp-tc{display:grid;grid-template-columns:35% 1fr;min-height:100%}
+.rp-aside{padding:38px 26px}
+.rp-main{padding:38px 34px 40px}
+.tpl-twocol .rp-aside{background:#f4f6fb}
+.tpl-sidebar .rp-aside{background:var(--rc);color:#fff}
+.tpl-sidebar .rp-aside .rp-name{color:#fff}
+.tpl-sidebar .rp-aside .rp-title{color:rgba(255,255,255,.85)}
+.tpl-sidebar .rp-aside .rp-asec h5{color:#fff;border-color:rgba(255,255,255,.4)}
+.tpl-sidebar .rp-aside .ab-line{color:rgba(255,255,255,.88)}
+.tpl-sidebar .rp-aside .rp-skill{background:rgba(255,255,255,.16);color:#fff}
+.tpl-sidebar .rp-aside .rp-item .role{color:#fff}
+.tpl-sidebar .rp-aside .rp-item .when,.tpl-sidebar .rp-aside .rp-item .org{color:rgba(255,255,255,.8)}
+.rp-aside .rp-name{font-size:1.6rem}
+.rp-asec{margin-top:20px}
+.rp-asec h5{font-family:var(--rf-head);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:#10131c;border-bottom:1.5px solid var(--rc);padding-bottom:4px;margin-bottom:9px}
+.ab-line{font-size:.8rem;color:#4a4f5e;margin-bottom:5px;word-break:break-word}
+.rp-tc .rp-sec:first-child{margin-top:0}
+
+/* ============ TEMPLATE: ATS (monochrome, plain) ============ */
+.tpl-ats{font-family:'Inter',sans-serif!important}
+.tpl-ats .rp-name{font-family:'Inter',sans-serif!important;color:#000;font-size:1.9rem}
+.tpl-ats .rp-title{color:#222;font-weight:600}
+.tpl-ats .rp-sec h4{color:#000;border-bottom:1px solid #000;font-family:'Inter',sans-serif!important;letter-spacing:.04em}
+.tpl-ats .rp-item .org{color:#222}
+.tpl-ats .rp-skill{background:none;border:1px solid #bbb;color:#222;border-radius:4px}
+
+/* ============ TEMPLATE: MINIMAL ============ */
+.tpl-minimal{padding:54px 56px}
+.tpl-minimal .rp-name{font-weight:600;letter-spacing:0}
+.tpl-minimal .rp-sec h4{border:none;color:#9aa0b0;font-size:.74rem;letter-spacing:.16em;padding-bottom:0;margin-bottom:8px}
+.tpl-minimal .rp-sec{margin-top:30px;border-top:1px solid #eceef3;padding-top:18px}
+.tpl-minimal .rp-sec:first-of-type{border-top:none;padding-top:0}
+.tpl-minimal .rp-skill{background:none;padding:0;color:#3a3d4a}
+.tpl-minimal .rp-skills{gap:6px 16px}
+.tpl-minimal .rp-skill:not(:last-child):after{content:'·';margin-left:16px;color:#c4c8d2}
+
+/* ============ TEMPLATE: COMPACT ============ */
+.tpl-compact{padding:34px 40px;line-height:1.42}
+.tpl-compact .rp-name{font-size:1.8rem}
+.tpl-compact .rp-sec{margin-top:16px}
+.tpl-compact .rp-item{margin-bottom:9px}
+.tpl-compact .rp-sec h4{margin-bottom:8px;padding-bottom:3px}
+.tpl-compact .rp-contact{margin-top:7px}
+
+/* ============ TEMPLATE: ELEGANT (centered) ============ */
+.tpl-elegant{padding:50px 54px}
+.tpl-elegant .rp-head{text-align:center;border-bottom:1px solid #e4e7ef;padding-bottom:18px}
+.tpl-elegant .rp-name{letter-spacing:.04em}
+.tpl-elegant .rp-contact{justify-content:center}
+.tpl-elegant .rp-sec h4{text-align:center;border:none;position:relative;color:#10131c}
+.tpl-elegant .rp-sec h4:after{content:'';display:block;width:42px;height:2px;background:var(--rc);margin:7px auto 0}
+.tpl-elegant .rp-item .top{justify-content:center;text-align:center;flex-direction:column;gap:1px}
+.tpl-elegant .rp-item .desc{text-align:center}
+.tpl-elegant .rp-skills{justify-content:center}
+
+/* ============ TEMPLATE: TIMELINE ============ */
+.tpl-timeline .rp-tl{position:relative;padding-left:24px}
+.tpl-timeline .rp-tl:before{content:'';position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--rc-tl,#b9c4e8)}
+.tpl-timeline .rp-tl .rp-item{position:relative;padding-left:6px}
+.tpl-timeline .rp-tl .rp-item:before{content:'';position:absolute;left:-23px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--rc);box-shadow:0 0 0 3px #fff}
+
+@media(max-width:620px){
+  .tpl-pick{grid-template-columns:repeat(3,1fr)}
+  .rb-row2{grid-template-columns:1fr}
+  .rb-paper{padding:28px 24px}
+  .tpl-modern .rp-banner,.tpl-modern .rp-body,.tpl-bold .rp-banner,.tpl-bold .rp-body{padding-left:24px;padding-right:24px}
+  .rp-name{font-size:1.7rem}
+  .rp-tc{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body data-tool="resume-builder">
@@ -103,13 +216,26 @@ textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
     <div class="ic">📄</div>
     <div>
       <h1>Resume Builder</h1>
-      <p>Build a clean, professional <b>resume</b> with a live preview — pick an accent colour and download a <b>PDF</b>. No signup, no watermark.</p>
+      <p>Build a professional <b>resume</b> with <b>10 templates</b>, custom colours and fonts — live preview, then download a <b>PDF</b>. No signup, no watermark.</p>
     </div>
   </div>
 
   <div class="tool-box">
     <div class="rb-sec">
-      <h3>Contact</h3>
+      <h3>1 · Choose a template</h3>
+      <div class="tpl-pick" id="tplPick"></div>
+    </div>
+
+    <div class="rb-sec">
+      <h3>2 · Customise</h3>
+      <label class="s">Accent colour</label>
+      <div class="rb-swatches" id="swatches"></div>
+      <label class="s" style="margin-top:14px">Font</label>
+      <div class="rb-chips" id="fontPick"></div>
+    </div>
+
+    <div class="rb-sec">
+      <h3>3 · Your details</h3>
       <div class="rb-row2">
         <div><label class="s" for="name">Full name</label><input type="text" id="name" value="Your Name" placeholder="Your Name"></div>
         <div><label class="s" for="role">Job title</label><input type="text" id="role" value="Job Title" placeholder="e.g. Graphic Designer"></div>
@@ -122,11 +248,6 @@ textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
         <div><label class="s" for="loc">Location</label><input type="text" id="loc" placeholder="City, Country"></div>
         <div><label class="s" for="web">Website / LinkedIn</label><input type="text" id="web" placeholder="linkedin.com/in/you"></div>
       </div>
-    </div>
-
-    <div class="rb-sec">
-      <h3>Accent colour</h3>
-      <div class="rb-swatches" id="swatches"></div>
     </div>
 
     <div class="rb-sec">
@@ -149,7 +270,7 @@ textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
     <div class="rb-sec">
       <h3>Skills</h3>
       <label class="s" for="skills">Comma-separated</label>
-      <input type="text" id="skills" placeholder="e.g. Photoshop, Illustrator, Branding, Figma" value="Communication, Teamwork, Time Management">
+      <input type="text" id="skills" placeholder="e.g. Photoshop, Illustrator, Branding, Figma" value="Communication, Teamwork, Time Management, Leadership">
     </div>
 
     <div class="rb-actions">
@@ -159,36 +280,27 @@ textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
   </div>
 
   <div class="rb-preview-wrap">
-    <div class="lbl">Live preview</div>
-    <div class="rb-paper" id="resumePaper">
-      <div class="rp-name" id="pvName">Your Name</div>
-      <div class="rp-title" id="pvRole">Job Title</div>
-      <div class="rp-contact" id="pvContact"></div>
-
-      <div class="rp-sec" id="pvSummaryWrap"><h4>Summary</h4><div class="rp-summary" id="pvSummary"></div></div>
-      <div class="rp-sec" id="pvExpWrap"><h4>Experience</h4><div id="pvExp"></div></div>
-      <div class="rp-sec" id="pvEduWrap"><h4>Education</h4><div id="pvEdu"></div></div>
-      <div class="rp-sec" id="pvSkillsWrap"><h4>Skills</h4><div class="rp-skills" id="pvSkills"></div></div>
-
-      <div class="rp-foot">Created with Xnipertools · xnipertools.com</div>
-    </div>
+    <div class="lbl"><span>Live preview</span><span id="tplName" style="color:#9db8ff">Classic</span></div>
+    <div class="rb-scroll"><div class="rb-paper tpl-classic" id="resumePaper"></div></div>
   </div>
 
   <div class="ad-slot">Advertisement</div>
 
   <article class="article reveal">
     <h2>About this Resume Builder</h2>
-    <p>This free <b>resume builder</b> helps you create a clean, recruiter-friendly CV in minutes — no design skills needed. Fill in your contact details, summary, experience, education and skills, watch the <b>live preview</b> update, choose an accent colour, then download a <b>print-ready PDF</b> with no watermark.</p>
+    <p>This free <b>resume builder</b> gives you full control: pick from <b>10 professional templates</b>, choose your <b>accent colour</b> and <b>font</b>, and watch the <b>live preview</b> update as you type. When it looks right, download a clean, <b>print-ready PDF</b> with no watermark — perfect for job applications and online portals.</p>
     <h3>How to use it</h3>
     <ol>
-      <li>Fill in your <b>contact details</b> and a short summary.</li>
-      <li>Add your <b>experience</b>, <b>education</b> and <b>skills</b>.</li>
-      <li>Pick an accent colour and click <b>Download PDF</b>.</li>
+      <li>Pick a <b>template</b>, accent colour and font.</li>
+      <li>Fill in your <b>details</b>, experience, education and skills.</li>
+      <li>Click <b>Download PDF</b> — done.</li>
     </ol>
+    <h3>How many resume templates are there?</h3>
+    <p>Ten distinct templates — Classic, Modern, Two-Column, Sidebar, ATS, Minimal, Compact, Elegant, Bold and Timeline — each with custom colours and fonts.</p>
     <h3>Is this resume builder free?</h3>
     <p>Yes — completely free, no signup, and the downloaded PDF has no watermark.</p>
-    <h3>Can I download my resume as a PDF?</h3>
-    <p>Yes — click Download PDF for a clean, print-ready file you can email or upload to job sites.</p>
+    <h3>Which template is best for job portals?</h3>
+    <p>The <b>ATS</b> template is plain and single-column, which is the safest choice for applicant tracking systems used by job sites.</p>
     <h3>Is my resume data private?</h3>
     <p>Yes. Your resume is built entirely in your browser and never uploaded anywhere.</p>
   </article>
@@ -224,14 +336,62 @@ const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.ta
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 var $=function(id){return document.getElementById(id);};
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function mixHex(a,b,t){function P(h){h=(h||'#000000').replace('#','');if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}var A=P(a),B=P(b);return '#'+[0,1,2].map(function(i){var v=Math.round(A[i]*(1-t)+B[i]*t);return ('0'+v.toString(16)).slice(-2);}).join('');}
 
-/* accent swatches */
-var COLORS=['#3f63d8','#0ea5e9','#10b981','#8b5cf6','#e11d48','#f59e0b','#0f172a','#0d9488'];
-var accent=COLORS[0];
-(function(){var h='';COLORS.forEach(function(c,i){h+='<div class="rb-sw'+(i===0?' on':'')+'" data-c="'+c+'" style="background:'+c+'"></div>';});$('swatches').innerHTML=h;
-  $('swatches').querySelectorAll('.rb-sw').forEach(function(el){el.addEventListener('click',function(){accent=this.dataset.c;$('swatches').querySelectorAll('.rb-sw').forEach(function(x){x.classList.remove('on');});this.classList.add('on');render();});});})();
+/* ===== config ===== */
+var TEMPLATES=[
+  {id:'classic',name:'Classic',layout:'classic'},
+  {id:'modern',name:'Modern',layout:'banner'},
+  {id:'twocol',name:'Two-Column',layout:'twocol'},
+  {id:'sidebar',name:'Sidebar',layout:'twocol'},
+  {id:'ats',name:'ATS',layout:'classic'},
+  {id:'minimal',name:'Minimal',layout:'classic'},
+  {id:'compact',name:'Compact',layout:'classic'},
+  {id:'elegant',name:'Elegant',layout:'classic'},
+  {id:'bold',name:'Bold',layout:'banner'},
+  {id:'timeline',name:'Timeline',layout:'timeline'}
+];
+var COLORS=['#3f63d8','#0ea5e9','#10b981','#0d9488','#8b5cf6','#e11d48','#f59e0b','#0f172a'];
+var FONTS=[
+  {id:'clean',name:'Clean',head:"'Space Grotesk',sans-serif",body:"'Inter',sans-serif"},
+  {id:'rounded',name:'Rounded',head:"'Poppins',sans-serif",body:"'Poppins',sans-serif"},
+  {id:'serif',name:'Serif',head:"'Lora',Georgia,serif",body:"'Lora',Georgia,serif"},
+  {id:'elegant',name:'Elegant',head:"'Playfair Display',serif",body:"'Lora',Georgia,serif"}
+];
+var curTpl='classic',accent=COLORS[0],curFont=FONTS[0];
 
-/* experience entries */
+/* mini thumbnail per layout */
+function miniThumb(t){
+  var c='--mc:'+ '#3f63d8';
+  if(t.id==='modern'||t.id==='bold')return '<div class="tm acc" style="left:0;top:0;right:0;height:18px"></div><div class="tm" style="left:8px;top:26px;width:60%;height:4px"></div><div class="tm" style="left:8px;top:34px;right:8px;height:3px"></div><div class="tm" style="left:8px;top:41px;right:8px;height:3px"></div>';
+  if(t.layout==='twocol'){var side=t.id==='sidebar'?'acc':'';return '<div class="tm '+side+'" style="left:0;top:0;bottom:0;width:34%"></div><div class="tm" style="left:38%;top:8px;width:40%;height:4px"></div><div class="tm" style="left:38%;top:16px;right:6px;height:3px"></div><div class="tm" style="left:38%;top:23px;right:6px;height:3px"></div><div class="tm" style="left:38%;top:30px;right:6px;height:3px"></div>';}
+  if(t.id==='elegant')return '<div class="tm" style="left:25%;top:7px;width:50%;height:5px"></div><div class="tm acc" style="left:42%;top:15px;width:16%;height:2px"></div><div class="tm" style="left:14%;top:24px;right:14px;height:3px"></div><div class="tm" style="left:20%;top:31px;right:20px;height:3px"></div>';
+  if(t.id==='timeline')return '<div class="tm acc" style="left:8px;top:8px;bottom:8px;width:2px"></div><div class="tm acc" style="left:5px;top:12px;width:8px;height:8px;border-radius:50%"></div><div class="tm" style="left:20px;top:13px;right:8px;height:3px"></div><div class="tm acc" style="left:5px;top:28px;width:8px;height:8px;border-radius:50%"></div><div class="tm" style="left:20px;top:29px;right:8px;height:3px"></div>';
+  if(t.id==='minimal')return '<div class="tm" style="left:10px;top:10px;width:45%;height:4px"></div><div class="tm" style="left:10px;top:22px;right:10px;height:2px"></div><div class="tm" style="left:10px;top:30px;right:24px;height:2px"></div>';
+  /* classic / ats / compact */
+  return '<div class="tm" style="left:8px;top:8px;width:55%;height:5px"></div><div class="tm acc" style="left:8px;top:18px;right:8px;height:2px"></div><div class="tm" style="left:8px;top:25px;right:8px;height:3px"></div><div class="tm" style="left:8px;top:32px;right:8px;height:3px"></div>';
+}
+function buildTplPick(){
+  var h='';TEMPLATES.forEach(function(t){
+    h+='<div class="tpl-card'+(t.id===curTpl?' on':'')+'" data-id="'+t.id+'"><div class="tpl-mini" style="--mc:'+accent+'">'+miniThumb(t)+'</div><div class="nm">'+t.name+'</div></div>';
+  });
+  $('tplPick').innerHTML=h;
+  $('tplPick').querySelectorAll('.tpl-card').forEach(function(el){el.addEventListener('click',function(){curTpl=this.dataset.id;buildTplPick();var t=TEMPLATES.find(function(x){return x.id===curTpl;});$('tplName').textContent=t.name;render();});});
+}
+function buildSwatches(){
+  var h='';COLORS.forEach(function(c){h+='<div class="rb-sw'+(c===accent?' on':'')+'" data-c="'+c+'" style="background:'+c+'"></div>';});
+  h+='<div class="rb-sw custom" title="Custom colour"><input type="color" id="customCol" value="'+accent+'"></div>';
+  $('swatches').innerHTML=h;
+  $('swatches').querySelectorAll('.rb-sw[data-c]').forEach(function(el){el.addEventListener('click',function(){accent=this.dataset.c;buildSwatches();buildTplPick();render();});});
+  $('customCol').addEventListener('input',function(){accent=this.value;$('swatches').querySelectorAll('.rb-sw').forEach(function(x){x.classList.remove('on');});buildTplPick();render();});
+}
+function buildFontPick(){
+  var h='';FONTS.forEach(function(f){h+='<div class="chip'+(f.id===curFont.id?' on':'')+'" data-f="'+f.id+'">'+f.name+'</div>';});
+  $('fontPick').innerHTML=h;
+  $('fontPick').querySelectorAll('.chip').forEach(function(el){el.addEventListener('click',function(){curFont=FONTS.find(function(x){return x.id===this.dataset.f;}.bind(this));buildFontPick();render();});});
+}
+
+/* ===== entries ===== */
 function expEntry(role,org,when,desc){
   var d=document.createElement('div');d.className='rb-entry';
   d.innerHTML='<button type="button" class="it-del" aria-label="Remove">×</button>'+
@@ -255,61 +415,98 @@ function eduEntry(deg,school,when){
 }
 $('addExp').addEventListener('click',function(){$('expList').appendChild(expEntry('','','',''));render();});
 $('addEdu').addEventListener('click',function(){$('eduList').appendChild(eduEntry('','',''));render();});
-$('expList').appendChild(expEntry('Senior Designer','Acme Studio','2022 – Present','Led brand and product design across web and mobile. Mentored two junior designers.'));
-$('eduList').appendChild(eduEntry('BSc Computer Science','University of Example','2018 – 2022'));
+$('expList').appendChild(expEntry('Senior Designer','Acme Studio','2022 – Present','Led brand and product design across web and mobile. Mentored two junior designers and improved delivery speed by 30%.'));
+$('expList').appendChild(expEntry('Designer','Studio Bright','2019 – 2022','Designed marketing assets, social campaigns and landing pages for 20+ clients.'));
+$('eduList').appendChild(eduEntry('BSc Computer Science','University of Example','2015 – 2019'));
 
+/* ===== collect + build ===== */
+function collect(){
+  var exp=[];$('expList').querySelectorAll('.rb-entry').forEach(function(r){var o={role:r.querySelector('.e-role').value,org:r.querySelector('.e-org').value,when:r.querySelector('.e-when').value,desc:r.querySelector('.e-desc').value};if(o.role||o.org||o.desc)exp.push(o);});
+  var edu=[];$('eduList').querySelectorAll('.rb-entry').forEach(function(r){var o={deg:r.querySelector('.d-deg').value,school:r.querySelector('.d-school').value,when:r.querySelector('.d-when').value};if(o.deg||o.school)edu.push(o);});
+  return {name:$('name').value||'Your Name',role:$('role').value||'Job Title',email:$('email').value,phone:$('phone').value,loc:$('loc').value,web:$('web').value,
+    summary:$('summary').value,exp:exp,edu:edu,skills:($('skills').value||'').split(',').map(function(s){return s.trim();}).filter(Boolean)};
+}
+function contactInline(d){var c=[];if(d.email)c.push(d.email);if(d.phone)c.push(d.phone);if(d.loc)c.push(d.loc);if(d.web)c.push(d.web);
+  return c.map(function(x){return '<span>'+esc(x)+'</span>';}).join('<span class="sep">·</span>');}
+function contactBlock(d){var c=[];if(d.email)c.push(d.email);if(d.phone)c.push(d.phone);if(d.loc)c.push(d.loc);if(d.web)c.push(d.web);
+  return c.map(function(x){return '<div class="ab-line">'+esc(x)+'</div>';}).join('');}
+function expItems(d,timeline){var inner=d.exp.map(function(e){
+  return '<div class="rp-item"><div class="top"><div><span class="role">'+esc(e.role)+'</span>'+(e.org?' <span class="org">· '+esc(e.org)+'</span>':'')+'</div><div class="when">'+esc(e.when)+'</div></div>'+(e.desc?'<div class="desc">'+esc(e.desc)+'</div>':'')+'</div>';
+  }).join('');
+  return timeline?'<div class="rp-tl">'+inner+'</div>':inner;}
+function eduItems(d){return d.edu.map(function(e){return '<div class="rp-item"><div class="top"><div><span class="role">'+esc(e.deg)+'</span>'+(e.school?' <span class="org">· '+esc(e.school)+'</span>':'')+'</div><div class="when">'+esc(e.when)+'</div></div></div>';}).join('');}
+function skillChips(d){return d.skills.map(function(s){return '<span class="rp-skill">'+esc(s)+'</span>';}).join('');}
+function sec(title,inner){return inner?'<div class="rp-sec"><h4>'+title+'</h4>'+inner+'</div>':'';}
+function asec(title,inner){return inner?'<div class="rp-asec"><h5>'+title+'</h5>'+inner+'</div>':'';}
+function headBlock(d){return '<div class="rp-name">'+esc(d.name)+'</div><div class="rp-title">'+esc(d.role)+'</div><div class="rp-contact">'+contactInline(d)+'</div>';}
+
+function buildClassic(d,timeline){
+  return '<div class="rp-head">'+headBlock(d)+'</div>'+
+    sec('Summary',d.summary?'<div class="rp-summary">'+esc(d.summary)+'</div>':'')+
+    sec('Experience',expItems(d,timeline))+
+    sec('Education',eduItems(d))+
+    sec('Skills','<div class="rp-skills">'+skillChips(d)+'</div>');
+}
+function buildBanner(d){
+  return '<div class="rp-banner"><div class="rp-head">'+headBlock(d)+'</div></div><div class="rp-body">'+
+    sec('Summary',d.summary?'<div class="rp-summary">'+esc(d.summary)+'</div>':'')+
+    sec('Experience',expItems(d,false))+
+    sec('Education',eduItems(d))+
+    sec('Skills','<div class="rp-skills">'+skillChips(d)+'</div>')+'</div>';
+}
+function buildTwoCol(d){
+  var aside='<aside class="rp-aside"><div class="rp-name">'+esc(d.name)+'</div><div class="rp-title">'+esc(d.role)+'</div>'+
+    asec('Contact',contactBlock(d))+
+    asec('Skills','<div class="rp-skills">'+skillChips(d)+'</div>')+
+    asec('Education',eduItems(d))+'</aside>';
+  var main='<main class="rp-main">'+
+    sec('Profile',d.summary?'<div class="rp-summary">'+esc(d.summary)+'</div>':'')+
+    sec('Experience',expItems(d,false))+'</main>';
+  return '<div class="rp-tc">'+aside+main+'</div>';
+}
 function render(){
-  $('resumePaper').style.setProperty('--rc',accent);
-  $('pvName').textContent=$('name').value||'Your Name';
-  $('pvRole').textContent=$('role').value||'Job Title';
-  /* contact */
-  var c=[];if($('email').value)c.push($('email').value);if($('phone').value)c.push($('phone').value);if($('loc').value)c.push($('loc').value);if($('web').value)c.push($('web').value);
-  $('pvContact').innerHTML=c.map(function(x){return '<span>'+esc(x)+'</span>';}).join('<span style="color:#c4c8d2">·</span>');
-  /* summary */
-  var sm=$('summary').value;$('pvSummary').textContent=sm;$('pvSummaryWrap').style.display=sm?'block':'none';
-  /* experience */
-  var eh='';$('expList').querySelectorAll('.rb-entry').forEach(function(r){
-    var role=r.querySelector('.e-role').value,org=r.querySelector('.e-org').value,when=r.querySelector('.e-when').value,desc=r.querySelector('.e-desc').value;
-    if(!role&&!org&&!desc)return;
-    eh+='<div class="rp-item"><div class="top"><div><span class="role">'+esc(role||'')+'</span>'+(org?' <span class="org">· '+esc(org)+'</span>':'')+'</div><div class="when">'+esc(when||'')+'</div></div>'+(desc?'<div class="desc">'+esc(desc)+'</div>':'')+'</div>';
-  });
-  $('pvExp').innerHTML=eh;$('pvExpWrap').style.display=eh?'block':'none';
-  /* education */
-  var dh='';$('eduList').querySelectorAll('.rb-entry').forEach(function(r){
-    var deg=r.querySelector('.d-deg').value,school=r.querySelector('.d-school').value,when=r.querySelector('.d-when').value;
-    if(!deg&&!school)return;
-    dh+='<div class="rp-item"><div class="top"><div><span class="role">'+esc(deg||'')+'</span>'+(school?' <span class="org">· '+esc(school)+'</span>':'')+'</div><div class="when">'+esc(when||'')+'</div></div></div>';
-  });
-  $('pvEdu').innerHTML=dh;$('pvEduWrap').style.display=dh?'block':'none';
-  /* skills */
-  var sk=($('skills').value||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
-  $('pvSkills').innerHTML=sk.map(function(s){return '<span class="rp-skill">'+esc(s)+'</span>';}).join('');
-  $('pvSkillsWrap').style.display=sk.length?'block':'none';
+  var d=collect();
+  var t=TEMPLATES.find(function(x){return x.id===curTpl;});
+  var p=$('resumePaper');
+  p.className='rb-paper tpl-'+curTpl;
+  var acc=curTpl==='ats'?'#1f2937':accent;
+  p.style.setProperty('--rc',acc);
+  p.style.setProperty('--rc-dark',mixHex(acc,'#000000',0.12));
+  p.style.setProperty('--rc-tl',mixHex(acc,'#e4e7ef',0.6));
+  p.style.setProperty('--rf-head',curFont.head);
+  p.style.setProperty('--rf-body',curFont.body);
+  var html;
+  if(t.layout==='banner')html=buildBanner(d);
+  else if(t.layout==='twocol')html=buildTwoCol(d);
+  else if(t.layout==='timeline')html=buildClassic(d,true);
+  else html=buildClassic(d,false);
+  p.innerHTML=html+'<div class="rp-foot">Created with Xnipertools · xnipertools.com</div>';
 }
 ['name','role','email','phone','loc','web','summary','skills'].forEach(function(id){$(id).addEventListener('input',render);});
-render();
 
-/* download PDF */
+buildTplPick();buildSwatches();buildFontPick();render();
+
+/* ===== PDF + print ===== */
 $('dl').addEventListener('click',function(){
   var btn=this,old=btn.textContent;btn.textContent='Generating…';btn.disabled=true;
   html2canvas($('resumePaper'),{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false}).then(function(canvas){
     var img=canvas.toDataURL('image/png');
     var jsPDF=window.jspdf.jsPDF;var pdf=new jsPDF('p','mm','a4');
     var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
-    var margin=8,iw=pw-margin*2,ih=canvas.height*iw/canvas.width;
-    var heightLeft=ih,pos=margin;
-    pdf.addImage(img,'PNG',margin,pos,iw,ih);heightLeft-=(ph-margin*2);
-    while(heightLeft>0){pos=margin-(ih-heightLeft);pdf.addPage();pdf.addImage(img,'PNG',margin,pos,iw,ih);heightLeft-=(ph-margin*2);}
+    var margin=0,iw=pw,ih=canvas.height*iw/canvas.width;
+    var heightLeft=ih,pos=0;
+    pdf.addImage(img,'PNG',margin,pos,iw,ih);heightLeft-=ph;
+    while(heightLeft>0){pos=pos-ph;pdf.addPage();pdf.addImage(img,'PNG',margin,pos,iw,ih);heightLeft-=ph;}
     var nm=($('name').value||'resume').replace(/[^a-z0-9\-_]/gi,'_');
     pdf.save(nm+'_resume.pdf');btn.textContent=old;btn.disabled=false;
   }).catch(function(){alert('Could not generate PDF. Please try again.');btn.textContent=old;btn.disabled=false;});
 });
-/* print */
 $('pr').addEventListener('click',function(){
   var html=$('resumePaper').outerHTML;var css=document.querySelector('style').innerHTML;
+  var fonts='<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">';
   var w=window.open('','_blank');
-  w.document.write('<!DOCTYPE html><html><head><title>Resume</title><meta charset="utf-8"><style>body{margin:0;background:#fff;font-family:Inter,Arial,sans-serif}'+css+'.rb-paper{box-shadow:none;max-width:none}</style></head><body>'+html+'</body></html>');
-  w.document.close();setTimeout(function(){w.focus();w.print();},350);
+  w.document.write('<!DOCTYPE html><html><head><title>Resume</title><meta charset="utf-8">'+fonts+'<style>body{margin:0;background:#fff}'+css+'.rb-paper{box-shadow:none;max-width:none;border-radius:0}</style></head><body>'+html+'</body></html>');
+  w.document.close();setTimeout(function(){w.focus();w.print();},450);
 });
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Free Invoice Generator — Create &amp; Download PDF Invoices | Xnipertools</title>
-<meta name="description" content="Free online invoice generator. Add your logo, line items, tax and discount, then download a professional PDF invoice or print it. No signup, works in your browser.">
+<title>Free Invoice Generator — 8 Templates, Download PDF | Xnipertools</title>
+<meta name="description" content="Free online invoice generator with 8 professional templates, custom colours and fonts. Add your logo and line items, then download a PDF invoice. No signup.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -12,21 +12,21 @@
 <link rel="stylesheet" href="../style.css">
 <link rel="canonical" href="https://xnipertools.com/invoice-generator/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Xnipertools">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://xnipertools.com/invoice-generator/">
-<meta property="og:title" content="Free Invoice Generator — Create & Download PDF Invoices">
-<meta property="og:description" content="Add your logo, line items, tax and discount, then download a professional PDF invoice. Free, no signup.">
+<meta property="og:title" content="Free Invoice Generator — 8 Templates, Download PDF">
+<meta property="og:description" content="8 professional templates, custom colours and fonts. Add your logo and items, download a PDF invoice. Free.">
 <meta property="og:image" content="https://xnipertools.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Invoice Generator">
+<meta name="twitter:title" content="Free Invoice Generator — 8 Templates">
 <meta name="twitter:description" content="Create and download professional PDF invoices in your browser. Free, no signup.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Invoice Generator","url":"https://xnipertools.com/invoice-generator/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this invoice generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is completely free with no signup. You can create and download unlimited PDF invoices in your browser."}},{"@type":"Question","name":"Can I add my company logo?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can upload your logo and it appears on the invoice and in the downloaded PDF."}},{"@type":"Question","name":"Is my invoice data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything is generated in your browser. Your invoice details are never uploaded to a server."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this invoice generator free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is completely free with no signup. You can create and download unlimited PDF invoices in your browser."}},{"@type":"Question","name":"How many invoice templates are there?","acceptedAnswer":{"@type":"Answer","text":"There are 8 professional templates, plus custom accent colours and font choices."}},{"@type":"Question","name":"Can I add my company logo?","acceptedAnswer":{"@type":"Answer","text":"Yes, you can upload your logo and it appears on the invoice and in the downloaded PDF."}},{"@type":"Question","name":"Is my invoice data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything is generated in your browser. Your invoice details are never uploaded to a server."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Invoice Generator","item":"https://xnipertools.com/invoice-generator/"}]}</script>
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon-192.png">
@@ -36,19 +36,37 @@
 <meta name="apple-mobile-web-app-title" content="Xnipertools">
 <script src="/pwa.js" defer></script>
 <style>
-.inv-sec{margin-top:6px}
 .inv-sec h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;margin:22px 0 12px;font-weight:700}
 .inv-sec h3:first-child{margin-top:4px}
 .inv-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .inv-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 label.s{display:block;font-size:.82rem;color:#aab0c6;margin-bottom:6px;font-weight:600}
 textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
-/* logo upload */
 .inv-logo{display:flex;align-items:center;gap:14px}
 .inv-logo .drop{flex:0 0 auto;width:88px;height:88px;border-radius:14px;border:1.5px dashed var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#8a90a6;font-size:.72rem;text-align:center;overflow:hidden;background:rgba(255,255,255,.02)}
 .inv-logo .drop img{width:100%;height:100%;object-fit:contain}
 .inv-logo .lbtns{display:flex;flex-direction:column;gap:8px}
-/* items table */
+/* template + customise controls */
+.tpl-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tpl-card{cursor:pointer;border:1.5px solid var(--border);border-radius:12px;padding:10px 8px;background:rgba(255,255,255,.02);text-align:center;transition:transform .15s,border-color .2s,background .2s}
+.tpl-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--accent,#5e8bff) 45%,transparent)}
+.tpl-card.on{border-color:var(--accent,#5e8bff);background:color-mix(in srgb,var(--accent,#5e8bff) 14%,#0c0e15);box-shadow:0 6px 18px color-mix(in srgb,var(--accent,#5e8bff) 24%,transparent)}
+.tpl-mini{height:52px;border-radius:7px;overflow:hidden;margin-bottom:7px;background:#fff;position:relative;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.tpl-card .nm{font-size:.74rem;font-weight:600;color:#cfd4e4}
+.tpl-card.on .nm{color:#fff}
+.tm{position:absolute;background:#c9cfdd}
+.tm.acc{background:var(--mc,#3f63d8)}
+.rb-chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{cursor:pointer;font-size:.82rem;font-weight:600;color:#aab0c6;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:30px;padding:8px 15px;transition:transform .15s,color .2s,border-color .2s,background .2s}
+.chip:hover{transform:translateY(-2px);color:#e7eaf5}
+.chip.on{color:#fff;background:color-mix(in srgb,var(--accent,#5e8bff) 22%,#0c0e15);border-color:color-mix(in srgb,var(--accent,#5e8bff) 50%,transparent)}
+.rb-swatches{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.rb-sw{width:32px;height:32px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s}
+.rb-sw:hover{transform:scale(1.12)}
+.rb-sw.on{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+.rb-sw.custom{display:flex;align-items:center;justify-content:center;background:conic-gradient(from 0deg,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00);position:relative;overflow:hidden}
+.rb-sw.custom input{position:absolute;inset:0;opacity:0;cursor:pointer}
+/* items */
 .it-head,.it-row{display:grid;grid-template-columns:1fr 70px 90px 90px 34px;gap:8px;align-items:center}
 .it-head{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:#8a90a6;font-weight:700;margin-bottom:8px;padding:0 2px}
 .it-row{margin-bottom:8px}
@@ -62,30 +80,87 @@ textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
 .inv-actions button{flex:1;min-width:150px}
 /* ===== white invoice preview ===== */
 .inv-preview-wrap{margin-top:26px}
-.inv-preview-wrap .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;font-weight:700;margin-bottom:12px}
-.inv-paper{background:#fff;color:#1a1c23;border-radius:14px;padding:40px;font-family:'Inter',sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:760px;margin:0 auto}
+.inv-preview-wrap .lbl{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;font-weight:700;margin-bottom:12px}
+.inv-scroll{overflow-x:auto}
+.inv-paper{background:#fff;color:#1a1c23;border-radius:14px;padding:40px;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:760px;margin:0 auto;
+  --ic:#3f63d8;--ink:#11182f;--if-head:'Space Grotesk',sans-serif;--if-body:'Inter',sans-serif;font-family:var(--if-body)}
 .ip-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
-.ip-from .nm{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#0c1430}
+.ip-from .nm{font-family:var(--if-head);font-size:1.25rem;font-weight:700;color:var(--ink)}
 .ip-from .meta{font-size:.82rem;color:#5b6072;line-height:1.6;white-space:pre-line;margin-top:4px}
-.ip-logo{max-width:150px;max-height:80px;object-fit:contain}
+.ip-logo{max-width:150px;max-height:80px;object-fit:contain;margin-bottom:10px}
 .ip-title{text-align:right}
-.ip-title h2{font-family:'Space Grotesk',sans-serif;font-size:2.1rem;font-weight:700;letter-spacing:.02em;color:#3f63d8;margin:0}
+.ip-title h2{font-family:var(--if-head);font-size:2.1rem;font-weight:700;letter-spacing:.02em;color:var(--ic);margin:0}
 .ip-title .meta{font-size:.82rem;color:#5b6072;line-height:1.7;margin-top:6px}
 .ip-billto{margin-top:30px}
 .ip-billto .h{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;font-weight:700;margin-bottom:5px}
-.ip-billto .nm{font-weight:700;color:#0c1430;font-size:1rem}
+.ip-billto .nm{font-weight:700;color:var(--ink);font-size:1rem}
 .ip-billto .meta{font-size:.82rem;color:#5b6072;line-height:1.6;white-space:pre-line}
 table.ip-tbl{width:100%;border-collapse:collapse;margin-top:24px;font-size:.86rem}
-table.ip-tbl th{background:#0c1430;color:#fff;text-align:left;padding:11px 12px;font-weight:600;font-size:.78rem;letter-spacing:.02em}
+table.ip-tbl th{background:var(--ic);color:#fff;text-align:left;padding:11px 12px;font-weight:600;font-size:.78rem;letter-spacing:.02em}
 table.ip-tbl th:nth-child(2),table.ip-tbl th:nth-child(3),table.ip-tbl th:nth-child(4){text-align:right}
 table.ip-tbl td{padding:11px 12px;border-bottom:1px solid #eceef3;color:#2a2d38}
 table.ip-tbl td:nth-child(2),table.ip-tbl td:nth-child(3),table.ip-tbl td:nth-child(4){text-align:right;font-variant-numeric:tabular-nums}
 .ip-tot{margin-top:18px;margin-left:auto;width:min(300px,100%)}
 .ip-tot .r{display:flex;justify-content:space-between;padding:7px 2px;font-size:.88rem;color:#3a3d4a}
-.ip-tot .r.grand{border-top:2px solid #0c1430;margin-top:6px;padding-top:12px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem;color:#0c1430}
+.ip-tot .r.grand{border-top:2px solid var(--ic);margin-top:6px;padding-top:12px;font-family:var(--if-head);font-weight:700;font-size:1.15rem;color:var(--ink)}
 .ip-notes{margin-top:30px;border-top:1px solid #eceef3;padding-top:16px;font-size:.82rem;color:#5b6072;white-space:pre-line}
 .ip-foot{margin-top:24px;text-align:center;font-size:.72rem;color:#9aa0b0}
-@media(max-width:560px){
+
+/* ===== TEMPLATES ===== */
+.tpl-classic table.ip-tbl th{background:var(--ink)}
+/* minimal */
+.tpl-minimal table.ip-tbl th{background:none;color:var(--ink);border-bottom:2px solid var(--ink)}
+.tpl-minimal table.ip-tbl td{border-bottom:1px solid #f0f1f5}
+.tpl-minimal .ip-title h2{font-weight:600;letter-spacing:.14em;font-size:1.7rem}
+/* modern band */
+.tpl-modern{padding:0;overflow:hidden}
+.tpl-modern .ip-top{background:var(--ic);color:#fff;padding:34px 40px;align-items:center}
+.tpl-modern .ip-from .nm{color:#fff}
+.tpl-modern .ip-from .meta{color:rgba(255,255,255,.85)}
+.tpl-modern .ip-title h2{color:#fff}
+.tpl-modern .ip-title .meta{color:rgba(255,255,255,.85)}
+.tpl-modern .ip-billto,.tpl-modern table.ip-tbl{margin-left:40px;margin-right:40px}
+.tpl-modern .ip-tot{margin-right:40px}
+.tpl-modern .ip-notes{margin:30px 40px 0}
+.tpl-modern .ip-foot{padding-bottom:24px}
+.tpl-modern table.ip-tbl th{background:var(--ic-tint,#e1e7fb);color:var(--ink)}
+/* professional */
+.tpl-professional{border:1.5px solid #d8dce6}
+.tpl-professional .ip-top{border-bottom:3px solid var(--ic);padding-bottom:20px}
+.tpl-professional table.ip-tbl th{background:var(--ink)}
+/* left accent */
+.tpl-leftaccent{border-left:9px solid var(--ic)}
+.tpl-leftaccent table.ip-tbl th{background:var(--ic)}
+/* compact */
+.tpl-compact{padding:28px 32px}
+.tpl-compact .ip-billto{margin-top:18px}
+.tpl-compact table.ip-tbl{margin-top:16px}
+.tpl-compact table.ip-tbl th,.tpl-compact table.ip-tbl td{padding:8px 10px}
+.tpl-compact .ip-title h2{font-size:1.7rem}
+.tpl-compact .ip-notes{margin-top:18px}
+/* elegant */
+.tpl-elegant{padding:46px 50px}
+.tpl-elegant .ip-top{flex-direction:column;align-items:center;text-align:center;gap:6px;border-bottom:1px solid #e4e7ef;padding-bottom:20px}
+.tpl-elegant .ip-title{text-align:center}
+.tpl-elegant .ip-title h2{letter-spacing:.22em;font-weight:600}
+.tpl-elegant table.ip-tbl th{background:none;color:var(--ink);border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.tpl-elegant .ip-billto{text-align:center}
+/* bold */
+.tpl-bold{padding:0;overflow:hidden}
+.tpl-bold .ip-top{background:linear-gradient(135deg,var(--ic-dark,#2c47a8),var(--ic));color:#fff;padding:40px;align-items:center}
+.tpl-bold .ip-from .nm{color:#fff;text-transform:uppercase;letter-spacing:.02em}
+.tpl-bold .ip-from .meta{color:rgba(255,255,255,.85)}
+.tpl-bold .ip-title h2{color:#fff;font-size:2.7rem;text-transform:uppercase}
+.tpl-bold .ip-title .meta{color:rgba(255,255,255,.9)}
+.tpl-bold .ip-billto,.tpl-bold table.ip-tbl,.tpl-bold .ip-notes{margin-left:40px;margin-right:40px}
+.tpl-bold .ip-tot{margin-right:40px;background:var(--ic-tint8,#f0f3fc);border-radius:10px;padding:6px 16px}
+.tpl-bold table.ip-tbl th{background:var(--ink)}
+.tpl-bold .ip-tot .r.grand{font-size:1.35rem}
+.tpl-bold .ip-foot{padding-bottom:24px}
+.tpl-modern table.ip-tbl,.tpl-bold table.ip-tbl{width:calc(100% - 80px)}
+
+@media(max-width:620px){
+  .tpl-pick{grid-template-columns:repeat(3,1fr)}
   .inv-row2,.inv-row3{grid-template-columns:1fr}
   .it-head{display:none}
   .it-row{grid-template-columns:1fr 1fr;gap:8px;padding:12px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.02)}
@@ -95,6 +170,9 @@ table.ip-tbl td:nth-child(2),table.ip-tbl td:nth-child(3),table.ip-tbl td:nth-ch
   .it-del{grid-column:2;justify-self:end}
   .inv-paper{padding:24px}
   .ip-title{text-align:left}
+  .tpl-modern .ip-top,.tpl-bold .ip-top{padding:24px}
+  .tpl-modern .ip-billto,.tpl-modern table.ip-tbl,.tpl-modern .ip-tot,.tpl-modern .ip-notes,.tpl-bold .ip-billto,.tpl-bold table.ip-tbl,.tpl-bold .ip-tot,.tpl-bold .ip-notes{margin-left:24px;margin-right:24px}
+  .tpl-modern table.ip-tbl,.tpl-bold table.ip-tbl{width:calc(100% - 48px)}
 }
 </style>
 </head>
@@ -125,13 +203,26 @@ table.ip-tbl td:nth-child(2),table.ip-tbl td:nth-child(3),table.ip-tbl td:nth-ch
     <div class="ic">🧾</div>
     <div>
       <h1>Invoice Generator</h1>
-      <p>Create a <b>professional invoice</b> in minutes — add your logo, line items, tax and discount, then download a <b>PDF</b> or print it.</p>
+      <p>Create a <b>professional invoice</b> with <b>8 templates</b>, custom colours and fonts — add your logo and items, then download a <b>PDF</b> or print.</p>
     </div>
   </div>
 
   <div class="tool-box">
     <div class="inv-sec">
-      <h3>Your business</h3>
+      <h3>1 · Choose a template</h3>
+      <div class="tpl-pick" id="tplPick"></div>
+    </div>
+
+    <div class="inv-sec">
+      <h3>2 · Customise</h3>
+      <label class="s">Accent colour</label>
+      <div class="rb-swatches" id="swatches"></div>
+      <label class="s" style="margin-top:14px">Font</label>
+      <div class="rb-chips" id="fontPick"></div>
+    </div>
+
+    <div class="inv-sec">
+      <h3>3 · Your business</h3>
       <div class="inv-logo">
         <label class="drop" id="logoDrop"><span id="logoHint">+ Logo</span><input type="file" id="logoInput" accept="image/*" hidden></label>
         <div class="lbtns">
@@ -194,11 +285,11 @@ table.ip-tbl td:nth-child(2),table.ip-tbl td:nth-child(3),table.ip-tbl td:nth-ch
   </div>
 
   <div class="inv-preview-wrap">
-    <div class="lbl">Live preview</div>
-    <div class="inv-paper" id="invoicePaper">
+    <div class="lbl"><span>Live preview</span><span id="tplName" style="color:#9db8ff">Classic</span></div>
+    <div class="inv-scroll"><div class="inv-paper tpl-classic" id="invoicePaper">
       <div class="ip-top">
         <div class="ip-from">
-          <img class="ip-logo" id="pvLogo" alt="" style="display:none;margin-bottom:10px">
+          <img class="ip-logo" id="pvLogo" alt="" style="display:none">
           <div class="nm" id="pvBizName">Your Business Name</div>
           <div class="meta" id="pvBizMeta">your@email.com</div>
         </div>
@@ -207,41 +298,39 @@ table.ip-tbl td:nth-child(2),table.ip-tbl td:nth-child(3),table.ip-tbl td:nth-ch
           <div class="meta" id="pvInvMeta"></div>
         </div>
       </div>
-
       <div class="ip-billto">
         <div class="h">Bill to</div>
         <div class="nm" id="pvCliName">Client Name</div>
         <div class="meta" id="pvCliMeta"></div>
       </div>
-
       <table class="ip-tbl">
         <thead><tr><th>Description</th><th>Qty</th><th>Rate</th><th>Amount</th></tr></thead>
         <tbody id="pvItems"></tbody>
       </table>
-
       <div class="ip-tot">
         <div class="r"><span>Subtotal</span><span id="pvSub">—</span></div>
         <div class="r" id="pvDiscRow"><span>Discount</span><span id="pvDisc">—</span></div>
         <div class="r" id="pvTaxRow"><span>Tax</span><span id="pvTax">—</span></div>
         <div class="r grand"><span>Total</span><span id="pvTotal">—</span></div>
       </div>
-
       <div class="ip-notes" id="pvNotes">Thank you for your business!</div>
       <div class="ip-foot">Created with Xnipertools · xnipertools.com</div>
-    </div>
+    </div></div>
   </div>
 
   <div class="ad-slot">Advertisement</div>
 
   <article class="article reveal">
     <h2>About this Invoice Generator</h2>
-    <p>This free <b>invoice generator</b> lets freelancers and small businesses create clean, professional invoices in minutes — no software and no signup. Add your logo, fill in your client and line items, set tax and discount, and the <b>total updates automatically</b>. When it looks right, download a ready-to-send <b>PDF</b> or print it directly.</p>
+    <p>This free <b>invoice generator</b> gives you full control: pick from <b>8 professional templates</b>, set your <b>accent colour</b> and <b>font</b>, add your logo and line items, and the <b>total updates automatically</b>. When it looks right, download a ready-to-send <b>PDF</b> or print it — no software and no signup.</p>
     <h3>How to use it</h3>
     <ol>
-      <li>Enter your <b>business details</b> and upload your logo (optional).</li>
-      <li>Add the <b>client</b>, the <b>invoice number</b> and dates.</li>
-      <li>Add your <b>line items</b>, set tax and discount, then click <b>Download PDF</b>.</li>
+      <li>Pick a <b>template</b>, colour and font.</li>
+      <li>Add your <b>business</b>, the <b>client</b> and the <b>line items</b>.</li>
+      <li>Set tax and discount, then click <b>Download PDF</b>.</li>
     </ol>
+    <h3>How many invoice templates are there?</h3>
+    <p>Eight distinct templates — Classic, Minimal, Modern, Professional, Left-accent, Compact, Elegant and Bold.</p>
     <h3>Is this invoice generator free?</h3>
     <p>Yes — completely free with no signup, and you can create unlimited invoices.</p>
     <h3>Can I add my company logo?</h3>
@@ -280,111 +369,128 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 var $=function(id){return document.getElementById(id);};
-
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function mixHex(a,b,t){function P(h){h=(h||'#000000').replace('#','');if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}var A=P(a),B=P(b);return '#'+[0,1,2].map(function(i){var v=Math.round(A[i]*(1-t)+B[i]*t);return ('0'+v.toString(16)).slice(-2);}).join('');}
 var logoData=null;
 
-/* ---- dates default ---- */
-(function(){
-  var t=new Date();var iso=function(d){return d.toISOString().slice(0,10);};
-  $('invDate').value=iso(t);
-  var due=new Date(t.getTime()+7*86400000);$('dueDate').value=iso(due);
-})();
+/* config */
+var TEMPLATES=[
+  {id:'classic',name:'Classic'},{id:'minimal',name:'Minimal'},{id:'modern',name:'Modern'},{id:'professional',name:'Professional'},
+  {id:'leftaccent',name:'Left Accent'},{id:'compact',name:'Compact'},{id:'elegant',name:'Elegant'},{id:'bold',name:'Bold'}
+];
+var COLORS=['#3f63d8','#0ea5e9','#10b981','#0d9488','#8b5cf6','#e11d48','#f59e0b','#0f172a'];
+var FONTS=[
+  {id:'clean',name:'Clean',head:"'Space Grotesk',sans-serif",body:"'Inter',sans-serif"},
+  {id:'rounded',name:'Rounded',head:"'Poppins',sans-serif",body:"'Poppins',sans-serif"},
+  {id:'serif',name:'Serif',head:"'Lora',Georgia,serif",body:"'Lora',Georgia,serif"},
+  {id:'elegant',name:'Elegant',head:"'Playfair Display',serif",body:"'Lora',Georgia,serif"}
+];
+var curTpl='classic',accent=COLORS[0],curFont=FONTS[0];
 
-/* ---- items ---- */
+function miniThumb(t){
+  if(t.id==='modern'||t.id==='bold')return '<div class="tm acc" style="left:0;top:0;right:0;height:16px"></div><div class="tm" style="right:8px;top:5px;width:30%;height:5px;background:rgba(255,255,255,.7)"></div><div class="tm" style="left:8px;top:24px;right:8px;height:3px"></div><div class="tm" style="left:8px;top:31px;right:8px;height:3px"></div><div class="tm acc" style="right:8px;top:40px;width:40%;height:4px"></div>';
+  if(t.id==='leftaccent')return '<div class="tm acc" style="left:0;top:0;bottom:0;width:7px"></div><div class="tm" style="left:14px;top:7px;width:40%;height:5px"></div><div class="tm acc" style="right:8px;top:7px;width:26%;height:5px"></div><div class="tm" style="left:14px;top:22px;right:8px;height:3px"></div><div class="tm" style="left:14px;top:29px;right:8px;height:3px"></div>';
+  if(t.id==='elegant')return '<div class="tm" style="left:30%;top:6px;width:40%;height:5px"></div><div class="tm" style="left:8px;top:20px;right:8px;height:2px;background:#1a1c23"></div><div class="tm" style="left:8px;top:26px;right:8px;height:3px"></div><div class="tm" style="left:8px;top:33px;right:8px;height:2px;background:#1a1c23"></div>';
+  if(t.id==='minimal')return '<div class="tm" style="left:8px;top:8px;width:35%;height:4px"></div><div class="tm" style="right:8px;top:8px;width:28%;height:6px"></div><div class="tm" style="left:8px;top:22px;right:8px;height:2px;background:#1a1c23"></div><div class="tm" style="left:8px;top:30px;right:8px;height:3px"></div>';
+  if(t.id==='professional')return '<div class="tm" style="left:4px;top:4px;right:4px;bottom:4px;background:none;box-shadow:inset 0 0 0 1.5px #c9cfdd"></div><div class="tm" style="left:10px;top:9px;width:35%;height:4px"></div><div class="tm acc" style="right:10px;top:9px;width:26%;height:5px"></div><div class="tm acc" style="left:10px;top:18px;right:10px;height:2px"></div><div class="tm" style="left:10px;top:26px;right:10px;height:3px"></div>';
+  /* classic / compact */
+  return '<div class="tm" style="left:8px;top:8px;width:38%;height:5px"></div><div class="tm acc" style="right:8px;top:8px;width:28%;height:6px"></div><div class="tm" style="left:8px;top:22px;right:8px;height:7px;background:#11182f"></div><div class="tm" style="left:8px;top:33px;right:8px;height:3px"></div>';
+}
+function buildTplPick(){
+  var h='';TEMPLATES.forEach(function(t){h+='<div class="tpl-card'+(t.id===curTpl?' on':'')+'" data-id="'+t.id+'"><div class="tpl-mini" style="--mc:'+accent+'">'+miniThumb(t)+'</div><div class="nm">'+t.name+'</div></div>';});
+  $('tplPick').innerHTML=h;
+  $('tplPick').querySelectorAll('.tpl-card').forEach(function(el){el.addEventListener('click',function(){curTpl=this.dataset.id;buildTplPick();$('tplName').textContent=TEMPLATES.find(function(x){return x.id===curTpl;}).name;render();});});
+}
+function buildSwatches(){
+  var h='';COLORS.forEach(function(c){h+='<div class="rb-sw'+(c===accent?' on':'')+'" data-c="'+c+'" style="background:'+c+'"></div>';});
+  h+='<div class="rb-sw custom" title="Custom colour"><input type="color" id="customCol" value="'+accent+'"></div>';
+  $('swatches').innerHTML=h;
+  $('swatches').querySelectorAll('.rb-sw[data-c]').forEach(function(el){el.addEventListener('click',function(){accent=this.dataset.c;buildSwatches();buildTplPick();render();});});
+  $('customCol').addEventListener('input',function(){accent=this.value;$('swatches').querySelectorAll('.rb-sw').forEach(function(x){x.classList.remove('on');});buildTplPick();render();});
+}
+function buildFontPick(){
+  var h='';FONTS.forEach(function(f){h+='<div class="chip'+(f.id===curFont.id?' on':'')+'" data-f="'+f.id+'">'+f.name+'</div>';});
+  $('fontPick').innerHTML=h;
+  $('fontPick').querySelectorAll('.chip').forEach(function(el){el.addEventListener('click',function(){var id=this.dataset.f;curFont=FONTS.find(function(x){return x.id===id;});buildFontPick();render();});});
+}
+
+/* dates */
+(function(){var t=new Date();var iso=function(d){return d.toISOString().slice(0,10);};$('invDate').value=iso(t);$('dueDate').value=iso(new Date(t.getTime()+7*86400000));})();
+
+/* items */
 function itemRow(desc,qty,rate){
   var div=document.createElement('div');div.className='it-row';
   div.innerHTML='<input class="desc" type="text" placeholder="Item description" value="'+(desc||'')+'">'+
     '<input class="qty" type="number" inputmode="decimal" placeholder="1" value="'+(qty==null?1:qty)+'">'+
     '<input class="rate" type="number" inputmode="decimal" placeholder="0" value="'+(rate==null?'':rate)+'">'+
-    '<span class="it-amt">—</span>'+
-    '<button type="button" class="it-del" aria-label="Remove item">×</button>';
+    '<span class="it-amt">—</span><button type="button" class="it-del" aria-label="Remove item">×</button>';
   div.querySelector('.it-del').addEventListener('click',function(){div.remove();render();});
   div.querySelectorAll('input').forEach(function(i){i.addEventListener('input',render);});
   return div;
 }
 function addItem(desc,qty,rate){$('items').appendChild(itemRow(desc,qty,rate));}
 $('addItem').addEventListener('click',function(){addItem('',1,'');render();});
-addItem('Design work',1,15000);
-addItem('Hosting (monthly)',1,2500);
+addItem('Design work',1,15000);addItem('Hosting (monthly)',1,2500);
 
-/* ---- logo ---- */
-$('logoInput').addEventListener('change',function(e){
-  var f=e.target.files[0];if(!f)return;
-  var r=new FileReader();r.onload=function(){logoData=r.result;$('logoHint').style.display='none';
-    var d=$('logoDrop');var ex=d.querySelector('img');if(ex)ex.remove();
-    var im=new Image();im.src=logoData;d.appendChild(im);$('logoRemove').style.display='inline-block';render();};
-  r.readAsDataURL(f);
-});
+/* logo */
+$('logoInput').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;var r=new FileReader();r.onload=function(){logoData=r.result;$('logoHint').style.display='none';var d=$('logoDrop');var ex=d.querySelector('img');if(ex)ex.remove();var im=new Image();im.src=logoData;d.appendChild(im);$('logoRemove').style.display='inline-block';render();};r.readAsDataURL(f);});
 $('logoRemove').addEventListener('click',function(){logoData=null;var d=$('logoDrop');var ex=d.querySelector('img');if(ex)ex.remove();$('logoHint').style.display='block';$('logoRemove').style.display='none';render();});
 
 function money(n,sym){return sym+n.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
-function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
 function render(){
+  var p=$('invoicePaper');
+  p.className='inv-paper tpl-'+curTpl;
+  p.style.setProperty('--ic',accent);
+  p.style.setProperty('--ic-tint',mixHex(accent,'#ffffff',0.84));
+  p.style.setProperty('--ic-tint8',mixHex(accent,'#ffffff',0.92));
+  p.style.setProperty('--ic-dark',mixHex(accent,'#000000',0.12));
+  p.style.setProperty('--if-head',curFont.head);
+  p.style.setProperty('--if-body',curFont.body);
   var sym=$('cur').value;
-  /* preview top */
   $('pvBizName').textContent=$('bizName').value||'Your Business Name';
   $('pvBizMeta').textContent=$('bizMeta').value;
   $('pvCliName').textContent=$('cliName').value||'Client Name';
   $('pvCliMeta').textContent=$('cliMeta').value;
   $('pvInvMeta').innerHTML='<b>'+esc($('invNo').value)+'</b><br>Date: '+esc($('invDate').value)+'<br>Due: '+esc($('dueDate').value);
   if(logoData){$('pvLogo').src=logoData;$('pvLogo').style.display='block';}else{$('pvLogo').style.display='none';}
-
-  /* items */
   var sub=0,rows='';
   $('items').querySelectorAll('.it-row').forEach(function(r){
-    var d=r.querySelector('.desc').value;
-    var q=parseFloat(r.querySelector('.qty').value)||0;
-    var rt=parseFloat(r.querySelector('.rate').value)||0;
-    var amt=q*rt;sub+=amt;
+    var d=r.querySelector('.desc').value,q=parseFloat(r.querySelector('.qty').value)||0,rt=parseFloat(r.querySelector('.rate').value)||0,amt=q*rt;sub+=amt;
     r.querySelector('.it-amt').textContent=money(amt,sym);
     if(d||q||rt)rows+='<tr><td>'+esc(d||'—')+'</td><td>'+(q||0)+'</td><td>'+money(rt,sym)+'</td><td>'+money(amt,sym)+'</td></tr>';
   });
   $('pvItems').innerHTML=rows||'<tr><td colspan="4" style="color:#9aa0b0;text-align:center;padding:18px">No items yet</td></tr>';
-
-  var disc=parseFloat($('disc').value)||0;
-  var taxPct=parseFloat($('tax').value)||0;
-  var taxable=Math.max(0,sub-disc);
-  var tax=taxable*taxPct/100;
-  var total=taxable+tax;
-
+  var disc=parseFloat($('disc').value)||0,taxPct=parseFloat($('tax').value)||0,taxable=Math.max(0,sub-disc),tax=taxable*taxPct/100,total=taxable+tax;
   $('pvSub').textContent=money(sub,sym);
   if(disc>0){$('pvDiscRow').style.display='flex';$('pvDisc').textContent='−'+money(disc,sym);}else{$('pvDiscRow').style.display='none';}
   if(taxPct>0){$('pvTaxRow').style.display='flex';$('pvTax').textContent=money(tax,sym)+'  ('+taxPct+'%)';}else{$('pvTaxRow').style.display='none';}
   $('pvTotal').textContent=money(total,sym);
-  $('pvNotes').textContent=$('notes').value;
-  $('pvNotes').style.display=$('notes').value?'block':'none';
+  $('pvNotes').textContent=$('notes').value;$('pvNotes').style.display=$('notes').value?'block':'none';
 }
 ['bizName','bizMeta','cliName','cliMeta','invNo','invDate','dueDate','cur','tax','disc','notes'].forEach(function(id){$(id).addEventListener('input',render);});
 $('cur').addEventListener('change',render);
-render();
 
-/* ---- download PDF ---- */
+buildTplPick();buildSwatches();buildFontPick();render();
+
+/* PDF */
 $('dl').addEventListener('click',function(){
   var btn=this,old=btn.textContent;btn.textContent='Generating…';btn.disabled=true;
-  var el=$('invoicePaper');
-  html2canvas(el,{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false}).then(function(canvas){
-    var img=canvas.toDataURL('image/png');
-    var jsPDF=window.jspdf.jsPDF;
-    var pdf=new jsPDF('p','mm','a4');
+  html2canvas($('invoicePaper'),{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false}).then(function(canvas){
+    var img=canvas.toDataURL('image/png');var jsPDF=window.jspdf.jsPDF;var pdf=new jsPDF('p','mm','a4');
     var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
-    var margin=8,iw=pw-margin*2,ih=canvas.height*iw/canvas.width;
-    var heightLeft=ih,pos=margin;
+    var margin=8,iw=pw-margin*2,ih=canvas.height*iw/canvas.width;var heightLeft=ih,pos=margin;
     pdf.addImage(img,'PNG',margin,pos,iw,ih);heightLeft-=(ph-margin*2);
     while(heightLeft>0){pos=margin-(ih-heightLeft);pdf.addPage();pdf.addImage(img,'PNG',margin,pos,iw,ih);heightLeft-=(ph-margin*2);}
-    var no=($('invNo').value||'invoice').replace(/[^a-z0-9\-_]/gi,'_');
-    pdf.save(no+'.pdf');
-    btn.textContent=old;btn.disabled=false;
-  }).catch(function(err){alert('Could not generate PDF. Please try again.');btn.textContent=old;btn.disabled=false;});
+    var no=($('invNo').value||'invoice').replace(/[^a-z0-9\-_]/gi,'_');pdf.save(no+'.pdf');btn.textContent=old;btn.disabled=false;
+  }).catch(function(){alert('Could not generate PDF. Please try again.');btn.textContent=old;btn.disabled=false;});
 });
-
-/* ---- print ---- */
+/* print */
 $('pr').addEventListener('click',function(){
-  var html=$('invoicePaper').outerHTML;
-  var css=document.querySelector('style').innerHTML;
+  var html=$('invoicePaper').outerHTML;var css=document.querySelector('style').innerHTML;
+  var fonts='<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">';
   var w=window.open('','_blank');
-  w.document.write('<!DOCTYPE html><html><head><title>Invoice</title><meta charset="utf-8"><style>body{margin:0;background:#fff;font-family:Inter,Arial,sans-serif}'+css+'.inv-paper{box-shadow:none;max-width:none}</style></head><body>'+html+'</body></html>');
-  w.document.close();setTimeout(function(){w.focus();w.print();},350);
+  w.document.write('<!DOCTYPE html><html><head><title>Invoice</title><meta charset="utf-8">'+fonts+'<style>body{margin:0;background:#fff}'+css+'.inv-paper{box-shadow:none;max-width:none;border-radius:0}</style></head><body>'+html+'</body></html>');
+  w.document.close();setTimeout(function(){w.focus();w.print();},450);
 });
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
