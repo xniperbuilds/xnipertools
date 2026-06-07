@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unit Converter — Length, Weight, Temperature &amp; More | Xnipertools</title>
+<meta name="description" content="Free all-in-one unit converter. Instantly convert length, weight, temperature, area, volume, speed, time and data storage. No signup, works in your browser.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="stylesheet" href="../style.css">
+<link rel="canonical" href="https://xnipertools.com/unit-converter/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/unit-converter/">
+<meta property="og:title" content="Unit Converter — Length, Weight, Temperature & More">
+<meta property="og:description" content="Convert length, weight, temperature, area, volume, speed, time and data instantly. Free, no signup.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Unit Converter — All-in-One">
+<meta name="twitter:description" content="Convert length, weight, temperature, area, volume, speed, time and data instantly. Free.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Unit Converter","url":"https://xnipertools.com/unit-converter/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this unit converter free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is completely free with no signup. All conversions happen instantly in your browser."}},{"@type":"Question","name":"What units can I convert?","acceptedAnswer":{"@type":"Answer","text":"You can convert length, weight and mass, temperature, area, volume, speed, time and digital data storage between dozens of units."}},{"@type":"Question","name":"How accurate are the conversions?","acceptedAnswer":{"@type":"Answer","text":"Conversions use standard international conversion factors and are accurate for everyday and professional use."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Unit Converter","item":"https://xnipertools.com/unit-converter/"}]}</script>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Xnipertools">
+<script src="/pwa.js" defer></script>
+<style>
+.uc-cats{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 10px;margin:-4px -2px 4px;scrollbar-width:none}
+.uc-cats::-webkit-scrollbar{display:none}
+.uc-cat{flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:50px;cursor:pointer;white-space:nowrap;
+  font-weight:600;font-size:.92rem;color:#aab0c6;background:rgba(255,255,255,.04);border:1px solid var(--border);transition:transform .15s,background .2s,color .2s,border-color .2s}
+.uc-cat .e{font-size:1.1rem;line-height:1}
+.uc-cat:hover{transform:translateY(-2px);color:#e7eaf5}
+.uc-cat.on{color:#fff;background:color-mix(in srgb,var(--accent,#5e8bff) 22%,#0c0e15);border-color:color-mix(in srgb,var(--accent,#5e8bff) 55%,transparent);box-shadow:0 6px 20px color-mix(in srgb,var(--accent,#5e8bff) 28%,transparent)}
+.uc-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:end;margin-top:6px}
+.uc-field label{display:block;font-size:.85rem;color:#aab0c6;margin-bottom:7px;font-weight:600}
+.uc-field input{width:100%;font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:700}
+.uc-field select{width:100%;margin-top:10px}
+.uc-swap{margin-bottom:6px;width:50px;height:50px;flex:0 0 auto;border-radius:14px;border:1px solid var(--border);
+  background:color-mix(in srgb,var(--accent,#5e8bff) 14%,#0c0e15);color:#9db8ff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:transform .25s,box-shadow .2s}
+.uc-swap:hover{transform:rotate(180deg) translateY(2px);box-shadow:0 6px 20px color-mix(in srgb,var(--accent,#5e8bff) 30%,transparent)}
+.uc-swap svg{width:22px;height:22px}
+.uc-eq{margin-top:20px;padding:18px 20px;border-radius:16px;background:color-mix(in srgb,var(--accent,#5e8bff) 9%,#0b0d15);
+  border:1px solid color-mix(in srgb,var(--accent,#5e8bff) 22%,transparent);text-align:center}
+.uc-eq .big{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;word-break:break-word}
+.uc-eq .sub{font-size:.86rem;color:#aab0c6;margin-top:4px}
+.uc-quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.uc-quick .q{font-size:.8rem;color:#9db8ff;background:rgba(94,139,255,.08);border:1px solid rgba(94,139,255,.18);
+  border-radius:30px;padding:6px 13px}
+@media(max-width:560px){
+  .uc-grid{grid-template-columns:1fr;gap:10px}
+  .uc-swap{justify-self:center;transform:rotate(90deg)}
+  .uc-swap:hover{transform:rotate(270deg)}
+  .uc-field input{font-size:1.35rem}
+}
+</style>
+</head>
+<body data-tool="unit-converter">
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="nav-links">
+      <a href="/#why">Why us</a>
+      <a href="/request-a-tool/">Request a Tool</a>
+      <a href="/report-bug/">Report a Bug</a>
+      <a href="/about.html">About</a>
+      <a href="/#tools" class="btn">Explore Tools</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Converters</span><span class="sep">/</span><span>Unit Converter</span></div>
+
+  <div class="tool-head">
+    <div class="ic">📐</div>
+    <div>
+      <h1>Unit Converter</h1>
+      <p>Convert <b>length, weight, temperature, area, volume, speed, time</b> and <b>data</b> — instantly, in one place.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="uc-cats" id="cats"></div>
+
+    <div class="uc-grid">
+      <div class="uc-field">
+        <label for="fromVal">From</label>
+        <input type="number" id="fromVal" inputmode="decimal" value="1" placeholder="0">
+        <select id="fromUnit"></select>
+      </div>
+      <button class="uc-swap" id="swap" aria-label="Swap units" title="Swap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4 4 7l3 3"/><path d="M4 7h13a4 4 0 0 1 4 4"/><path d="m17 20 3-3-3-3"/><path d="M20 17H7a4 4 0 0 1-4-4"/></svg>
+      </button>
+      <div class="uc-field">
+        <label for="toUnit">To</label>
+        <input type="number" id="toVal" inputmode="decimal" placeholder="0" readonly>
+        <select id="toUnit"></select>
+      </div>
+    </div>
+
+    <div class="uc-eq">
+      <div class="big" id="eqBig">—</div>
+      <div class="sub" id="eqSub"></div>
+    </div>
+
+    <div class="uc-quick" id="quick"></div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>About this Unit Converter</h2>
+    <p>This free <b>unit converter</b> handles every everyday conversion in one place — no app, no signup. Pick a category, type a value, and the result updates instantly. It covers <b>length</b> (metres, feet, miles, inches…), <b>weight and mass</b> (kilograms, pounds, ounces…), <b>temperature</b> (Celsius, Fahrenheit, Kelvin), <b>area</b>, <b>volume</b>, <b>speed</b>, <b>time</b> and digital <b>data storage</b>.</p>
+    <h3>How to use it</h3>
+    <ol>
+      <li>Choose a <b>category</b> (length, weight, temperature, and more).</li>
+      <li>Enter a value and pick the <b>from</b> unit.</li>
+      <li>Pick the <b>to</b> unit — the converted value shows instantly. Use the swap button to reverse.</li>
+    </ol>
+    <h3>Is this unit converter free?</h3>
+    <p>Yes — completely free, no signup, and every conversion happens right in your browser.</p>
+    <h3>What units can I convert?</h3>
+    <p>Length, weight/mass, temperature, area, volume, speed, time and data storage — dozens of units across eight categories.</p>
+    <h3>How accurate are the conversions?</h3>
+    <p>Conversions use standard international conversion factors, accurate for both everyday and professional use.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">🔁</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../percentage-calculator/" class="card"><div class="ico">📊</div><h3>Percentage Calculator</h3><p>% of a number, increase &amp; decrease.</p><span class="go">Open tool →</span></a>
+      <a href="../currency-converter/" class="card"><div class="ico">💱</div><h3>Currency Converter</h3><p>Live exchange rates, 150+ currencies.</p><span class="go">Open tool →</span></a>
+      <a href="/#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p><div class="socials"><a href="https://instagram.com/xniperr" target="_blank" rel="noopener" class="social-ig" aria-label="Follow Xnipertools on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg><span>Follow on Instagram</span></a></div></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../unit-converter/">Unit Converter</a><a href="../currency-converter/">Currency Converter</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+var $=function(id){return document.getElementById(id);};
+
+/* ===== conversion data — factor = how many BASE units in 1 of this unit ===== */
+var DATA={
+  length:{icon:'📏',name:'Length',base:'m',units:[
+    ['Kilometre (km)','km',1000],['Metre (m)','m',1],['Centimetre (cm)','cm',0.01],['Millimetre (mm)','mm',0.001],
+    ['Mile (mi)','mi',1609.344],['Yard (yd)','yd',0.9144],['Foot (ft)','ft',0.3048],['Inch (in)','in',0.0254],['Nautical mile','nmi',1852]]},
+  weight:{icon:'⚖️',name:'Weight',base:'kg',units:[
+    ['Tonne (t)','t',1000],['Kilogram (kg)','kg',1],['Gram (g)','g',0.001],['Milligram (mg)','mg',0.000001],
+    ['Pound (lb)','lb',0.45359237],['Ounce (oz)','oz',0.028349523125],['Stone (st)','st',6.35029318]]},
+  temp:{icon:'🌡️',name:'Temperature',base:'C',units:[
+    ['Celsius (°C)','C',1],['Fahrenheit (°F)','F',1],['Kelvin (K)','K',1]]},
+  area:{icon:'🗺️',name:'Area',base:'m2',units:[
+    ['Square kilometre','km2',1000000],['Hectare (ha)','ha',10000],['Square metre','m2',1],['Square centimetre','cm2',0.0001],
+    ['Square mile','mi2',2589988.110336],['Acre','acre',4046.8564224],['Square yard','yd2',0.83612736],['Square foot','ft2',0.09290304]]},
+  volume:{icon:'🧪',name:'Volume',base:'L',units:[
+    ['Cubic metre (m³)','m3',1000],['Litre (L)','L',1],['Millilitre (mL)','mL',0.001],
+    ['US gallon','galus',3.785411784],['US quart','qt',0.946352946],['US pint','pt',0.473176473],['US cup','cup',0.2365882365],
+    ['US fluid ounce','floz',0.0295735296],['Tablespoon','tbsp',0.0147867648],['Teaspoon','tsp',0.0049289216]]},
+  speed:{icon:'🚀',name:'Speed',base:'mps',units:[
+    ['Kilometre/hour (km/h)','kmh',0.27777778],['Mile/hour (mph)','mph',0.44704],['Metre/second (m/s)','mps',1],
+    ['Foot/second (ft/s)','fps',0.3048],['Knot','knot',0.51444444]]},
+  time:{icon:'⏱️',name:'Time',base:'s',units:[
+    ['Year','yr',31536000],['Month (30d)','mo',2592000],['Week','wk',604800],['Day','day',86400],
+    ['Hour','hr',3600],['Minute','min',60],['Second','s',1],['Millisecond','ms',0.001]]},
+  data:{icon:'💾',name:'Data',base:'B',units:[
+    ['Bit','bit',0.125],['Byte (B)','B',1],['Kilobyte (KB)','KB',1024],['Megabyte (MB)','MB',1048576],
+    ['Gigabyte (GB)','GB',1073741824],['Terabyte (TB)','TB',1099511627776],['Petabyte (PB)','PB',1125899906842624]]}
+};
+var ORDER=['length','weight','temp','area','volume','speed','time','data'];
+var cur='length';
+
+function fmt(n){
+  if(!isFinite(n))return '—';
+  if(n===0)return '0';
+  var a=Math.abs(n);
+  if(a>=1e15||a<1e-6)return n.toExponential(4).replace(/\.?0+e/,'e');
+  var s=n.toLocaleString(undefined,{maximumFractionDigits:6});
+  return s;
+}
+function uLabel(cat,code){var u=DATA[cat].units.find(function(x){return x[1]===code;});return u?u[0]:code;}
+function shortLabel(cat,code){var l=uLabel(cat,code);var m=l.match(/\(([^)]+)\)/);return m?m[1]:l;}
+
+/* temperature special conversion */
+function toBaseTemp(v,code){if(code==='C')return v;if(code==='F')return (v-32)*5/9;if(code==='K')return v-273.15;return v;}
+function fromBaseTemp(c,code){if(code==='C')return c;if(code==='F')return c*9/5+32;if(code==='K')return c+273.15;return c;}
+
+function convert(val,cat,from,to){
+  if(cat==='temp'){return fromBaseTemp(toBaseTemp(val,from),to);}
+  var uf=DATA[cat].units.find(function(x){return x[1]===from;})[2];
+  var ut=DATA[cat].units.find(function(x){return x[1]===to;})[2];
+  return val*uf/ut;
+}
+
+function buildCats(){
+  var html='';
+  ORDER.forEach(function(k){
+    html+='<div class="uc-cat'+(k===cur?' on':'')+'" data-cat="'+k+'"><span class="e">'+DATA[k].icon+'</span>'+DATA[k].name+'</div>';
+  });
+  $('cats').innerHTML=html;
+  $('cats').querySelectorAll('.uc-cat').forEach(function(el){
+    el.addEventListener('click',function(){cur=this.dataset.cat;buildCats();fillUnits();calc();});
+  });
+}
+function fillUnits(){
+  var us=DATA[cur].units,fh='',th='';
+  us.forEach(function(u,i){fh+='<option value="'+u[1]+'">'+u[0]+'</option>';th+='<option value="'+u[1]+'">'+u[0]+'</option>';});
+  $('fromUnit').innerHTML=fh;$('toUnit').innerHTML=th;
+  /* sensible defaults: first and second unit */
+  $('fromUnit').selectedIndex=0;
+  $('toUnit').selectedIndex=Math.min(1,us.length-1);
+}
+function calc(){
+  var v=parseFloat($('fromVal').value);
+  if(isNaN(v)){$('toVal').value='';$('eqBig').textContent='—';$('eqSub').textContent='';buildQuick();return;}
+  var from=$('fromUnit').value,to=$('toUnit').value;
+  var r=convert(v,cur,from,to);
+  $('toVal').value=isFinite(r)?(+r.toFixed(8)):'';
+  $('eqBig').textContent=fmt(v)+' '+shortLabel(cur,from)+'  =  '+fmt(r)+' '+shortLabel(cur,to);
+  $('eqSub').textContent='1 '+shortLabel(cur,from)+' = '+fmt(convert(1,cur,from,to))+' '+shortLabel(cur,to);
+  buildQuick();
+}
+function buildQuick(){
+  /* show conversion of current "from" value to a few other units */
+  var v=parseFloat($('fromVal').value);if(isNaN(v))v=1;
+  var from=$('fromUnit').value,html='';
+  DATA[cur].units.forEach(function(u){
+    if(u[1]===from)return;
+    var r=convert(v,cur,from,u[1]);
+    html+='<span class="q">'+fmt(r)+' '+shortLabel(cur,u[1])+'</span>';
+  });
+  $('quick').innerHTML=html;
+}
+
+$('fromVal').addEventListener('input',calc);
+$('fromUnit').addEventListener('change',calc);
+$('toUnit').addEventListener('change',calc);
+$('swap').addEventListener('click',function(){
+  var a=$('fromUnit').value,b=$('toUnit').value;
+  $('fromUnit').value=b;$('toUnit').value=a;
+  /* move the result into the input for a natural swap */
+  var tv=parseFloat($('toVal').value);if(!isNaN(tv))$('fromVal').value=+tv.toFixed(8);
+  calc();
+});
+
+buildCats();fillUnits();calc();
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>

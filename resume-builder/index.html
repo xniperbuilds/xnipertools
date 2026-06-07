@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Resume Builder — Create &amp; Download a PDF CV | Xnipertools</title>
+<meta name="description" content="Free online resume builder. Fill in your details, see a live preview, pick an accent colour and download a clean professional PDF resume. No signup, no watermark.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+<link rel="stylesheet" href="../style.css">
+<link rel="canonical" href="https://xnipertools.com/resume-builder/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/resume-builder/">
+<meta property="og:title" content="Free Resume Builder — Create & Download a PDF CV">
+<meta property="og:description" content="Fill in your details, see a live preview and download a clean professional PDF resume. Free, no signup.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Resume Builder">
+<meta name="twitter:description" content="Build a clean professional CV and download it as a PDF. Free, no signup.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Resume Builder","url":"https://xnipertools.com/resume-builder/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this resume builder free?","acceptedAnswer":{"@type":"Answer","text":"Yes, it is completely free with no signup and no watermark on the downloaded PDF."}},{"@type":"Question","name":"Can I download my resume as a PDF?","acceptedAnswer":{"@type":"Answer","text":"Yes, click Download PDF to save a clean, print-ready PDF of your resume."}},{"@type":"Question","name":"Is my resume data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your resume is built entirely in your browser and is never uploaded to a server."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Resume Builder","item":"https://xnipertools.com/resume-builder/"}]}</script>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Xnipertools">
+<script src="/pwa.js" defer></script>
+<style>
+.rb-sec h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;margin:22px 0 12px;font-weight:700}
+.rb-sec h3:first-child{margin-top:4px}
+.rb-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label.s{display:block;font-size:.82rem;color:#aab0c6;margin-bottom:6px;font-weight:600}
+textarea{width:100%;min-height:74px;resize:vertical;font-family:inherit}
+.rb-entry{border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;background:rgba(255,255,255,.02);position:relative}
+.rb-entry .it-del{position:absolute;top:10px;right:10px}
+.it-del{width:32px;height:32px;border-radius:9px;border:1px solid var(--border);background:rgba(255,255,255,.03);color:#f87171;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.05rem;line-height:1}
+.it-del:hover{background:rgba(248,113,113,.12)}
+.it-add{margin-top:2px;background:rgba(94,139,255,.1);border:1px solid rgba(94,139,255,.25);color:#9db8ff;border-radius:10px;padding:10px 16px;cursor:pointer;font-weight:600;font-size:.88rem}
+.it-add:hover{background:rgba(94,139,255,.18)}
+.rb-swatches{display:flex;gap:10px;flex-wrap:wrap}
+.rb-sw{width:34px;height:34px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .15s}
+.rb-sw:hover{transform:scale(1.1)}
+.rb-sw.on{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.25)}
+.rb-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.rb-actions button{flex:1;min-width:150px}
+/* ===== white resume preview ===== */
+.rb-preview-wrap{margin-top:26px}
+.rb-preview-wrap .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:#8a90a6;font-weight:700;margin-bottom:12px}
+.rb-paper{background:#fff;color:#23262e;border-radius:14px;padding:46px 48px;font-family:'Inter',sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:760px;margin:0 auto;line-height:1.5;--rc:#3f63d8}
+.rp-name{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;color:#10131c;letter-spacing:-.01em;line-height:1.05}
+.rp-title{font-size:1.02rem;font-weight:600;color:var(--rc);margin-top:3px}
+.rp-contact{font-size:.82rem;color:#5b6072;margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 14px}
+.rp-contact span{white-space:nowrap}
+.rp-sec{margin-top:26px}
+.rp-sec h4{font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#10131c;padding-bottom:5px;border-bottom:2px solid var(--rc);margin-bottom:12px}
+.rp-summary{font-size:.9rem;color:#3a3d4a}
+.rp-item{margin-bottom:14px}
+.rp-item .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rp-item .role{font-weight:700;color:#15181f;font-size:.95rem}
+.rp-item .org{font-weight:600;color:var(--rc);font-size:.88rem}
+.rp-item .when{font-size:.8rem;color:#7a8090;white-space:nowrap}
+.rp-item .desc{font-size:.86rem;color:#454956;margin-top:4px;white-space:pre-line}
+.rp-skills{display:flex;flex-wrap:wrap;gap:8px}
+.rp-skill{font-size:.82rem;color:#2a2d38;background:#eef1f8;border-radius:30px;padding:5px 13px}
+.rp-foot{margin-top:30px;text-align:center;font-size:.7rem;color:#aab0bd}
+@media(max-width:560px){.rb-row2{grid-template-columns:1fr}.rb-paper{padding:28px 24px}.rp-name{font-size:1.7rem}}
+</style>
+</head>
+<body data-tool="resume-builder">
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="nav-links">
+      <a href="/#why">Why us</a>
+      <a href="/request-a-tool/">Request a Tool</a>
+      <a href="/report-bug/">Report a Bug</a>
+      <a href="/about.html">About</a>
+      <a href="/#tools" class="btn">Explore Tools</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Business</span><span class="sep">/</span><span>Resume Builder</span></div>
+
+  <div class="tool-head">
+    <div class="ic">📄</div>
+    <div>
+      <h1>Resume Builder</h1>
+      <p>Build a clean, professional <b>resume</b> with a live preview — pick an accent colour and download a <b>PDF</b>. No signup, no watermark.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="rb-sec">
+      <h3>Contact</h3>
+      <div class="rb-row2">
+        <div><label class="s" for="name">Full name</label><input type="text" id="name" value="Your Name" placeholder="Your Name"></div>
+        <div><label class="s" for="role">Job title</label><input type="text" id="role" value="Job Title" placeholder="e.g. Graphic Designer"></div>
+      </div>
+      <div class="rb-row2" style="margin-top:12px">
+        <div><label class="s" for="email">Email</label><input type="email" id="email" placeholder="you@email.com"></div>
+        <div><label class="s" for="phone">Phone</label><input type="tel" id="phone" placeholder="+92 300 1234567"></div>
+      </div>
+      <div class="rb-row2" style="margin-top:12px">
+        <div><label class="s" for="loc">Location</label><input type="text" id="loc" placeholder="City, Country"></div>
+        <div><label class="s" for="web">Website / LinkedIn</label><input type="text" id="web" placeholder="linkedin.com/in/you"></div>
+      </div>
+    </div>
+
+    <div class="rb-sec">
+      <h3>Accent colour</h3>
+      <div class="rb-swatches" id="swatches"></div>
+    </div>
+
+    <div class="rb-sec">
+      <h3>Professional summary</h3>
+      <textarea id="summary" placeholder="2–3 lines about who you are and what you do best.">Motivated professional with a track record of delivering quality work. Strong communicator, fast learner, and detail-focused.</textarea>
+    </div>
+
+    <div class="rb-sec">
+      <h3>Experience</h3>
+      <div id="expList"></div>
+      <button type="button" class="it-add" id="addExp">+ Add experience</button>
+    </div>
+
+    <div class="rb-sec">
+      <h3>Education</h3>
+      <div id="eduList"></div>
+      <button type="button" class="it-add" id="addEdu">+ Add education</button>
+    </div>
+
+    <div class="rb-sec">
+      <h3>Skills</h3>
+      <label class="s" for="skills">Comma-separated</label>
+      <input type="text" id="skills" placeholder="e.g. Photoshop, Illustrator, Branding, Figma" value="Communication, Teamwork, Time Management">
+    </div>
+
+    <div class="rb-actions">
+      <button class="btn" id="dl">⬇ Download PDF</button>
+      <button class="btn ghost" id="pr">🖨 Print</button>
+    </div>
+  </div>
+
+  <div class="rb-preview-wrap">
+    <div class="lbl">Live preview</div>
+    <div class="rb-paper" id="resumePaper">
+      <div class="rp-name" id="pvName">Your Name</div>
+      <div class="rp-title" id="pvRole">Job Title</div>
+      <div class="rp-contact" id="pvContact"></div>
+
+      <div class="rp-sec" id="pvSummaryWrap"><h4>Summary</h4><div class="rp-summary" id="pvSummary"></div></div>
+      <div class="rp-sec" id="pvExpWrap"><h4>Experience</h4><div id="pvExp"></div></div>
+      <div class="rp-sec" id="pvEduWrap"><h4>Education</h4><div id="pvEdu"></div></div>
+      <div class="rp-sec" id="pvSkillsWrap"><h4>Skills</h4><div class="rp-skills" id="pvSkills"></div></div>
+
+      <div class="rp-foot">Created with Xnipertools · xnipertools.com</div>
+    </div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>About this Resume Builder</h2>
+    <p>This free <b>resume builder</b> helps you create a clean, recruiter-friendly CV in minutes — no design skills needed. Fill in your contact details, summary, experience, education and skills, watch the <b>live preview</b> update, choose an accent colour, then download a <b>print-ready PDF</b> with no watermark.</p>
+    <h3>How to use it</h3>
+    <ol>
+      <li>Fill in your <b>contact details</b> and a short summary.</li>
+      <li>Add your <b>experience</b>, <b>education</b> and <b>skills</b>.</li>
+      <li>Pick an accent colour and click <b>Download PDF</b>.</li>
+    </ol>
+    <h3>Is this resume builder free?</h3>
+    <p>Yes — completely free, no signup, and the downloaded PDF has no watermark.</p>
+    <h3>Can I download my resume as a PDF?</h3>
+    <p>Yes — click Download PDF for a clean, print-ready file you can email or upload to job sites.</p>
+    <h3>Is my resume data private?</h3>
+    <p>Yes. Your resume is built entirely in your browser and never uploaded anywhere.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">🧮</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../invoice-generator/" class="card"><div class="ico">🧾</div><h3>Invoice Generator</h3><p>Create &amp; download PDF invoices.</p><span class="go">Open tool →</span></a>
+      <a href="../image-to-pdf/" class="card"><div class="ico">📄</div><h3>PDF Tools</h3><p>Merge, split, convert &amp; more.</p><span class="go">Open tool →</span></a>
+      <a href="/#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p><div class="socials"><a href="https://instagram.com/xniperr" target="_blank" rel="noopener" class="social-ig" aria-label="Follow Xnipertools on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg><span>Follow on Instagram</span></a></div></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../resume-builder/">Resume Builder</a><a href="../invoice-generator/">Invoice Generator</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+var $=function(id){return document.getElementById(id);};
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* accent swatches */
+var COLORS=['#3f63d8','#0ea5e9','#10b981','#8b5cf6','#e11d48','#f59e0b','#0f172a','#0d9488'];
+var accent=COLORS[0];
+(function(){var h='';COLORS.forEach(function(c,i){h+='<div class="rb-sw'+(i===0?' on':'')+'" data-c="'+c+'" style="background:'+c+'"></div>';});$('swatches').innerHTML=h;
+  $('swatches').querySelectorAll('.rb-sw').forEach(function(el){el.addEventListener('click',function(){accent=this.dataset.c;$('swatches').querySelectorAll('.rb-sw').forEach(function(x){x.classList.remove('on');});this.classList.add('on');render();});});})();
+
+/* experience entries */
+function expEntry(role,org,when,desc){
+  var d=document.createElement('div');d.className='rb-entry';
+  d.innerHTML='<button type="button" class="it-del" aria-label="Remove">×</button>'+
+    '<div class="rb-row2"><div><label class="s">Role</label><input class="e-role" type="text" value="'+esc(role||'')+'" placeholder="Job role"></div>'+
+    '<div><label class="s">Company</label><input class="e-org" type="text" value="'+esc(org||'')+'" placeholder="Company"></div></div>'+
+    '<div style="margin-top:12px"><label class="s">Dates</label><input class="e-when" type="text" value="'+esc(when||'')+'" placeholder="e.g. 2022 – Present"></div>'+
+    '<div style="margin-top:12px"><label class="s">What you did</label><textarea class="e-desc" placeholder="Key responsibilities and achievements">'+esc(desc||'')+'</textarea></div>';
+  d.querySelector('.it-del').addEventListener('click',function(){d.remove();render();});
+  d.querySelectorAll('input,textarea').forEach(function(i){i.addEventListener('input',render);});
+  return d;
+}
+function eduEntry(deg,school,when){
+  var d=document.createElement('div');d.className='rb-entry';
+  d.innerHTML='<button type="button" class="it-del" aria-label="Remove">×</button>'+
+    '<div><label class="s">Degree / qualification</label><input class="d-deg" type="text" value="'+esc(deg||'')+'" placeholder="e.g. BSc Computer Science"></div>'+
+    '<div class="rb-row2" style="margin-top:12px"><div><label class="s">School / university</label><input class="d-school" type="text" value="'+esc(school||'')+'" placeholder="Institution"></div>'+
+    '<div><label class="s">Dates</label><input class="d-when" type="text" value="'+esc(when||'')+'" placeholder="e.g. 2018 – 2022"></div></div>';
+  d.querySelector('.it-del').addEventListener('click',function(){d.remove();render();});
+  d.querySelectorAll('input').forEach(function(i){i.addEventListener('input',render);});
+  return d;
+}
+$('addExp').addEventListener('click',function(){$('expList').appendChild(expEntry('','','',''));render();});
+$('addEdu').addEventListener('click',function(){$('eduList').appendChild(eduEntry('','',''));render();});
+$('expList').appendChild(expEntry('Senior Designer','Acme Studio','2022 – Present','Led brand and product design across web and mobile. Mentored two junior designers.'));
+$('eduList').appendChild(eduEntry('BSc Computer Science','University of Example','2018 – 2022'));
+
+function render(){
+  $('resumePaper').style.setProperty('--rc',accent);
+  $('pvName').textContent=$('name').value||'Your Name';
+  $('pvRole').textContent=$('role').value||'Job Title';
+  /* contact */
+  var c=[];if($('email').value)c.push($('email').value);if($('phone').value)c.push($('phone').value);if($('loc').value)c.push($('loc').value);if($('web').value)c.push($('web').value);
+  $('pvContact').innerHTML=c.map(function(x){return '<span>'+esc(x)+'</span>';}).join('<span style="color:#c4c8d2">·</span>');
+  /* summary */
+  var sm=$('summary').value;$('pvSummary').textContent=sm;$('pvSummaryWrap').style.display=sm?'block':'none';
+  /* experience */
+  var eh='';$('expList').querySelectorAll('.rb-entry').forEach(function(r){
+    var role=r.querySelector('.e-role').value,org=r.querySelector('.e-org').value,when=r.querySelector('.e-when').value,desc=r.querySelector('.e-desc').value;
+    if(!role&&!org&&!desc)return;
+    eh+='<div class="rp-item"><div class="top"><div><span class="role">'+esc(role||'')+'</span>'+(org?' <span class="org">· '+esc(org)+'</span>':'')+'</div><div class="when">'+esc(when||'')+'</div></div>'+(desc?'<div class="desc">'+esc(desc)+'</div>':'')+'</div>';
+  });
+  $('pvExp').innerHTML=eh;$('pvExpWrap').style.display=eh?'block':'none';
+  /* education */
+  var dh='';$('eduList').querySelectorAll('.rb-entry').forEach(function(r){
+    var deg=r.querySelector('.d-deg').value,school=r.querySelector('.d-school').value,when=r.querySelector('.d-when').value;
+    if(!deg&&!school)return;
+    dh+='<div class="rp-item"><div class="top"><div><span class="role">'+esc(deg||'')+'</span>'+(school?' <span class="org">· '+esc(school)+'</span>':'')+'</div><div class="when">'+esc(when||'')+'</div></div></div>';
+  });
+  $('pvEdu').innerHTML=dh;$('pvEduWrap').style.display=dh?'block':'none';
+  /* skills */
+  var sk=($('skills').value||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
+  $('pvSkills').innerHTML=sk.map(function(s){return '<span class="rp-skill">'+esc(s)+'</span>';}).join('');
+  $('pvSkillsWrap').style.display=sk.length?'block':'none';
+}
+['name','role','email','phone','loc','web','summary','skills'].forEach(function(id){$(id).addEventListener('input',render);});
+render();
+
+/* download PDF */
+$('dl').addEventListener('click',function(){
+  var btn=this,old=btn.textContent;btn.textContent='Generating…';btn.disabled=true;
+  html2canvas($('resumePaper'),{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false}).then(function(canvas){
+    var img=canvas.toDataURL('image/png');
+    var jsPDF=window.jspdf.jsPDF;var pdf=new jsPDF('p','mm','a4');
+    var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+    var margin=8,iw=pw-margin*2,ih=canvas.height*iw/canvas.width;
+    var heightLeft=ih,pos=margin;
+    pdf.addImage(img,'PNG',margin,pos,iw,ih);heightLeft-=(ph-margin*2);
+    while(heightLeft>0){pos=margin-(ih-heightLeft);pdf.addPage();pdf.addImage(img,'PNG',margin,pos,iw,ih);heightLeft-=(ph-margin*2);}
+    var nm=($('name').value||'resume').replace(/[^a-z0-9\-_]/gi,'_');
+    pdf.save(nm+'_resume.pdf');btn.textContent=old;btn.disabled=false;
+  }).catch(function(){alert('Could not generate PDF. Please try again.');btn.textContent=old;btn.disabled=false;});
+});
+/* print */
+$('pr').addEventListener('click',function(){
+  var html=$('resumePaper').outerHTML;var css=document.querySelector('style').innerHTML;
+  var w=window.open('','_blank');
+  w.document.write('<!DOCTYPE html><html><head><title>Resume</title><meta charset="utf-8"><style>body{margin:0;background:#fff;font-family:Inter,Arial,sans-serif}'+css+'.rb-paper{box-shadow:none;max-width:none}</style></head><body>'+html+'</body></html>');
+  w.document.close();setTimeout(function(){w.focus();w.print();},350);
+});
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
