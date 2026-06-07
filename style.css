@@ -197,6 +197,7 @@ header.site{position:sticky;top:0;z-index:40;background:rgba(7,8,9,.65);backdrop
 .card[href*="color-picker"],body[data-tool="color-picker"]{--ic:#fb7185}
 .card[href*="case-converter"],body[data-tool="case-converter"]{--ic:#0ea5e9}
 .card[href*="json-formatter"],body[data-tool="json-formatter"]{--ic:#64748b}
+.card[href*="dev-tools"],body[data-tool="dev-tools"]{--ic:#22d3ee}
 .card[href*="request-a-tool"],body[data-tool="request-a-tool"]{--ic:#6366f1}
 .card[href*="report-bug"],body[data-tool="report-bug"]{--ic:#ef4444}
 .card[data-name*="love"]{--ic:#ef4444}

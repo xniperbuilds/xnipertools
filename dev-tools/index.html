@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dev Tools — Base64, Hash, UUID, JWT Decoder &amp; Timestamp | Xnipertools</title>
+<meta name="description" content="Free developer tools in your browser: Base64 encode/decode, URL encode/decode, MD5 &amp; SHA hash generator, UUID generator, JWT decoder and Unix timestamp converter. No signup.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Xnipertools">
+<meta name="theme-color" content="#0a0a12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%233f63d8'/%3E%3Cg transform='rotate(45 32 32)' fill='%23ffffff'%3E%3Crect x='26' y='5' width='12' height='16' rx='5'/%3E%3Crect x='29.5' y='21' width='5' height='3'/%3E%3Crect x='30.5' y='23' width='3' height='25'/%3E%3Cpath d='M30 48 H34 L33 55 H31 Z'/%3E%3C/g%3E%3Cg transform='rotate(-45 32 32)' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'%3E%3Cpath d='M27 9 A7 7 0 1 0 37 9'/%3E%3Cline x1='32' y1='14' x2='32' y2='44'/%3E%3Ccircle cx='32' cy='51' r='6'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<link rel="canonical" href="https://xnipertools.com/dev-tools/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Xnipertools">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://xnipertools.com/dev-tools/">
+<meta property="og:title" content="Dev Tools — Base64, Hash, UUID, JWT Decoder & Timestamp">
+<meta property="og:description" content="Base64, URL encode/decode, MD5 & SHA hashes, UUID, JWT decoder and Unix timestamp converter — free, in your browser.">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dev Tools — Base64, Hash, UUID, JWT & Timestamp">
+<meta name="twitter:description" content="Free developer utilities in your browser — Base64, hashes, UUID, JWT decoder, timestamp converter.">
+<meta name="twitter:image" content="https://xnipertools.com/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Dev Tools — Base64, Hash, UUID, JWT & Timestamp","url":"https://xnipertools.com/dev-tools/","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these developer tools free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no signup. Everything runs locally in your browser, so your data is never uploaded."}},{"@type":"Question","name":"Is the hash generator secure?","acceptedAnswer":{"@type":"Answer","text":"Hashes are computed on your device using the browser's built-in Web Crypto API (SHA-1, SHA-256, SHA-512). Nothing is sent to a server."}},{"@type":"Question","name":"Does the JWT decoder verify signatures?","acceptedAnswer":{"@type":"Answer","text":"It decodes and displays the header and payload of a JWT for inspection. It does not verify the signature, and your token stays in your browser."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Dev Tools","item":"https://xnipertools.com/dev-tools/"}]}</script>
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Xnipertools">
+<script src="/pwa.js" defer></script>
+</head>
+<body data-tool="dev-tools">
+<div id="loader"><div class="loader-x">X</div></div>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<header class="site">
+  <div class="container nav">
+    <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
+    <input type="checkbox" id="navToggle" class="nav-toggle">
+    <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
+    <nav class="nav-links">
+      <a href="/#why">Why us</a>
+      <a href="/request-a-tool/">Request a Tool</a>
+      <a href="/report-bug/">Report a Bug</a>
+      <a href="/about.html">About</a>
+      <a href="/#tools" class="btn">Explore Tools</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span>Dev Tools</span></div>
+
+  <div class="tool-head">
+    <div class="ic">⚙️</div>
+    <div>
+      <h1>Dev Tools</h1>
+      <p><b>Base64 · URL · Hash · UUID · JWT · Timestamp</b> — handy developer utilities that run entirely in your browser.</p>
+    </div>
+  </div>
+
+  <div class="tool-box">
+    <div class="tabs">
+      <button class="tab active" data-tab="b64" type="button">Base64</button>
+      <button class="tab" data-tab="url" type="button">URL Encode</button>
+      <button class="tab" data-tab="hash" type="button">Hash</button>
+      <button class="tab" data-tab="uuid" type="button">UUID</button>
+      <button class="tab" data-tab="jwt" type="button">JWT Decoder</button>
+      <button class="tab" data-tab="time" type="button">Timestamp</button>
+    </div>
+
+    <!-- BASE64 -->
+    <div class="panel" id="panel-b64">
+      <div class="seg" id="b64mode"><button type="button" class="seg-btn active" data-v="enc">Encode</button><button type="button" class="seg-btn" data-v="dec">Decode</button></div>
+      <textarea id="b64in" rows="4" class="mt" placeholder="Type or paste text…"></textarea>
+      <textarea id="b64out" rows="4" class="mt code-area" readonly placeholder="Result…"></textarea>
+      <div class="ff-actions mt"><button class="btn" id="b64copy">📋 Copy result</button></div>
+    </div>
+
+    <!-- URL -->
+    <div class="panel" id="panel-url" style="display:none">
+      <div class="seg" id="urlmode"><button type="button" class="seg-btn active" data-v="enc">Encode</button><button type="button" class="seg-btn" data-v="dec">Decode</button></div>
+      <textarea id="urlin" rows="4" class="mt" placeholder="Type or paste text / URL…"></textarea>
+      <textarea id="urlout" rows="4" class="mt code-area" readonly placeholder="Result…"></textarea>
+      <div class="ff-actions mt"><button class="btn" id="urlcopy">📋 Copy result</button></div>
+    </div>
+
+    <!-- HASH -->
+    <div class="panel" id="panel-hash" style="display:none">
+      <textarea id="hashin" rows="4" placeholder="Type or paste text to hash…"></textarea>
+      <div class="style-list mt" id="hashout"></div>
+    </div>
+
+    <!-- UUID -->
+    <div class="panel" id="panel-uuid" style="display:none">
+      <div class="row cols-2">
+        <div><label for="uuidn">How many?</label><input type="number" id="uuidn" value="5" min="1" max="100"></div>
+        <div style="display:flex;align-items:flex-end"><button class="btn block" id="uuidgen">🎲 Generate UUIDs</button></div>
+      </div>
+      <textarea id="uuidout" rows="6" class="mt code-area" readonly></textarea>
+      <div class="ff-actions mt"><button class="btn ghost" id="uuidcopy">📋 Copy all</button></div>
+    </div>
+
+    <!-- JWT -->
+    <div class="panel" id="panel-jwt" style="display:none">
+      <textarea id="jwtin" rows="4" placeholder="Paste a JWT (eyJ…) — header.payload.signature"></textarea>
+      <div class="mt"><label>Header</label><textarea id="jwtHead" rows="4" class="code-area" readonly></textarea></div>
+      <div class="mt"><label>Payload</label><textarea id="jwtBody" rows="6" class="code-area" readonly></textarea></div>
+      <p class="muted" style="font-size:.8rem;margin-top:8px">Decodes for inspection only — the signature is not verified, and your token never leaves your device.</p>
+    </div>
+
+    <!-- TIMESTAMP -->
+    <div class="panel" id="panel-time" style="display:none">
+      <div class="result-bar" id="nowBar"></div>
+      <div class="row cols-2 mt">
+        <div><label for="tsEpoch">Unix timestamp → date</label><input type="number" id="tsEpoch" placeholder="1700000000"></div>
+        <div><label for="tsDate">Date → Unix timestamp</label><input type="datetime-local" id="tsDate"></div>
+      </div>
+      <div class="result" id="tsOut"></div>
+    </div>
+
+    <div class="wa-hint ok" id="hint"></div>
+    <div class="secure-note">🔒 100% Private: everything runs on your device — nothing is uploaded.</div>
+  </div>
+
+  <div class="ad-slot">Advertisement</div>
+
+  <article class="article reveal">
+    <h2>Free developer tools, all in one place</h2>
+    <p>A fast set of <b>developer utilities</b> that run entirely in your browser — no signup, no uploads, no limits. <b>Base64</b> encodes and decodes text, <b>URL Encode</b> handles percent-encoding, the <b>Hash</b> generator creates MD5, SHA-1, SHA-256 and SHA-512 digests using your browser's built-in Web Crypto, <b>UUID</b> generates v4 identifiers, the <b>JWT Decoder</b> reveals a token's header and payload, and the <b>Timestamp</b> converter switches between Unix epoch and human dates.</p>
+    <h3>Are these tools free and private?</h3>
+    <p>Yes — completely free with no signup, and everything is computed locally on your device, so your data is never sent anywhere.</p>
+    <h3>Does the JWT decoder verify the signature?</h3>
+    <p>No — it decodes the header and payload for inspection only. It does not validate the signature.</p>
+  </article>
+
+  <section class="section">
+    <div class="sec-head"><div class="ic">🧰</div><h2>More tools</h2></div>
+    <div class="grid">
+      <a href="../json-formatter/" class="card"><div class="ico">⚙️</div><h3>JSON Formatter</h3><p>Beautify, minify &amp; validate JSON.</p><span class="go">Open tool →</span></a>
+      <a href="../color-picker/" class="card"><div class="ico">🎨</div><h3>Color Picker</h3><p>Picker, gradient &amp; palette.</p><span class="go">Open tool →</span></a>
+      <a href="/#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
+    </div>
+  </section>
+</div>
+
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand"><a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a><p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p><div class="socials"><a href="https://instagram.com/xniperr" target="_blank" rel="noopener" class="social-ig" aria-label="Follow Xnipertools on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg><span>Follow on Instagram</span></a></div></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../dev-tools/">Dev Tools</a><a href="../json-formatter/">JSON Formatter</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Company</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy Policy</a><a href="/report-bug/">Report a Bug</a></div>
+    </div>
+    <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('load',()=>document.getElementById('loader').classList.add('hide'));
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),1600);
+document.getElementById('year').textContent=new Date().getFullYear();
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+var $=function(id){return document.getElementById(id);};
+function copyEl(id,btn){var el=$(id);navigator.clipboard.writeText(el.value||el.textContent||'').then(function(){var o=btn.textContent;btn.textContent='Copied!';btn.classList.add('done');setTimeout(function(){btn.textContent=o;btn.classList.remove('done');},1100);}).catch(function(){el.select&&el.select();});}
+
+/* tabs */
+document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});t.classList.add('active');
+  ['b64','url','hash','uuid','jwt','time'].forEach(function(k){$('panel-'+k).style.display=(k===t.dataset.tab)?'':'none';});
+});});
+function seg(id,cb){document.querySelectorAll('#'+id+' .seg-btn').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('#'+id+' .seg-btn').forEach(function(x){x.classList.remove('active');});b.classList.add('active');cb(b.dataset.v);});});}
+
+/* ===== Base64 ===== */
+var b64m='enc';
+function b64run(){var t=$('b64in').value,o='';try{o=b64m==='enc'?btoa(unescape(encodeURIComponent(t))):decodeURIComponent(escape(atob(t.trim())));}catch(e){o='⚠ Invalid input for '+(b64m==='enc'?'encoding':'Base64 decoding')+'.';}$('b64out').value=o;}
+seg('b64mode',function(v){b64m=v;$('b64in').placeholder=v==='enc'?'Type or paste text…':'Paste Base64…';b64run();});
+$('b64in').addEventListener('input',b64run);
+$('b64copy').addEventListener('click',function(){copyEl('b64out',this);});
+
+/* ===== URL ===== */
+var urlm='enc';
+function urlrun(){var t=$('urlin').value,o='';try{o=urlm==='enc'?encodeURIComponent(t):decodeURIComponent(t.trim());}catch(e){o='⚠ Invalid input for URL decoding.';}$('urlout').value=o;}
+seg('urlmode',function(v){urlm=v;urlrun();});
+$('urlin').addEventListener('input',urlrun);
+$('urlcopy').addEventListener('click',function(){copyEl('urlout',this);});
+
+/* ===== Hash ===== */
+function hex(buf){var b=new Uint8Array(buf),s='';for(var i=0;i<b.length;i++)s+=b[i].toString(16).padStart(2,'0');return s;}
+/* compact MD5 (RSA Data Security) */
+function md5(str){
+  function rl(n,c){return (n<<c)|(n>>>(32-c));}
+  function au(x,y){var l=(x&0xFFFF)+(y&0xFFFF),m=(x>>16)+(y>>16)+(l>>16);return (m<<16)|(l&0xFFFF);}
+  function cmn(q,a,b,x,s,t){return au(rl(au(au(a,q),au(x,t)),s),b);}
+  function ff(a,b,c,d,x,s,t){return cmn((b&c)|((~b)&d),a,b,x,s,t);}
+  function gg(a,b,c,d,x,s,t){return cmn((b&d)|(c&(~d)),a,b,x,s,t);}
+  function hh(a,b,c,d,x,s,t){return cmn(b^c^d,a,b,x,s,t);}
+  function ii(a,b,c,d,x,s,t){return cmn(c^(b|(~d)),a,b,x,s,t);}
+  function tb(s){var u=unescape(encodeURIComponent(s)),n=u.length,b=[],i;for(i=0;i<n;i++)b[i>>2]|=u.charCodeAt(i)<<((i%4)*8);b[n>>2]|=0x80<<((n%4)*8);b[(((n+8)>>6)+1)*16-2]=n*8;return b;}
+  var x=tb(str),a=1732584193,b=-271733879,c=-1732584194,d=271733878,i,olda,oldb,oldc,oldd;
+  for(i=0;i<x.length;i+=16){olda=a;oldb=b;oldc=c;oldd=d;x[i+1]=x[i+1]||0;
+    a=ff(a,b,c,d,x[i],7,-680876936);d=ff(d,a,b,c,x[i+1]||0,12,-389564586);c=ff(c,d,a,b,x[i+2]||0,17,606105819);b=ff(b,c,d,a,x[i+3]||0,22,-1044525330);
+    a=ff(a,b,c,d,x[i+4]||0,7,-176418897);d=ff(d,a,b,c,x[i+5]||0,12,1200080426);c=ff(c,d,a,b,x[i+6]||0,17,-1473231341);b=ff(b,c,d,a,x[i+7]||0,22,-45705983);
+    a=ff(a,b,c,d,x[i+8]||0,7,1770035416);d=ff(d,a,b,c,x[i+9]||0,12,-1958414417);c=ff(c,d,a,b,x[i+10]||0,17,-42063);b=ff(b,c,d,a,x[i+11]||0,22,-1990404162);
+    a=ff(a,b,c,d,x[i+12]||0,7,1804603682);d=ff(d,a,b,c,x[i+13]||0,12,-40341101);c=ff(c,d,a,b,x[i+14]||0,17,-1502002290);b=ff(b,c,d,a,x[i+15]||0,22,1236535329);
+    a=gg(a,b,c,d,x[i+1]||0,5,-165796510);d=gg(d,a,b,c,x[i+6]||0,9,-1069501632);c=gg(c,d,a,b,x[i+11]||0,14,643717713);b=gg(b,c,d,a,x[i]||0,20,-373897302);
+    a=gg(a,b,c,d,x[i+5]||0,5,-701558691);d=gg(d,a,b,c,x[i+10]||0,9,38016083);c=gg(c,d,a,b,x[i+15]||0,14,-660478335);b=gg(b,c,d,a,x[i+4]||0,20,-405537848);
+    a=gg(a,b,c,d,x[i+9]||0,5,568446438);d=gg(d,a,b,c,x[i+14]||0,9,-1019803690);c=gg(c,d,a,b,x[i+3]||0,14,-187363961);b=gg(b,c,d,a,x[i+8]||0,20,1163531501);
+    a=gg(a,b,c,d,x[i+13]||0,5,-1444681467);d=gg(d,a,b,c,x[i+2]||0,9,-51403784);c=gg(c,d,a,b,x[i+7]||0,14,1735328473);b=gg(b,c,d,a,x[i+12]||0,20,-1926607734);
+    a=hh(a,b,c,d,x[i+5]||0,4,-378558);d=hh(d,a,b,c,x[i+8]||0,11,-2022574463);c=hh(c,d,a,b,x[i+11]||0,16,1839030562);b=hh(b,c,d,a,x[i+14]||0,23,-35309556);
+    a=hh(a,b,c,d,x[i+1]||0,4,-1530992060);d=hh(d,a,b,c,x[i+4]||0,11,1272893353);c=hh(c,d,a,b,x[i+7]||0,16,-155497632);b=hh(b,c,d,a,x[i+10]||0,23,-1094730640);
+    a=hh(a,b,c,d,x[i+13]||0,4,681279174);d=hh(d,a,b,c,x[i]||0,11,-358537222);c=hh(c,d,a,b,x[i+3]||0,16,-722521979);b=hh(b,c,d,a,x[i+6]||0,23,76029189);
+    a=hh(a,b,c,d,x[i+9]||0,4,-640364487);d=hh(d,a,b,c,x[i+12]||0,11,-421815835);c=hh(c,d,a,b,x[i+15]||0,16,530742520);b=hh(b,c,d,a,x[i+2]||0,23,-995338651);
+    a=ii(a,b,c,d,x[i]||0,6,-198630844);d=ii(d,a,b,c,x[i+7]||0,10,1126891415);c=ii(c,d,a,b,x[i+14]||0,15,-1416354905);b=ii(b,c,d,a,x[i+5]||0,21,-57434055);
+    a=ii(a,b,c,d,x[i+12]||0,6,1700485571);d=ii(d,a,b,c,x[i+3]||0,10,-1894986606);c=ii(c,d,a,b,x[i+10]||0,15,-1051523);b=ii(b,c,d,a,x[i+1]||0,21,-2054922799);
+    a=ii(a,b,c,d,x[i+8]||0,6,1873313359);d=ii(d,a,b,c,x[i+15]||0,10,-30611744);c=ii(c,d,a,b,x[i+6]||0,15,-1560198380);b=ii(b,c,d,a,x[i+13]||0,21,1309151649);
+    a=ii(a,b,c,d,x[i+4]||0,6,-145523070);d=ii(d,a,b,c,x[i+11]||0,10,-1120210379);c=ii(c,d,a,b,x[i+2]||0,15,718787259);b=ii(b,c,d,a,x[i+9]||0,21,-343485551);
+    a=au(a,olda);b=au(b,oldb);c=au(c,oldc);d=au(d,oldd);}
+  function le(n){var s='',j;for(j=0;j<4;j++)s+=((n>>(j*8))&255).toString(16).padStart(2,'0');return s;}
+  return le(a)+le(b)+le(c)+le(d);
+}
+function row(name,val){return '<div class="style-item"><div style="min-width:0"><div class="muted" style="font-size:.74rem;text-transform:uppercase;letter-spacing:.05em">'+name+'</div><div class="txt" style="font-family:ui-monospace,monospace;font-size:.9rem;word-break:break-all">'+val+'</div></div><button class="copy" data-h="'+val+'">Copy</button></div>';}
+function hashrun(){
+  var t=$('hashin').value;var out=$('hashout');
+  if(!t){out.innerHTML='';return;}
+  var enc=new TextEncoder().encode(t);
+  var md=md5(t);
+  Promise.all([crypto.subtle.digest('SHA-1',enc),crypto.subtle.digest('SHA-256',enc),crypto.subtle.digest('SHA-512',enc)]).then(function(r){
+    out.innerHTML=row('MD5',md)+row('SHA-1',hex(r[0]))+row('SHA-256',hex(r[1]))+row('SHA-512',hex(r[2]));
+    out.querySelectorAll('.copy').forEach(function(b){b.onclick=function(){navigator.clipboard.writeText(b.dataset.h);var o=b.textContent;b.textContent='Copied!';b.classList.add('done');setTimeout(function(){b.textContent=o;b.classList.remove('done');},1000);};});
+  }).catch(function(){out.innerHTML=row('MD5',md);});
+}
+$('hashin').addEventListener('input',hashrun);
+
+/* ===== UUID ===== */
+function uuid(){if(crypto.randomUUID)return crypto.randomUUID();var b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&0x0f)|0x40;b[8]=(b[8]&0x3f)|0x80;var h=[];for(var i=0;i<16;i++)h.push(b[i].toString(16).padStart(2,'0'));return h[0]+h[1]+h[2]+h[3]+'-'+h[4]+h[5]+'-'+h[6]+h[7]+'-'+h[8]+h[9]+'-'+h[10]+h[11]+h[12]+h[13]+h[14]+h[15];}
+function uuidgen(){var n=Math.min(100,Math.max(1,parseInt($('uuidn').value)||1)),a=[];for(var i=0;i<n;i++)a.push(uuid());$('uuidout').value=a.join('\n');}
+$('uuidgen').addEventListener('click',uuidgen);
+$('uuidcopy').addEventListener('click',function(){copyEl('uuidout',this);});
+uuidgen();
+
+/* ===== JWT ===== */
+function b64url(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)));}
+function pretty(s){try{return JSON.stringify(JSON.parse(s),null,2);}catch(e){return s;}}
+function jwtrun(){
+  var t=$('jwtin').value.trim();$('jwtHead').value='';$('jwtBody').value='';
+  if(!t)return;
+  var p=t.split('.');
+  if(p.length<2){$('jwtBody').value='⚠ Not a valid JWT (needs header.payload.signature).';return;}
+  try{$('jwtHead').value=pretty(b64url(p[0]));}catch(e){$('jwtHead').value='⚠ Could not decode header.';}
+  try{$('jwtBody').value=pretty(b64url(p[1]));}catch(e){$('jwtBody').value='⚠ Could not decode payload.';}
+}
+$('jwtin').addEventListener('input',jwtrun);
+
+/* ===== Timestamp ===== */
+function tick(){var n=Date.now();$('nowBar').innerHTML='Now: <b>'+Math.floor(n/1000)+'</b> s · <b>'+n+'</b> ms';}
+setInterval(tick,1000);tick();
+function tsFromEpoch(){var v=parseFloat($('tsEpoch').value);if(isNaN(v)){$('tsOut').className='result';return;}var ms=v<1e12?v*1000:v;var d=new Date(ms);if(isNaN(d.getTime())){$('tsOut').className='result show';$('tsOut').innerHTML='<p class="muted">Invalid timestamp.</p>';return;}$('tsOut').className='result show';$('tsOut').innerHTML='<div class="big" style="font-size:1.3rem">'+d.toLocaleString()+'</div><p class="muted">Local time</p><p class="mt" style="color:#fff">'+d.toUTCString()+'<br><span class="muted">UTC · ISO '+d.toISOString()+'</span></p>';}
+function tsFromDate(){var v=$('tsDate').value;if(!v){return;}var d=new Date(v);if(isNaN(d.getTime()))return;$('tsOut').className='result show';$('tsOut').innerHTML='<div class="big">'+Math.floor(d.getTime()/1000)+'</div><p class="muted">Unix seconds · '+d.getTime()+' ms</p>';}
+$('tsEpoch').addEventListener('input',tsFromEpoch);
+$('tsDate').addEventListener('input',tsFromDate);
+
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl')return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+</body>
+</html>
