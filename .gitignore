@@ -1,3 +1,11 @@
 ﻿
 # graphify local knowledge-graph output (not for public repo)
 graphify-out/
+
+# local tooling / dev only — keep out of public repo
+.claude/
+indexnow_submit.py
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
