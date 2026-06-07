@@ -327,7 +327,9 @@ footer.site{margin-top:80px;border-top:1px solid var(--border);background:rgba(6
 .tilt-stage{perspective:1200px}
 .tilt{transition:transform .25s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d;will-change:transform}
 
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}
+  /* keep the decorative hero marquee moving (slower) even with reduced motion — it looks broken when frozen */
+  .mq-track{animation:mqScroll 60s linear infinite!important}.mq-row.rev .mq-track{animation-direction:reverse!important}}
 
 /* ===== Custom subscribe form (premium capsule) ===== */
 .sub-form{display:flex;align-items:center;gap:8px;max-width:440px;margin:14px auto 0;
@@ -634,7 +636,7 @@ input[type=color]::-moz-color-swatch{border:none;border-radius:8px}
 .mq-row{display:flex;overflow:hidden}
 .mq-track{display:flex;flex-shrink:0;animation:mqScroll 44s linear infinite;will-change:transform}
 .mq-row.rev .mq-track{animation-direction:reverse}
-.mq:hover .mq-track{animation-play-state:paused}
+@media(hover:hover){.mq:hover .mq-track{animation-play-state:paused}}
 @keyframes mqScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .mq-pill{flex-shrink:0;margin-right:14px;display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border-radius:50px;white-space:nowrap;
   font-weight:600;font-size:.95rem;color:#e7eaf5;text-decoration:none;
