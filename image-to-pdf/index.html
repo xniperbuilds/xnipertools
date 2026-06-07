@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PDF Tools — Merge, Split, Compress, Crop, Organize, Watermark &amp; more | Xnipertools</title>
-<meta name="description" content="10 free PDF tools in your browser: merge, split, compress, crop, organize/reorder pages, rotate, page numbers, watermark, image to PDF and PDF to JPG/PNG. No upload, no signup.">
+<meta name="description" content="12 free PDF tools in your browser: merge, split, compress, crop, organize, rotate, page numbers, watermark, image to PDF, PDF to JPG/PNG/WEBP, and PDF to Text/Markdown. No upload, no signup.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -23,7 +23,7 @@
 <meta name="twitter:description" content="8 free PDF tools in your browser — merge, split, compress, rotate, watermark, image↔PDF. Free, private, no signup.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PDF Tools — Merge, Split, Compress, Rotate, Watermark & Image to PDF","url":"https://xnipertools.com/image-to-pdf/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it free and safe?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up. Your files are processed locally in your browser and are never uploaded to any server."}},{"@type":"Question","name":"Can I merge multiple PDFs into one?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the Merge tab, add your PDF files, drag them into order with the arrows, and download them as a single combined PDF."}},{"@type":"Question","name":"How do I split or extract pages from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Open the Split tab, upload a PDF, then type the pages or ranges you want (for example 1-3, 5) to extract them into a new PDF."}},{"@type":"Question","name":"Can I convert a PDF to images (JPG or PNG)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the PDF to Image tab, upload a PDF, and each page is rendered as an image you can download as JPG or PNG."}},{"@type":"Question","name":"Can I compress a PDF to make it smaller?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the Compress tab, upload your PDF and pick a level. Pages are re-rendered as optimized images, which is best for scanned or image-heavy PDFs."}},{"@type":"Question","name":"Can I add a watermark or page numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Watermark tab to stamp diagonal text across every page, or the Page Numbers tab to number pages with your chosen position and format."}},{"@type":"Question","name":"Can I reorder, delete or crop PDF pages?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Organize tab lets you reorder pages and delete the ones you don't need, and the Crop tab lets you trim margins by dragging a box over the page."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it free and safe?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free with no sign-up. Your files are processed locally in your browser and are never uploaded to any server."}},{"@type":"Question","name":"Can I merge multiple PDFs into one?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the Merge tab, add your PDF files, drag them into order with the arrows, and download them as a single combined PDF."}},{"@type":"Question","name":"How do I split or extract pages from a PDF?","acceptedAnswer":{"@type":"Answer","text":"Open the Split tab, upload a PDF, then type the pages or ranges you want (for example 1-3, 5) to extract them into a new PDF."}},{"@type":"Question","name":"Can I convert a PDF to images (JPG or PNG)?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the PDF to Image tab, upload a PDF, and each page is rendered as an image you can download as JPG or PNG."}},{"@type":"Question","name":"Can I compress a PDF to make it smaller?","acceptedAnswer":{"@type":"Answer","text":"Yes. Open the Compress tab, upload your PDF and pick a level. Pages are re-rendered as optimized images, which is best for scanned or image-heavy PDFs."}},{"@type":"Question","name":"Can I add a watermark or page numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the Watermark tab to stamp diagonal text across every page, or the Page Numbers tab to number pages with your chosen position and format."}},{"@type":"Question","name":"Can I reorder, delete or crop PDF pages?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Organize tab lets you reorder pages and delete the ones you don't need, and the Crop tab lets you trim margins by dragging a box over the page."}},{"@type":"Question","name":"Can I convert PDF to text or Markdown?","acceptedAnswer":{"@type":"Answer","text":"Yes. The PDF to Text/MD tab extracts the selectable text from your PDF and lets you download it as a plain .txt or a Markdown .md file. You can also turn text or Markdown back into a PDF."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"PDF Tools","item":"https://xnipertools.com/image-to-pdf/"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -81,6 +81,8 @@
       <button class="tab" data-tab="watermark" type="button">💧 Watermark</button>
       <button class="tab" data-tab="organize" type="button">🗂️ Organize</button>
       <button class="tab" data-tab="crop" type="button">📐 Crop</button>
+      <button class="tab" data-tab="pdftext" type="button">📝 PDF → Text/MD</button>
+      <button class="tab" data-tab="txtpdf" type="button">📃 Text/MD → PDF</button>
     </div>
 
     <!-- IMAGE -> PDF -->
@@ -144,7 +146,7 @@
       </div>
       <div id="iopts" style="display:none">
         <div class="row cols-2 mt">
-          <div><label for="ifmt">Image format</label><select id="ifmt"><option value="image/jpeg" selected>JPG</option><option value="image/png">PNG</option></select></div>
+          <div><label for="ifmt">Image format</label><select id="ifmt"><option value="image/jpeg" selected>JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select></div>
           <div style="display:flex;align-items:flex-end"><label class="ff-toggle"><input type="checkbox" id="iselall" checked><span class="tg"></span><span>Select all pages</span></label></div>
         </div>
         <div class="ff-actions mt">
@@ -260,6 +262,36 @@
       </div>
     </div>
 
+    <!-- PDF -> TEXT/MD -->
+    <div class="panel" id="panel-pdftext" style="display:none">
+      <div class="drop" id="ptdrop">
+        <input type="file" id="ptfile" accept="application/pdf,.pdf" hidden>
+        <div class="drop-inner">📁 <b>Upload a PDF</b> or drag &amp; drop<br><span class="muted">Pull out the text — download as plain .txt or Markdown .md</span></div>
+      </div>
+      <div id="ptopts" style="display:none">
+        <div class="result-bar" id="ptinfo"></div>
+        <textarea id="ptout" rows="10" class="mt code-area" readonly placeholder="Extracted text appears here…"></textarea>
+        <div class="ff-actions mt">
+          <button class="btn" id="ptcopy">📋 Copy</button>
+          <button class="btn ghost" id="pttxt">⬇ .txt</button>
+          <button class="btn ghost" id="ptmd">⬇ .md</button>
+          <button class="btn ghost" id="ptclear">🗑️ Clear</button>
+        </div>
+        <p class="muted" style="font-size:.8rem;margin-top:8px">Extracts the selectable text in the PDF. Scanned/image-only PDFs have no text to extract.</p>
+      </div>
+    </div>
+
+    <!-- TEXT/MD -> PDF -->
+    <div class="panel" id="panel-txtpdf" style="display:none">
+      <div class="mt"><label for="tpin">Your text or Markdown</label>
+        <textarea id="tpin" rows="10" placeholder="Type or paste here. Markdown works: # Heading, ## Subheading, - bullet, **bold**, > quote…"></textarea></div>
+      <div class="row cols-2 mt">
+        <div><label for="tpmode">Mode</label><select id="tpmode"><option value="md" selected>Markdown (formatted)</option><option value="txt">Plain text</option></select></div>
+        <div><label for="tppage">Page size</label><select id="tppage"><option value="a4" selected>A4</option><option value="letter">Letter</option></select></div>
+      </div>
+      <div class="ff-actions mt"><button class="btn" id="tpmake">📄 Make PDF</button><button class="btn ghost" id="tpclear">🗑️ Clear</button></div>
+    </div>
+
     <div class="wa-hint ok" id="hint"></div>
     <div class="secure-note">🔒 100% Private: your files are processed on your device and never uploaded.</div>
   </div>
@@ -329,7 +361,7 @@ function ensurePdfLib(){if(!pdfLibP){pdfLibP=new Promise(function(res,rej){var s
 document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
   document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active');});
   t.classList.add('active');
-  ['img','merge','split','pdfimg','compress','rotate','pagenum','watermark','organize','crop'].forEach(function(k){$('panel-'+k).style.display=(k===t.dataset.tab)?'':'none';});
+  ['img','merge','split','pdfimg','compress','rotate','pagenum','watermark','organize','crop','pdftext','txtpdf'].forEach(function(k){$('panel-'+k).style.display=(k===t.dataset.tab)?'':'none';});
   setHint('',false);
 });});
 
@@ -529,7 +561,7 @@ function renderPdf(file){
 igrid.addEventListener('click',function(e){
   if(!e.target.dataset.dlpage)return;
   var n=+e.target.dataset.dlpage,c=ipages[n-1];if(!c)return;
-  var fmt=$('ifmt').value,ext=fmt==='image/png'?'png':'jpg';
+  var fmt=$('ifmt').value,ext=fmt==='image/png'?'png':fmt==='image/webp'?'webp':'jpg';
   c.toBlob(function(b){if(b)downloadBlob(b,'page-'+n+'-xnipertools.'+ext);},fmt,0.92);
 });
 function selectedIdx(){return [].slice.call(igrid.querySelectorAll('input[data-page]:checked')).map(function(c){return +c.dataset.page-1;});}
@@ -541,7 +573,7 @@ function savePages(indices){
   indices=indices.filter(function(i){return ipages[i];});
   if(!indices.length){setHint('Select at least one page first.',true);return;}
   setHint('',false);
-  var fmt=$('ifmt').value,ext=fmt==='image/png'?'png':'jpg';
+  var fmt=$('ifmt').value,ext=fmt==='image/png'?'png':fmt==='image/webp'?'webp':'jpg';
   if(indices.length===1){var i=indices[0];ipages[i].toBlob(function(b){if(b)downloadBlob(b,'page-'+(i+1)+'-xnipertools.'+ext);},fmt,0.92);return;}
   if(typeof JSZip==='undefined'){setHint('ZIP engine not loaded — please refresh and try again.',true);return;}
   setHint('Packing '+indices.length+' pages into a ZIP…',false);
@@ -769,6 +801,65 @@ krdrop.addEventListener('dragleave',function(){krdrop.classList.remove('over');}
 krdrop.addEventListener('drop',function(e){e.preventDefault();krdrop.classList.remove('over');loadCrop(e.dataTransfer.files[0]);});
 $('krmake').addEventListener('click',cropPdf);
 $('krclear').addEventListener('click',function(){krBuf=null;kropts.style.display='none';krimg.removeAttribute('src');setHint('',false);});
+
+/* ===== PDF -> TEXT / MARKDOWN ===== */
+var ptdrop=$('ptdrop'),ptfile=$('ptfile'),ptopts=$('ptopts'),ptout=$('ptout'),ptName='document',ptPages=[];
+function loadPdfText(f){
+  if(!isPdf(f)){setHint('Please choose a PDF file.',true);return;}
+  setHint('Extracting text…',false);ptPages=[];ptName=(f.name||'document').replace(/\.pdf$/i,'');
+  ensurePdfjs().then(function(pdfjsLib){return f.arrayBuffer().then(function(buf){return pdfjsLib.getDocument({data:buf}).promise.then(function(pdf){
+    ptopts.style.display='';var chain=Promise.resolve();
+    var _loop=function(n){chain=chain.then(function(){return pdf.getPage(n).then(function(page){return page.getTextContent().then(function(tc){
+      var s='';tc.items.forEach(function(it){s+=it.str;if(it.hasEOL)s+='\n';});
+      ptPages[n-1]=s.replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+    });});});};
+    for(var n=1;n<=pdf.numPages;n++)_loop(n);
+    return chain.then(function(){ptout.value=ptPages.join('\n\n\n');var chars=ptout.value.length;$('ptinfo').textContent='✓ '+pdf.numPages+' page'+(pdf.numPages===1?'':'s')+' — '+chars+' characters extracted.'+(chars<5?' (No selectable text — looks like a scanned/image PDF.)':'');setHint('',false);});
+  });});}).catch(function(){setHint('Could not extract text from this PDF.',true);});
+}
+function ptTxt(){return ptPages.join('\n\n\n');}
+function ptMd(){return '# '+ptName+'\n\n'+ptPages.map(function(t,i){return '## Page '+(i+1)+'\n\n'+t;}).join('\n\n');}
+ptdrop.addEventListener('click',function(){ptfile.click();});
+ptfile.addEventListener('change',function(e){loadPdfText(e.target.files[0]);ptfile.value='';});
+ptdrop.addEventListener('dragover',function(e){e.preventDefault();ptdrop.classList.add('over');});
+ptdrop.addEventListener('dragleave',function(){ptdrop.classList.remove('over');});
+ptdrop.addEventListener('drop',function(e){e.preventDefault();ptdrop.classList.remove('over');loadPdfText(e.dataTransfer.files[0]);});
+$('pttxt').addEventListener('click',function(){downloadBlob(new Blob([ptTxt()],{type:'text/plain'}),ptName+'-xnipertools.txt');});
+$('ptmd').addEventListener('click',function(){downloadBlob(new Blob([ptMd()],{type:'text/markdown'}),ptName+'-xnipertools.md');});
+$('ptcopy').addEventListener('click',function(){var b=this;navigator.clipboard.writeText(ptout.value).then(function(){var o=b.textContent;b.textContent='Copied!';setTimeout(function(){b.textContent=o;},1100);}).catch(function(){ptout.select();});});
+$('ptclear').addEventListener('click',function(){ptPages=[];ptout.value='';ptopts.style.display='none';setHint('',false);});
+
+/* ===== TEXT / MARKDOWN -> PDF ===== */
+function makeTextPdf(){
+  var txt=$('tpin').value;if(!txt.trim()){setHint('Type or paste some text first.',true);return;}
+  if(!(window.jspdf&&window.jspdf.jsPDF)){setHint('PDF engine failed to load — please refresh.',true);return;}
+  var mode=$('tpmode').value,doc=new window.jspdf.jsPDF({unit:'pt',format:$('tppage').value==='letter'?'letter':'a4'});
+  var pw=doc.internal.pageSize.getWidth(),ph=doc.internal.pageSize.getHeight(),M=54,maxW=pw-2*M,y=M;
+  function gap(h){y+=h;if(y>ph-M){doc.addPage();y=M;}}
+  function para(text,fs,style,gapBefore,bullet,indent){
+    if(gapBefore)gap(gapBefore);
+    doc.setFont('helvetica',style||'normal');doc.setFontSize(fs);
+    var x=M+(indent||0),lines=doc.splitTextToSize(bullet?('•  '+text):text,maxW-(indent||0));
+    for(var i=0;i<lines.length;i++){if(y>ph-M){doc.addPage();y=M;}doc.text(lines[i],x,y);y+=fs*1.36;}
+  }
+  if(mode==='txt'){
+    txt.split('\n').forEach(function(ln){if(!ln.trim()){gap(8);return;}para(ln,11,'normal',0);});
+  }else{
+    function clean(s){return s.replace(/\*\*(.*?)\*\*/g,'$1').replace(/\*(.*?)\*/g,'$1').replace(/`(.*?)`/g,'$1').replace(/^\s*[-*+]\s+/,'').replace(/^#{1,6}\s+/,'').replace(/^>\s?/,'').trim();}
+    txt.split('\n').forEach(function(ln){var t=ln.trim();
+      if(!t){gap(7);return;}
+      if(/^#\s/.test(t))para(clean(t),20,'bold',8);
+      else if(/^##\s/.test(t))para(clean(t),16,'bold',7);
+      else if(/^###\s/.test(t))para(clean(t),13,'bold',6);
+      else if(/^\s*[-*+]\s+/.test(ln))para(clean(ln),11,'normal',0,true,14);
+      else if(/^>\s?/.test(t))para(clean(t),11,'italic',2,false,14);
+      else para(clean(t),11,'normal',0);
+    });
+  }
+  doc.save((mode==='md'?'markdown':'text')+'-xnipertools.pdf');setHint('✓ PDF created — check your downloads.',false);
+}
+$('tpmake').addEventListener('click',makeTextPdf);
+$('tpclear').addEventListener('click',function(){$('tpin').value='';setHint('',false);});
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
