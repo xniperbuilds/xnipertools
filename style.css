@@ -201,7 +201,7 @@ header.site{position:sticky;top:0;z-index:40;background:rgba(7,8,9,.65);backdrop
 .card[href*="report-bug"],body[data-tool="report-bug"]{--ic:#ef4444}
 .card[data-name*="love"]{--ic:#ef4444}
 .card[data-name*="loan"]{--ic:#f59e0b}
-.card[data-name*="percentage"]{--ic:#8b5cf6}
+.card[href*="percentage-calculator"],body[data-tool="percentage-calculator"]{--ic:#8b5cf6}
 .card[data-name*="stylish text"]{--ic:#6366f1}
 .card[data-name*="pubg"]{--ic:#84cc16}
 .card h3{font-size:1.1rem;font-weight:700;margin-bottom:5px}
