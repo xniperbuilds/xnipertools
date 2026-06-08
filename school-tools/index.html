@@ -412,11 +412,10 @@ body[data-tool="school-tools"]{--sa:#f59e0b;--sa-l:#fbbf24;--sa-d:#b45309}
 
 /* ===================== PRINT ===================== */
 @media print{
-  @page{margin:12mm}
   body{background:#fff!important}
-  body *{visibility:hidden!important}
-  #paper,#paper *{visibility:visible!important}
-  #paper{position:absolute;left:0;top:0;width:100%;max-width:100%;margin:0;padding:0 4mm;box-shadow:none;border-radius:0;font-size:12.5px}
+  body.sm-printing > *{display:none!important}
+  body.sm-printing > #paper{display:block!important}
+  #paper{position:static;width:100%;max-width:100%;margin:0 auto;padding:0 4mm;box-shadow:none;border-radius:0;font-size:12.5px}
   #paper.tpl-modern .ph{margin:0 0 14px;border-radius:0}
   #paper.tpl-bordered{padding:0}
   .p-sec,.p-q,.omr-q,.p-table tr{break-inside:avoid}
@@ -1302,11 +1301,20 @@ const FN={paper:'Exam-Paper',mcq:'MCQ-Sheet',omr:'OMR-Sheet',datesheet:'Date-She
 function updatePrintOrient(){
   let po=document.getElementById('smPrintOrient');
   if(!po){po=document.createElement('style');po.id='smPrintOrient';document.head.appendChild(po);}
-  po.textContent='@media print{@page{size:A4 '+(WIDE_MODS[S.mod]?'landscape':'portrait')+';margin:12mm}}';
+  po.textContent='@page{size:'+(WIDE_MODS[S.mod]?'297mm 210mm':'210mm 297mm')+';margin:12mm}';
 }
 updatePrintOrient();
 
-$('#btnPrint').addEventListener('click',()=>{updatePrintOrient();window.print();});
+$('#btnPrint').addEventListener('click',()=>{
+  updatePrintOrient();
+  var parent=paper.parentNode,sib=paper.nextSibling;
+  function restore(){if(!document.body.classList.contains('sm-printing'))return;document.body.classList.remove('sm-printing');if(sib&&sib.parentNode===parent)parent.insertBefore(paper,sib);else parent.appendChild(paper);}
+  document.body.classList.add('sm-printing');         // print-only: hide everything except #paper (no blank pages)
+  document.body.appendChild(paper);                   // move #paper to body top-level so only it generates page boxes
+  window.addEventListener('afterprint',restore,{once:true});
+  window.print();
+  setTimeout(restore,1500);                           // fallback restore
+});
 
 $('#btnPdf').addEventListener('click',async function(){
   const btn=this,old=btn.innerHTML;
