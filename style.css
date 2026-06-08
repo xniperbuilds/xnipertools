@@ -655,3 +655,6 @@ input[type=color]::-moz-color-swatch{border:none;border-radius:8px}
 .logo span b{color:#9db8ff}
 .btn:active{transform:scale(.97)}
 .btn:hover{transform:translateY(-2px)}
+.btn.games{background:var(--surface-2);color:#fff;border:1px solid var(--border);box-shadow:none}
+.btn.games svg{width:17px;height:17px;color:var(--accent-l)}
+.btn.games:hover{background:rgba(94,139,255,.14);border-color:rgba(94,139,255,.42);box-shadow:0 8px 22px rgba(63,99,216,.2)}
