@@ -357,7 +357,7 @@ body[data-tool="school-tools"]{--sa:#f59e0b;--sa-l:#fbbf24;--sa-d:#b45309}
 .att-scroll{overflow-x:auto;margin-top:12px}
 .att-table{font-size:11px;min-width:100%}
 .att-table th,.att-table td{padding:5px 4px;text-align:center}
-.att-table .att-name{text-align:start;white-space:nowrap;min-width:120px;padding-inline:8px}
+.att-table .att-name{text-align:start;white-space:normal;word-break:break-word;min-width:120px;padding-inline:8px}
 .att-d{width:20px;font-weight:600}
 .att-c{min-width:20px;height:22px}
 
@@ -420,7 +420,10 @@ body[data-tool="school-tools"]{--sa:#f59e0b;--sa-l:#fbbf24;--sa-d:#b45309}
   #paper.tpl-modern .ph{margin:0 0 14px;border-radius:0}
   #paper.tpl-bordered{padding:0}
   .p-sec,.p-q,.omr-q,.p-table tr{break-inside:avoid}
+  .att-scroll{overflow:visible}
 }
+#paper.exporting .att-scroll{overflow:visible}
+#paper.exporting .att-name{white-space:normal}
 </style>
 </head>
 <body data-tool="school-tools">
@@ -901,6 +904,7 @@ function render(){
   const BAND={lesson:['banded'],result:['modern'],timetable:['banded']};
   if((BAND[S.mod]||[]).includes(S.tpl[S.mod]))paper.classList.add('band');
   paper.innerHTML=(RENDERERS[S.mod]||renderPaper)(lab);
+  updatePrintOrient();
 }
 
 function phHeader(lab,opts={}){
@@ -1280,25 +1284,65 @@ function renderCert(lab){
 }
 
 /* ============ export ============ */
-$('#btnPrint').addEventListener('click',()=>window.print());
+/* wide modules print/export in landscape so the full grid fits without clipping */
+const WIDE_MODS={attendance:1,timetable:1};
+const FN={paper:'Exam-Paper',mcq:'MCQ-Sheet',omr:'OMR-Sheet',datesheet:'Date-Sheet',result:'Result-Card',lesson:'Lesson-Plan',application:'Application',attendance:'Attendance-Register',admit:'Admit-Card',timetable:'Timetable',certificate:'Certificate'};
+
+function updatePrintOrient(){
+  let po=document.getElementById('smPrintOrient');
+  if(!po){po=document.createElement('style');po.id='smPrintOrient';document.head.appendChild(po);}
+  po.textContent='@media print{@page{size:A4 '+(WIDE_MODS[S.mod]?'landscape':'portrait')+';margin:12mm}}';
+}
+updatePrintOrient();
+
+$('#btnPrint').addEventListener('click',()=>{updatePrintOrient();window.print();});
+
 $('#btnPdf').addEventListener('click',async function(){
-  const btn=this;const old=btn.innerHTML;
+  const btn=this,old=btn.innerHTML;
   if(!window.html2canvas||!window.jspdf){toast('Still loading… try again in a second');return;}
   btn.disabled=true;btn.innerHTML='Generating…';
+  const wide=!!WIDE_MODS[S.mod];
+  const renderW=wide?1040:780;                 // px to render the paper at before capture
+  const pMaxW=paper.style.maxWidth,pW=paper.style.width;
   try{
-    const canvas=await html2canvas(paper,{scale:2,backgroundColor:'#ffffff',useCORS:true,windowWidth:820});
+    paper.classList.add('exporting');
+    paper.style.maxWidth=renderW+'px';paper.style.width=renderW+'px';
+    void paper.offsetHeight;                   // force reflow at the export width
+    const canvas=await html2canvas(paper,{scale:2,backgroundColor:'#ffffff',useCORS:true});
+    // collect safe cut lines (between rows / question blocks) measured at the export width
+    const pr=paper.getBoundingClientRect();
+    const f=canvas.width/pr.width;             // canvas px per CSS px
+    const cuts=[...paper.querySelectorAll('tr,.p-q,.p-sec,.omr-q,.lp-sec,.ph,.rc-info,.ad-grid,.ad-band,.p-foot,.p-instr,h2,h3')]
+      .map(el=>(el.getBoundingClientRect().bottom-pr.top)*f)
+      .filter(y=>y>4&&y<canvas.height-4);
+    cuts.push(canvas.height);cuts.sort((a,b)=>a-b);
+    paper.style.maxWidth=pMaxW;paper.style.width=pW;paper.classList.remove('exporting');
+
     const {jsPDF}=window.jspdf;
-    const pdf=new jsPDF('p','mm','a4');
+    const pdf=new jsPDF(wide?'l':'p','mm','a4');
     const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
-    const iw=pw,ih=canvas.height*pw/canvas.width;
-    let left=ih,pos=0;
-    const img=canvas.toDataURL('image/jpeg',0.95);
-    pdf.addImage(img,'JPEG',0,pos,iw,ih);left-=ph;
-    while(left>0){pos=left-ih;pdf.addPage();pdf.addImage(img,'JPEG',0,pos,iw,ih);left-=ph;}
-    const fn=(S.mod==='paper'?'Exam-Paper':S.mod==='mcq'?'MCQ-Sheet':S.mod==='omr'?'OMR-Sheet':'Date-Sheet');
-    pdf.save(fn+'.pdf');
+    const pxPerPage=canvas.width*(ph/pw);      // page height in canvas px
+    let top=0,first=true;
+    while(top<canvas.height-1){
+      const limit=top+pxPerPage;let cut=0;
+      if(limit>=canvas.height){cut=canvas.height;}
+      else{for(const c of cuts){if(c>top+8&&c<=limit)cut=c;}if(!cut)cut=limit;} // last clean break that fits, else hard cut
+      const sh=Math.max(1,Math.round(cut-top));
+      const slice=document.createElement('canvas');
+      slice.width=canvas.width;slice.height=sh;
+      const cx=slice.getContext('2d');cx.fillStyle='#ffffff';cx.fillRect(0,0,slice.width,sh);
+      cx.drawImage(canvas,0,top,canvas.width,sh,0,0,canvas.width,sh);
+      if(!first)pdf.addPage();
+      pdf.addImage(slice.toDataURL('image/jpeg',0.95),'JPEG',0,0,pw,sh*pw/canvas.width);
+      first=false;top=cut;
+    }
+    pdf.save((FN[S.mod]||'School-Tool')+'.pdf');
     toast('PDF downloaded');
-  }catch(err){console.error(err);toast('Could not generate PDF — try Print instead');}
+  }catch(err){
+    console.error(err);
+    paper.style.maxWidth=pMaxW;paper.style.width=pW;paper.classList.remove('exporting');
+    toast('Could not generate PDF — try Print instead');
+  }
   btn.disabled=false;btn.innerHTML=old;
 });
 
