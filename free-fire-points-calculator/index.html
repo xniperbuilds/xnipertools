@@ -101,6 +101,15 @@ gtag('config', 'G-2G2RG8P4CJ');
       <div><div class="ffp-tl">Total Points</div><div class="ffp-tn" id="grandTotal">0</div></div>
       <div class="ffp-tb">Placement <b id="placeTotal">0</b><br>Kills <b id="killTotal">0</b></div>
     </div>
+    <style>
+    .xt-wm{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:600 .82rem Inter,system-ui,sans-serif;color:#9aa0b0;user-select:none;margin:4px 0 10px}
+    .xt-wm input{position:absolute;opacity:0;width:0;height:0}
+    .xt-wm .xtsw{width:34px;height:20px;border-radius:50px;background:#363b4a;position:relative;transition:background .2s;flex:none}
+    .xt-wm .xtsw::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .2s}
+    .xt-wm input:checked+.xtsw{background:#3f63d8}
+    .xt-wm input:checked+.xtsw::after{transform:translateX(14px)}
+    </style>
+    <label class="xt-wm" title="Add the Xnipertools mark to your result image"><input type="checkbox" id="wmOn" checked><span class="xtsw"></span>Xnipertools watermark</label>
     <button class="btn block mt" id="shareBtn">📤 Share Result</button>
     <button class="btn ghost block mt" id="dlBtn">📥 Download Result (JPG)</button>
     <p class="muted center" style="font-size:.8rem;margin-top:10px">A clean result card with your team name &amp; xnipertools.com.</p>
@@ -203,6 +212,7 @@ document.getElementById('ptsTable').innerHTML=pt;
 var LOGO=new Image();
 LOGO.src="../logo.png";
 function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
+function wmActive(){var e=document.getElementById('wmOn');return !e||e.checked;}
 function drawCard(){
   var place=0,kills=0,rows=[];
   for(var i=0;i<count;i++){var m=state[i],p=PLACEMENT[m.rank]||0,k=parseInt(m.kills)||0;place+=p;kills+=k;rows.push({n:i+1,map:MAPS[i%MAPS.length],rank:(m.rank===''||m.rank==null?'—':'#'+m.rank),kills:k,pts:p+k});}
@@ -236,10 +246,12 @@ function drawCard(){
   x.fillStyle='#ffffff';x.font='900 104px Inter,sans-serif';x.fillText(String(total),P+40,y+158);
   x.textAlign='right';x.fillStyle='#c3c8d6';x.font='600 30px Inter,sans-serif';
   x.fillText('Placement   '+place,W-P-44,y+78);x.fillText('Kills   '+kills,W-P-44,y+128);
+  if(wmActive()){
   var fy=H-80;x.font='800 34px Inter,sans-serif';var ftext='xnipertools.com';var tw=x.measureText(ftext).width;var badge=52,gap=16,gw=badge+gap+tw,sx=(W-gw)/2;
   if(LOGO.complete&&LOGO.naturalWidth)x.drawImage(LOGO,sx,fy-badge+12,badge,badge);
   x.textAlign='left';x.fillStyle='#9db8ff';x.fillText(ftext,sx+badge+gap,fy);
   x.textAlign='center';x.fillStyle='#6f74a0';x.font='500 24px Inter,sans-serif';x.fillText('Free Fire Points Calculator',W/2,fy+46);
+  }
   return cv;
 }
 function fileName(){return ((teamInput.value.trim()||'xnipertools')+'-ff-points.jpg').replace(/\s+/g,'-');}

@@ -2,15 +2,15 @@
 
 > Free online tools, calculators and generators — fast, clean, and no signup. Most tools run entirely in your browser, so your files stay private.
 
-Xnipertools (https://xnipertools.com) is a free web-tools hub. No sign-up, no watermarks, no limits. Built mobile-first.
+Xnipertools (https://xnipertools.com) is a free web-tools hub. No sign-up, no watermarks forced, no limits. Built mobile-first.
 
 ## Image & PDF tools
 - [Background Remover](https://xnipertools.com/background-remover/): AI removes a photo's background in your browser; add a solid colour background or download a transparent PNG.
-- [Image Compressor & Tools](https://xnipertools.com/image-compressor/): Compress, resize, convert and crop images.
+- [Image Compressor & Tools](https://xnipertools.com/image-compressor/): Compress, resize, convert (JPG/PNG/WebP), crop, rotate and flip images.
 - [Image to PDF / PDF Tools](https://xnipertools.com/image-to-pdf/): Convert images to PDF, merge, split, and turn PDF pages back into images.
 - [Image Upscaler](https://xnipertools.com/image-upscaler/): Enlarge and sharpen images up to 4x.
 - [Meme Generator](https://xnipertools.com/meme-generator/): Add multiple draggable text boxes with custom fonts, colours and outlines, plus your own watermark, then download a PNG.
-- [QR Code Generator](https://xnipertools.com/qr-code-generator/): Custom QR codes with colours, shapes and a centre logo.
+- [QR Code Generator](https://xnipertools.com/qr-code-generator/): Custom QR codes with colours, shapes and a centre logo; PNG and SVG download.
 
 ## Text & utility tools
 - [Text to Speech](https://xnipertools.com/text-to-speech/): Read any text aloud with multiple device voices, adjustable speed and pitch.
@@ -21,16 +21,30 @@ Xnipertools (https://xnipertools.com) is a free web-tools hub. No sign-up, no wa
 - [Password Generator](https://xnipertools.com/password-generator/): Strong, secure random passwords.
 - [Spin the Wheel](https://xnipertools.com/spin-the-wheel/): Random name picker for giveaways and raffles.
 - [WhatsApp Link Generator](https://xnipertools.com/whatsapp-link-generator/): Create wa.me click-to-chat links with a prefilled message.
+- [Dev Tools](https://xnipertools.com/dev-tools/): Handy developer utilities including a Unix timestamp ↔ date converter.
 
-## Calculators
+## Calculators & converters
 - [Age Calculator](https://xnipertools.com/age-calculator/): Your exact age in years, months and days.
 - [BMI Calculator](https://xnipertools.com/bmi-calculator/): Body Mass Index with an animated gauge (metric & imperial).
-- [Weekly Planner](https://xnipertools.com/weekly-planner/): Plan your week with daily tasks, progress rings and colour themes.
+- [Percentage Calculator](https://xnipertools.com/percentage-calculator/): Work out percentages, increases, decreases and differences.
+- [Loan & EMI Calculator](https://xnipertools.com/loan-calculator/): Monthly EMI, total interest and total payment for any loan.
+- [Unit Converter](https://xnipertools.com/unit-converter/): Convert length, weight, temperature, area, volume, speed, time and data.
+- [Currency Converter](https://xnipertools.com/currency-converter/): Live exchange rates for 160+ currencies including PKR.
+
+## Productivity & business
+- [Weekly Planner](https://xnipertools.com/weekly-planner/): Plan your week with daily tasks, a habit tracker, progress rings and colour themes; download or print.
+- [Invoice Generator](https://xnipertools.com/invoice-generator/): Make a professional invoice with your logo, line items, tax and discount, then download a PDF.
+- [Resume / CV Builder](https://xnipertools.com/resume-builder/): Build a clean CV with 10 templates, accent colours and fonts, then download a PDF.
+- [Cheat Sheets](https://xnipertools.com/cheat-sheets/): Keyboard shortcuts and Excel formulas for Excel, Word, PowerPoint, Windows, Chrome, Gmail and VS Code; export a PDF.
+- [School Tools for Teachers](https://xnipertools.com/school-tools/): Make exam papers, MCQ & OMR sheets, result cards, date sheets, attendance registers, admit cards, timetables, applications and certificates in English, Urdu or Arabic; print or save a PDF.
 
 ## Gaming tools (Free Fire)
 - [Free Fire Name Generator](https://xnipertools.com/free-fire-name-generator/): Stylish FF names, fonts, symbols and an invisible / blank name.
 - [Free Fire Points Calculator](https://xnipertools.com/free-fire-points-calculator/): Tournament points with a downloadable result image.
 - [Free Fire Tournament Standings](https://xnipertools.com/free-fire-tournament-standings/): For organizers — auto-rank teams and export a standings image.
+
+## Games
+- [Free Online Games](https://xnipertools.com/games/): Play free browser games — no download, no signup — with live leaderboards.
 
 ## About
 - [Request a Tool](https://xnipertools.com/request-a-tool/): Suggest a new tool.

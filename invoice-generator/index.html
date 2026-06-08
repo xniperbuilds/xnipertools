@@ -288,6 +288,17 @@ table.ip-tbl td:nth-child(2),table.ip-tbl td:nth-child(3),table.ip-tbl td:nth-ch
       <div style="margin-top:12px"><label class="s" for="notes">Notes / terms</label><textarea id="notes" placeholder="Payment terms, bank details, thank-you note…">Thank you for your business!</textarea></div>
     </div>
 
+    <style>
+    .xt-wm{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:600 .82rem Inter,system-ui,sans-serif;color:#9aa0b0;user-select:none;margin:2px 0 10px}
+    .xt-wm input{position:absolute;opacity:0;width:0;height:0}
+    .xt-wm .xtsw{width:34px;height:20px;border-radius:50px;background:#363b4a;position:relative;transition:background .2s;flex:none}
+    .xt-wm .xtsw::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .2s}
+    .xt-wm input:checked+.xtsw{background:#3f63d8}
+    .xt-wm input:checked+.xtsw::after{transform:translateX(14px)}
+    body.wm-off .ip-foot{display:none!important}
+    </style>
+    <label class="xt-wm" title="Add a small Xnipertools mark to your invoice"><input type="checkbox" id="wmOn" checked><span class="xtsw"></span>Xnipertools watermark</label>
+    <script>(function(){var w=document.getElementById('wmOn');if(w)w.addEventListener('change',function(){document.body.classList.toggle('wm-off',!w.checked);});})();</script>
     <div class="inv-actions">
       <button class="btn" id="dl">⬇ Download PDF</button>
       <button class="btn ghost" id="pr">🖨 Print</button>

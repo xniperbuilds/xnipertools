@@ -491,6 +491,17 @@ body[data-tool="school-tools"]{--sa:#f59e0b;--sa-l:#fbbf24;--sa-d:#b45309}
             </div>
           </div>
           <div class="tb-spacer"></div>
+          <style>
+          .xt-wm{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:600 .82rem Inter,system-ui,sans-serif;color:#9aa0b0;user-select:none}
+          .xt-wm input{position:absolute;opacity:0;width:0;height:0}
+          .xt-wm .xtsw{width:34px;height:20px;border-radius:50px;background:#363b4a;position:relative;transition:background .2s;flex:none}
+          .xt-wm .xtsw::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .2s}
+          .xt-wm input:checked+.xtsw{background:#3f63d8}
+          .xt-wm input:checked+.xtsw::after{transform:translateX(14px)}
+          body.wm-off .p-watermark{display:none!important}
+          </style>
+          <label class="xt-wm" title="Add a small Xnipertools mark to your download"><input type="checkbox" id="wmOn" checked><span class="xtsw"></span>Watermark</label>
+          <script>(function(){var w=document.getElementById('wmOn');if(w)w.addEventListener('change',function(){document.body.classList.toggle('wm-off',!w.checked);});})();</script>
           <div class="tb-actions">
             <button class="btn ghost" id="btnPrint" title="Print or Save as PDF">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>

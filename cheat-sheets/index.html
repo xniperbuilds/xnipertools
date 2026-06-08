@@ -139,6 +139,15 @@ kbd{display:inline-block;padding:4px 8px;border-radius:7px;font-family:'Space Gr
     <div class="cs-meta">
       <span class="cs-count" id="csCount">—</span>
       <div class="cs-actions">
+        <style>
+        .xt-wm{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:600 .82rem Inter,system-ui,sans-serif;color:#9aa0b0;user-select:none;margin:0 0 4px;width:100%}
+        .xt-wm input{position:absolute;opacity:0;width:0;height:0}
+        .xt-wm .xtsw{width:34px;height:20px;border-radius:50px;background:#363b4a;position:relative;transition:background .2s;flex:none}
+        .xt-wm .xtsw::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .2s}
+        .xt-wm input:checked+.xtsw{background:#3f63d8}
+        .xt-wm input:checked+.xtsw::after{transform:translateX(14px)}
+        </style>
+        <label class="xt-wm" title="Add the Xnipertools mark to your PDF"><input type="checkbox" id="wmOn" checked><span class="xtsw"></span>Xnipertools watermark</label>
         <button class="btn" id="csPdfColor">🎨 Colorful PDF</button>
         <button class="btn ghost" id="csPdfBw">🖨️ Print B&amp;W PDF</button>
       </div>
@@ -766,6 +775,7 @@ listEl.addEventListener('click',function(e){
 
 /* ===== PDF export ===== */
 function exportPDF(colorful){
+  var wm=(function(){var e=document.getElementById('wmOn');return !e||e.checked;})();
   if(!(window.jspdf&&window.jspdf.jsPDF)){toast('PDF is still loading — try again');return;}
   var jsPDF=window.jspdf.jsPDF;
   var doc=new jsPDF({unit:'pt',format:'a4'});
@@ -800,9 +810,9 @@ function exportPDF(colorful){
       doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(13);
       doc.text(title,32,22);
       doc.setFont('helvetica','normal');doc.setFontSize(8);
-      doc.text('xnipertools.com',pageW-32,21,{align:'right'});
+      if(wm)doc.text('xnipertools.com',pageW-32,21,{align:'right'});
       doc.setTextColor(130,130,130);doc.setFontSize(8);
-      doc.text('Free cheat sheets — xnipertools.com/cheat-sheets',32,pageH-16);
+      if(wm)doc.text('Free cheat sheets — xnipertools.com/cheat-sheets',32,pageH-16);
       doc.text('Page '+doc.internal.getNumberOfPages(),pageW-32,pageH-16,{align:'right'});
     }
   });

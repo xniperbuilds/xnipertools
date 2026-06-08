@@ -122,6 +122,17 @@ gtag('config', 'G-2G2RG8P4CJ');
     <h3>🏅 Live standings</h3>
     <p class="muted">Auto-ranked by total points (ties broken by position points).</p>
     <div id="standings" class="mt"></div>
+    <style>
+    .xt-wm{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:600 .82rem Inter,system-ui,sans-serif;color:#9aa0b0;user-select:none;margin:6px 0 2px}
+    .xt-wm input{position:absolute;opacity:0;width:0;height:0}
+    .xt-wm .xtsw{width:34px;height:20px;border-radius:50px;background:#363b4a;position:relative;transition:background .2s;flex:none}
+    .xt-wm .xtsw::after{content:"";position:absolute;top:3px;left:3px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .2s}
+    .xt-wm input:checked+.xtsw{background:#3f63d8}
+    .xt-wm input:checked+.xtsw::after{transform:translateX(14px)}
+    body.wm-off .card-foot{display:none!important}
+    </style>
+    <label class="xt-wm" title="Add the Xnipertools mark to your standings image"><input type="checkbox" id="wmOn" checked><span class="xtsw"></span>Xnipertools watermark</label>
+    <script>(function(){var w=document.getElementById('wmOn');if(w)w.addEventListener('change',function(){document.body.classList.toggle('wm-off',!w.checked);});})();</script>
     <button class="btn block mt" id="dlBtn">📥 Download Standings (image)</button>
     <p class="muted center" style="font-size:.8rem;margin-top:10px">A clean standings card with your org name, logo &amp; xnipertools.com.</p>
   </div>
@@ -258,15 +269,15 @@ function buildCard(){
   var thead='<tr><th class="l">#</th><th class="l">TEAM</th>'+hh(before)+'<th>POS</th><th>K</th>'+hh(after)+'<th>TOTAL</th></tr>';
   var tbody=a.map(function(t){
     var nm=esc(t.name||('Team '+(t.idx+1)));
-    if(S.opt.booyah&&t.booyah>0)nm+=' <img class="card-booyah" src="'+(BOOYAH_PNG||'../booyah.png')+'"><span class="card-booyah-x">'+t.booyah+'x</span>';
+    if(S.opt.booyah&&t.booyah>0)nm+=' <img class="card-booyah" alt="Booyah" src="'+(BOOYAH_PNG||'../booyah.png')+'"><span class="card-booyah-x">'+t.booyah+'x</span>';
     return '<tr'+(t.rank<=3?' class="r'+t.rank+'"':'')+'><td class="l card-rank">'+medal(t.rank)+'</td><td class="l">'+nm+'</td>'+cc(t,before)+'<td>'+t.pos+'</td><td>'+t.kills+'</td>'+cc(t,after)+'<td class="tot">'+t.total+'</td></tr>';
   }).join('');
-  var logoImg=S.logo?'<img class="card-logo" src="'+S.logo+'">':'';
+  var logoImg=S.logo?'<img class="card-logo" alt="" src="'+S.logo+'">':'';
   document.getElementById('card').innerHTML=
     '<div class="card-top"></div><div class="card-inner">'+
     '<div class="card-head">'+logoImg+'<div class="card-org">'+esc(S.org.trim()||'Tournament')+'</div><div class="card-sub">Tournament Standings · '+a.length+' Teams</div><div class="card-divider"></div></div>'+
     '<table class="card-tbl"><thead>'+thead+'</thead><tbody>'+tbody+'</tbody></table>'+
-    '<div class="card-foot"><img src="'+(BADGE_PNG||'../logo.png')+'"><div class="card-foot-txt"><div class="lnk">xnipertools.com</div><div class="card-foot-sub">Free Fire Tournament Standings · free online tools</div></div></div>'+
+    '<div class="card-foot"><img alt="Xnipertools" src="'+(BADGE_PNG||'../logo.png')+'"><div class="card-foot-txt"><div class="lnk">xnipertools.com</div><div class="card-foot-sub">Free Fire Tournament Standings · free online tools</div></div></div>'+
     '</div>';
 }
 function downloadImg(){
