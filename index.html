@@ -216,6 +216,10 @@ html[data-theme="dark"] .iconbtn .moon{display:block}
 .h-chips .c{padding:7px 14px;border-radius:30px;font-size:.85rem;font-weight:500;background:var(--surface);border:1px solid var(--line);color:var(--muted);cursor:pointer;transition:color .2s var(--ease),border-color .2s,transform .14s}
 .h-chips .c:hover{color:var(--ink);border-color:var(--ink);transform:translateY(-2px)}
 .h-chips .c:active{transform:scale(.96)}
+.h-install{margin-top:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.h-install[hidden]{display:none}
+.h-install .btn svg{width:19px;height:19px}
+.h-install-note{font-size:.85rem;color:var(--muted);max-width:30ch}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
 /* hero right marquee */
@@ -471,6 +475,10 @@ html[data-theme="dark"] footer.ft{border-top-color:var(--panel-line)}
         <span class="c" data-q="qr code">QR code</span>
         <span class="c" data-q="resume">Resume</span>
         <span class="c" data-q="pdf">PDF tools</span>
+      </div>
+      <div class="h-install" id="installWrap" hidden>
+        <button class="btn lg" id="installBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11m0 0 4-4m-4 4-4-4M5 19h14"/></svg>Install the app</button>
+        <span class="h-install-note">Add Xnipertools to your phone, one tap.</span>
       </div>
     </div>
 
@@ -791,6 +799,17 @@ html[data-theme="dark"] footer.ft{border-top-color:var(--panel-line)}
     else if(e.key==='/'&&!/INPUT|TEXTAREA|SELECT/.test((document.activeElement||{}).tagName||'')&&!palette.classList.contains('open')){e.preventDefault();openP('');}
   });
   try{var q0=new URLSearchParams(location.search).get('q');if(q0)openP(q0);}catch(e){}
+
+  /* PWA install button (shows only when the browser allows install) */
+  var deferredPrompt=null,installWrap=$('#installWrap'),installBtn=$('#installBtn');
+  function isStandalone(){return window.matchMedia('(display-mode:standalone)').matches||window.navigator.standalone===true;}
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;if(installWrap&&!isStandalone())installWrap.hidden=false;});
+  if(installBtn)installBtn.addEventListener('click',function(){
+    if(!deferredPrompt)return;
+    installWrap.hidden=true;deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function(c){deferredPrompt=null;if(c&&c.outcome!=='accepted'&&installWrap)installWrap.hidden=false;});
+  });
+  window.addEventListener('appinstalled',function(){deferredPrompt=null;if(installWrap)installWrap.hidden=true;});
 
   /* newsletter (MailerLite JSONP) */
   var subForm=$('#subForm');
