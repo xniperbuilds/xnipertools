@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){var t='dark';try{t=localStorage.getItem('xt_theme')||'dark'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ"></script>
 <script>
@@ -18,7 +19,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
 <link rel="icon" href="/favicon.ico" sizes="32x32"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css?v=20260610">
 <link rel="canonical" href="https://xnipertools.com/currency-converter/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -63,6 +64,17 @@ gtag('config', 'G-2G2RG8P4CJ');
 .cc-pop .p{cursor:pointer;font-size:.8rem;color:#9db8ff;background:rgba(94,139,255,.08);border:1px solid rgba(94,139,255,.18);border-radius:30px;padding:7px 13px;transition:background .2s,transform .15s}
 .cc-pop .p:hover{background:rgba(94,139,255,.16);transform:translateY(-2px)}
 @media(max-width:560px){.cc-grid{grid-template-columns:1fr;gap:10px}.cc-swap{justify-self:center;transform:rotate(90deg)}.cc-swap:hover{transform:rotate(270deg)}.cc-field input{font-size:1.35rem}.cc-eq .big{font-size:1.4rem}}
+/* Light theme overrides (appended only — dark mode untouched) */
+[data-theme="light"] .cc-field label{color:#283044}
+[data-theme="light"] .cc-swap{background:color-mix(in srgb,var(--accent,#3b6bef) 12%,#fff);color:#2d54d8}
+[data-theme="light"] .cc-eq{background:color-mix(in srgb,var(--accent,#3b6bef) 7%,#fff);border-color:color-mix(in srgb,var(--accent,#3b6bef) 26%,transparent)}
+[data-theme="light"] .cc-eq .big{color:#10131a}
+[data-theme="light"] .cc-eq .sub{color:#444c5c}
+[data-theme="light"] .cc-meta{color:#4d5566}
+[data-theme="light"] .cc-dot{background:#0b815a;box-shadow:0 0 8px rgba(11,129,90,.5)}
+[data-theme="light"] .cc-dot.off{background:#d92d20;box-shadow:0 0 8px rgba(217,45,32,.5)}
+[data-theme="light"] .cc-pop .p{color:#2d54d8;background:rgba(59,107,239,.08);border-color:rgba(59,107,239,.28)}
+[data-theme="light"] .cc-pop .p:hover{background:rgba(59,107,239,.15)}
 </style>
 </head>
 <body data-tool="currency-converter">
@@ -83,6 +95,10 @@ gtag('config', 'G-2G2RG8P4CJ');
       <a href="/games/" class="btn games" aria-label="Play free games"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258A4 4 0 0 0 17.32 5z"/></svg>Games</a>
       <a href="/#tools" class="btn">Explore Tools</a>
     </nav>
+    <button class="iconbtn" id="themeBtn" type="button" aria-label="Switch light/dark theme">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+    </button>
   </div>
 </header>
 
@@ -249,5 +265,6 @@ load();
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
+<script>(function(){var d=document,r=d.documentElement,b=d.getElementById('themeBtn');function mc(t){var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#f4f6fa':'#0a0a12')}mc(r.getAttribute('data-theme')||'dark');if(b)b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('xt_theme',n)}catch(e){}mc(n)})})();</script>
 </body>
 </html>

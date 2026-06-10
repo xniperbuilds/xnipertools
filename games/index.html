@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){var t='dark';try{t=localStorage.getItem('xt_theme')||'dark'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ"></script>
 <script>
@@ -198,6 +199,48 @@ footer{border-top:1px solid var(--line);background:rgba(5,6,10,.6);padding:30px 
   .stage .gname{font-size:.9rem}
 }
 @media(prefers-reduced-motion:reduce){.bg .grid,.bg .orb,.kick .dot{animation:none}}
+
+/* ===== LIGHT MODE (arcade light variant; game overlay stage stays black) ===== */
+[data-theme="light"]{--bg:#f3f5fa;--panel:rgba(11,15,26,.04);--line:rgba(11,15,26,.12);--txt:#12161f;--mut:#5b6478}
+[data-theme="light"] body::after{background:none}
+[data-theme="light"] .bg{background:
+  radial-gradient(1200px 700px at 50% -10%,rgba(91,140,255,.14),transparent 60%),
+  radial-gradient(900px 600px at 100% 0%,rgba(255,78,205,.08),transparent 55%),
+  radial-gradient(900px 700px at 0% 30%,rgba(34,211,238,.08),transparent 55%),
+  var(--bg)}
+[data-theme="light"] .bg .grid{opacity:.3}
+[data-theme="light"] .bg .orb{opacity:.25}
+[data-theme="light"] header{background:rgba(255,255,255,.75)}
+[data-theme="light"] .brand b{color:#0e7490}
+[data-theme="light"] .pill{color:#283044}
+[data-theme="light"] .pill:hover{color:#0b0c10}
+[data-theme="light"] .pill.cta{color:#04121a}
+[data-theme="light"] .kick{color:#0e7490;background:rgba(34,211,238,.10)}
+[data-theme="light"] .hero h1{background:linear-gradient(120deg,#1a2233 10%,#2d54d8 50%,#0e7490 80%,#c026d3);-webkit-background-clip:text;background-clip:text;text-shadow:none}
+[data-theme="light"] .hero h1 .neon{-webkit-text-fill-color:#0891b2;color:#0891b2;text-shadow:0 0 18px rgba(8,145,178,.3)}
+[data-theme="light"] .trust span{color:#3c4456;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+[data-theme="light"] .gcard{background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.05),0 8px 24px rgba(16,24,40,.06)}
+[data-theme="light"] .gcard:hover{box-shadow:0 22px 50px rgba(16,24,40,.16),0 0 38px -8px var(--ac)}
+[data-theme="light"] .info{background:linear-gradient(120deg,rgba(34,211,238,.08),rgba(255,78,205,.06)),#fff}
+[data-theme="light"] footer{background:rgba(255,255,255,.65)}
+[data-theme="light"] .ft a:hover{color:#0b0c10}
+[data-theme="light"] .stage{color:#eef1f8}
+/* mobile: keep top bar on one line with the theme toggle */
+@media(max-width:520px){
+  .bar{gap:8px}
+  .brand{font-size:1rem}
+  .bar .nav{gap:7px}
+  .pill{padding:8px 11px;font-size:.85rem}
+}
+@media(max-width:420px){
+  .bar .nav a.pill:not(.cta){display:none}
+}
+/* theme toggle pill */
+#themeBtn{cursor:pointer;padding:9px 12px}
+#themeBtn svg{width:17px;height:17px;display:block}
+#themeBtn .sun{display:none}
+[data-theme="light"] #themeBtn .sun{display:block}
+[data-theme="light"] #themeBtn .moon{display:none}
 </style>
 </head>
 <body>
@@ -209,6 +252,7 @@ footer{border-top:1px solid var(--line);background:rgba(5,6,10,.6);padding:30px 
     <a href="/" class="brand"><span class="x">X</span>Xniper<b>Arcade</b></a>
     <nav class="nav">
       <a href="/" class="pill">All Tools</a>
+      <button class="pill" id="themeBtn" type="button" aria-label="Switch light/dark theme"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
       <a href="/#tools" class="pill cta">Explore →</a>
     </nav>
   </div>
@@ -351,5 +395,6 @@ window.addEventListener('popstate',function(e){
   }catch(e){}
 })();
 </script>
+<script>(function(){var d=document,r=d.documentElement,b=d.getElementById('themeBtn');function mc(t){var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#f4f6fa':'#0a0a12')}mc(r.getAttribute('data-theme')||'dark');if(b)b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('xt_theme',n)}catch(e){}mc(n)})})();</script>
 </body>
 </html>

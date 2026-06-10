@@ -421,7 +421,7 @@ html[data-theme="dark"] footer.ft{border-top-color:var(--panel-line)}
 }
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important;filter:none!important}.h-kick,.hero h1 .ln span,.hero .sub,.h-search,.h-chips,.hero-r{opacity:1!important;transform:none!important;animation:none!important}</style></noscript>
-<script>(function(){try{var t=localStorage.getItem('xt_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');var m=document.getElementById('themeColor');if(m)m.setAttribute('content','#08090d');}}catch(e){}})();</script>
+<script>(function(){try{var t=localStorage.getItem('xt_theme')||'dark';if(t==='dark'){document.documentElement.setAttribute('data-theme','dark');var m=document.getElementById('themeColor');if(m)m.setAttribute('content','#08090d');}}catch(e){}})();</script>
 </head>
 <body>
 
@@ -646,7 +646,7 @@ html[data-theme="dark"] footer.ft{border-top-color:var(--panel-line)}
     if(tc)tc.setAttribute('content',t==='dark'?'#08090d':'#f5f6f9');
   }
   var saved=null;try{saved=localStorage.getItem('xt_theme');}catch(e){}
-  applyTheme(saved||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));
+  applyTheme(saved||'dark');
   var tb=$('#themeBtn');
   if(tb)tb.addEventListener('click',function(){
     var dark=!root.hasAttribute('data-theme');applyTheme(dark?'dark':'light');

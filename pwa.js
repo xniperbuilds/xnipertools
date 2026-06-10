@@ -44,7 +44,11 @@
     '#xtPwaOv .k{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;' +
       'background:rgba(94,139,255,.2);color:#bcd0ff;font-weight:700;font-size:.8rem;vertical-align:middle;margin:0 2px}' +
     '#xtPwaOv button{cursor:pointer;border:none;border-radius:12px;padding:12px 24px;font:600 .95rem Inter,sans-serif;color:#fff;' +
-      'background:linear-gradient(135deg,#6f97f5,#3f63d8);width:100%}';
+      'background:linear-gradient(135deg,#6f97f5,#3f63d8);width:100%}' +
+    '[data-theme="light"] #xtPwaOv{background:rgba(20,26,40,.42)}' +
+    '[data-theme="light"] #xtPwaOv .card{background:#fff;border-color:rgba(11,15,26,.12);color:#10131a;box-shadow:0 24px 70px rgba(16,24,40,.25)}' +
+    '[data-theme="light"] #xtPwaOv ol{color:#444c5c}' +
+    '[data-theme="light"] #xtPwaOv .k{background:rgba(59,107,239,.12);color:#2d54d8}';
   document.head.appendChild(css);
 
   /* ---- button ---- */
