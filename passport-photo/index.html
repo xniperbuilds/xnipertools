@@ -320,7 +320,7 @@ body[data-tool="passport-photo"]{--pp:#e879f9;--pp-d:#c026d3}
           <button class="btn" id="dlPdf" disabled>⬇ Download PDF</button>
           <button class="btn ghost" id="dlPrint" disabled>🖨 Print</button>
         </div>
-        <p class="pp-steps-note">Sheet is generated at <b>300 DPI</b> — give it to any photo shop or print at home at 100% scale (no “fit to page”).</p>
+        <p class="pp-steps-note"><b>Printing at home?</b> In the print dialog set <b>Paper size = the sheet you picked</b> (4×6 / A4), <b>Scale = 100%</b> (Actual size — never “Fit to page”) and <b>Margins = None</b>. Easiest option: give the downloaded <b>JPG or PDF</b> to any photo shop — it is exact 300 DPI print size.</p>
       </div>
     </div>
   </div>
@@ -330,7 +330,7 @@ body[data-tool="passport-photo"]{--pp:#e879f9;--pp-d:#c026d3}
   <!-- ===== Article / SEO ===== -->
   <div class="article">
     <h2>Make passport size photos online — free</h2>
-    <p>The <b>Passport Size Photo Maker</b> turns any photo into print-ready passport, visa or ID photos in under a minute. Pick an official size, drag your face into the frame, fine-tune brightness and skin tone, optionally remove the background — and download a <b>4×6 inch sheet with 8 photos</b> (or an A4 with up to 30). One 4×6 print at any photo shop costs a fraction of a studio visit.</p>
+    <p>The <b>Passport Size Photo Maker</b> turns any photo into print-ready passport, visa or ID photos in under a minute. Pick an official size, drag your face into the frame, fine-tune brightness and skin tone, optionally remove the background — and download a <b>4×6 inch sheet with 8 photos</b> (on A4 the same 4×6 block sits top-left with cutting guides, rest of the page stays blank). One 4×6 print at any photo shop costs a fraction of a studio visit.</p>
     <h3>How to use</h3>
     <ol>
       <li><b>Upload</b> a clear, front-facing photo (good light, neutral expression).</li>
@@ -694,12 +694,14 @@ $('sw').addEventListener('input',function(){if(S.sheet==='custom')applySheetDims
 $('sh').addEventListener('input',function(){if(S.sheet==='custom')applySheetDims()});
 $('qty').addEventListener('input',function(){var v=parseInt(this.value,10);S.qty=(v>=1)?v:null;renderAll()});
 
+var AREA_W=152.4,AREA_H=101.6; // photos always arranged inside a 6x4 inch block (top-left) so a shop can cut a standard 4x6
 function layout(){
   var M=3,G=2; // outer margin + gap, mm
-  var cols=Math.floor((S.shW-2*M+G)/(S.phW+G));
-  var rows=Math.floor((S.shH-2*M+G)/(S.phH+G));
+  var aw=Math.min(S.shW,AREA_W),ah=Math.min(S.shH,AREA_H);
+  var cols=Math.floor((aw-2*M+G)/(S.phW+G));
+  var rows=Math.floor((ah-2*M+G)/(S.phH+G));
   cols=Math.max(0,cols);rows=Math.max(0,rows);
-  return {cols:cols,rows:rows,fit:cols*rows,M:M,G:G};
+  return {cols:cols,rows:rows,fit:cols*rows,M:M,G:G,aw:aw,ah:ah,confined:(S.shW>aw+1||S.shH>ah+1)};
 }
 
 /* ---------- render pipeline ---------- */
@@ -743,6 +745,14 @@ function buildSheet(scale){
         placed++;
       }
     }
+    // dashed 4x6 cut-area guide when the sheet is bigger (e.g. A4)
+    if(L.confined){
+      x.save();
+      x.strokeStyle='#bbbbbb';x.lineWidth=Math.max(1,scale);
+      x.setLineDash([mm2px(2)*scale,mm2px(1.5)*scale]);
+      x.strokeRect(1,1,mm2px(L.aw)*scale-2,mm2px(L.ah)*scale-2);
+      x.restore();
+    }
     // faint cut guides around photos
     x.strokeStyle='#dddddd';x.lineWidth=Math.max(1,scale);
     placed=0;
@@ -781,7 +791,7 @@ function renderAll(){
   $('qty').max=L.fit;
   $('qtyHint').textContent=L.fit?('max '+L.fit+' on this sheet — empty = fill'):'photo too big for this sheet';
   if(S.photo){
-    $('fitLine').innerHTML='<b>'+n+'</b> photo'+(n===1?'':'s')+' on the sheet ('+L.cols+' × '+L.rows+' fits) — rest stays blank for the print shop';
+    $('fitLine').innerHTML='<b>'+n+'</b> photo'+(n===1?'':'s')+' ('+L.cols+' × '+L.rows+')'+(L.confined?' inside the dashed <b>4×6 inch</b> cut area (top-left) — rest of the page stays blank':' on the sheet — rest stays blank');
   }else{
     $('fitLine').textContent=L.fit?('This sheet fits '+L.fit+' photos ('+L.cols+' × '+L.rows+')'):'Photo too big for this sheet — pick a bigger sheet or smaller size';
   }
