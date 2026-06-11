@@ -371,7 +371,38 @@ var S={
   compare:false
 };
 var bgMod=null;
-function ensureBg(){ if(!bgMod) bgMod=import('https://esm.sh/@imgly/background-removal@1.5.5'); return bgMod; }
+function ensureBg(){
+  if(!bgMod)bgMod=import('https://esm.sh/@imgly/background-removal@1.5.5')
+    .catch(function(){return import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm')});
+  return bgMod;
+}
+function clearImglyCache(){
+  if(!window.caches)return Promise.resolve();
+  return caches.keys().then(function(ks){
+    return Promise.all(ks.filter(function(k){return /imgly/i.test(k)}).map(function(k){return caches.delete(k)}));
+  }).catch(function(){});
+}
+/* run removal with automatic recovery: corrupted-cache wipe + jsdelivr-hosted model files as backup
+   (staticimgly.com is blocked on some networks -> "Failed to fetch") */
+function runRemoval(f,progressCb){
+  function attempt(publicPath){
+    return ensureBg().then(function(mod){
+      var rm=mod.removeBackground||mod.default;
+      var cfg={model:S.model,output:{format:'image/png'}};
+      if(progressCb)cfg.progress=progressCb;
+      if(publicPath)cfg.publicPath=publicPath;
+      return rm(f,cfg);
+    });
+  }
+  return attempt(null).catch(function(e){
+    var msg=String((e&&e.message)||e);
+    if(!/fetch|network|load|abort|cache/i.test(msg))throw e;
+    return clearImglyCache().then(function(){
+      bgMod=null;
+      return attempt('https://cdn.jsdelivr.net/npm/@imgly/background-removal-data@1.5.5/dist/');
+    });
+  });
+}
 window.bgxHasImage=function(){return !!S.file};
 function setHint(m,err){ hint.innerHTML=m||''; hint.style.color=err?'#f87171':'#34d399'; }
 
@@ -543,11 +574,7 @@ removeBtn.addEventListener('click',function(){
   prog.style.display='block';progText.style.display='block';bar.style.width='2%';
   var shown=2,hadDl=false,compute=false,dlF={};
   var creep=setInterval(function(){if(compute&&shown<95){shown+=Math.max(.3,(96-shown)*.035);bar.style.width=shown.toFixed(1)+'%'}},180);
-  ensureBg().then(function(mod){
-    var rm=mod.removeBackground||mod.default;
-    return rm(S.file,{
-      model:S.model,
-      progress:function(key,cur,tot){
+  runRemoval(S.file,function(key,cur,tot){
         if(/fetch|download/i.test(key)){
           hadDl=true;if(tot)dlF[key]={c:cur,t:tot};
           var c=0,t=0;for(var k in dlF){c+=dlF[k].c;t+=dlF[k].t}
@@ -562,9 +589,6 @@ removeBtn.addEventListener('click',function(){
           if(pct!=null){shown=base+pct/100*span;bar.style.width=shown.toFixed(1)+'%'}
           progText.innerHTML='✨ Removing background…'+(pct!=null?' <b style="color:#8fb0ff">'+pct+'%</b>':'');
         }
-      },
-      output:{format:'image/png'}
-    });
   }).then(function(blob){
     clearInterval(creep);
     $('busyText').textContent='Refining edges…';
@@ -592,7 +616,11 @@ removeBtn.addEventListener('click',function(){
     $('busy').classList.remove('show');
     prog.style.display='none';progText.style.display='none';bar.style.width='0';
     var off=!navigator.onLine;
-    setHint(off?'⚠ Internet connection lost during the one-time download. Reconnect and tap “Remove Background” again.':'Couldn\'t process this image — tap “Remove Background” to retry.'+(e&&e.message?' <span style="opacity:.6">('+String(e.message).slice(0,80)+')</span>':''),true);
+    var em=String((e&&e.message)||e);
+    var netErr=/fetch|network|load|abort|cache/i.test(em);
+    setHint(off?'⚠ Internet connection lost during the one-time download. Reconnect and tap “Remove Background” again.':
+      netErr?'⚠ The AI files could not be downloaded — your network or firewall may be blocking them. Tap “Remove Background” to retry (a backup server will be used automatically), or switch network / try mobile data.':
+      'Couldn’t process this image — tap “Remove Background” to retry.'+(em?' <span style="opacity:.6">('+em.slice(0,80)+')</span>':''),true);
   });
 });
 
@@ -792,10 +820,7 @@ $('enhance').addEventListener('click',function(e){
 
 /* ===================== bulk hook (uses model + bg + refinements) ===================== */
 window.bgxBulkProcess=function(f){
-  return ensureBg().then(function(mod){
-    var rm=mod.removeBackground||mod.default;
-    return rm(f,{model:S.model,output:{format:'image/png'}});
-  }).then(function(blob){
+  return runRemoval(f,null).then(function(blob){
     return new Promise(function(res,rej){
       var url=URL.createObjectURL(blob),img=new Image();
       img.onload=function(){
