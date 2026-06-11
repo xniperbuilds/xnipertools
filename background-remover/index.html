@@ -58,6 +58,28 @@ gtag('config', 'G-2G2RG8P4CJ');
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Xnipertools">
 <script src="/pwa.js" defer></script>
+<style>
+/* ===== bulk mode ===== */
+.bulk-toggle{display:flex;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:13px;padding:5px;width:max-content;margin-bottom:16px}
+.bulk-toggle button{cursor:pointer;border:none;background:transparent;color:var(--muted);font-weight:600;font-size:.9rem;padding:9px 22px;border-radius:9px;font-family:inherit;transition:.15s}
+.bulk-toggle button.on{background:linear-gradient(135deg,#6f97f5,#3f63d8);color:#fff}
+[data-theme="light"] .bulk-toggle{background:rgba(11,15,26,.04)}
+@media(max-width:480px){.bulk-toggle{width:100%;display:flex}.bulk-toggle button{flex:1;padding:9px 8px;font-size:.83rem;white-space:nowrap}}
+.bq-hint{font-size:.84rem;color:var(--muted);margin-top:10px;min-height:1em}
+.bq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;margin-top:14px}
+.bq-card{border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.03);overflow:hidden;position:relative}
+[data-theme="light"] .bq-card{background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.06)}
+.bq-card>img{width:100%;height:96px;object-fit:cover;display:block;background-color:#fff;background-image:linear-gradient(45deg,rgba(127,127,127,.25) 25%,transparent 25%),linear-gradient(-45deg,rgba(127,127,127,.25) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(127,127,127,.25) 75%),linear-gradient(-45deg,transparent 75%,rgba(127,127,127,.25) 75%);background-size:14px 14px;background-position:0 0,0 7px,7px -7px,-7px 0}
+.bq-meta{padding:7px 9px 9px;font-size:.7rem;color:var(--muted);line-height:1.5}
+.bq-name{font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bq-badge{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.04em;padding:2.5px 9px;border-radius:20px;color:#fff;margin-top:5px}
+.bq-dl,.bq-retry{position:absolute;right:6px;bottom:6px;width:28px;height:28px;border-radius:9px;border:none;display:none;place-items:center;cursor:pointer;color:#fff;font-size:.85rem;text-decoration:none;line-height:1;font-family:inherit}
+.bq-dl{background:#22c55e}
+.bq-retry{background:#ef4444}
+.bq-bar{height:6px;border-radius:4px;background:rgba(127,127,127,.22);overflow:hidden;margin-top:16px;display:none}
+.bq-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#6f97f5,#3f63d8);transition:width .25s}
+.bq-count{font-size:.8rem;color:var(--muted);text-align:center;margin-top:8px;display:none}
+</style>
 </head>
 <body data-tool="background-remover">
 <div id="loader"><div class="loader-x">X</div></div>
@@ -105,6 +127,10 @@ gtag('config', 'G-2G2RG8P4CJ');
   </div>
 
   <div class="tool-box">
+    <div class="bulk-toggle" role="tablist">
+      <button type="button" class="on" id="modeSingle">Single image</button>
+      <button type="button" id="modeBulk">📦 Bulk (up to 20)</button>
+    </div>
     <div class="drop" id="drop">
       <div class="drop-inner">
         <div style="font-size:2.4rem;margin-bottom:10px">🖼️</div>
@@ -144,6 +170,20 @@ gtag('config', 'G-2G2RG8P4CJ');
         <button class="btn ghost block" id="newImg" type="button">↺ Try another image</button>
       </div>
     </div>
+
+      <div id="bulkWrap" style="display:none">
+        <div class="drop" id="bDrop"><div class="drop-inner">📦 <b>Drop up to 20 images</b> or click to select<br><span class="muted">JPG · PNG · WEBP — max 10 MB each, processed one by one on your device</span></div></div>
+        <input type="file" id="bFile" accept="image/jpeg,image/png,image/webp" multiple hidden>
+        <p class="bq-hint" id="bMsg"></p>
+        <div class="bq-bar" id="bBar"><i></i></div>
+        <p class="bq-count" id="bCount"></p>
+        <div class="bq-grid" id="bGrid"></div>
+        <div class="ff-actions mt" id="bActs" style="display:none">
+          <button class="btn" id="bStart" type="button">▶ Process all</button>
+          <a class="btn" id="bZip" href="#" style="opacity:.4;pointer-events:none">📦 Download all (ZIP)</a>
+          <button class="btn ghost" id="bClear" type="button">🗑 Clear all</button>
+        </div>
+      </div>
   </div>
 
   <div class="ad-slot">Advertisement</div>
@@ -400,6 +440,122 @@ buildSwatches();
 
 /* button ripple */
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl'||this.disabled)return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+<script>
+/* ===== bulk mode (BG remover) ===== */
+(function(){
+
+$('modeSingle').addEventListener('click',function(){
+  this.classList.add('on');$('modeBulk').classList.remove('on');
+  $('bulkWrap').style.display='none';
+  if(originalFile){$('editor').style.display=''}else{$('drop').style.display=''}
+});
+$('modeBulk').addEventListener('click',function(){
+  this.classList.add('on');$('modeSingle').classList.remove('on');
+  $('drop').style.display='none';$('editor').style.display='none';
+  $('bulkWrap').style.display='';
+});
+
+function engine(it){
+  return ensureBg().then(function(mod){
+    var rm=mod.removeBackground||mod.default;
+    return rm(it.file,{output:{format:'image/png'}});
+  });
+}
+function outName(it){return it.base+'-bg-removed.png'}
+
+var MAXN=20,MAXMB=10,Q=[],running=false;
+function fmtB(b){return b<1048576?(b/1024).toFixed(0)+' KB':(b/1048576).toFixed(1)+' MB'}
+var BADGE={q:['Queued','#8a90a6'],p:['Processing…','#5e8bff'],d:['Done ✓','#22c55e'],f:['Failed','#ef4444']};
+function setBadge(it,s){it.status=s;var b=it.el.querySelector('.bq-badge');b.textContent=BADGE[s][0];b.style.background=BADGE[s][1];
+  it.el.querySelector('.bq-dl').style.display=(s==='d')?'grid':'none';
+  it.el.querySelector('.bq-retry').style.display=(s==='f')?'grid':'none'}
+function refresh(){
+  $('bActs').style.display=Q.length?'flex':'none';
+  var done=0;for(var i=0;i<Q.length;i++){if(Q[i].status==='d')done++}
+  $('bBar').style.display=Q.length?'block':'none';
+  $('bBar').firstElementChild.style.width=(Q.length?Math.round(done/Q.length*100):0)+'%';
+  $('bCount').style.display=Q.length?'block':'none';
+  $('bCount').textContent=done+' / '+Q.length+' done';
+  var all=Q.length&&done===Q.length;
+  $('bZip').style.opacity=all?'1':'.4';$('bZip').style.pointerEvents=all?'auto':'none';
+}
+function addCard(it){
+  var d=document.createElement('div');d.className='bq-card';it.el=d;
+  d.innerHTML='<img alt="">'+
+   '<div class="bq-meta"><div class="bq-name"></div><span class="bq-sz"></span><br><span class="bq-badge"></span></div>'+
+   '<a class="bq-dl" title="Download" download>⬇</a><button class="bq-retry" type="button" title="Retry">↻</button>';
+  d.querySelector('img').src=it.turl;
+  d.querySelector('.bq-name').textContent=it.file.name.length>20?it.file.name.slice(0,18)+'…':it.file.name;
+  d.querySelector('.bq-sz').textContent=fmtB(it.file.size);
+  d.querySelector('.bq-retry').addEventListener('click',function(){if(!running)runOne(it)});
+  $('bGrid').appendChild(d);setBadge(it,'q');
+}
+function addFiles(list){
+  var msg='';
+  for(var i=0;i<list.length;i++){
+    var f=list[i];
+    if(Q.length>=MAXN){msg='Batch is full — max '+MAXN+' images at once.';break}
+    if(!/^image\/(jpeg|png|webp)$/.test(f.type)){msg='Some files were skipped (JPG, PNG or WEBP only).';continue}
+    if(f.size>MAXMB*1048576){msg='“'+(f.name||'').slice(0,18)+'…” skipped — larger than '+MAXMB+' MB.';continue}
+    var it={file:f,base:(f.name||'image').replace(/\.[^.]+$/,'').replace(/\s+/g,'-'),status:'q',blob:null,url:null,turl:URL.createObjectURL(f),note:''};
+    Q.push(it);addCard(it);
+  }
+  $('bMsg').textContent=msg;refresh();
+}
+function runOne(it){
+  setBadge(it,'p');refresh();
+  return engine(it).then(function(b){
+    it.blob=b;if(it.url)URL.revokeObjectURL(it.url);it.url=URL.createObjectURL(b);
+    it.el.querySelector('img').src=it.url;
+    var a=it.el.querySelector('.bq-dl');a.href=it.url;a.setAttribute('download',outName(it));
+    if(it.note)it.el.querySelector('.bq-sz').textContent=it.note;
+    setBadge(it,'d');refresh();
+  }).catch(function(e){if(window.console)console.warn('bulk item failed',e);setBadge(it,'f');refresh();throw e});
+}
+$('bStart').addEventListener('click',function(){
+  if(running||!Q.length)return;running=true;var btn=this;btn.disabled=true;btn.textContent='Processing…';
+  (function next(i){
+    if(i>=Q.length){running=false;btn.disabled=false;btn.innerHTML='▶ Process all';refresh();return}
+    var it=Q[i];
+    var p=(it.status==='d')?Promise.resolve():runOne(it).catch(function(){});
+    p.then(function(){setTimeout(function(){next(i+1)},80)});
+  })(0);
+});
+var zipP2=null;
+function ensureZip2(){
+  if(window.JSZip)return Promise.resolve();
+  if(!zipP2)zipP2=new Promise(function(res,rej){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)});
+  return zipP2;
+}
+$('bZip').addEventListener('click',function(e){
+  e.preventDefault();
+  var items=Q.filter(function(i){return i.status==='d'&&i.blob});if(!items.length)return;
+  ensureZip2().then(function(){
+    var z=new window.JSZip(),seen={};
+    items.forEach(function(it){
+      var n=outName(it);
+      if(seen[n]){seen[n]++;n=n.replace(/(\.[a-z0-9]+)$/i,'-'+seen[n]+'$1')}else seen[n]=1;
+      z.file(n,it.blob);
+    });
+    return z.generateAsync({type:'blob'});
+  }).then(function(b){
+    var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='bg-removed-images.zip';a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href)},4000);
+  }).catch(function(){alert('Could not build the ZIP — check your internet (the ZIP library loads from a CDN).')});
+});
+$('bClear').addEventListener('click',function(){
+  if(running)return;
+  Q.forEach(function(it){if(it.turl)URL.revokeObjectURL(it.turl);if(it.url)URL.revokeObjectURL(it.url)});
+  Q=[];$('bGrid').innerHTML='';$('bMsg').textContent='';refresh();
+});
+$('bDrop').addEventListener('click',function(){$('bFile').click()});
+$('bFile').addEventListener('change',function(e){addFiles(e.target.files);this.value=''});
+['dragover','dragenter'].forEach(function(ev){$('bDrop').addEventListener(ev,function(e){e.preventDefault();$('bDrop').classList.add('over')})});
+$('bDrop').addEventListener('dragleave',function(){$('bDrop').classList.remove('over')});
+$('bDrop').addEventListener('drop',function(e){e.preventDefault();$('bDrop').classList.remove('over');addFiles(e.dataTransfer.files)});
+
+})();
 </script>
 <script>(function(){var d=document,r=d.documentElement,b=d.getElementById('themeBtn');function mc(t){var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#f4f6fa':'#0a0a12')}mc(r.getAttribute('data-theme')||'dark');if(b)b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('xt_theme',n)}catch(e){}mc(n)})})();</script>
 </body>
