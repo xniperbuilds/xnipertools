@@ -13,8 +13,8 @@ gtag('config', 'G-2G2RG8P4CJ');
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Image Tools — Compress, Resize, Convert, Crop &amp; Watermark</title>
-<meta name="description" content="Free all-in-one image tool: compress, resize, convert (JPG/PNG/WEBP), crop, rotate and watermark — all in your browser. Nothing is uploaded.">
+<title>Image Tools — Compress, Resize, Convert, Split &amp; More</title>
+<meta name="description" content="Free image toolkit: compress, resize, convert, crop, watermark, extract colour palettes, view &amp; remove EXIF, add borders, split for Instagram, frame screenshots and convert SVG to PNG — all in your browser.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="author" content="Xnipertools">
 <meta name="theme-color" content="#0a0a12">
@@ -32,7 +32,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 <meta name="twitter:title" content="Image Tools — Compress, Resize, Convert, Crop, Rotate & Watermark">
 <meta name="twitter:description" content="Compress, resize, convert, crop, rotate and watermark images right in your browser. Free, private, no upload.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Compressor, Resizer & Converter","url":"https://xnipertools.com/image-compressor/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Tools — All in One","url":"https://xnipertools.com/image-compressor/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","description":"Free all-in-one image toolkit that runs in the browser. Nothing is uploaded.","featureList":["Compress images with target file size","Resize by pixels or percentage","Convert JPG, PNG, WEBP and AVIF","Crop, rotate and flip","Text and logo watermark","Dominant colour palette extractor (top 10, HEX/RGB)","EXIF metadata viewer with GPS detection","One-click metadata remover","Add borders and frames (solid, gradient, patterns)","Split images for Instagram carousels (ZIP download)","Screenshot mockup frames (macOS, browser, phone)","SVG to PNG converter"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css?v=20260610">
@@ -44,7 +44,17 @@ gtag('config', 'G-2G2RG8P4CJ');
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Xnipertools">
 <script src="/pwa.js" defer></script>
-<style>/* light-mode inline-style fixes */[data-theme="light"] [style*="color:#f87171"]{color:#d92d20!important}</style>
+<style>/* light-mode inline-style fixes */[data-theme="light"] [style*="color:#f87171"]{color:#d92d20!important}
+.it-pan{margin-top:4px}
+.it-cvwrap{text-align:center;margin-top:14px}
+.it-cvwrap canvas{max-width:100%;max-height:340px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.03)}
+.it-hint{font-size:.82rem;color:var(--muted);margin-top:10px}
+.it-presets{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.it-presets .sw{width:30px;height:30px;border-radius:9px;cursor:pointer;border:1px solid rgba(255,255,255,.18)}
+[data-theme="light"] .it-presets .sw{border-color:rgba(11,15,26,.18)}
+.it-meta-note{font-size:.8rem;color:var(--muted);margin-top:10px}
+.tabs .tab{flex:0 1 auto;min-width:0;padding:11px 14px}
+</style>
 </head>
 <body data-tool="image-compressor">
 <div id="loader"><div class="loader-x">X</div></div>
@@ -78,7 +88,7 @@ gtag('config', 'G-2G2RG8P4CJ');
     <div class="ic">🖼️</div>
     <div>
       <h1>Image Tools — All in One</h1>
-      <p><b>Compress · Resize · Convert · Crop · Rotate · Watermark</b> — all in your browser. Nothing is uploaded.</p>
+      <p><b>Compress · Resize · Convert · Crop · Watermark · Colors · EXIF · Border · Split · Frame · SVG</b> — all in your browser. Nothing is uploaded.</p>
     </div>
   </div>
 
@@ -89,6 +99,15 @@ gtag('config', 'G-2G2RG8P4CJ');
     </div>
 
     <div id="editor" style="display:none">
+      <div class="tabs" id="itTabs" style="margin-bottom:14px">
+        <button class="tab active" data-pan="panEdit" type="button">🛠️ Edit</button>
+        <button class="tab" data-pan="panColors" type="button">🎨 Colors</button>
+        <button class="tab" data-pan="panMeta" type="button">🔍 Metadata</button>
+        <button class="tab" data-pan="panBorder" type="button">🖼️ Border</button>
+        <button class="tab" data-pan="panSplit" type="button">✂️ Split</button>
+        <button class="tab" data-pan="panFrame" type="button">🧹 Frame</button>
+      </div>
+      <div id="panEdit">
       <div class="img-preview">
         <div class="crop-wrap" id="cropWrap">
           <img id="prev" alt="preview">
@@ -118,6 +137,18 @@ gtag('config', 'G-2G2RG8P4CJ');
         <div><label>Aspect</label><label class="ff-toggle" style="margin-top:8px"><input type="checkbox" id="lock" checked><span class="tg"></span><span>Lock ratio</span></label></div>
       </div>
 
+      <div class="tf-row mt" id="pctRow">
+        <button type="button" class="tf-btn" data-pct="25">25%</button>
+        <button type="button" class="tf-btn" data-pct="50">50%</button>
+        <button type="button" class="tf-btn" data-pct="75">75%</button>
+        <button type="button" class="tf-btn" data-pct="150">150%</button>
+        <button type="button" class="tf-btn" data-pct="200">200%</button>
+      </div>
+      <div class="row cols-2 mt">
+        <div><label for="targetKb">Target file size (KB) <span class="muted">optional</span></label><input type="number" id="targetKb" min="5" placeholder="e.g. 200"></div>
+        <div><label>&nbsp;</label><button class="btn ghost" id="targetGo" type="button" style="width:100%">🎯 Auto-set quality</button></div>
+      </div>
+
       <details class="ffp-details mt" id="wmBox">
         <summary>💧 Add a watermark</summary>
         <div style="padding:6px 16px 16px">
@@ -141,6 +172,135 @@ gtag('config', 'G-2G2RG8P4CJ');
         <a class="btn" id="dl">📥 Download</a>
         <button class="btn ghost" id="newImg">↺ New image</button>
       </div>
+      </div><!-- /panEdit -->
+
+      <!-- ===== Colors ===== -->
+      <div class="it-pan" id="panColors" style="display:none">
+        <p class="it-hint" style="margin-top:0">Top 10 dominant colours, extracted on your device. Click a swatch to copy its HEX.</p>
+        <div class="palette" id="colGrid"></div>
+        <div class="ff-actions mt">
+          <button class="btn" id="colCopyAll" type="button">📋 Copy all HEX</button>
+          <button class="btn ghost" id="colDl" type="button">⬇ Download palette PNG</button>
+        </div>
+      </div>
+
+      <!-- ===== Metadata ===== -->
+      <div class="it-pan" id="panMeta" style="display:none">
+        <div id="metaBody"></div>
+        <div class="ff-actions mt">
+          <button class="btn" id="metaClean" type="button">🧼 Remove metadata &amp; download</button>
+        </div>
+        <p class="it-meta-note">“Remove metadata” re-saves the photo without EXIF (camera, GPS, date) — safe to share online.</p>
+      </div>
+
+      <!-- ===== Border ===== -->
+      <div class="it-pan" id="panBorder" style="display:none">
+        <div class="tf-row">
+          <button type="button" class="tf-btn active" data-bds="solid">Solid</button>
+          <button type="button" class="tf-btn" data-bds="grad">Gradient</button>
+          <button type="button" class="tf-btn" data-bds="dots">Polka dots</button>
+          <button type="button" class="tf-btn" data-bds="lines">Diagonal lines</button>
+        </div>
+        <div class="row cols-2 mt">
+          <div><label>Thickness <span class="muted" id="bdThV">6%</span></label><input type="range" id="bdTh" min="0" max="25" value="6"></div>
+          <div><label>Corner radius <span class="muted" id="bdRadV">0%</span></label><input type="range" id="bdRad" min="0" max="25" value="0"></div>
+        </div>
+        <div class="row cols-2 mt">
+          <div>
+            <label>Border colour</label>
+            <div class="it-presets">
+              <input type="color" id="bdC1" value="#ffffff">
+              <span class="sw" style="background:#ffffff" data-c="#ffffff"></span>
+              <span class="sw" style="background:#000000" data-c="#000000"></span>
+              <span class="sw" style="background:#9aa2b1" data-c="#9aa2b1"></span>
+              <span class="sw" style="background:#d4af37" data-c="#d4af37"></span>
+              <span class="sw" style="background:#8b5a2b" data-c="#8b5a2b"></span>
+            </div>
+          </div>
+          <div id="bdC2Wrap" style="display:none"><label>Second colour</label><div class="it-presets"><input type="color" id="bdC2" value="#5e8bff"></div></div>
+        </div>
+        <label class="ff-toggle mt"><input type="checkbox" id="bdShadow"><span class="tg"></span><span>Inner shadow</span></label>
+        <div class="it-cvwrap"><canvas id="bdCv"></canvas></div>
+        <div class="ff-actions mt">
+          <button class="btn" id="bdDlJpg" type="button">⬇ Download JPG</button>
+          <button class="btn ghost" id="bdDlPng" type="button">⬇ Download PNG</button>
+        </div>
+      </div>
+
+      <!-- ===== Split ===== -->
+      <div class="it-pan" id="panSplit" style="display:none">
+        <div class="tf-row">
+          <button type="button" class="tf-btn active" data-spm="grid">Grid</button>
+          <button type="button" class="tf-btn" data-spm="rows">Horizontal strips</button>
+          <button type="button" class="tf-btn" data-spm="cols">Vertical strips</button>
+        </div>
+        <div class="row cols-2 mt">
+          <div id="spRowsWrap"><label for="spRows">Rows</label><select id="spRows"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></div>
+          <div id="spColsWrap"><label for="spCols">Columns</label><select id="spCols"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></div>
+        </div>
+        <div class="it-cvwrap"><canvas id="spCv"></canvas></div>
+        <div class="ff-actions mt">
+          <button class="btn" id="spZip" type="button">✂️ Split &amp; download ZIP</button>
+        </div>
+        <p class="it-hint">Perfect for Instagram carousel posts and profile grids — pieces are named <b>piece_row-col.jpg</b>.</p>
+      </div>
+
+      <!-- ===== Frame ===== -->
+      <div class="it-pan" id="panFrame" style="display:none">
+        <div class="tf-row">
+          <button type="button" class="tf-btn active" data-frs="mac">macOS window</button>
+          <button type="button" class="tf-btn" data-frs="browser">Browser</button>
+          <button type="button" class="tf-btn" data-frs="phone">Phone</button>
+          <button type="button" class="tf-btn" data-frs="plain">Just padding</button>
+        </div>
+        <div class="row cols-2 mt">
+          <div>
+            <label>Background</label>
+            <div class="tf-row">
+              <button type="button" class="tf-btn active" data-frb="color">Colour</button>
+              <button type="button" class="tf-btn" data-frb="grad">Gradient</button>
+              <button type="button" class="tf-btn" data-frb="blur">Blurred image</button>
+            </div>
+          </div>
+          <div><label>Padding</label>
+            <div class="tf-row">
+              <button type="button" class="tf-btn" data-frp="4">S</button>
+              <button type="button" class="tf-btn active" data-frp="7">M</button>
+              <button type="button" class="tf-btn" data-frp="10">L</button>
+              <button type="button" class="tf-btn" data-frp="14">XL</button>
+            </div>
+          </div>
+        </div>
+        <div class="it-presets mt" id="frColors">
+          <input type="color" id="frC1" value="#5e8bff"><input type="color" id="frC2" value="#a855f7">
+          <span class="muted" style="font-size:.8rem">background colours</span>
+        </div>
+        <div class="it-cvwrap"><canvas id="frCv"></canvas></div>
+        <div class="ff-actions mt">
+          <button class="btn" id="frDl" type="button">⬇ Download PNG</button>
+        </div>
+        <p class="it-hint">Turn plain screenshots into presentation-ready images for posts, docs and portfolios.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tool-box" style="margin-top:18px">
+    <h2 style="font-size:1.15rem;margin-bottom:4px">🔄 SVG to PNG converter</h2>
+    <p class="it-hint" style="margin-top:0">Turn any SVG vector into a crisp PNG at the exact size you need.</p>
+    <div class="ff-actions mt">
+      <button class="file-btn" id="svgBtn" type="button">📁 Upload SVG</button>
+      <input type="file" id="svgFile" accept=".svg,image/svg+xml" hidden>
+      <span class="fname" id="svgName" style="font-size:.82rem;color:var(--muted)"></span>
+    </div>
+    <div id="svgOpts" style="display:none">
+      <div class="row cols-3 mt">
+        <div><label for="svgW">Width (px)</label><input type="number" id="svgW" min="8" max="8000" value="1000"></div>
+        <div><label for="svgH">Height (px)</label><input type="number" id="svgH" min="8" max="8000"></div>
+        <div><label>Background</label><select id="svgBg"><option value="transparent" selected>Transparent</option><option value="#ffffff">White</option><option value="custom">Custom colour</option></select></div>
+      </div>
+      <div class="it-presets mt" id="svgCWrap" style="display:none"><input type="color" id="svgC" value="#ffffff"><span class="muted" style="font-size:.8rem">background colour</span></div>
+      <div class="it-cvwrap"><canvas id="svgCv" style="background-image:linear-gradient(45deg,rgba(127,127,127,.18) 25%,transparent 25%),linear-gradient(-45deg,rgba(127,127,127,.18) 25%,transparent 25%),linear-gradient(45deg,transparent 75%,rgba(127,127,127,.18) 75%),linear-gradient(-45deg,transparent 75%,rgba(127,127,127,.18) 75%);background-size:18px 18px;background-position:0 0,0 9px,9px -9px,-9px 0"></canvas></div>
+      <div class="ff-actions mt"><button class="btn" id="svgDl" type="button">⬇ Download PNG</button></div>
     </div>
   </div>
 
@@ -148,7 +308,8 @@ gtag('config', 'G-2G2RG8P4CJ');
 
   <article class="article reveal">
     <h2>About this Image Tool</h2>
-    <p>One free tool for everything you need to do with an image: <b>compress</b> it to a smaller size, <b>resize</b> its dimensions, <b>convert</b> between JPG, PNG and WEBP, <b>crop</b> or <b>rotate</b> it, and add a <b>text or logo watermark</b>. Everything happens right inside your browser — your image is never uploaded to any server.</p>
+    <p>One free tool for everything you need to do with an image: <b>compress</b> it (even to an exact target size in KB), <b>resize</b> by pixels or percentage, <b>convert</b> between JPG, PNG, WEBP and AVIF, <b>crop</b> or <b>rotate</b> it, and add a <b>text or logo watermark</b>. Everything happens right inside your browser — your image is never uploaded to any server.</p>
+    <p>The toolbox also includes a <b>colour palette extractor</b> (top 10 dominant colours with HEX codes), an <b>EXIF metadata viewer &amp; remover</b> (see camera, date and GPS info — and strip it before sharing), a <b>border &amp; frame designer</b>, an <b>image splitter</b> for Instagram carousels and grids (ZIP download), <b>screenshot mockup frames</b> (macOS window, browser, phone) and an <b>SVG to PNG converter</b>.</p>
     <h3>How to use it</h3>
     <ol>
       <li>Upload an image (or drag &amp; drop it).</li>
@@ -199,7 +360,7 @@ function afterEdit(){wI.value=base.width;hI.value=base.height;showBase();process
 
 function loadFile(f){
   if(!f||!/^image\//.test(f.type)){alert('Please choose an image file.');return;}
-  origSize=f.size;origName=(f.name||'image').replace(/\.[^.]+$/,'').replace(/\s+/g,'-');
+  origSize=f.size;window.itFile=f;origName=(f.name||'image').replace(/\.[^.]+$/,'').replace(/\s+/g,'-');
   var url=URL.createObjectURL(f),img=new Image();
   img.onload=function(){base=canvasOf(img);URL.revokeObjectURL(url);drop.style.display='none';editor.style.display='';wI.value=base.width;hI.value=base.height;updateFmt();showBase();process();};
   img.onerror=function(){alert('Could not read that image.');};
@@ -217,7 +378,7 @@ function process(){
   c.toBlob(function(blob){
     if(!blob){resultBar.textContent='This browser can\'t export that format — try JPG or PNG.';return;}
     if(curURL)URL.revokeObjectURL(curURL);curURL=URL.createObjectURL(blob);
-    var ext=fmt==='image/jpeg'?'jpg':fmt==='image/webp'?'webp':'png';
+    var ext=fmt==='image/jpeg'?'jpg':fmt==='image/webp'?'webp':fmt==='image/avif'?'avif':'png';
     dl.href=curURL;dl.setAttribute('download',origName+'-xnipertools.'+ext);
     var pct=origSize?Math.round((1-blob.size/origSize)*100):0;
     var diff=pct>0?' · <span class="save">'+pct+'% smaller ✓</span>':(pct<0?' · <span style="color:#f87171">'+(-pct)+'% larger</span>':'');
@@ -305,6 +466,414 @@ qualityI.addEventListener('input',function(){qval.textContent=qualityI.value+'%'
 $('newImg').addEventListener('click',function(){base=null;file.value='';editor.style.display='none';drop.style.display='';showCrop(false);});
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.id==='dl')return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
+</script>
+<script>
+/* ===== Image Tools v2 — Colors, Metadata, Border, Split, Frame, SVG→PNG + Edit upgrades ===== */
+(function(){
+"use strict";
+var PANS=['panEdit','panColors','panMeta','panBorder','panSplit','panFrame'];
+function deb(fn,ms){var t;return function(){clearTimeout(t);t=setTimeout(fn,ms||80)}}
+function dl(blob,name){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},4000)}
+function clampN(v,a,b){return Math.min(b,Math.max(a,v))}
+function roundPath(x,X,Y,W,H,R){R=Math.max(0,Math.min(R,W/2,H/2));x.beginPath();x.moveTo(X+R,Y);x.arcTo(X+W,Y,X+W,Y+H,R);x.arcTo(X+W,Y+H,X,Y+H,R);x.arcTo(X,Y+H,X,Y,R);x.arcTo(X,Y,X+W,Y,R);x.closePath()}
+function addRound(x,X,Y,W,H,R){R=Math.max(0,Math.min(R,W/2,H/2));x.moveTo(X+R,Y);x.arcTo(X+W,Y,X+W,Y+H,R);x.arcTo(X+W,Y+H,X,Y+H,R);x.arcTo(X,Y+H,X,Y,R);x.arcTo(X,Y,X+W,Y,R);x.closePath()}
+
+/* ===== tabs ===== */
+document.querySelectorAll('#itTabs .tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('#itTabs .tab').forEach(function(b){b.classList.remove('active')});
+    t.classList.add('active');
+    PANS.forEach(function(id){$(id).style.display=(id===t.dataset.pan)?'':'none'});
+    if(t.dataset.pan==='panColors')renderPalette();
+    if(t.dataset.pan==='panMeta')renderMeta();
+    if(t.dataset.pan==='panBorder')renderBorder();
+    if(t.dataset.pan==='panSplit')renderSplit();
+    if(t.dataset.pan==='panFrame')renderFrame();
+  });
+});
+$('newImg').addEventListener('click',function(){
+  palCache=null;$('colGrid').innerHTML='';$('metaBody').innerHTML='';
+  document.querySelectorAll('#itTabs .tab').forEach(function(b){b.classList.toggle('active',b.dataset.pan==='panEdit')});
+  PANS.forEach(function(id){$(id).style.display=(id==='panEdit')?'':'none'});
+});
+
+/* ===== Edit upgrades: % resize, target size, AVIF ===== */
+document.querySelectorAll('#pctRow .tf-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    if(!base)return;var pct=(+b.dataset.pct)/100;
+    wI.value=Math.max(1,Math.round(base.width*pct));hI.value=Math.max(1,Math.round(base.height*pct));process();
+  });
+});
+$('targetGo').addEventListener('click',function(){
+  if(!base)return;
+  var kb=parseFloat($('targetKb').value);
+  if(!kb||kb<=0){alert('Enter a target size in KB first.');return}
+  if(fmtI.value==='image/png'){alert('Target size works with JPG, WEBP or AVIF — PNG is lossless. Pick another format first.');return}
+  var target=kb*1024,lo=5,hi=100,bestQ=5,btn=this,tries=0;
+  btn.disabled=true;btn.textContent='Searching…';
+  var w=Math.max(1,parseInt(wI.value)||base.width),h=Math.max(1,parseInt(hI.value)||base.height);
+  var c=document.createElement('canvas');c.width=w;c.height=h;var x=c.getContext('2d');
+  if(fmtI.value==='image/jpeg'){x.fillStyle='#ffffff';x.fillRect(0,0,w,h)}
+  x.imageSmoothingQuality='high';x.drawImage(base,0,0,w,h);drawWatermark(x,w,h);
+  (function step(){
+    if(lo>hi||tries>8){
+      qualityI.value=bestQ;qval.textContent=bestQ+'%';process();
+      btn.disabled=false;btn.innerHTML='🎯 Auto-set quality';return;
+    }
+    var mid=Math.round((lo+hi)/2);tries++;
+    c.toBlob(function(b){
+      if(b&&b.size<=target){bestQ=mid;lo=mid+1}else{hi=mid-1}
+      step();
+    },fmtI.value,mid/100);
+  })();
+});
+(function(){var c=document.createElement('canvas');c.width=c.height=2;c.toBlob(function(b){
+  if(b&&b.type==='image/avif'){var o=document.createElement('option');o.value='image/avif';o.textContent='AVIF (smallest, modern)';fmtI.appendChild(o)}
+},'image/avif',0.8)})();
+
+/* ===== Colors (k-means) ===== */
+var palCache=null;
+function renderPalette(){
+  if(!base){$('colGrid').innerHTML='<p class="it-hint">Upload an image first.</p>';return}
+  var sw=Math.min(base.width,320),sh=Math.max(1,Math.round(base.height*sw/base.width));
+  var s=document.createElement('canvas');s.width=sw;s.height=sh;
+  var sx=s.getContext('2d');sx.drawImage(base,0,0,sw,sh);
+  var d=sx.getImageData(0,0,sw,sh).data,pts=[];
+  for(var i=0;i<d.length;i+=16){if(d[i+3]>127)pts.push([d[i],d[i+1],d[i+2]])}
+  if(!pts.length){$('colGrid').innerHTML='';return}
+  var k=Math.min(10,pts.length),cents=[pts[(Math.random()*pts.length)|0].slice()];
+  while(cents.length<k){
+    var best=null,bd2=-1;
+    for(var t=0;t<300;t++){
+      var q=pts[(Math.random()*pts.length)|0],dm=1e12;
+      for(var ci=0;ci<cents.length;ci++){var cc=cents[ci],dd=(q[0]-cc[0])*(q[0]-cc[0])+(q[1]-cc[1])*(q[1]-cc[1])+(q[2]-cc[2])*(q[2]-cc[2]);if(dd<dm)dm=dd}
+      if(dm>bd2){bd2=dm;best=q}
+    }
+    cents.push(best.slice());
+  }
+  var assign=new Int16Array(pts.length);
+  for(var iter=0;iter<30;iter++){
+    var sums=[],z;for(z=0;z<k;z++)sums.push([0,0,0,0]);
+    var moved=false;
+    for(var pi=0;pi<pts.length;pi++){
+      var p2=pts[pi],bi=0,bdd=1e12;
+      for(var c2=0;c2<k;c2++){var ce=cents[c2],d2=(p2[0]-ce[0])*(p2[0]-ce[0])+(p2[1]-ce[1])*(p2[1]-ce[1])+(p2[2]-ce[2])*(p2[2]-ce[2]);if(d2<bdd){bdd=d2;bi=c2}}
+      if(assign[pi]!==bi){assign[pi]=bi;moved=true}
+      sums[bi][0]+=p2[0];sums[bi][1]+=p2[1];sums[bi][2]+=p2[2];sums[bi][3]++;
+    }
+    for(z=0;z<k;z++){if(sums[z][3]>0)cents[z]=[sums[z][0]/sums[z][3],sums[z][1]/sums[z][3],sums[z][2]/sums[z][3]]}
+    if(!moved)break;
+  }
+  var counts=new Array(k).fill(0);
+  for(var ai=0;ai<assign.length;ai++)counts[assign[ai]]++;
+  var pal=[];
+  for(var ki=0;ki<k;ki++){if(counts[ki])pal.push({r:Math.round(cents[ki][0]),g:Math.round(cents[ki][1]),b:Math.round(cents[ki][2]),pct:counts[ki]/pts.length})}
+  pal.sort(function(a,b){return b.pct-a.pct});
+  palCache=pal;
+  var g=$('colGrid');g.innerHTML='';
+  pal.forEach(function(co){
+    var hex=('#'+[co.r,co.g,co.b].map(function(v){return v.toString(16).padStart(2,'0')}).join('')).toUpperCase();
+    var el=document.createElement('div');el.className='pal-swatch';el.title='rgb('+co.r+', '+co.g+', '+co.b+') — click to copy';
+    el.innerHTML='<div class="clr" style="background:'+hex+'"></div><div class="hx">'+hex+' · '+Math.max(1,Math.round(co.pct*100))+'%</div>';
+    el.addEventListener('click',function(){
+      navigator.clipboard.writeText(hex).then(function(){var hx=el.querySelector('.hx'),o=hx.textContent;hx.textContent='✓ copied';setTimeout(function(){hx.textContent=o},900)});
+    });
+    g.appendChild(el);
+  });
+}
+$('colCopyAll').addEventListener('click',function(){
+  if(!palCache||!palCache.length)return;var btn=this;
+  var s=palCache.map(function(c){return ('#'+[c.r,c.g,c.b].map(function(v){return v.toString(16).padStart(2,'0')}).join('')).toUpperCase()}).join(', ');
+  navigator.clipboard.writeText(s).then(function(){btn.textContent='✓ Copied!';setTimeout(function(){btn.innerHTML='📋 Copy all HEX'},1000)});
+});
+$('colDl').addEventListener('click',function(){
+  if(!palCache||!palCache.length)return;
+  var c=document.createElement('canvas');c.width=800;c.height=140;var x=c.getContext('2d');
+  x.fillStyle='#ffffff';x.fillRect(0,0,800,140);
+  var n=palCache.length,wEach=800/n;
+  palCache.forEach(function(co,i){
+    var hex=('#'+[co.r,co.g,co.b].map(function(v){return v.toString(16).padStart(2,'0')}).join('')).toUpperCase();
+    x.fillStyle=hex;x.fillRect(i*wEach,0,Math.ceil(wEach),100);
+    x.fillStyle='#1a1d26';x.font='600 12px Inter,Arial,sans-serif';x.textAlign='center';
+    x.fillText(hex,i*wEach+wEach/2,122);
+  });
+  c.toBlob(function(b){dl(b,origName+'-palette.png')},'image/png');
+});
+
+/* ===== Metadata (EXIF) ===== */
+var exifP=null;
+function ensureExif(){
+  if(window.EXIF)return Promise.resolve();
+  if(!exifP)exifP=new Promise(function(res,rej){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)});
+  return exifP;
+}
+function gpsDec(arr,ref){if(!arr||arr.length<3)return null;var v=(+arr[0])+(+arr[1])/60+(+arr[2])/3600;if(ref==='S'||ref==='W')v=-v;return Math.round(v*1e6)/1e6}
+function esc(s){return String(s).replace(/[<>&"]/g,function(ch){return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[ch]})}
+function renderMeta(){
+  var body=$('metaBody');
+  if(!window.itFile||!base){body.innerHTML='<p class="it-hint">Upload an image first.</p>';return}
+  body.innerHTML='<p class="it-hint">Reading metadata…</p>';
+  ensureExif().then(function(){
+    var fr2=new FileReader();
+    fr2.onload=function(){
+      var tags={};
+      try{tags=window.EXIF.readFromBinaryFile(fr2.result)||{}}catch(e){tags={}}
+      var rows=[];
+      function add(kk,vv){if(vv!==undefined&&vv!==null&&vv!=='')rows.push([kk,esc(vv)])}
+      add('File name',window.itFile.name);
+      add('File size',fmtSize(window.itFile.size));
+      add('Type',window.itFile.type);
+      add('Dimensions',base.width+' × '+base.height+' px');
+      add('Camera',[tags.Make,tags.Model].filter(Boolean).join(' '));
+      add('Date taken',tags.DateTimeOriginal||tags.DateTime);
+      if(tags.FNumber)add('Aperture','ƒ/'+(+tags.FNumber).toFixed(1));
+      if(tags.ExposureTime){var et=+tags.ExposureTime;add('Exposure',et>=1?et.toFixed(1)+' s':'1/'+Math.round(1/et)+' s')}
+      add('ISO',tags.ISOSpeedRatings);
+      if(tags.FocalLength)add('Focal length',(+tags.FocalLength).toFixed(0)+' mm');
+      if(tags.ColorSpace)add('Color space',tags.ColorSpace===1?'sRGB':tags.ColorSpace);
+      add('Software',tags.Software);
+      var lat=gpsDec(tags.GPSLatitude,tags.GPSLatitudeRef),lng=gpsDec(tags.GPSLongitude,tags.GPSLongitudeRef);
+      var html='<table class="ffp-table">'+rows.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'}).join('')+'</table>';
+      if(lat!==null&&lng!==null){
+        html+='<p class="it-hint">📍 GPS: '+lat+', '+lng+' — <a href="https://maps.google.com/?q='+lat+','+lng+'" target="_blank" rel="noopener" style="color:var(--accent-l);font-weight:600">open in Google Maps ↗</a><br><b style="color:#f59e0b">This photo reveals where it was taken — use “Remove metadata” before sharing it.</b></p>';
+      }
+      if(Object.keys(tags).length<2){
+        html='<p class="it-hint" style="font-size:.95rem;margin-top:0">✅ <b>No EXIF metadata found in this image.</b> Basic file info:</p>'+html;
+      }
+      body.innerHTML=html;
+    };
+    fr2.readAsArrayBuffer(window.itFile);
+  }).catch(function(){body.innerHTML='<p class="it-hint">Could not load the metadata reader — check your internet connection.</p>'});
+}
+$('metaClean').addEventListener('click',function(){
+  if(!base)return;
+  var isPng=window.itFile&&window.itFile.type==='image/png';
+  var c=document.createElement('canvas');c.width=base.width;c.height=base.height;var x=c.getContext('2d');
+  if(!isPng){x.fillStyle='#ffffff';x.fillRect(0,0,c.width,c.height)}
+  x.drawImage(base,0,0);
+  c.toBlob(function(b){dl(b,origName+'-clean.'+(isPng?'png':'jpg'))},isPng?'image/png':'image/jpeg',0.95);
+});
+
+/* ===== Border / Frame around photo ===== */
+var bd={style:'solid',th:6,rad:0,c1:'#ffffff',c2:'#5e8bff',shadow:false};
+document.querySelectorAll('[data-bds]').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('[data-bds]').forEach(function(o){o.classList.remove('active')});
+    b.classList.add('active');bd.style=b.dataset.bds;
+    $('bdC2Wrap').style.display=(bd.style==='solid')?'none':'';
+    renderBorder();
+  });
+});
+$('bdTh').addEventListener('input',function(){bd.th=+this.value;$('bdThV').textContent=this.value+'%';bdDeb()});
+$('bdRad').addEventListener('input',function(){bd.rad=+this.value;$('bdRadV').textContent=this.value+'%';bdDeb()});
+$('bdC1').addEventListener('input',function(){bd.c1=this.value;bdDeb()});
+$('bdC2').addEventListener('input',function(){bd.c2=this.value;bdDeb()});
+$('bdShadow').addEventListener('change',function(){bd.shadow=this.checked;renderBorder()});
+document.querySelectorAll('#panBorder .sw').forEach(function(s){s.addEventListener('click',function(){bd.c1=s.dataset.c;$('bdC1').value=s.dataset.c;renderBorder()})});
+function buildBorder(){
+  if(!base)return null;
+  var minS=Math.min(base.width,base.height);
+  var bw=Math.round(minS*bd.th/100);
+  var R=Math.round(minS*bd.rad/100);
+  var W=base.width+bw*2,H=base.height+bw*2;
+  var c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');
+  if(bd.style==='grad'){var g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,bd.c1);g.addColorStop(1,bd.c2);x.fillStyle=g}
+  else{x.fillStyle=bd.c1}
+  x.fillRect(0,0,W,H);
+  if(bd.style==='dots'&&bw>0){
+    x.fillStyle=bd.c2;var r=Math.max(2,bw*0.16),sp=Math.max(10,bw*0.55);
+    for(var yy=sp/2;yy<H;yy+=sp){for(var xx=sp/2;xx<W;xx+=sp){x.beginPath();x.arc(xx,yy,r,0,6.3);x.fill()}}
+  }
+  if(bd.style==='lines'&&bw>0){
+    x.strokeStyle=bd.c2;x.lineWidth=Math.max(2,bw*0.12);var sp2=Math.max(12,bw*0.5);
+    x.beginPath();for(var dd=-H;dd<W+H;dd+=sp2){x.moveTo(dd,0);x.lineTo(dd+H,H)}x.stroke();
+  }
+  x.save();roundPath(x,bw,bw,base.width,base.height,R);x.clip();
+  x.drawImage(base,bw,bw);
+  if(bd.shadow){
+    x.shadowColor='rgba(0,0,0,.55)';x.shadowBlur=Math.max(14,minS*0.03);x.fillStyle='#000';
+    x.beginPath();x.rect(-W,-H,W*3,H*3);addRound(x,bw,bw,base.width,base.height,R);x.fill('evenodd');
+  }
+  x.restore();
+  return c;
+}
+var bdDeb=deb(renderBorder,90);
+function renderBorder(){
+  if(!base)return;
+  var c=buildBorder();if(!c)return;
+  var cv=$('bdCv');cv.width=c.width;cv.height=c.height;cv.getContext('2d').drawImage(c,0,0);
+}
+$('bdDlJpg').addEventListener('click',function(){var c=buildBorder();if(!c)return;var f=document.createElement('canvas');f.width=c.width;f.height=c.height;var x=f.getContext('2d');x.fillStyle='#ffffff';x.fillRect(0,0,f.width,f.height);x.drawImage(c,0,0);f.toBlob(function(b){dl(b,origName+'-border.jpg')},'image/jpeg',0.93)});
+$('bdDlPng').addEventListener('click',function(){var c=buildBorder();if(!c)return;c.toBlob(function(b){dl(b,origName+'-border.png')},'image/png')});
+
+/* ===== Splitter ===== */
+var sp={mode:'grid'};
+document.querySelectorAll('[data-spm]').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('[data-spm]').forEach(function(o){o.classList.remove('active')});
+    b.classList.add('active');sp.mode=b.dataset.spm;
+    $('spRowsWrap').style.display=(sp.mode==='cols')?'none':'';
+    $('spColsWrap').style.display=(sp.mode==='rows')?'none':'';
+    renderSplit();
+  });
+});
+$('spRows').addEventListener('change',renderSplit);
+$('spCols').addEventListener('change',renderSplit);
+function spGrid(){
+  var r=+$('spRows').value,c=+$('spCols').value;
+  if(sp.mode==='rows')c=1;if(sp.mode==='cols')r=1;
+  return {r:r,c:c};
+}
+function renderSplit(){
+  if(!base)return;
+  var g=spGrid(),cv=$('spCv');
+  cv.width=base.width;cv.height=base.height;
+  var x=cv.getContext('2d');x.drawImage(base,0,0);
+  x.strokeStyle='#5e8bff';x.lineWidth=Math.max(2,base.width/300);x.setLineDash([base.width/60,base.width/90]);
+  for(var i=1;i<g.c;i++){x.beginPath();x.moveTo(base.width*i/g.c,0);x.lineTo(base.width*i/g.c,base.height);x.stroke()}
+  for(var j=1;j<g.r;j++){x.beginPath();x.moveTo(0,base.height*j/g.r);x.lineTo(base.width,base.height*j/g.r);x.stroke()}
+}
+var zipP=null;
+function ensureZip(){
+  if(window.JSZip)return Promise.resolve();
+  if(!zipP)zipP=new Promise(function(res,rej){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)});
+  return zipP;
+}
+$('spZip').addEventListener('click',function(){
+  if(!base)return;
+  var btn=this,g=spGrid();
+  if(g.r*g.c<2){alert('Pick at least 2 pieces (rows × columns).');return}
+  btn.disabled=true;btn.textContent='Splitting…';
+  ensureZip().then(function(){
+    var zip=new window.JSZip();
+    var pw=Math.floor(base.width/g.c),ph=Math.floor(base.height/g.r),jobs=[];
+    for(var r=0;r<g.r;r++){
+      for(var c=0;c<g.c;c++){
+        (function(r,c){
+          jobs.push(new Promise(function(res){
+            var pc=document.createElement('canvas');pc.width=pw;pc.height=ph;
+            var px=pc.getContext('2d');px.fillStyle='#ffffff';px.fillRect(0,0,pw,ph);
+            px.drawImage(base,c*pw,r*ph,pw,ph,0,0,pw,ph);
+            pc.toBlob(function(b){zip.file('piece_'+(r+1)+'-'+(c+1)+'.jpg',b);res()},'image/jpeg',0.92);
+          }));
+        })(r,c);
+      }
+    }
+    return Promise.all(jobs).then(function(){return zip.generateAsync({type:'blob'})});
+  }).then(function(blob){
+    dl(blob,origName+'-split.zip');
+  }).catch(function(){alert('Could not build the ZIP — check your internet (ZIP library loads from a CDN).')})
+  .finally(function(){btn.disabled=false;btn.innerHTML='✂️ Split &amp; download ZIP'});
+});
+
+/* ===== Screenshot Frame ===== */
+var frS={style:'mac',bg:'color',pad:7,c1:'#5e8bff',c2:'#a855f7'};
+document.querySelectorAll('[data-frs]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-frs]').forEach(function(o){o.classList.remove('active')});b.classList.add('active');frS.style=b.dataset.frs;renderFrame()})});
+document.querySelectorAll('[data-frb]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-frb]').forEach(function(o){o.classList.remove('active')});b.classList.add('active');frS.bg=b.dataset.frb;renderFrame()})});
+document.querySelectorAll('[data-frp]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-frp]').forEach(function(o){o.classList.remove('active')});b.classList.add('active');frS.pad=+b.dataset.frp;renderFrame()})});
+$('frC1').addEventListener('input',function(){frS.c1=this.value;frDeb()});
+$('frC2').addEventListener('input',function(){frS.c2=this.value;frDeb()});
+function buildFrame(){
+  if(!base)return null;
+  var iw=base.width,ih=base.height;
+  var pad=Math.round(iw*frS.pad/100);
+  var bar=0,bezel=0;
+  if(frS.style==='mac')bar=Math.max(34,Math.round(iw*0.05));
+  if(frS.style==='browser')bar=Math.max(64,Math.round(iw*0.085));
+  if(frS.style==='phone')bezel=Math.max(12,Math.round(iw*0.028));
+  var winR=(frS.style==='phone')?Math.round(iw*0.10):Math.round(iw*0.018);
+  var winW=iw+bezel*2,winH=ih+bar+bezel*2;
+  var W=winW+pad*2,H=winH+pad*2;
+  var c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');
+  if(frS.bg==='color'){x.fillStyle=frS.c1;x.fillRect(0,0,W,H)}
+  else if(frS.bg==='grad'){var g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,frS.c1);g.addColorStop(1,frS.c2);x.fillStyle=g;x.fillRect(0,0,W,H)}
+  else{
+    var t=document.createElement('canvas');t.width=20;t.height=Math.max(1,Math.round(20*H/W));
+    t.getContext('2d').drawImage(base,0,0,t.width,t.height);
+    x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';
+    x.drawImage(t,0,0,W,H);
+    x.fillStyle='rgba(255,255,255,.10)';x.fillRect(0,0,W,H);
+  }
+  var wx=pad,wy=pad;
+  x.save();x.shadowColor='rgba(0,0,0,.38)';x.shadowBlur=Math.max(18,pad*0.5);x.shadowOffsetY=Math.max(5,pad*0.12);
+  x.fillStyle=(frS.style==='phone')?'#0c0d12':'#e9eaee';
+  roundPath(x,wx,wy,winW,winH,winR);x.fill();
+  x.restore();
+  if(frS.style==='mac'||frS.style==='browser'){
+    x.save();roundPath(x,wx,wy,winW,winH,winR);x.clip();
+    x.fillStyle='#e3e5ea';x.fillRect(wx,wy,winW,bar);
+    var dotR=Math.max(5,bar*(frS.style==='browser'?0.10:0.16));
+    var dy=wy+bar*(frS.style==='browser'?0.27:0.5),dx0=wx+dotR*2.4;
+    var dots=['#ff5f57','#febc2e','#28c840'];
+    for(var di=0;di<3;di++){x.fillStyle=dots[di];x.beginPath();x.arc(dx0+di*dotR*2.9,dy,dotR,0,6.3);x.fill()}
+    if(frS.style==='browser'){
+      var uh=bar*0.34,uy=wy+bar*0.52;
+      x.fillStyle='#ffffff';roundPath(x,wx+bar*0.35,uy,winW-bar*0.7,uh,uh/2);x.fill();
+      x.fillStyle='#8a90a0';x.font='500 '+Math.max(10,Math.round(uh*0.52))+'px Inter,Arial,sans-serif';x.textBaseline='middle';x.textAlign='left';
+      x.fillText('🔒  xnipertools.com',wx+bar*0.35+uh*0.55,uy+uh/2+1);
+    }
+    x.drawImage(base,wx,wy+bar);
+    x.restore();
+  }else if(frS.style==='phone'){
+    x.save();roundPath(x,wx+bezel,wy+bezel,iw,ih,Math.max(8,winR-bezel));x.clip();
+    x.drawImage(base,wx+bezel,wy+bezel);x.restore();
+    var nw=Math.round(iw*0.30),nh=Math.max(10,Math.round(bezel*1.5));
+    x.fillStyle='#0c0d12';roundPath(x,wx+(winW-nw)/2,wy+bezel-2,nw,nh,nh/2);x.fill();
+  }else{
+    x.save();roundPath(x,wx,wy,winW,winH,winR);x.clip();x.drawImage(base,wx,wy);x.restore();
+  }
+  return c;
+}
+var frDeb=deb(renderFrame,90);
+function renderFrame(){
+  if(!base)return;
+  var c=buildFrame();if(!c)return;
+  var cv=$('frCv');cv.width=c.width;cv.height=c.height;cv.getContext('2d').drawImage(c,0,0);
+}
+$('frDl').addEventListener('click',function(){var c=buildFrame();if(!c)return;c.toBlob(function(b){dl(b,origName+'-framed.png')},'image/png')});
+
+/* ===== SVG → PNG ===== */
+var svgImg=null,svgURL='',svgRatio=null,svgBase='svg-image';
+$('svgBtn').addEventListener('click',function(){$('svgFile').click()});
+$('svgFile').addEventListener('change',function(e){
+  var f=e.target.files[0];if(!f)return;
+  if(!/svg/i.test(f.type)&&!/\.svg$/i.test(f.name)){alert('Please choose an SVG file.');return}
+  if(svgURL)URL.revokeObjectURL(svgURL);
+  svgURL=URL.createObjectURL(f);
+  svgBase=(f.name||'svg-image').replace(/\.svg$/i,'').replace(/\s+/g,'-');
+  var im=new Image();
+  im.onload=function(){
+    svgImg=im;
+    var nw=im.naturalWidth||0,nh=im.naturalHeight||0;
+    if(nw>2&&nh>2){svgRatio=nw/nh;$('svgW').value=clampN(nw,64,4000);$('svgH').value=Math.round((+$('svgW').value)/svgRatio)}
+    else{svgRatio=null;$('svgW').value=1000;$('svgH').value=1000}
+    $('svgName').textContent=f.name;
+    $('svgOpts').style.display='';
+    renderSvg();
+  };
+  im.onerror=function(){alert('Could not read that SVG file.')};
+  im.src=svgURL;
+});
+var svgDeb=deb(renderSvg,120);
+$('svgW').addEventListener('input',function(){if(svgRatio){$('svgH').value=Math.max(1,Math.round((parseInt(this.value)||0)/svgRatio))}svgDeb()});
+$('svgH').addEventListener('input',function(){if(svgRatio){$('svgW').value=Math.max(1,Math.round((parseInt(this.value)||0)*svgRatio))}svgDeb()});
+$('svgBg').addEventListener('change',function(){$('svgCWrap').style.display=(this.value==='custom')?'':'none';renderSvg()});
+$('svgC').addEventListener('input',svgDeb);
+function renderSvg(){
+  if(!svgImg)return;
+  var w=clampN(parseInt($('svgW').value)||1000,8,8000),h=clampN(parseInt($('svgH').value)||1000,8,8000);
+  var cv=$('svgCv');cv.width=w;cv.height=h;var x=cv.getContext('2d');
+  x.clearRect(0,0,w,h);
+  var bg=$('svgBg').value;if(bg==='custom')bg=$('svgC').value;
+  if(bg!=='transparent'){x.fillStyle=bg;x.fillRect(0,0,w,h)}
+  try{x.drawImage(svgImg,0,0,w,h)}catch(e){}
+}
+$('svgDl').addEventListener('click',function(){
+  if(!svgImg){alert('Upload an SVG first.');return}
+  renderSvg();
+  $('svgCv').toBlob(function(b){if(b)dl(b,svgBase+'.png')},'image/png');
+});
+})();
 </script>
 <script>(function(){var d=document,r=d.documentElement,b=d.getElementById('themeBtn');function mc(t){var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#f4f6fa':'#0a0a12')}mc(r.getAttribute('data-theme')||'dark');if(b)b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('xt_theme',n)}catch(e){}mc(n)})})();</script>
 </body>
