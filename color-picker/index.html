@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t='dark';try{t=localStorage.getItem('xt_theme')||'dark'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
+<script>(function(){var t='light';try{t=localStorage.getItem('xt_theme')||'light'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ"></script>
 <script>
@@ -262,6 +262,6 @@ setColor('#5e8bff');buildGrad();buildPalette();
 
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){if(this.disabled)return;var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
-<script>(function(){var d=document,r=d.documentElement,b=d.getElementById('themeBtn');function mc(t){var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#f4f6fa':'#0a0a12')}mc(r.getAttribute('data-theme')||'dark');if(b)b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('xt_theme',n)}catch(e){}mc(n)})})();</script>
+<script>(function(){var d=document,r=d.documentElement,b=d.getElementById('themeBtn');function mc(t){var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#f4f6fa':'#0a0a12')}mc(r.getAttribute('data-theme')||'light');if(b)b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('xt_theme',n)}catch(e){}mc(n)})})();</script>
 </body>
 </html>
