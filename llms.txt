@@ -49,6 +49,6 @@ Xnipertools (https://xnipertools.com) is a free web-tools hub. No sign-up, no wa
 ## About
 - [Request a Tool](https://xnipertools.com/request-a-tool/): Suggest a new tool.
 - [Report a Bug](https://xnipertools.com/report-bug/): Report an issue with any tool.
-- [About](https://xnipertools.com/about.html)
-- [Contact](https://xnipertools.com/contact.html)
-- [Privacy Policy](https://xnipertools.com/privacy.html)
+- [About](https://xnipertools.com/about)
+- [Contact](https://xnipertools.com/contact)
+- [Privacy Policy](https://xnipertools.com/privacy)
