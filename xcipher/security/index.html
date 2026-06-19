@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How XCipher keeps your chats private · Security Model</title>
+<meta name="description" content="XCipher's security model in plain language: end-to-end encryption, zero message storage, anonymous by design, and open source so you can verify it yourself.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#070b12">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="canonical" href="https://xnipertools.com/xcipher/security/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="XCipher — Security Model">
+<meta property="og:description" content="End-to-end encryption, zero storage, anonymous by design, open source. Here's exactly how it works.">
+<meta property="og:url" content="https://xnipertools.com/xcipher/security/">
+<meta property="og:image" content="https://xnipertools.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#070b12;--ink2:#0a1019;--panel:#0e1626;--panel2:#111d31;--line:rgba(120,170,255,.12);--line2:rgba(120,170,255,.22);
+  --txt:#e7eefb;--mut:#8ea3c4;--dim:#6c80a3;--mint:#46f3c6;--cyan:#46c6ff;--violet:#9b8cff;--amber:#ffb454;--rose:#ff6b8b;
+  --mono:'JetBrains Mono',ui-monospace,monospace;--disp:'Sora',system-ui,sans-serif;}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(110% 60% at 80% -10%,rgba(70,243,198,.08),transparent 50%),radial-gradient(110% 60% at 0% 0%,rgba(70,150,255,.08),transparent 45%),var(--ink);color:var(--txt);font-family:Inter,sans-serif;line-height:1.6}
+.top{display:flex;align-items:center;gap:10px;padding:16px 20px;max-width:880px;margin:0 auto}
+.top .logo{width:30px;height:30px;display:grid;place-items:center}.top .logo svg{width:30px;height:30px}
+.top .nm{font:700 16px/1 var(--disp)}.top .nm b{color:var(--cyan)}
+.top a{margin-left:auto;color:var(--mut);text-decoration:none;font:600 13px/1 Inter;border:1px solid var(--line2);padding:9px 14px;border-radius:10px}
+.wrap{max-width:760px;margin:0 auto;padding:30px 22px 80px}
+.hero{text-align:center;margin-bottom:48px}
+.kick{font:700 12px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--mint);display:block;margin-bottom:14px}
+h1{font:800 clamp(30px,5vw,46px)/1.08 var(--disp);margin:0 0 16px;letter-spacing:-.02em}
+.lead{font:400 17px/1.6 Inter;color:var(--mut);max-width:560px;margin:0 auto}
+.card{background:linear-gradient(180deg,var(--panel),var(--ink2));border:1px solid var(--line);border-radius:20px;padding:28px;margin-bottom:18px}
+.card h2{font:800 22px/1.2 var(--disp);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+.card h2 .e{font-size:22px}
+.card p{font:400 15px/1.65 Inter;color:var(--mut);margin:0 0 12px}
+.card p b{color:var(--txt);font-weight:600}
+.card p:last-child{margin-bottom:0}
+.flow{display:flex;flex-direction:column;gap:8px;background:var(--ink);border:1px solid var(--line);border-radius:14px;padding:18px;font:500 13px/1.7 var(--mono);margin:8px 0 4px}
+.flow .r{display:flex;gap:10px}.flow .l{color:var(--dim);min-width:80px}.flow .p{color:var(--txt)}.flow .c{color:var(--cyan);word-break:break-all;opacity:.85}.flow .a{color:var(--mint);text-align:center;font-size:11px;letter-spacing:.2em}
+.tbl{width:100%;border-collapse:collapse;margin-top:6px;font-size:13.5px}
+.tbl th,.tbl td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line)}
+.tbl th{font:700 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mint)}
+.tbl td{color:var(--mut);vertical-align:top}.tbl td b{color:var(--txt)}
+.chk{color:var(--mint)}.cross{color:var(--rose)}
+.honest{background:linear-gradient(180deg,rgba(255,180,84,.06),var(--ink2));border:1px solid rgba(255,180,84,.25)}
+.honest h2 .e{filter:saturate(1.2)}
+.osrc{text-align:center;background:linear-gradient(180deg,var(--panel2),var(--ink2));border:1px solid var(--line2)}
+.osrc a{display:inline-flex;align-items:center;gap:9px;margin-top:8px;font:700 14px/1 Inter;color:#04121a;background:linear-gradient(135deg,var(--mint),var(--cyan));padding:13px 22px;border-radius:12px;text-decoration:none}
+.osrc a svg{width:18px;height:18px}
+.back{display:inline-flex;align-items:center;gap:8px;margin-top:30px;color:var(--cyan);text-decoration:none;font:600 14px/1 Inter}
+.foot{text-align:center;color:var(--dim);font:500 12px/1 var(--mono);padding:24px}
+</style>
+</head>
+<body>
+<div class="top">
+  <span class="logo"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="20" y1="6" x2="46" y2="58"><stop offset="0" stop-color="#a6c0ff"/><stop offset="1" stop-color="#5e8bff"/></linearGradient></defs><g transform="rotate(45 32 32)" fill="url(#lg)"><rect x="26" y="5" width="12" height="16" rx="5"/><rect x="29.5" y="21" width="5" height="3"/><rect x="30.5" y="23" width="3" height="25"/><path d="M30 48 H34 L33 55 H31 Z"/></g><g transform="rotate(-45 32 32)" stroke="url(#lg)" stroke-width="4" fill="none" stroke-linecap="round"><path d="M27 9 A7 7 0 1 0 37 9"/><line x1="32" y1="14" x2="32" y2="44"/><circle cx="32" cy="51" r="6"/></g></svg></span>
+  <span class="nm">X<b>Cipher</b></span>
+  <a href="../">← Back</a>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <span class="kick">// security model</span>
+    <h1>We can't read your messages.<br>Here's how we prove it.</h1>
+    <p class="lead">No marketing fluff — this is exactly what happens to your messages, what we store, and how you can check it yourself.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="e">🔒</span> End-to-end encryption</h2>
+    <p>In Temporary and Private rooms, your message is locked <b>inside your browser</b> before it ever leaves your device, using the <b>Web Crypto API (AES-GCM)</b> — the same standard banks and messengers use.</p>
+    <div class="flow">
+      <div class="r"><span class="l">you type</span><span class="p">meet me at 8</span></div>
+      <div class="a">▼ encrypted on your device ▼</div>
+      <div class="r"><span class="l">we relay</span><span class="c">b3F9·a1Kx·77Qp·zE4m·9dLr·X2…</span></div>
+      <div class="a">▼ decrypted on their device ▼</div>
+      <div class="r"><span class="l">they read</span><span class="p">meet me at 8</span></div>
+    </div>
+    <p style="margin-top:14px">The encryption key lives in the <b>room link itself</b> (after the <span style="font-family:var(--mono);color:var(--cyan)">#</span>) and is <b>never sent to our servers</b>. We only ever see scrambled ciphertext we can't unlock.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="e">🗑️</span> We store nothing</h2>
+    <p>Messages are <b>relayed, not saved</b>. They live only in the open browsers of people in the room, then vanish. There's no database of conversations, no chat history, no backups.</p>
+    <p>No accounts. No email. No phone number. Every time you join you get a <b>random alias</b> like <span style="font-family:var(--mono);color:var(--mint)">Tiger_482</span>. Rooms self-destruct on their timer.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="e">🚪</span> What each room actually gives you</h2>
+    <table class="tbl">
+      <tr><th>Room</th><th>Encryption</th><th>Who can join</th></tr>
+      <tr><td><b>Public</b></td><td>Secure transport (HTTPS/WSS) + live moderation</td><td>Anyone — it's an open lounge</td></tr>
+      <tr><td><b>Temporary</b></td><td><span class="chk">End-to-end</span> — server can't read</td><td>Anyone with the link</td></tr>
+      <tr><td><b>Private</b></td><td><span class="chk">End-to-end</span> + password</td><td>Only with link <b>and</b> password</td></tr>
+    </table>
+    <p style="margin-top:14px">Public rooms are open by nature, so we keep them safe with <b>filtering and rate-limits</b> instead of E2EE. True end-to-end encryption is in Temporary and Private rooms, where it actually protects a private conversation.</p>
+  </div>
+
+  <div class="card honest">
+    <h2><span class="e">⚖️</span> Being honest with you</h2>
+    <p>No tool is magic. So you know the limits:</p>
+    <p>• Our servers route traffic, so at the network level your <b>IP address is visible</b> to the infrastructure (we don't store it). For full network anonymity, use a VPN or Tor.</p>
+    <p>• A private room is only as strong as its <b>password</b> — pick a strong one.</p>
+    <p>• Screenshots can't be stopped by any website. Don't share what you wouldn't want re-shared.</p>
+    <p>• Because messages are end-to-end encrypted, <b>we can't moderate private content</b> — that's the trade-off for real privacy. Use the report and block tools, and the room admin's controls.</p>
+  </div>
+
+  <div class="card osrc">
+    <h2 style="justify-content:center"><span class="e">👁️</span> Don't trust us — verify it</h2>
+    <p>The entire client is <b>open source</b>. Read the code, check the encryption, confirm there's no hidden logging. Promises are easy; code is proof.</p>
+    <a href="https://github.com/xniperbuilds" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.8 21.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.4 4.6-4.6 4.9.3.3.6.9.6 1.8v2.7c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg> View source on GitHub</a>
+  </div>
+
+  <a class="back" href="../">← Back to XCipher</a>
+</div>
+<div class="foot">XCipher · part of Xnipertools · encrypted, anonymous, ephemeral</div>
+</body>
+</html>

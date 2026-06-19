@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<title>Private Vault · XCipher</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070b12">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#070b12;--ink2:#0a1019;--panel:#0e1626;--panel2:#111d31;--line:rgba(120,170,255,.12);--line2:rgba(120,170,255,.22);
+  --txt:#e7eefb;--mut:#8ea3c4;--dim:#6c80a3;--mint:#46f3c6;--cyan:#46c6ff;--violet:#9b8cff;--amber:#ffb454;--rose:#ff6b8b;
+  --mono:'JetBrains Mono',ui-monospace,monospace;--disp:'Sora',system-ui,sans-serif;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{background:radial-gradient(120% 90% at 80% -10%,rgba(155,140,255,.1),transparent 50%),radial-gradient(120% 90% at 0% 0%,rgba(70,150,255,.08),transparent 45%),var(--ink);color:var(--txt);font-family:Inter,sans-serif;overflow:hidden}
+.app{display:flex;flex-direction:column;height:100dvh;max-width:780px;margin:0 auto;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(180deg,var(--panel),var(--ink2));border-bottom:1px solid var(--line);z-index:3}
+.bar .logo{width:28px;height:28px;flex:0 0 auto;display:grid;place-items:center}.bar .logo svg{width:28px;height:28px}
+.bar .meta{flex:1;min-width:0}
+.bar .rt{font:700 14.5px/1.1 var(--disp);color:var(--txt);display:flex;align-items:center;gap:7px}
+.bar .crown{font-size:13px}
+.bar .sub{font:500 11px/1.3 var(--mono);color:var(--dim);margin-top:3px;display:flex;gap:9px;flex-wrap:wrap}
+.bar .sub b{color:var(--cyan);font-weight:600}
+.bar .timer{flex:0 0 auto;font:700 11px/1 var(--mono);color:var(--violet);background:rgba(155,140,255,.1);border:1px solid rgba(155,140,255,.3);padding:7px 9px;border-radius:9px;min-width:58px;text-align:center}
+.iconbtn{flex:0 0 auto;width:38px;height:38px;border:1px solid var(--line2);background:rgba(255,255,255,.04);border-radius:10px;cursor:pointer;display:grid;place-items:center;color:var(--txt)}
+.iconbtn svg{width:18px;height:18px}.iconbtn.admin{border-color:rgba(70,243,198,.4);color:var(--mint)}
+.leave{flex:0 0 auto;font:600 12px/1 Inter;color:var(--rose);background:rgba(255,107,139,.08);border:1px solid rgba(255,107,139,.28);padding:9px 11px;border-radius:10px;text-decoration:none}
+.feed{flex:1;overflow-y:auto;padding:18px 14px 8px;display:flex;flex-direction:column;gap:10px}
+.feed::-webkit-scrollbar{width:8px}.feed::-webkit-scrollbar-thumb{background:var(--line2);border-radius:8px}
+.msg{max-width:80%;display:flex;flex-direction:column;gap:3px;position:relative}
+.msg .who{font:600 11px/1 var(--mono);padding-left:2px}
+.msg .who .ad{color:var(--mint)}
+.msg .bub{background:var(--panel);border:1px solid var(--line);padding:9px 13px;border-radius:14px;font:400 14.5px/1.45 Inter;color:var(--txt);overflow-wrap:anywhere}
+.msg .tm{font:500 10px/1 var(--mono);color:var(--dim);padding-left:2px}
+.msg.me{align-self:flex-end;align-items:flex-end}.msg.me .bub{background:linear-gradient(180deg,#1d2a4a,#141f38);border-color:rgba(155,140,255,.35)}.msg.me .who{display:none}
+.msg .del{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;background:var(--rose);color:#fff;border:0;cursor:pointer;font-size:12px;display:none;align-items:center;justify-content:center;line-height:1}
+.msg:hover .del.show{display:flex}
+.sys{align-self:center;font:500 12px/1.4 var(--mono);color:var(--dim);background:rgba(255,255,255,.03);border:1px solid var(--line);padding:6px 12px;border-radius:100px;text-align:center;max-width:90%}
+.sys.join{color:var(--mint)}
+.typing{height:18px;padding:0 18px 4px;font:500 11.5px/1 var(--mono);color:var(--dim)}
+.encnote{font:500 11px/1 var(--mono);color:var(--dim);text-align:center;padding:6px}.encnote b{color:var(--mint)}
+.composer{display:flex;gap:10px;align-items:flex-end;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(0deg,var(--panel),var(--ink2));border-top:1px solid var(--line)}
+.composer textarea{flex:1;resize:none;max-height:120px;background:var(--ink);border:1px solid var(--line2);color:var(--txt);font:400 15px/1.4 Inter;padding:12px 14px;border-radius:14px;outline:none}
+.composer textarea:focus{border-color:var(--mint)}
+.composer .send{flex:0 0 auto;width:46px;height:46px;border:0;border-radius:50%;cursor:pointer;background:linear-gradient(135deg,var(--violet),var(--cyan));display:grid;place-items:center}
+.composer .send:disabled{opacity:.4}.composer .send svg{width:20px;height:20px;color:#04121a}
+/* gate + overlay */
+.overlay{position:fixed;inset:0;background:var(--ink);display:grid;place-items:center;z-index:10;padding:24px;text-align:center;transition:opacity .4s}
+.overlay.hide{opacity:0;pointer-events:none}
+.gate{width:100%;max-width:380px}
+.gate .bigicon{font-size:42px;margin-bottom:12px}
+.gate h2{font:700 22px/1.2 var(--disp);margin:0 0 8px}
+.gate p{font:500 13px/1.5 var(--mono);color:var(--dim);margin:0 0 22px}
+.gate input{width:100%;background:var(--panel);border:1px solid var(--line2);color:var(--txt);font:500 15px/1 Inter;padding:14px;border-radius:12px;outline:none;margin-bottom:12px;text-align:center}
+.gate input:focus{border-color:var(--mint)}
+.gate button{width:100%;border:0;cursor:pointer;font:700 15px/1 Inter;color:#04121a;background:linear-gradient(135deg,var(--mint),var(--cyan));padding:15px;border-radius:12px}
+.gate .ge{color:var(--rose);font:500 12px/1.4 var(--mono);min-height:16px;margin-top:10px}
+.gate .home{display:inline-block;margin-top:18px;color:#04121a;background:linear-gradient(135deg,var(--mint),var(--cyan));padding:12px 20px;border-radius:12px;text-decoration:none;font:600 14px/1 Inter}
+.ring{width:48px;height:48px;border:3px solid var(--line2);border-top-color:var(--mint);border-radius:50%;margin:0 auto 16px;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* admin panel */
+.panel{position:fixed;top:0;right:0;height:100dvh;width:340px;max-width:88vw;background:linear-gradient(180deg,var(--panel2),var(--ink2));border-left:1px solid var(--line2);z-index:20;transform:translateX(105%);transition:transform .3s cubic-bezier(.2,.8,.2,1);overflow-y:auto;padding:22px}
+.panel.open{transform:none}
+.panel h3{font:800 18px/1 var(--disp);margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.panel .px{position:absolute;top:18px;right:18px;background:none;border:0;color:var(--mut);font-size:20px;cursor:pointer}
+.panel .pg{font:500 11px/1 var(--mono);color:var(--dim);margin:0 0 20px}
+.psec{margin-bottom:22px}
+.psec .lbl{font:700 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mint);display:block;margin-bottom:10px}
+.mlist{display:flex;flex-direction:column;gap:7px}
+.mrow{display:flex;align-items:center;gap:9px;background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.mrow .dot{width:8px;height:8px;border-radius:50%;flex:0 0 auto}
+.mrow .nm{flex:1;font:600 12.5px/1 var(--mono);color:var(--txt);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mrow .you{font:500 10px/1 var(--mono);color:var(--dim)}
+.mrow .kick{border:1px solid rgba(255,107,139,.3);background:rgba(255,107,139,.08);color:var(--rose);font:600 11px/1 Inter;padding:6px 9px;border-radius:8px;cursor:pointer}
+.pbtn{width:100%;border:1px solid var(--line2);background:rgba(255,255,255,.04);color:var(--txt);font:600 13px/1 Inter;padding:12px;border-radius:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:8px}
+.pbtn:hover{border-color:var(--mint)}
+.codebox{font:600 14px/1 var(--mono);color:var(--mint);background:var(--ink);border:1px dashed var(--line2);border-radius:10px;padding:11px;text-align:center;margin-top:8px;word-break:break-all}
+.prow{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px 13px;margin-bottom:8px}
+.prow .t{font:600 12.5px/1.3 Inter;color:var(--txt)}
+.prow select{background:var(--panel);border:1px solid var(--line2);color:var(--txt);font:500 12px/1 var(--mono);padding:7px;border-radius:8px}
+.sw{position:relative;width:42px;height:24px;flex:0 0 auto}.sw input{opacity:0;width:0;height:0}
+.sw .sl{position:absolute;inset:0;background:var(--line2);border-radius:100px;cursor:pointer;transition:.2s}
+.sw .sl::before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+.sw input:checked+.sl{background:var(--mint)}.sw input:checked+.sl::before{transform:translateX(18px)}
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:19;opacity:0;pointer-events:none;transition:.3s}
+.backdrop.show{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="bar">
+    <span class="logo"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="20" y1="6" x2="46" y2="58"><stop offset="0" stop-color="#a6c0ff"/><stop offset="1" stop-color="#5e8bff"/></linearGradient></defs><g transform="rotate(45 32 32)" fill="url(#lg)"><rect x="26" y="5" width="12" height="16" rx="5"/><rect x="29.5" y="21" width="5" height="3"/><rect x="30.5" y="23" width="3" height="25"/><path d="M30 48 H34 L33 55 H31 Z"/></g><g transform="rotate(-45 32 32)" stroke="url(#lg)" stroke-width="4" fill="none" stroke-linecap="round"><path d="M27 9 A7 7 0 1 0 37 9"/><line x1="32" y1="14" x2="32" y2="44"/><circle cx="32" cy="51" r="6"/></g></svg></span>
+    <div class="meta">
+      <div class="rt"><span class="crown" id="crown" style="display:none">👑</span><span style="color:var(--violet)">🔒</span> Private Vault</div>
+      <div class="sub"><span>👥 <b id="online">0</b></span><span id="meRow">you are <b id="myAlias" style="color:var(--mint)">…</b></span></div>
+    </div>
+    <span class="timer" id="timer">--</span>
+    <button class="iconbtn admin" id="adminBtn" style="display:none" aria-label="Admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.3 1a7 7 0 0 0-1.7-1l-.3-2.6h-4l-.3 2.6a7 7 0 0 0-1.7 1l-2.3-1-2 3.4 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.5a7 7 0 0 0 .1-1z"/></svg></button>
+    <a class="leave" href="../../">Leave</a>
+  </div>
+  <div class="feed" id="feed"></div>
+  <div class="typing" id="typing"></div>
+  <div class="encnote">🔒 <b>End-to-end encrypted</b> · password-locked · self-destructs on timer</div>
+  <div class="composer">
+    <textarea id="input" rows="1" placeholder="Type a secure message…" maxlength="1000" autocomplete="off"></textarea>
+    <button class="send" id="send" disabled aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+  </div>
+</div>
+
+<!-- admin panel -->
+<div class="backdrop" id="backdrop"></div>
+<div class="panel" id="panel">
+  <button class="px" id="panelX">✕</button>
+  <h3>👑 Admin controls</h3>
+  <p class="pg">You manage this vault.</p>
+  <div class="psec"><span class="lbl">// members <span id="mcount"></span></span><div class="mlist" id="mlist"></div></div>
+  <div class="psec"><span class="lbl">// one-time invite code</span><button class="pbtn" id="genCode">＋ Generate invite code</button><div id="codeOut"></div></div>
+  <div class="psec"><span class="lbl">// security</span>
+    <div class="prow"><span class="t">Allow images &amp; links</span><span class="sw"><input type="checkbox" id="mediaSw"><span class="sl"></span></span></div>
+    <div class="prow"><span class="t">Disappearing messages</span><select id="vanishSel"><option value="0">Off</option><option value="30000">30 sec</option><option value="300000">5 min</option><option value="3600000">1 hour</option></select></div>
+    <button class="pbtn" id="changePw">🔑 Change password</button>
+  </div>
+</div>
+
+<!-- gate / status overlay -->
+<div class="overlay" id="overlay"><div id="ovInner"><div class="ring" id="ring"></div><h2 id="ovTitle">Opening vault…</h2><p id="ovText">verifying the link</p></div></div>
+
+<script>
+var DEV=location.hostname==='localhost'||location.hostname==='127.0.0.1';
+var HTTP=DEV?'http://localhost:8787':'https://xcipher.nazimtariq74074.workers.dev';
+var WSB=DEV?'ws://localhost:8787':'wss://xcipher.nazimtariq74074.workers.dev';
+
+function b64u(buf){var b=new Uint8Array(buf),s='';for(var i=0;i<b.length;i++)s+=String.fromCharCode(b[i]);return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+function ub64(str){str=str.replace(/-/g,'+').replace(/_/g,'/');while(str.length%4)str+='=';var bin=atob(str),b=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)b[i]=bin.charCodeAt(i);return b.buffer;}
+function importKey(kb){return crypto.subtle.importKey('raw',ub64(kb),{name:'AES-GCM'},false,['encrypt','decrypt']);}
+async function encMsg(key,t){var iv=crypto.getRandomValues(new Uint8Array(12));var ct=await crypto.subtle.encrypt({name:'AES-GCM',iv:iv},key,new TextEncoder().encode(t));return b64u(iv.buffer)+'.'+b64u(ct);}
+async function decMsg(key,p){var a=p.split('.');var iv=new Uint8Array(ub64(a[0]));var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:iv},key,ub64(a[1]));return new TextDecoder().decode(pt);}
+async function sha256hex(str){var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));return [].map.call(new Uint8Array(buf),function(b){return('0'+b.toString(16)).slice(-2);}).join('');}
+
+var feed=document.getElementById('feed'),input=document.getElementById('input'),send=document.getElementById('send'),
+    onlineEl=document.getElementById('online'),myAliasEl=document.getElementById('myAlias'),timerEl=document.getElementById('timer'),
+    overlay=document.getElementById('overlay'),ovInner=document.getElementById('ovInner'),ovTitle=document.getElementById('ovTitle'),ovText=document.getElementById('ovText'),
+    typingEl=document.getElementById('typing'),crown=document.getElementById('crown'),adminBtn=document.getElementById('adminBtn');
+
+var ws=null,myId=null,key=null,roomId=null,adminToken=null,isAdmin=false,expiresAt=0,tick=null;
+var settings={allowMedia:false,vanishMs:0};
+var roster={};
+
+function esc(s){return s.replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function time(ts){var d=new Date(ts);return('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);}
+function atBottom(){return feed.scrollHeight-feed.scrollTop-feed.clientHeight<80;}
+function scroll(){feed.scrollTop=feed.scrollHeight;}
+function fmt(ms){if(ms<0)ms=0;var s=Math.floor(ms/1000),d=Math.floor(s/86400),h=Math.floor((s%86400)/3600),m=Math.floor((s%3600)/60);return d>0?d+'d '+h+'h':(h>0?h+'h '+m+'m':m+'m');}
+
+function die(icon,title,text){if(ws){try{ws.close();}catch(e){}}if(tick)clearInterval(tick);ovInner.innerHTML='<div class="bigicon" style="font-size:42px;margin-bottom:10px">'+icon+'</div><h2>'+title+'</h2><p>'+text+'</p><a class="home" href="../../">Back to XCipher</a>';overlay.classList.remove('hide');}
+
+function addMsg(m){
+  var stick=atBottom();
+  var el=document.createElement('div');el.className='msg'+(m.id===myId?' me':'');el.dataset.mid=m.mid||'';
+  var ad=roster[m.id]&&roster[m.id].isAdmin?' <span class="ad">👑</span>':'';
+  el.innerHTML='<span class="who" style="color:'+(m.color||'#8ea3c4')+'">'+esc(m.alias||'?')+ad+'</span><span class="bub">'+esc(m.text)+'</span><span class="tm">'+time(m.ts)+'</span>'+
+    (isAdmin&&m.mid?'<button class="del show" title="Delete">✕</button>':'');
+  if(isAdmin&&m.mid){el.querySelector('.del').addEventListener('click',function(){ws.send(JSON.stringify({type:'admin',action:'delmsg',mid:m.mid}));});}
+  feed.appendChild(el);if(stick)scroll();
+  if(settings.vanishMs>0){setTimeout(function(){el.remove();},settings.vanishMs);}
+}
+function addSys(t,c){var el=document.createElement('div');el.className='sys '+(c||'');el.textContent=t;feed.appendChild(el);if(atBottom())scroll();}
+
+/* ---- roster / admin panel ---- */
+function renderMembers(){
+  var ml=document.getElementById('mlist');ml.innerHTML='';
+  var ids=Object.keys(roster);document.getElementById('mcount').textContent='('+ids.length+')';
+  ids.forEach(function(id){
+    var m=roster[id];var row=document.createElement('div');row.className='mrow';
+    row.innerHTML='<span class="dot" style="background:'+(m.color||'#888')+'"></span><span class="nm">'+esc(m.alias)+(m.isAdmin?' 👑':'')+'</span>'+
+      (id===myId?'<span class="you">you</span>':'<button class="kick">Kick</button>');
+    if(id!==myId){row.querySelector('.kick').addEventListener('click',function(){ws.send(JSON.stringify({type:'admin',action:'kick',target:id}));});}
+    ml.appendChild(row);
+  });
+}
+function openPanel(o){document.getElementById('panel').classList.toggle('open',o);document.getElementById('backdrop').classList.toggle('show',o);if(o)renderMembers();}
+adminBtn.addEventListener('click',function(){openPanel(true);});
+document.getElementById('panelX').addEventListener('click',function(){openPanel(false);});
+document.getElementById('backdrop').addEventListener('click',function(){openPanel(false);});
+document.getElementById('genCode').addEventListener('click',function(){ws.send(JSON.stringify({type:'admin',action:'gencode'}));});
+document.getElementById('mediaSw').addEventListener('change',function(){ws.send(JSON.stringify({type:'admin',action:'settings',allowMedia:this.checked}));});
+document.getElementById('vanishSel').addEventListener('change',function(){ws.send(JSON.stringify({type:'admin',action:'settings',vanishMs:+this.value}));});
+document.getElementById('changePw').addEventListener('click',async function(){var np=prompt('New room password (min 4 chars):');if(!np||np.length<4)return;var h=await sha256hex(np);ws.send(JSON.stringify({type:'admin',action:'setpass',passHash:h}));alert('Password changed. Share the new password with members.');});
+
+/* ---- timer ---- */
+function startTimer(){if(tick)clearInterval(tick);tick=setInterval(function(){var left=expiresAt-Date.now();timerEl.textContent=fmt(left);if(left<=0)die('💨','Vault expired','This private vault reached its lifespan and self-destructed.');},1000);timerEl.textContent=fmt(expiresAt-Date.now());}
+
+/* ---- boot: parse link, then password gate ---- */
+async function boot(){
+  var parts=location.hash.slice(1).split('.');
+  if(parts.length<2||!/^p-[a-z0-9]{12}$/.test(parts[0])){die('🔗','Invalid link','This vault link is broken or incomplete.');return;}
+  roomId=parts[0];
+  try{key=await importKey(parts[1]);}catch(e){die('🔑','Bad key','The encryption key in this link is invalid.');return;}
+  adminToken=null;try{adminToken=localStorage.getItem('xcipher_admin_'+roomId);}catch(e){}
+  var info;
+  try{info=await fetch(HTTP+'/api/priv/info?r='+roomId).then(function(r){return r.json();});}
+  catch(e){die('📡','Server offline','Could not reach the server. Try again shortly.');return;}
+  if(info.expired){die('💨','Vault expired','This vault already self-destructed.');return;}
+  if(!info.ok){die('🚫','Vault not found','This vault doesn’t exist anymore.');return;}
+  expiresAt=info.expiresAt;settings=info.settings||settings;
+  showGate(info.requireInvite);
+}
+
+function showGate(requireInvite){
+  ovInner.innerHTML='<div class="gate"><div class="bigicon" style="font-size:42px;margin-bottom:12px">🔐</div><h2>Enter the vault</h2><p>This room is password-locked.</p>'+
+    '<input type="password" id="gpw" placeholder="Password" autocomplete="current-password">'+
+    (requireInvite?'<input type="text" id="gcode" placeholder="One-time invite code">':'')+
+    '<button id="genter">Enter</button><div class="ge" id="ge"></div></div>';
+  var gpw=document.getElementById('gpw');gpw.focus();
+  document.getElementById('genter').addEventListener('click',doEnter);
+  gpw.addEventListener('keydown',function(e){if(e.key==='Enter')doEnter();});
+}
+async function doEnter(){
+  var ge=document.getElementById('ge');ge.textContent='';
+  var pw=document.getElementById('gpw').value;var codeEl=document.getElementById('gcode');var code=codeEl?codeEl.value.trim():'';
+  if(!pw&&!adminToken){ge.textContent='Enter the password.';return;}
+  document.getElementById('genter').textContent='Entering…';
+  var ph=pw?await sha256hex(pw):'';
+  openWs(ph,code,ge);
+}
+
+function openWs(ph,code,ge){
+  var q='?r='+encodeURIComponent(roomId)+'&ph='+ph+(adminToken?'&admin='+encodeURIComponent(adminToken):'')+(code?'&code='+encodeURIComponent(code):'');
+  ws=new WebSocket(WSB+'/api/priv/ws'+q);
+  var got=false;
+  ws.onmessage=async function(ev){
+    var m;try{m=JSON.parse(ev.data);}catch(e){return;}
+    if(m.type==='welcome'){
+      got=true;myId=m.id;isAdmin=!!m.isAdmin;settings=m.settings||settings;expiresAt=m.expiresAt;
+      myAliasEl.textContent=m.alias;onlineEl.textContent=m.online;
+      roster={};(m.members||[]).forEach(function(x){roster[x.id]=x;});roster[m.id]={id:m.id,alias:m.alias,color:m.color,isAdmin:isAdmin};
+      if(isAdmin){crown.style.display='';adminBtn.style.display='';document.getElementById('meRow').innerHTML='you are <b style="color:var(--mint)">'+esc(m.alias)+'</b> 👑 admin';
+        document.getElementById('mediaSw').checked=!!settings.allowMedia;document.getElementById('vanishSel').value=String(settings.vanishMs||0);}
+      overlay.classList.add('hide');startTimer();addSys('You joined as '+m.alias+(isAdmin?' (admin)':''),'join');
+    }
+    else if(m.type==='chat'){try{var text=await decMsg(key,m.enc);addMsg({id:m.id,alias:m.alias,color:m.color,text:text,ts:m.ts,mid:m.mid});}catch(e){addMsg({id:m.id,alias:m.alias,color:m.color,text:'🔒 [cannot decrypt]',ts:m.ts,mid:m.mid});}}
+    else if(m.type==='presence'){onlineEl.textContent=m.online;}
+    else if(m.type==='join'){roster[m.id]={id:m.id,alias:m.alias,color:m.color,isAdmin:m.isAdmin};addSys(m.alias+' joined','join');if(document.getElementById('panel').classList.contains('open'))renderMembers();}
+    else if(m.type==='left'){if(roster[m.id]){addSys(roster[m.id].alias+' left');delete roster[m.id];if(document.getElementById('panel').classList.contains('open'))renderMembers();}}
+    else if(m.type==='delete'){var el=feed.querySelector('[data-mid="'+m.mid+'"]');if(el)el.remove();}
+    else if(m.type==='settings'){settings=m.settings;addSys('Admin updated room settings');}
+    else if(m.type==='code'){document.getElementById('codeOut').innerHTML='<div class="codebox">'+esc(m.code)+'</div><p style="font:500 10px/1.4 var(--mono);color:var(--dim);margin:6px 0 0">One-time. Share with one member.</p>';}
+    else if(m.type==='kicked'){die('🚪','Removed','The admin removed you from this vault.');}
+    else if(m.type==='sys'){addSys(m.text);}
+    else if(m.type==='typing'){typingEl.textContent=m.alias+' is typing…';clearTimeout(window._th);window._th=setTimeout(function(){typingEl.textContent='';},1500);}
+    else if(m.type==='destroyed'){die('💨','Vault destroyed','This vault self-destructed. Nothing was saved.');}
+  };
+  ws.onclose=function(e){
+    if(!got&&ge){ge.textContent='Wrong password, or the room is full / expired.';document.getElementById('genter').textContent='Enter';}
+  };
+  ws.onerror=function(){};
+}
+
+var lastTyping=0;
+async function sendMsg(){var t=input.value.trim();if(!t||!ws||ws.readyState!==1||!key)return;var p=await encMsg(key,t.slice(0,1000));ws.send(JSON.stringify({type:'chat',enc:p}));input.value='';autosize();send.disabled=true;}
+function autosize(){input.style.height='auto';input.style.height=Math.min(input.scrollHeight,120)+'px';}
+input.addEventListener('input',function(){autosize();send.disabled=!input.value.trim();var now=Date.now();if(ws&&ws.readyState===1&&now-lastTyping>1200){lastTyping=now;ws.send(JSON.stringify({type:'typing'}));}});
+input.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});
+send.addEventListener('click',sendMsg);
+
+boot();
+</script>
+</body>
+</html>

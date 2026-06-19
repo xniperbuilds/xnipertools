@@ -187,6 +187,20 @@ html[data-theme="dark"] .iconbtn .moon{display:block}
 
 /* ===== Hero ===== */
 .hero{position:relative;padding:60px 0 34px}
+/* XCipher — signature feature CTA (top of hero, centered) */
+.xc-hero-cta{display:flex;flex-direction:column;align-items:center;text-align:center;gap:11px;max-width:780px;margin:0 auto 34px;padding:28px 30px;border-radius:24px;
+  background:radial-gradient(120% 130% at 82% -10%,rgba(70,243,198,.18),transparent 55%),radial-gradient(120% 120% at 0% 0%,rgba(70,150,255,.2),transparent 50%),linear-gradient(180deg,#0c1422,#080d16);
+  border:1px solid rgba(70,243,198,.32);box-shadow:0 30px 70px -30px rgba(8,13,22,.75);position:relative;overflow:hidden;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease);animation:rise 1s var(--ease) .15s both}
+.xc-hero-cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.06) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
+.xc-hero-cta:hover{transform:translateY(-4px);box-shadow:0 42px 90px -28px rgba(70,150,255,.42);border-color:rgba(70,243,198,.55)}
+.xc-hero-cta:hover::after{transform:translateX(120%)}
+.xc-hero-cta .xc-badge{position:relative;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#46f3c6;background:rgba(70,243,198,.1);border:1px solid rgba(70,243,198,.32);padding:7px 13px;border-radius:100px}
+.xc-hero-cta .xc-title{position:relative;font-family:var(--display);font-weight:800;font-size:clamp(20px,3.6vw,30px);color:#eaf1ff;letter-spacing:-.01em;line-height:1.1}
+.xc-hero-cta .xc-sub{position:relative;font:400 14px/1.55 var(--body);color:#9fb2d4;max-width:540px}
+.xc-hero-cta .xc-go{position:relative;display:inline-flex;align-items:center;gap:8px;margin-top:5px;font:700 14.5px/1 var(--body);color:#04121a;background:linear-gradient(135deg,#46f3c6,#46c6ff);padding:14px 24px;border-radius:13px;box-shadow:0 12px 28px rgba(70,198,255,.3)}
+.xc-hero-cta .xc-go svg{width:16px;height:16px}
+@media(max-width:600px){.xc-hero-cta{padding:22px 18px;margin-bottom:24px;gap:9px}}
 .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:50px;align-items:center}
 .hero-l{max-width:600px}
 .h-kick{display:inline-flex;align-items:center;gap:9px;margin-bottom:24px;padding:7px 15px;border-radius:30px;background:var(--surface);border:1px solid var(--line-2);box-shadow:0 4px 14px rgba(11,12,16,.05);
@@ -458,6 +472,16 @@ html[data-theme="dark"] footer.ft{border-top-color:var(--panel-line)}
 
 <section class="hero">
   <div class="spotlight" id="heroGlow"></div>
+
+  <div class="wrap">
+    <a class="xc-hero-cta" href="xcipher/" aria-label="Open XCipher — anonymous encrypted chat">
+      <span class="xc-badge">★ New · Our signature</span>
+      <span class="xc-title"><span aria-hidden="true">🔒</span> XCipher — Anonymous Encrypted Chat</span>
+      <span class="xc-sub">No sign-up. End-to-end encrypted. Messages vanish. Public rooms, self-destructing secret links &amp; password-locked private vaults.</span>
+      <span class="xc-go">Open XCipher <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+
   <div class="wrap hero-grid">
     <div class="hero-l">
       <h1>
