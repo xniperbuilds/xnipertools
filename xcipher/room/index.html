@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>Secure Room · XCipher</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#070b12">
@@ -151,6 +151,8 @@ input.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.
 send.addEventListener('click',sendMsg);
 
 boot();
+/* keep the composer above the keyboard / bottom bar on mobile */
+(function(){var a=document.querySelector('.app');function fit(){if(window.visualViewport&&a)a.style.height=window.visualViewport.height+'px';}if(window.visualViewport){visualViewport.addEventListener('resize',fit);visualViewport.addEventListener('scroll',fit);}window.addEventListener('orientationchange',function(){setTimeout(fit,200);});fit();})();
 </script>
 </body>
 </html>
