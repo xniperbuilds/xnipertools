@@ -40,8 +40,8 @@ gtag('config', 'G-2G2RG8P4CJ');
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css?v=20260613">
-<link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="manifest" href="/xcipher/manifest.json">
+<link rel="apple-touch-icon" href="/xcipher/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -242,7 +242,7 @@ gtag('config', 'G-2G2RG8P4CJ');
       </div>
 
       <div class="xc-actions">
-        <button class="xc-ghostbtn" id="xcInstall" hidden>
+        <button class="xc-ghostbtn" id="xcInstall">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 11l4 4 4-4M4 21h16"/></svg>
           Install XCipher app
         </button>
@@ -382,10 +382,18 @@ document.querySelectorAll('.xc-room').forEach(function(b){
   });
 });
 
-/* ---- PWA install ---- */
+/* ---- PWA install (installs as "XCipher", opens /xcipher/) ---- */
 var deferredPrompt=null,ib=document.getElementById('xcInstall');
-window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;if(ib)ib.hidden=false;});
-if(ib)ib.addEventListener('click',async function(){if(!deferredPrompt){showToast('ℹ️ Use your browser menu → <b>Install app</b> / Add to Home Screen.');return;}deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;ib.hidden=true;});
+function isStandalone(){return (window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone===true;}
+window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferredPrompt=e;});
+window.addEventListener('appinstalled',function(){deferredPrompt=null;showToast('✅ <b>XCipher</b> installed — open it from your home screen.');});
+if(ib)ib.addEventListener('click',async function(){
+  if(isStandalone()){showToast('✅ XCipher is already installed — you’re using it right now.');return;}
+  if(deferredPrompt){deferredPrompt.prompt();var c=await deferredPrompt.userChoice;deferredPrompt=null;if(c&&c.outcome==='accepted')showToast('✅ Installing <b>XCipher</b>…');return;}
+  var ua=navigator.userAgent||'';
+  if(/iphone|ipad|ipod/i.test(ua))showToast('📲 Tap the <b>Share</b> button → <b>Add to Home Screen</b> to install XCipher.');
+  else showToast('📲 Open your browser menu (⋮) → <b>Install app</b> / <b>Add to Home screen</b>.');
+});
 
 /* ---- ripple on ghost buttons ---- */
 document.querySelectorAll('.xc-ghostbtn').forEach(b=>b.addEventListener('click',function(e){var r=document.createElement('span');r.className='ripple';var rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.cssText='position:absolute;border-radius:50%;background:rgba(70,243,198,.25);transform:scale(0);animation:rip .6s;pointer-events:none;width:'+dd+'px;height:'+dd+'px;left:'+(e.clientX-rect.left-dd/2)+'px;top:'+(e.clientY-rect.top-dd/2)+'px';this.style.position='relative';this.style.overflow='hidden';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
