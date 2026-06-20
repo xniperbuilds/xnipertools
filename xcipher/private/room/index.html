@@ -213,10 +213,17 @@ function showGate(requireInvite){
   ovInner.innerHTML='<div class="gate"><div class="bigicon" style="font-size:42px;margin-bottom:12px">🔐</div><h2>Enter the vault</h2><p>This room is password-locked.</p>'+
     '<input type="password" id="gpw" placeholder="Password" autocomplete="current-password">'+
     (requireInvite?'<input type="text" id="gcode" placeholder="One-time invite code">':'')+
-    '<button id="genter">Enter</button><div class="ge" id="ge"></div></div>';
+    '<button id="genter">Enter</button><div class="ge" id="ge"></div>'+
+    '<div id="recToggle" style="margin-top:20px;font:600 13px/1 Inter;color:var(--violet);cursor:pointer">👑 Are you the admin? Recover access</div>'+
+    '<div id="recBox" style="display:none;margin-top:14px">'+
+      '<input type="text" id="grec" placeholder="Paste your admin recovery key" autocomplete="off">'+
+      '<button id="grecenter" style="background:linear-gradient(135deg,var(--violet),var(--cyan))">Enter as admin</button>'+
+    '</div></div>';
   var gpw=document.getElementById('gpw');gpw.focus();
   document.getElementById('genter').addEventListener('click',doEnter);
   gpw.addEventListener('keydown',function(e){if(e.key==='Enter')doEnter();});
+  document.getElementById('recToggle').addEventListener('click',function(){var b=document.getElementById('recBox');b.style.display=(b.style.display==='none'?'block':'none');if(b.style.display==='block')document.getElementById('grec').focus();});
+  document.getElementById('grecenter').addEventListener('click',doRecover);
 }
 async function doEnter(){
   var ge=document.getElementById('ge');ge.textContent='';
@@ -225,6 +232,14 @@ async function doEnter(){
   document.getElementById('genter').textContent='Entering…';
   var ph=pw?await sha256hex(pw):'';
   openWs(ph,code,ge);
+}
+function doRecover(){
+  var ge=document.getElementById('ge');ge.textContent='';
+  var rk=document.getElementById('grec').value.trim();
+  if(!rk){ge.textContent='Paste your admin recovery key.';return;}
+  adminToken=rk;                       // saved to localStorage only once the server confirms it's valid (in welcome)
+  document.getElementById('grecenter').textContent='Entering…';
+  openWs('','',ge);
 }
 
 function openWs(ph,code,ge){
@@ -238,6 +253,7 @@ function openWs(ph,code,ge){
       myAliasEl.textContent=m.alias;onlineEl.textContent=m.online;
       roster={};(m.members||[]).forEach(function(x){roster[x.id]=x;});roster[m.id]={id:m.id,alias:m.alias,color:m.color,isAdmin:isAdmin};
       if(isAdmin){crown.style.display='';adminBtn.style.display='';document.getElementById('meRow').innerHTML='you are <b style="color:var(--mint)">'+esc(m.alias)+'</b> 👑 admin';
+        try{if(adminToken)localStorage.setItem('xcipher_admin_'+roomId,adminToken);}catch(e){}
         document.getElementById('mediaSw').checked=!!settings.allowMedia;document.getElementById('vanishSel').value=String(settings.vanishMs||0);}
       overlay.classList.add('hide');startTimer();addSys('You joined as '+m.alias+(isAdmin?' (admin)':''),'join');
     }
@@ -254,7 +270,9 @@ function openWs(ph,code,ge){
     else if(m.type==='destroyed'){die('💨','Vault destroyed','This vault self-destructed. Nothing was saved.');}
   };
   ws.onclose=function(e){
-    if(!got&&ge){ge.textContent='Wrong password, or the room is full / expired.';document.getElementById('genter').textContent='Enter';}
+    if(!got&&ge){ge.textContent='Wrong password or recovery key — or the room is full / expired.';
+      var gb=document.getElementById('genter');if(gb)gb.textContent='Enter';
+      var rb=document.getElementById('grecenter');if(rb)rb.textContent='Enter as admin';}
   };
   ws.onerror=function(){};
 }
