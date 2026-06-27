@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://xnipertools.com/</loc><lastmod>2026-06-19</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://xnipertools.com/xcipher/</loc><lastmod>2026-06-19</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://xnipertools.com/xcipher/security/</loc><lastmod>2026-06-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://xnipertools.com/games/</loc><lastmod>2026-06-07</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://xnipertools.com/school-tools/</loc><lastmod>2026-06-08</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://xnipertools.com/cheat-sheets/</loc><lastmod>2026-06-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://xnipertools.com/weekly-planner/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -34,10 +31,16 @@
   <url><loc>https://xnipertools.com/free-fire-points-calculator/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://xnipertools.com/free-fire-tournament-standings/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://xnipertools.com/age-calculator/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://xnipertools.com/request-a-tool/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://xnipertools.com/report-bug/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://xnipertools.com/about</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://xnipertools.com/contact</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
   <url><loc>https://xnipertools.com/privacy</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://xnipertools.com/terms</loc><lastmod>2026-06-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://xnipertools.com/color-contrast-checker/</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://xnipertools.com/css-gradient-generator/</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://xnipertools.com/meta-tag-generator/</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://xnipertools.com/number-to-words/</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://xnipertools.com/pdf-unlock/</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://xnipertools.com/text-compare/</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://xnipertools.com/tip-calculator/</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://xnipertools.com/zakat-calculator/</loc><lastmod>2026-06-28</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

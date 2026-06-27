@@ -35,7 +35,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 <meta name="twitter:description" content="Count words, characters, reading time and estimated ChatGPT tokens as you type. Free and private.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Counter","url":"https://xnipertools.com/word-counter/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are words counted?","acceptedAnswer":{"@type":"Answer","text":"A word is any sequence of characters separated by spaces or line breaks. The counter updates live as you type or paste text."}},{"@type":"Question","name":"How accurate is the ChatGPT token count?","acceptedAnswer":{"@type":"Answer","text":"It is a close estimate based on roughly 4 characters per token, the rule of thumb used by GPT models. The exact count can vary slightly by language and the actual tokenizer."}},{"@type":"Question","name":"Is my text private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything is processed locally in your browser — your text is never uploaded, stored or shared."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are words counted?","acceptedAnswer":{"@type":"Answer","text":"A word is any sequence of characters separated by spaces or line breaks. The counter updates live as you type or paste text, so the total is always current."}},{"@type":"Question","name":"Does it count characters with and without spaces?","acceptedAnswer":{"@type":"Answer","text":"Yes. You get the total character count and a separate No-spaces count, which is what some forms, SMS limits and academic briefs ask for specifically."}},{"@type":"Question","name":"How is reading and speaking time worked out?","acceptedAnswer":{"@type":"Answer","text":"Reading time is based on about 225 words per minute (average silent reading) and speaking time on about 130 words per minute (a comfortable speech pace). Both are estimates to help you plan an article or script."}},{"@type":"Question","name":"How accurate is the ChatGPT token count?","acceptedAnswer":{"@type":"Answer","text":"It is a close estimate based on roughly 4 characters per token, the rule of thumb used by GPT models. The exact count can vary slightly by language, code and the actual tokenizer."}},{"@type":"Question","name":"Can I check tweet, SEO title and meta description limits?","acceptedAnswer":{"@type":"Answer","text":"Yes. Live badges show your character count against an X post (280), an SEO title (60) and a meta description (160), and they turn red the moment you go over the limit."}},{"@type":"Question","name":"Is my text private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything is processed locally in your browser — your text is never uploaded, stored on a server or shared. Your latest draft is saved only in your own browser."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Word Counter","item":"https://xnipertools.com/word-counter/"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -122,30 +122,37 @@ gtag('config', 'G-2G2RG8P4CJ');
 
   <article class="article reveal">
     <h2>Why use our Word Counter?</h2>
-    <p>This free <b>Word &amp; Character Counter</b> gives you a live breakdown of your text the moment you type or paste it — words, characters (with and without spaces), sentences, paragraphs, reading time and speaking time. It's perfect for students hitting an essay limit, writers and bloggers, social media captions, and anyone polishing an SEO meta title or description.</p>
-    <p>In the AI era it does something extra: it estimates how many <b>ChatGPT / GPT tokens</b> your text uses, so you can keep prompts within a model's limit. It even shows your <b>top keywords</b> for quick density checks, and live counters for an X/Tweet (280), an SEO title (60) and a meta description (160) that turn red when you go over. Everything runs locally — your text never leaves your device.</p>
+    <p>This free <b>Word &amp; Character Counter</b> gives you a live breakdown of your text the moment you type or paste it — words, characters (with and without spaces), sentences, paragraphs, reading time and speaking time. It's built for students hitting a strict essay limit, writers and bloggers shaping an article, social media managers fitting a caption, and anyone polishing an SEO meta title or description down to the last character.</p>
+    <p>In the AI era it does something extra: it estimates how many <b>ChatGPT / GPT tokens</b> your text will use, so you can keep prompts and responses within a model's context limit. It also surfaces your <b>top keywords</b> for a quick density check, and shows live limit badges for an X post (280), an SEO title (60) and a meta description (160) that turn red the moment you go over. Everything runs locally in your browser, so even long or sensitive drafts never leave your device.</p>
     <h3>How to use it</h3>
     <ol>
-      <li>Type or <b>paste</b> your text into the box.</li>
-      <li>Watch the <b>live stats</b> update instantly.</li>
-      <li>Check tokens, reading time or the limit badges as you edit.</li>
-      <li>Tap <b>Copy</b> to grab your text, or <b>Clear</b> to start over.</li>
+      <li>Type directly in the box, or tap <b>Paste</b> to drop in text from your clipboard.</li>
+      <li>Watch every stat — words, characters, sentences, reading time and tokens — update live as you edit.</li>
+      <li>Keep an eye on the limit badges if you're writing for X, a title tag or a meta description.</li>
+      <li>Tap <b>Copy</b> to grab your finished text, or <b>Clear</b> to start fresh. Your draft is saved in the browser, so it's still there if you come back.</li>
     </ol>
-    <h3>How are words counted?</h3>
-    <p>A word is any run of characters separated by spaces or line breaks. The count updates live as you edit.</p>
-    <h3>How accurate is the ChatGPT token count?</h3>
-    <p>It's a close estimate based on roughly 4 characters per token (GPT's rule of thumb). The exact number can vary slightly by language and tokenizer.</p>
+    <h3>Word count vs character count — which one matters?</h3>
+    <p>It depends on where the text is going. Essays, reports and articles are usually measured in <b>words</b>, so a 500-word or 1,000-word target is what you watch. Tweets, SMS messages, ad headlines and meta tags are measured in <b>characters</b>, because the platform caps the exact space available. This counter shows both at once — plus characters without spaces, which some forms and academic briefs ask for specifically — so you never have to guess which limit applies.</p>
+    <h3>How reading and speaking time are calculated</h3>
+    <p>Reading time assumes an average silent reading speed of about 225 words per minute, the typical pace for an adult reading online content. Speaking time uses roughly 130 words per minute, a comfortable pace for a presentation, voiceover or speech. These figures are estimates — fast readers and slow, deliberate speakers will differ — but they're reliable for planning a blog's "5 min read" badge or timing a script to fit a video.</p>
+    <h3>Understanding the AI token estimate</h3>
+    <p>Large language models such as GPT don't read words; they read <b>tokens</b>, short chunks of text that average about four characters in English. This tool estimates tokens using that four-characters-per-token rule, which is close enough to plan around a model's context window or to gauge API cost before you send a prompt. The real number depends on the exact tokenizer and the language — code, rare words and non-English text tokenize differently — so treat it as a confident estimate rather than an exact billing figure.</p>
+    <h3>Tips for hitting a word limit</h3>
+    <p>If you're over a limit, cut filler phrases ("in order to" becomes "to"), drop adverbs that add nothing, and merge short, choppy sentences. If you're under, expand with a concrete example or a supporting detail rather than padding with empty words. The live keyword panel helps you spot a word you've leaned on too heavily — useful both for readable writing and for avoiding keyword stuffing in SEO copy.</p>
     <h3>Is my text private?</h3>
-    <p>Yes — everything is processed locally in your browser and is never uploaded or stored.</p>
+    <p>Yes. Every calculation happens locally in your browser using JavaScript — your text is never uploaded, stored on a server or shared. You can safely paste a private essay, an unpublished article or confidential notes. Your latest draft is kept only in your own browser's local storage, waiting for you next time.</p>
   </article>
 
   <!-- ===== FAQ ===== -->
   <div class="section">
     <div class="sec-head"><div class="ic">❓</div><h2>FAQ</h2></div>
     <div class="xt-faq">
-      <details><summary>How are words counted?</summary><p>A word is any sequence of characters separated by spaces or line breaks. The counter updates live as you type or paste text.</p></details>
-      <details><summary>How accurate is the ChatGPT token count?</summary><p>It is a close estimate based on roughly 4 characters per token, the rule of thumb used by GPT models. The exact count can vary slightly by language and the actual tokenizer.</p></details>
-      <details><summary>Is my text private?</summary><p>Yes. Everything is processed locally in your browser — your text is never uploaded, stored or shared.</p></details>
+      <details><summary>How are words counted?</summary><p>A word is any sequence of characters separated by spaces or line breaks. The counter updates live as you type or paste text, so the total is always current.</p></details>
+      <details><summary>Does it count characters with and without spaces?</summary><p>Yes. You get the total character count and a separate "No spaces" count, which is what some forms, SMS limits and academic briefs ask for specifically.</p></details>
+      <details><summary>How is reading and speaking time worked out?</summary><p>Reading time is based on about 225 words per minute (average silent reading) and speaking time on about 130 words per minute (a comfortable speech pace). Both are estimates to help you plan an article or script.</p></details>
+      <details><summary>How accurate is the ChatGPT token count?</summary><p>It is a close estimate based on roughly 4 characters per token, the rule of thumb used by GPT models. The exact count can vary slightly by language, code and the actual tokenizer.</p></details>
+      <details><summary>Can I check tweet, SEO title and meta description limits?</summary><p>Yes. Live badges show your character count against an X post (280), an SEO title (60) and a meta description (160), and they turn red the moment you go over the limit.</p></details>
+      <details><summary>Is my text private?</summary><p>Yes. Everything is processed locally in your browser — your text is never uploaded, stored on a server or shared. Your latest draft is saved only in your own browser.</p></details>
     </div>
   </div>
 
