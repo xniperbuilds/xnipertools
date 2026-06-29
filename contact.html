@@ -81,7 +81,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 
   <div class="tool-box">
     <p class="muted" style="margin-bottom:18px">Send us a message below — it reaches us by email and we reply to your inbox. You can also write directly to
-      <a href="mailto:xniperbuilds@gmail.com" style="color:#a855f7;font-weight:600">xniperbuilds@gmail.com</a>.</p>
+      <a href="mailto:support@xnipertools.com" style="color:#a855f7;font-weight:600">support@xnipertools.com</a>.</p>
     <form id="contactForm" novalidate>
       <div class="row cols-2">
         <div><label for="cname">Your name</label><input type="text" id="cname" name="name" placeholder="Name" required></div>
@@ -163,8 +163,8 @@ document.getElementById('year').textContent=new Date().getFullYear();
     }).then(function(r){return r.json();}).then(function(d){
       btn.disabled=false;btn.textContent=orig;
       if(d&&d.success){status.style.color='#16a34a';status.textContent='✓ Thanks, '+n+'! Your message has been sent — we usually reply within 1–2 days.';form.reset();}
-      else{status.style.color='#ef4444';status.textContent=(d&&d.message)?d.message:'Couldn\'t send right now. Please email us directly at xniperbuilds@gmail.com.';}
-    }).catch(function(){btn.disabled=false;btn.textContent=orig;status.style.color='#ef4444';status.textContent='Network error — please try again, or email xniperbuilds@gmail.com.';});
+      else{status.style.color='#ef4444';status.textContent=(d&&d.message)?d.message:'Couldn\'t send right now. Please email us directly at support@xnipertools.com.';}
+    }).catch(function(){btn.disabled=false;btn.textContent=orig;status.style.color='#ef4444';status.textContent='Network error — please try again, or email support@xnipertools.com.';});
   });
 })();
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){
