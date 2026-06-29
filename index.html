@@ -526,7 +526,7 @@ document.addEventListener('mousedown',e=>{const a=e.target.closest('[data-rec]')
 document.getElementById('yr').textContent=new Date().getFullYear();
 buildNav();markActive();render();
 
-/* Newsletter (MailerLite JSONP) */
+/* Newsletter (MailerLite — fetch; endpoint returns plain JSON + allows CORS) */
 (function(){
   var subForm=document.getElementById('subForm');if(!subForm)return;
   subForm.addEventListener('submit',function(e){
@@ -534,12 +534,9 @@ buildNav();markActive();render();
     var email=document.getElementById('subEmail').value.trim(),msg=document.getElementById('subMsg'),btn=document.getElementById('subBtn');
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){msg.className='submsg err';msg.textContent='Please enter a valid email address.';return;}
     var orig=btn.textContent;btn.disabled=true;btn.textContent='Subscribing…';msg.className='submsg';msg.textContent='';
-    var done=false,cb='mlSub'+Date.now(),s=document.createElement('script');
-    function cleanup(){try{delete window[cb];}catch(_){window[cb]=undefined;}if(s.parentNode)s.parentNode.removeChild(s);}
-    function finish(d){if(done)return;done=true;cleanup();btn.disabled=false;btn.textContent=orig;if(d&&d.success){msg.className='submsg ok';msg.textContent='Subscribed. Please check your inbox to confirm.';subForm.reset();}else{msg.className='submsg err';msg.textContent='Could not subscribe. Please try again or use another email.';}}
-    window[cb]=function(d){finish(d);};s.onerror=function(){finish(null);};
-    s.src='https://assets.mailerlite.com/jsonp/2396055/forms/189059123229230497/subscribe?callback='+cb+'&fields%5Bemail%5D='+encodeURIComponent(email)+'&ml-submit=1&anticsrf=true';
-    document.body.appendChild(s);setTimeout(function(){finish(null);},12000);
+    function finish(ok){btn.disabled=false;btn.textContent=orig;if(ok){msg.className='submsg ok';msg.textContent='Subscribed. Please check your inbox to confirm.';subForm.reset();}else{msg.className='submsg err';msg.textContent='Could not subscribe. Please try again or use another email.';}}
+    var url='https://assets.mailerlite.com/jsonp/2396055/forms/189059123229230497/subscribe?fields%5Bemail%5D='+encodeURIComponent(email)+'&ml-submit=1&anticsrf=true';
+    fetch(url,{method:'GET'}).then(function(r){return r.json();}).then(function(d){finish(!!(d&&d.success));}).catch(function(){finish(false);});
   });
 })();
 </script>
