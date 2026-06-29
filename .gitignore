@@ -2,6 +2,9 @@
 # graphify local knowledge-graph output (not for public repo)
 graphify-out/
 
+# homepage design drafts — local only, not for public repo
+previews/
+
 # local tooling / dev only — keep out of public repo
 .claude/
 indexnow_submit.py
