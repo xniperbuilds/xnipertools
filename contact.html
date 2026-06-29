@@ -157,14 +157,14 @@ document.getElementById('year').textContent=new Date().getFullYear();
     if(honey){return;} // bot
     if(!n||!m||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){status.style.color='#ef4444';status.textContent='Please add your name, a valid email and a message.';return;}
     var orig=btn.textContent;btn.disabled=true;btn.textContent='Sending…';status.textContent='';
-    fetch('https://formsubmit.co/ajax/xniperbuilds@gmail.com',{
-      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({name:n,email:em,message:m,_subject:'Xnipertools — message from '+(n||'visitor'),_template:'table'})
+    fetch('https://api.web3forms.com/submit',{
+      method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+      body:JSON.stringify({access_key:'a2f7894f-12bf-4f3d-b7c0-3680c257269b',subject:'✉️ Contact form — message from '+(n||'visitor'),from_name:'Xnipertools Contact',name:n,email:em,message:m,page_info:navigator.userAgent})
     }).then(function(r){return r.json();}).then(function(d){
       btn.disabled=false;btn.textContent=orig;
-      if(d&&(d.success===true||d.success==='true')){status.style.color='#16a34a';status.textContent='✓ Thanks! Your message has been sent — we usually reply within 1–2 days.';form.reset();}
-      else{status.style.color='#ef4444';status.textContent='Couldn\'t send right now. Please email us directly at xniperbuilds@gmail.com.';}
-    }).catch(function(){btn.disabled=false;btn.textContent=orig;status.style.color='#ef4444';status.textContent='Couldn\'t send right now. Please email us directly at xniperbuilds@gmail.com.';});
+      if(d&&d.success){status.style.color='#16a34a';status.textContent='✓ Thanks, '+n+'! Your message has been sent — we usually reply within 1–2 days.';form.reset();}
+      else{status.style.color='#ef4444';status.textContent=(d&&d.message)?d.message:'Couldn\'t send right now. Please email us directly at xniperbuilds@gmail.com.';}
+    }).catch(function(){btn.disabled=false;btn.textContent=orig;status.style.color='#ef4444';status.textContent='Network error — please try again, or email xniperbuilds@gmail.com.';});
   });
 })();
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){
