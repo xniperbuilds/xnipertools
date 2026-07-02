@@ -101,7 +101,11 @@ h1{font:800 clamp(30px,5vw,46px)/1.08 var(--disp);margin:0 0 16px;letter-spacing
     <h2><span class="e">⚖️</span> Being honest with you</h2>
     <p>No tool is magic. So you know the limits:</p>
     <p>• Our servers route traffic, so at the network level your <b>IP address is visible</b> to the infrastructure (we don't store it). For full network anonymity, use a VPN or Tor.</p>
-    <p>• A private room is only as strong as its <b>password</b> — pick a strong one.</p>
+    <p>• <b>The link is the real secret.</b> The decryption key lives inside the room link (after the <span style="font-family:var(--mono);color:var(--cyan)">#</span>). Anyone who gets the full link can read the chat, so treat it like a password. For private rooms the password is an extra gate on top.</p>
+    <p>• A private room is only as strong as its <b>password</b> — pick a strong one. Passwords are hashed on your device (PBKDF2) and we rate-limit guessing, but a weak password can still be guessed.</p>
+    <p>• Everyone in a room shares <b>one key</b>. That means the encryption proves a message wasn't read by us — but not <i>which</i> member sent it. There's no per-person identity, so treat aliases as labels, not proof.</p>
+    <p>• “Disappearing messages” and closing a room clear messages from <b>screens</b>, but anyone present could have copied or screenshotted them first. It's best-effort, not a guarantee.</p>
+    <p>• Changing a private room's password only affects <b>new</b> joins — it doesn't re-lock messages people could already read.</p>
     <p>• Screenshots can't be stopped by any website. Don't share what you wouldn't want re-shared.</p>
     <p>• Because messages are end-to-end encrypted, <b>we can't moderate private content</b> — that's the trade-off for real privacy. Use the report and block tools, and the room admin's controls.</p>
   </div>

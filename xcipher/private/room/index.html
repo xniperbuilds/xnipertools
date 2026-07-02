@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src https://xcipher.nazimtariq74074.workers.dev wss://xcipher.nazimtariq74074.workers.dev http://localhost:8787 ws://localhost:8787">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
 <title>Private Vault · XCipher</title>
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#070b12">
@@ -138,14 +140,22 @@ function ub64(str){str=str.replace(/-/g,'+').replace(/_/g,'/');while(str.length%
 function importKey(kb){return crypto.subtle.importKey('raw',ub64(kb),{name:'AES-GCM'},false,['encrypt','decrypt']);}
 async function encMsg(key,t){var iv=crypto.getRandomValues(new Uint8Array(12));var ct=await crypto.subtle.encrypt({name:'AES-GCM',iv:iv},key,new TextEncoder().encode(t));return b64u(iv.buffer)+'.'+b64u(ct);}
 async function decMsg(key,p){var a=p.split('.');var iv=new Uint8Array(ub64(a[0]));var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:iv},key,ub64(a[1]));return new TextDecoder().decode(pt);}
-async function sha256hex(str){var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));return [].map.call(new Uint8Array(buf),function(b){return('0'+b.toString(16)).slice(-2);}).join('');}
+function hex(buf){return [].map.call(new Uint8Array(buf),function(b){return('0'+b.toString(16)).slice(-2);}).join('');}
+function hexToBytes(h){var a=new Uint8Array(h.length/2);for(var i=0;i<a.length;i++)a[i]=parseInt(h.substr(i*2,2),16);return a;}
+// salt present → PBKDF2 (new rooms); empty → legacy bare SHA-256 (rooms made before this update)
+async function derivePassHash(pw,saltHex){
+  if(!saltHex){var b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(pw));return hex(b);}
+  var bk=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),{name:'PBKDF2'},false,['deriveBits']);
+  var bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:hexToBytes(saltHex),iterations:150000,hash:'SHA-256'},bk,256);
+  return hex(bits);
+}
 
 var feed=document.getElementById('feed'),input=document.getElementById('input'),send=document.getElementById('send'),
     onlineEl=document.getElementById('online'),myAliasEl=document.getElementById('myAlias'),timerEl=document.getElementById('timer'),
     overlay=document.getElementById('overlay'),ovInner=document.getElementById('ovInner'),ovTitle=document.getElementById('ovTitle'),ovText=document.getElementById('ovText'),
     typingEl=document.getElementById('typing'),crown=document.getElementById('crown'),adminBtn=document.getElementById('adminBtn');
 
-var ws=null,myId=null,key=null,roomId=null,adminToken=null,isAdmin=false,expiresAt=0,tick=null;
+var ws=null,myId=null,key=null,roomId=null,adminToken=null,isAdmin=false,expiresAt=0,tick=null,passSalt='';
 var settings={allowMedia:false,vanishMs:0};
 var roster={};
 
@@ -188,7 +198,7 @@ document.getElementById('backdrop').addEventListener('click',function(){openPane
 document.getElementById('genCode').addEventListener('click',function(){ws.send(JSON.stringify({type:'admin',action:'gencode'}));});
 document.getElementById('mediaSw').addEventListener('change',function(){ws.send(JSON.stringify({type:'admin',action:'settings',allowMedia:this.checked}));});
 document.getElementById('vanishSel').addEventListener('change',function(){ws.send(JSON.stringify({type:'admin',action:'settings',vanishMs:+this.value}));});
-document.getElementById('changePw').addEventListener('click',async function(){var np=prompt('New room password (min 4 chars):');if(!np||np.length<4)return;var h=await sha256hex(np);ws.send(JSON.stringify({type:'admin',action:'setpass',passHash:h}));alert('Password changed. Share the new password with members.');});
+document.getElementById('changePw').addEventListener('click',async function(){var np=prompt('New room password (min 4 chars):');if(!np||np.length<4)return;var h=await derivePassHash(np,passSalt);ws.send(JSON.stringify({type:'admin',action:'setpass',passHash:h}));alert('Password changed. Share the new password with members.');});
 
 /* ---- timer ---- */
 function startTimer(){if(tick)clearInterval(tick);tick=setInterval(function(){var left=expiresAt-Date.now();timerEl.textContent=fmt(left);if(left<=0)die('💨','Vault expired','This private vault reached its lifespan and self-destructed.');},1000);timerEl.textContent=fmt(expiresAt-Date.now());}
@@ -205,7 +215,7 @@ async function boot(){
   catch(e){die('📡','Server offline','Could not reach the server. Try again shortly.');return;}
   if(info.expired){die('💨','Vault expired','This vault already self-destructed.');return;}
   if(!info.ok){die('🚫','Vault not found','This vault doesn’t exist anymore.');return;}
-  expiresAt=info.expiresAt;settings=info.settings||settings;
+  expiresAt=info.expiresAt;settings=info.settings||settings;passSalt=info.passSalt||'';
   showGate(info.requireInvite);
 }
 
@@ -230,7 +240,7 @@ async function doEnter(){
   var pw=document.getElementById('gpw').value;var codeEl=document.getElementById('gcode');var code=codeEl?codeEl.value.trim():'';
   if(!pw&&!adminToken){ge.textContent='Enter the password.';return;}
   document.getElementById('genter').textContent='Entering…';
-  var ph=pw?await sha256hex(pw):'';
+  var ph=pw?await derivePassHash(pw,passSalt):'';
   openWs(ph,code,ge);
 }
 function doRecover(){
@@ -272,7 +282,9 @@ function openWs(ph,code,ge){
   ws.onclose=function(e){
     if(!got&&ge){ge.textContent='Wrong password or recovery key — or the room is full / expired.';
       var gb=document.getElementById('genter');if(gb)gb.textContent='Enter';
-      var rb=document.getElementById('grecenter');if(rb)rb.textContent='Enter as admin';}
+      var rb=document.getElementById('grecenter');if(rb)rb.textContent='Enter as admin';
+      // discard a wrong typed recovery key so the next password attempt isn't polluted
+      try{adminToken=localStorage.getItem('xcipher_admin_'+roomId);}catch(e){adminToken=null;}}
   };
   ws.onerror=function(){};
 }

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src https://xcipher.nazimtariq74074.workers.dev wss://xcipher.nazimtariq74074.workers.dev http://localhost:8787 ws://localhost:8787">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Create a Private Vault · XCipher</title>
 <meta name="robots" content="noindex, follow">
@@ -91,6 +93,8 @@ input:focus{border-color:var(--mint)}
 
       <div class="field"><label class="toggle"><span class="t">Allow images &amp; links<small>off is safer · you can change it later</small></span><span class="sw"><input type="checkbox" id="media"><span class="sl"></span></span></label></div>
 
+      <div class="field"><label class="toggle"><span class="t">Require one-time invite code<small>members need the password AND a code you generate</small></span><span class="sw"><input type="checkbox" id="reqInvite"><span class="sl"></span></span></label></div>
+
       <button class="btn" id="create"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg> Create vault</button>
       <div class="err" id="err"></div>
       <div class="note">🔒 The encryption key stays in the link. We only store a <b>hash</b> of the password.</div>
@@ -114,7 +118,14 @@ input:focus{border-color:var(--mint)}
 var DEV=location.hostname==='localhost'||location.hostname==='127.0.0.1';
 var HTTP=DEV?'http://localhost:8787':'https://xcipher.nazimtariq74074.workers.dev';
 function b64u(buf){var b=new Uint8Array(buf),s='';for(var i=0;i<b.length;i++)s+=String.fromCharCode(b[i]);return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
-async function sha256hex(str){var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));return [].map.call(new Uint8Array(buf),function(b){return('0'+b.toString(16)).slice(-2);}).join('');}
+function hex(buf){return [].map.call(new Uint8Array(buf),function(b){return('0'+b.toString(16)).slice(-2);}).join('');}
+function hexToBytes(h){var a=new Uint8Array(h.length/2);for(var i=0;i<a.length;i++)a[i]=parseInt(h.substr(i*2,2),16);return a;}
+// PBKDF2(password, salt) → 64-hex. Salted + 150k iterations beats a bare unsalted SHA-256.
+async function derivePassHash(pw,saltHex){
+  var bk=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),{name:'PBKDF2'},false,['deriveBits']);
+  var bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:hexToBytes(saltHex),iterations:150000,hash:'SHA-256'},bk,256);
+  return hex(bits);
+}
 
 var ttl=604800,ttlLabel='7 days';
 document.querySelectorAll('.dur').forEach(function(d){d.addEventListener('click',function(){document.querySelectorAll('.dur').forEach(function(x){x.classList.remove('on');});this.classList.add('on');ttl=+this.dataset.ttl;ttlLabel=this.querySelector('span').textContent;});});
@@ -129,9 +140,10 @@ createBtn.addEventListener('click',async function(){
   if(pw.length<4){err.textContent='Password must be at least 4 characters.';return;}
   createBtn.disabled=true;createBtn.textContent='Creating…';
   try{
-    var passHash=await sha256hex(pw);
+    var passSalt=hex(crypto.getRandomValues(new Uint8Array(16)).buffer);
+    var passHash=await derivePassHash(pw,passSalt);
     var res=await fetch(HTTP+'/api/priv/create',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({passHash:passHash,capacity:+cap.value,ttl:ttl,allowMedia:document.getElementById('media').checked})}).then(function(r){return r.json();});
+      body:JSON.stringify({passHash:passHash,passSalt:passSalt,capacity:+cap.value,ttl:ttl,allowMedia:document.getElementById('media').checked,requireInvite:document.getElementById('reqInvite').checked})}).then(function(r){return r.json();});
     if(!res.room||!res.adminToken)throw new Error('failed');
     try{localStorage.setItem('xcipher_admin_'+res.room,res.adminToken);}catch(e){}
     var raw=crypto.getRandomValues(new Uint8Array(32));
