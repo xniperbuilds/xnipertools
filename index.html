@@ -233,6 +233,11 @@ footer{border-top:1px solid var(--border);background:var(--panel)}
   .tab .t-count{font-size:11px;font-weight:700;color:var(--muted);background:var(--hover);padding:1px 7px;border-radius:999px}
   .tab.active{background:color-mix(in srgb,var(--cc,var(--accent)) 13%,transparent);color:color-mix(in srgb,var(--cc,var(--accent)) 68%,var(--text));border-color:color-mix(in srgb,var(--cc,var(--accent)) 34%,var(--border))}
   .tab.active .t-count{background:color-mix(in srgb,var(--cc,var(--accent)) 18%,transparent);color:inherit}
+  .tabbar::after{content:"";position:absolute;top:0;right:0;bottom:0;width:52px;pointer-events:none;background:linear-gradient(90deg,transparent,var(--bg) 72%);opacity:1;transition:opacity .2s;z-index:2}
+  .tab-hint{position:absolute;right:8px;top:calc(50% + 2px);transform:translateY(-50%);z-index:3;display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);color:var(--muted);font-size:15px;font-weight:800;pointer-events:none;transition:opacity .2s;animation:tabNudge 1.3s ease-in-out infinite}
+  .tabbar.at-end::after,.tabbar.at-end .tab-hint{opacity:0}
+  @keyframes tabNudge{0%,100%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(-50%) translateX(3px)}}
+  @media(prefers-reduced-motion:reduce){.tab-hint{animation:none}}
   .panel-head{position:static}
 }
 @media (max-width:560px){
@@ -272,7 +277,7 @@ footer{border-top:1px solid var(--border);background:var(--panel)}
   <p>Calculators, image, PDF, text, developer tools and more — colour-coded by category. Pick one on the left, or just search.</p>
 </section>
 
-<div class="tabbar"><div class="tabstrip" id="tabstrip"></div></div>
+<div class="tabbar" id="tabbar"><div class="tabstrip" id="tabstrip"></div><span class="tab-hint" aria-hidden="true">›</span></div>
 
 <main class="app" id="tools">
   <aside class="sidebar">
@@ -498,7 +503,7 @@ function render(){
     ptIco.textContent="🔍";ptName.textContent="Search results";
     ptCount.textContent=list.length+(list.length===1?" tool":" tools")+' for "'+search.value.trim()+'"';
   }else{
-    if(activeCat==="Popular"){list=TOOLS.filter(t=>t.pop);cc=CAT_COLOR.Popular;ptIco.textContent="⭐";ptName.textContent="Popular tools";ptCount.textContent="Most-used picks · "+list.length+" tools";}
+    if(activeCat==="Popular"){list=TOOLS.filter(t=>t.pop);const ffi=list.findIndex(t=>t.url==="free-fire-name-generator/");if(ffi>0)list.unshift(list.splice(ffi,1)[0]);cc=CAT_COLOR.Popular;ptIco.textContent="⭐";ptName.textContent="Popular tools";ptCount.textContent="Most-used picks · "+list.length+" tools";}
     else if(activeCat==="All"){list=TOOLS;cc=CAT_COLOR.All;ptIco.textContent="🗂️";ptName.textContent="All tools";ptCount.textContent=TOOLS.length+" tools across "+CATS.length+" categories";}
     else{list=TOOLS.filter(t=>t.cat===activeCat);cc=CAT_COLOR[activeCat];ptIco.textContent=CAT_ICON[activeCat];ptName.textContent=activeCat;ptCount.textContent=list.length+(list.length===1?" tool":" tools");}
   }
@@ -527,6 +532,16 @@ document.addEventListener('mousedown',e=>{const a=e.target.closest('[data-rec]')
 
 document.getElementById('yr').textContent=new Date().getFullYear();
 buildNav();markActive();render();
+
+/* Mobile tab strip: hide swipe hint + right fade once scrolled to the end */
+(function(){
+  var strip=document.getElementById('tabstrip'), bar=document.getElementById('tabbar');
+  if(!strip||!bar)return;
+  function upd(){var end=strip.scrollLeft+strip.clientWidth>=strip.scrollWidth-4;bar.classList.toggle('at-end',end);}
+  strip.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+  upd();
+})();
 
 /* Newsletter (MailerLite — fetch; endpoint returns plain JSON + allows CORS) */
 (function(){
