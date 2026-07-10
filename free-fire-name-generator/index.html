@@ -28,6 +28,21 @@ gtag('config', 'G-2G2RG8P4CJ');
 <style>
 /* light-mode override for the inline-styled blank-box highlight (dark mode untouched) */
 [data-theme="light"] .blank-box{border-color:rgba(45,84,216,.40)!important;box-shadow:inset 0 1px 1px rgba(255,255,255,.6),0 0 0 1px rgba(59,107,239,.16),0 14px 40px rgba(11,15,26,.08)!important}
+/* char-limit chip (JFF rule: styled length vs FF limit, red when over) */
+.ln{font:600 .66rem Inter,sans-serif;color:#25a55c;background:rgba(45,190,110,.12);border:1px solid rgba(45,190,110,.3);padding:1px 7px;border-radius:999px;margin-left:8px;white-space:nowrap;flex:none}
+.ln.bad{color:#e05252;background:rgba(224,82,82,.12);border-color:rgba(224,82,82,.35)}
+.style-item .txt{display:flex;align-items:center;min-width:0}
+.style-item .txt .t{overflow:hidden;text-overflow:ellipsis}
+/* pro-style label */
+.plab{font:600 .64rem Inter,sans-serif;letter-spacing:.4px;text-transform:uppercase;opacity:.55;display:block;margin-bottom:2px}
+/* category chips reuse sep-chip look via sep-row */
+.cat-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+/* symbol category heading */
+.sym-cat{margin-top:16px;font:600 .78rem Inter,sans-serif;letter-spacing:.6px;text-transform:uppercase;opacity:.6}
+/* bio counter */
+#bioCount.bad{color:#e05252}
+.tapname{cursor:pointer}
+.mini-note{font-size:.78rem;opacity:.6;margin-top:8px}
 </style>
 <link rel="canonical" href="https://xnipertools.com/free-fire-name-generator/">
 <meta property="og:type" content="website">
@@ -43,7 +58,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 <meta name="twitter:description" content="Make stylish Free Fire names with fonts, symbols, clan tags & invisible names. Tap to copy. Free.">
 <meta name="twitter:image" content="https://xnipertools.com/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Fire Name Generator","url":"https://xnipertools.com/free-fire-name-generator/","applicationCategory":"GameApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I make an invisible Free Fire name?","acceptedAnswer":{"@type":"Answer","text":"Free Fire removes normal spaces, so a fully invisible name needs a special blank character. Tap Copy Blank Space at the top of the page and paste it as your whole name to appear nameless, or turn on Invisible space to keep working spaces between words in a stylish name."}},{"@type":"Question","name":"Are these stylish names safe to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. They are made from normal Unicode characters and symbols, not hacks or third-party scripts, so they work in Free Fire, PUBG, BGMI, Instagram and most apps without putting your account at risk."}},{"@type":"Question","name":"How do I add a clan tag to my name?","acceptedAnswer":{"@type":"Answer","text":"Type your tag in the Clan / team tag box and choose a tag separator below it — メ, a dot, a bar, a space or none. The tag is joined to your name in every generated style automatically, so your whole squad can share one consistent look."}},{"@type":"Question","name":"Why does my name look different or show empty boxes in-game?","acceptedAnswer":{"@type":"Answer","text":"Some apps and older phones do not include the font for every Unicode character, so a rare style can appear as a blank box. If that happens, pick a more widely supported style such as Bold, Italic or Small Caps, which display correctly on almost every device."}},{"@type":"Question","name":"Is there a character limit for Free Fire names?","acceptedAnswer":{"@type":"Answer","text":"Free Fire caps the name field at a small number of characters, and decorated symbols count toward that limit. This tool keeps your base name short, but always paste the final name into the in-game edit screen to confirm it fits before you save it."}},{"@type":"Question","name":"Do you store the names I create?","acceptedAnswer":{"@type":"Answer","text":"No. The generator runs entirely in your browser, so nothing you type is sent to or saved on a server. Your favourites are stored only on your own device using local storage, and you can clear them any time by removing the saved names."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I make an invisible Free Fire name?","acceptedAnswer":{"@type":"Answer","text":"Free Fire removes normal spaces, so a fully invisible name needs a special blank character. Tap Copy Blank Space at the top of the page and paste it as your whole name to appear nameless, or turn on Invisible space to keep working spaces between words in a stylish name."}},{"@type":"Question","name":"Are these stylish names safe to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. They are made from normal Unicode characters and symbols, not hacks or third-party scripts, so they work in Free Fire, PUBG, BGMI, Instagram and most apps without putting your account at risk."}},{"@type":"Question","name":"How do I add a clan tag to my name?","acceptedAnswer":{"@type":"Answer","text":"Type your tag in the Clan / team tag box and choose a tag separator below it — メ, a dot, a bar, a space or none. The tag is joined to your name in every generated style automatically, so your whole squad can share one consistent look."}},{"@type":"Question","name":"Why does my name look different or show empty boxes in-game?","acceptedAnswer":{"@type":"Answer","text":"Some apps and older phones do not include the font for every Unicode character, so a rare style can appear as a blank box. If that happens, pick a more widely supported style such as Bold, Italic or Small Caps, which display correctly on almost every device."}},{"@type":"Question","name":"Is there a character limit for Free Fire names?","acceptedAnswer":{"@type":"Answer","text":"Free Fire allows up to 12 characters in a nickname, and every decorated symbol counts toward that limit. Each name on this page shows a live counter like 9/12 — green means it fits, red means trim it before pasting into the in-game edit screen."}},{"@type":"Question","name":"How do I change my name in Free Fire?","acceptedAnswer":{"@type":"Answer","text":"Copy a name from this page, then in Free Fire open Profile, tap the edit (pencil) icon next to your nickname and paste the new name. Confirming the change costs 390 diamonds or one Rename Card."}},{"@type":"Question","name":"Can I change my Free Fire name for free?","acceptedAnswer":{"@type":"Answer","text":"Yes, if you have a Rename Card. Free Fire gives Rename Cards through events, the guild token store, elite pass rewards and occasional login events, and using one costs no diamonds at all."}},{"@type":"Question","name":"What is the Free Fire guild name limit?","acceptedAnswer":{"@type":"Answer","text":"Guild names are capped at 12 characters, and stylish symbols count toward that cap. Use our Free Fire guild name generator to create guild names with a live 12-character counter so every result actually fits."}},{"@type":"Question","name":"Do symbols count toward the 12-character limit?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every symbol, bracket and decorated letter counts as at least one character, and some rare glyphs count as two. That is why each result here shows a live length counter, so you know a name fits before you copy it."}},{"@type":"Question","name":"Do you store the names I create?","acceptedAnswer":{"@type":"Answer","text":"No. The generator runs entirely in your browser, so nothing you type is sent to or saved on a server. Your favourites are stored only on your own device using local storage, and you can clear them any time by removing the saved names."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Free Fire Name Generator","item":"https://xnipertools.com/free-fire-name-generator/"}]}</script>
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon-192.png">
@@ -85,7 +100,7 @@ gtag('config', 'G-2G2RG8P4CJ');
     <div class="ic">🔥</div>
     <div>
       <h1>Free Fire Name Generator</h1>
-      <p>Make <b>pro-style FF names</b> — stylish fonts, symbols, clan tags &amp; invisible spaces. Tap to copy.</p>
+      <p>Make <b>pro-style FF names</b> — stylish fonts, symbols, clan tags &amp; invisible spaces. Every name shows a live <b>12-character counter</b>. Tap to copy.</p>
     </div>
   </div>
 
@@ -124,23 +139,88 @@ gtag('config', 'G-2G2RG8P4CJ');
       <button class="btn" id="genBtn">Generate 🔥</button>
       <button class="btn ghost" id="randBtn">🎲 Random name</button>
     </div>
-    <p class="muted" style="font-size:.82rem;margin-top:10px">💡 Tap <b>Generate</b> again for fresh designs every time.</p>
+    <p class="muted" style="font-size:.82rem;margin-top:10px">💡 Tap <b>Generate</b> again for fresh designs. The <b>green/red counter</b> on every name shows if it fits Free Fire's 12-character limit.</p>
     <div class="style-list" id="out"></div>
+  </div>
+
+  <!-- pro player styles -->
+  <div class="tool-box">
+    <h3>👑 Pro player name styles</h3>
+    <p class="muted">Your name in the styles made famous by <b>Raistar, SK Sabir Boss, White444, Badge99</b> and other pro tags — applied to whatever you typed above.</p>
+    <div class="style-list" id="proOut"></div>
   </div>
 
   <!-- font picker -->
   <div class="tool-box">
     <h3>🎨 Pick a specific font</h3>
-    <p class="muted">Choose a font style and copy your name in just that font.</p>
+    <p class="muted">30+ font styles — pick one and copy your name in just that font.</p>
     <select id="fontPick" class="mt"></select>
     <div class="font-result" id="fontResult"></div>
+    <div class="ff-actions mt">
+      <button class="btn ghost" id="cardBtn">🖼️ Download name card (PNG)</button>
+      <button class="btn ghost" id="shareBtn">📤 Share</button>
+    </div>
+    <p class="mini-note">The card uses the last name you copied (or the font above).</p>
+  </div>
+
+  <!-- ready-made names -->
+  <div class="tool-box">
+    <h3>📋 Ready-made FF names — tap to copy</h3>
+    <p class="muted">Copy-ready stylish names by category: names for <b>boys</b>, <b>girls</b>, <b>attitude</b> names, <b>aesthetic</b> names, short names and unique X-names. Tap the name text to send it to the styler above.</p>
+    <div class="cat-row" id="catRow">
+      <button type="button" class="sep-chip active" data-c="boys">Boys</button>
+      <button type="button" class="sep-chip" data-c="girls">Girls</button>
+      <button type="button" class="sep-chip" data-c="attitude">Attitude</button>
+      <button type="button" class="sep-chip" data-c="aes">Aesthetic</button>
+      <button type="button" class="sep-chip" data-c="short">Short</button>
+      <button type="button" class="sep-chip" data-c="x">X-Names</button>
+    </div>
+    <div class="style-list" id="readyOut"></div>
+    <div class="ff-actions mt"><button class="btn ghost" id="moreNames">🎲 More names</button></div>
   </div>
 
   <!-- symbols -->
   <div class="tool-box">
     <h3>🔣 Cool symbols — tap to copy</h3>
-    <p class="muted">Add these to your name, just like the pros — e.g. <b>Xniperメop</b>, <b>⚔Xniper⚔</b>.</p>
-    <div class="sym-grid" id="symGrid"></div>
+    <p class="muted">150+ FF symbols in categories — brackets, wings, crowns, weapons, stars and more. Add them to your name like the pros — e.g. <b>Xniperメop</b>, <b>亗Xniper</b>.</p>
+    <div id="symWrap"></div>
+  </div>
+
+  <!-- guild cta -->
+  <div class="tool-box blank-box" style="border-color:rgba(94,139,255,.4);box-shadow:inset 0 1px 1px rgba(255,255,255,.06),0 0 0 1px rgba(94,139,255,.15),0 18px 50px rgba(0,0,0,.35)">
+    <div>
+      <h3>🛡️ Making a guild?</h3>
+      <p class="muted">Guild names have their own <b>12-character limit</b>. Our guild tool generates stylish guild names that actually fit.</p>
+    </div>
+    <a class="btn" href="../ff-guild-name-generator/">Guild Name Generator →</a>
+  </div>
+
+  <!-- bio generator -->
+  <div class="tool-box">
+    <h3>✍️ FF Bio generator</h3>
+    <p class="muted">Free Fire bios are capped at <b>50 characters</b>. Write yours, style it, or copy a ready-made one — the counter goes red if a styled bio won't fit.</p>
+    <label for="bioIn" style="display:flex;justify-content:space-between;align-items:baseline" class="mt">Write your bio <span class="muted" id="bioCount">0 / 50</span></label>
+    <input type="text" id="bioIn" placeholder="e.g. Booyah is my daily routine" maxlength="50" autocomplete="off">
+    <div class="cat-row" id="bioStyles">
+      <button type="button" class="sep-chip active" data-b="plain">Plain</button>
+      <button type="button" class="sep-chip" data-b="small">ꜱᴍᴀʟʟ ᴄᴀᴘꜱ</button>
+      <button type="button" class="sep-chip" data-b="bold">𝐁𝐨𝐥𝐝</button>
+      <button type="button" class="sep-chip" data-b="italic">𝘐𝘵𝘢𝘭𝘪𝘤</button>
+      <button type="button" class="sep-chip" data-b="script">𝓢𝓬𝓻𝓲𝓹𝓽</button>
+      <button type="button" class="sep-chip" data-b="sup">ᵀⁱⁿʸ ᵗᵒᵖ</button>
+    </div>
+    <div class="font-result" id="bioResult"></div>
+    <h3 class="mt" style="margin-top:22px">💬 Ready bios — all fit the 50 limit</h3>
+    <div class="style-list" id="bioList"></div>
+    <div class="ff-actions mt"><button class="btn ghost" id="moreBios">Show more bios</button></div>
+  </div>
+
+  <!-- pet names -->
+  <div class="tool-box">
+    <h3>🐾 FF Pet name ideas</h3>
+    <p class="muted">Cute and stylish names for your Free Fire pet — same 12-character rule, counter included.</p>
+    <div class="style-list" id="petOut"></div>
+    <div class="ff-actions mt"><button class="btn ghost" id="morePets">🎲 More pet names</button></div>
   </div>
 
   <!-- favorites -->
@@ -162,13 +242,19 @@ gtag('config', 'G-2G2RG8P4CJ');
       <li>Pick a <b>tag separator</b> — メ, a dot, a bar or none — to control how the tag joins your name.</li>
       <li>Turn on <b>Aesthetic</b> for clean, minimal pro-style names, or leave it off for fully decorated designs.</li>
       <li>Tap <b>Generate</b> for a fresh set of styles, or <b>Random name</b> to invent a whole new gamertag.</li>
-      <li>Use <b>Pick a font</b> if you want one exact font (Bold, Script, Fraktur, Small Caps and more).</li>
+      <li>Watch the <b>green/red counter</b> on each result — green means the styled name fits Free Fire's 12-character limit.</li>
       <li>Tap <b>Copy</b> on any style, then paste it into Free Fire → Profile → Edit name. Tap <b>★</b> to save favourites for later.</li>
     </ol>
+    <h3>Pro player name styles — Raistar, SK Sabir Boss, White444</h3>
+    <p>Some of the most-copied name formats in Free Fire come from famous players. Raistar's tiny superscript letters, SK Sabir Boss's ᭄ wing with a BOSS tail, White444's clean small-caps look and Badge99's raised numbers are all ordinary Unicode patterns — and the pro styles section above applies each of those patterns to <i>your</i> name in one tap. It is not about copying a pro's identity; it is about borrowing a look that already reads as "ranked player" and making it yours.</p>
+    <h3>Ready-made names for boys, girls and full squads</h3>
+    <p>If you would rather start from a finished idea, the ready-made section has hundreds of names for boys, names for girls, attitude names like DarkSniper and SilentReaper, soft aesthetic names, ultra-short names that leave room for decorations, and unique X-names in the Xniper style. Every one shows the same live length counter, and tapping the name text sends it up to the styler so you can decorate it with fonts, tags and symbols before copying.</p>
     <h3>Why Free Fire names use special fonts and symbols</h3>
     <p>Free Fire only lets you enter one short name, and it does not offer any built-in font choices. The "stylish" names you see are not a hidden game feature — they are ordinary text drawn from different parts of the Unicode standard. A bold letter, a circled letter and a fraktur letter are simply separate characters that happen to look like styled versions of A to Z. Because the game accepts any valid Unicode text, you can paste these characters straight into the name field and they display correctly. This generator does that mapping for you and wraps the result in popular decorations like ꧁༒, 乡 and ☆彡 so the whole name reads as one design.</p>
     <h3>Making an invisible or blank Free Fire name</h3>
     <p>An invisible name looks like an empty space above a player's character, and it is one of the most requested tricks in Free Fire. It works because the game strips ordinary spaces from names, but accepts a special blank character (U+3164) that is not a normal space. Tap <b>Copy Blank Space</b> at the top of the page and paste it as your entire name to appear nameless, or paste it between words to keep real-looking gaps. If you would rather keep a visible stylish name but still want spacing inside it, turn on the <b>Invisible space</b> toggle — it swaps your spaces for that same blank character so your spaced name survives in-game.</p>
+    <h3>Guild names and bios</h3>
+    <p>Your nickname is only part of the profile. Guild names follow their own 12-character cap — symbols included — so we built a dedicated <a href="../ff-guild-name-generator/">Free Fire guild name generator</a> with the same live counter. And the bio box under your stats takes up to 50 characters, which is exactly what the bio generator above is tuned for: write your own line and style it, or copy one of the ready bios, all pre-checked to fit.</p>
     <h3>Tips for picking a name that fits</h3>
     <p>Keep readability in mind: heavily decorated fonts look great in the lobby but can be hard to read in the fast-moving kill feed, so balance flair with clarity. If you play with a squad, give everyone the same clan tag and separator for a clean, coordinated look. Short, punchy base words usually beat long ones — they leave room for symbols without hitting the 12-character limit. And remember a name can use only a few characters before the game cuts it off, so test by pasting it into the edit screen before you commit. If one design does not feel right, tap Generate again; the pool reshuffles every time, so you rarely see the same set twice.</p>
     <h3>Where else these names work</h3>
@@ -183,15 +269,21 @@ gtag('config', 'G-2G2RG8P4CJ');
       <details><summary>Are these stylish names safe to use?</summary><p>Yes. They are made from normal Unicode characters and symbols, not hacks or third-party scripts, so they work in Free Fire, PUBG, BGMI, Instagram and most apps without putting your account at risk.</p></details>
       <details><summary>How do I add a clan tag to my name?</summary><p>Type your tag in the Clan / team tag box and choose a tag separator below it — メ, a dot, a bar, a space or none. The tag is joined to your name in every generated style automatically, so your whole squad can share one consistent look.</p></details>
       <details><summary>Why does my name look different or show empty boxes in-game?</summary><p>Some apps and older phones do not include the font for every Unicode character, so a rare style can appear as a blank box. If that happens, pick a more widely supported style such as Bold, Italic or Small Caps, which display correctly on almost every device.</p></details>
-      <details><summary>Is there a character limit for Free Fire names?</summary><p>Free Fire caps the name field at a small number of characters, and decorated symbols count toward that limit. This tool keeps your base name short, but always paste the final name into the in-game edit screen to confirm it fits before you save it.</p></details>
+      <details><summary>Is there a character limit for Free Fire names?</summary><p>Free Fire allows up to 12 characters in a nickname, and every decorated symbol counts toward that limit. Each name on this page shows a live counter like 9/12 — green means it fits, red means trim it before pasting into the in-game edit screen.</p></details>
+      <details><summary>How do I change my name in Free Fire?</summary><p>Copy a name from this page, then in Free Fire open Profile, tap the edit (pencil) icon next to your nickname and paste the new name. Confirming the change costs 390 diamonds or one Rename Card.</p></details>
+      <details><summary>Can I change my Free Fire name for free?</summary><p>Yes, if you have a Rename Card. Free Fire gives Rename Cards through events, the guild token store, elite pass rewards and occasional login events, and using one costs no diamonds at all.</p></details>
+      <details><summary>What is the Free Fire guild name limit?</summary><p>Guild names are capped at 12 characters, and stylish symbols count toward that cap. Use our <a href="../ff-guild-name-generator/">Free Fire guild name generator</a> to create guild names with a live 12-character counter so every result actually fits.</p></details>
+      <details><summary>Do symbols count toward the 12-character limit?</summary><p>Yes. Every symbol, bracket and decorated letter counts as at least one character, and some rare glyphs count as two. That is why each result here shows a live length counter, so you know a name fits before you copy it.</p></details>
       <details><summary>Do you store the names I create?</summary><p>No. The generator runs entirely in your browser, so nothing you type is sent to or saved on a server. Your favourites are stored only on your own device using local storage, and you can clear them any time by removing the saved names.</p></details>
     </div>
   </div>
 
   <section class="section">
-    <div class="sec-head"><div class="ic">🎂</div><h2>More tools</h2></div>
+    <div class="sec-head"><div class="ic">🎮</div><h2>More tools</h2></div>
     <div class="grid">
-      <a href="../age-calculator/" class="card"><div class="ico">🎂</div><h3>Age Calculator</h3><p>Your exact age in seconds.</p><span class="go">Open tool →</span></a>
+      <a href="../ff-guild-name-generator/" class="card"><div class="ico">🛡️</div><h3>FF Guild Name Generator</h3><p>Stylish guild names that fit the 12-char limit.</p><span class="go">Open tool →</span></a>
+      <a href="../free-fire-points-calculator/" class="card"><div class="ico">🏆</div><h3>FF Points Calculator</h3><p>Tournament points and a downloadable result.</p><span class="go">Open tool →</span></a>
+      <a href="../free-fire-tournament-standings/" class="card"><div class="ico">🥇</div><h3>FF Tournament Standings</h3><p>Auto-rank teams and export an image.</p><span class="go">Open tool →</span></a>
       <a href="/#tools" class="card"><div class="ico">✨</div><h3>All Tools</h3><p>Browse every free tool.</p><span class="go">Explore →</span></a>
     </div>
   </section>
@@ -204,7 +296,7 @@ gtag('config', 'G-2G2RG8P4CJ');
         <a href="/" class="logo"><span class="x">X</span><span>Xniper<b>tools</b></span></a>
         <p>Free online tools — fast, simple and beautiful. Everything you need, in one place.</p><div class="socials"><a href="https://instagram.com/xniperr" target="_blank" rel="noopener" class="social-ig" aria-label="Follow Xnipertools on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg><span>Follow on Instagram</span></a></div>
       </div>
-      <div class="foot-col"><h4>Tools</h4><a href="../age-calculator/">Age Calculator</a><a href="../free-fire-name-generator/">Free Fire Name</a><a href="/#tools">All Tools</a></div>
+      <div class="foot-col"><h4>Tools</h4><a href="../free-fire-name-generator/">Free Fire Name</a><a href="../ff-guild-name-generator/">FF Guild Name</a><a href="../age-calculator/">Age Calculator</a><a href="/#tools">All Tools</a></div>
       <div class="foot-col"><h4>Company</h4><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a><a href="/report-bug/">Report a Bug</a></div>
     </div>
     <div class="foot-bottom">© <span id="year">2026</span> Xnipertools · All rights reserved.</div>
@@ -218,40 +310,59 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-/* ---- unicode maps ---- */
-const DS={A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕁',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ',a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫'};
-const SC={a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'ꜱ',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'};
-const CD={'0':'⓪','1':'①','2':'②','3':'③','4':'④','5':'⑤','6':'⑥','7':'⑦','8':'⑧','9':'⑨'};
-function style(str,o){
+/* ---- style engine (ported from the JFF engine — FF limits: nick 12, guild 12, bio 50, code-point counted) ---- */
+const cps=s=>[...s].length;
+function offMap(str,o){
   let r='';
   for(const ch of str){
-    const lc=ch.toLowerCase();
-    if(o.map&&o.map[ch]!==undefined){r+=o.map[ch];continue;}
-    if(o.smallcaps&&SC[lc]!==undefined){r+=SC[lc];continue;}
-    if(o.dstruck&&DS[ch]!==undefined){r+=DS[ch];continue;}
-    if(o.circ&&CD[ch]!==undefined){r+=CD[ch];continue;}
-    const c=ch.charCodeAt(0);
-    if(o.U&&c>=65&&c<=90)r+=String.fromCodePoint(o.U+(c-65));
-    else if(o.L&&c>=97&&c<=122)r+=String.fromCodePoint(o.L+(c-97));
-    else if(o.D&&c>=48&&c<=57)r+=String.fromCodePoint(o.D+(c-48));
-    else r+=ch;
+    const c=ch.codePointAt(0);
+    if(o.map&&o.map[ch]!==undefined){r+=o.map[ch];continue}
+    if(o.lmap&&o.lmap[ch.toLowerCase()]!==undefined){r+=o.lmap[ch.toLowerCase()];continue}
+    if(o.U&&c>=65&&c<=90){r+=String.fromCodePoint(o.U+c-65);continue}
+    if(o.L&&c>=97&&c<=122){r+=String.fromCodePoint(o.L+c-97);continue}
+    if(o.D&&c>=48&&c<=57){r+=String.fromCodePoint(o.D+c-48);continue}
+    r+=ch;
   }
   return r;
 }
+const SC={a:'ᴀ',b:'ʙ',c:'ᴄ',d:'ᴅ',e:'ᴇ',f:'ꜰ',g:'ɢ',h:'ʜ',i:'ɪ',j:'ᴊ',k:'ᴋ',l:'ʟ',m:'ᴍ',n:'ɴ',o:'ᴏ',p:'ᴘ',q:'ǫ',r:'ʀ',s:'ꜱ',t:'ᴛ',u:'ᴜ',v:'ᴠ',w:'ᴡ',x:'x',y:'ʏ',z:'ᴢ'};
+const DS={A:'𝔸',B:'𝔹',C:'ℂ',D:'𝔻',E:'𝔼',F:'𝔽',G:'𝔾',H:'ℍ',I:'𝕀',J:'𝕁',K:'𝕂',L:'𝕃',M:'𝕄',N:'ℕ',O:'𝕆',P:'ℙ',Q:'ℚ',R:'ℝ',S:'𝕊',T:'𝕋',U:'𝕌',V:'𝕍',W:'𝕎',X:'𝕏',Y:'𝕐',Z:'ℤ',a:'𝕒',b:'𝕓',c:'𝕔',d:'𝕕',e:'𝕖',f:'𝕗',g:'𝕘',h:'𝕙',i:'𝕚',j:'𝕛',k:'𝕜',l:'𝕝',m:'𝕞',n:'𝕟',o:'𝕠',p:'𝕡',q:'𝕢',r:'𝕣',s:'𝕤',t:'𝕥',u:'𝕦',v:'𝕧',w:'𝕨',x:'𝕩',y:'𝕪',z:'𝕫'};
+const SUP={A:'ᴬ',B:'ᴮ',C:'ᶜ',D:'ᴰ',E:'ᴱ',F:'ᶠ',G:'ᴳ',H:'ᴴ',I:'ᴵ',J:'ᴶ',K:'ᴷ',L:'ᴸ',M:'ᴹ',N:'ᴺ',O:'ᴼ',P:'ᴾ',Q:'Q',R:'ᴿ',S:'ˢ',T:'ᵀ',U:'ᵁ',V:'ⱽ',W:'ᵂ',X:'ˣ',Y:'ʸ',Z:'ᶻ',a:'ᵃ',b:'ᵇ',c:'ᶜ',d:'ᵈ',e:'ᵉ',f:'ᶠ',g:'ᵍ',h:'ʰ',i:'ⁱ',j:'ʲ',k:'ᵏ',l:'ˡ',m:'ᵐ',n:'ⁿ',o:'ᵒ',p:'ᵖ',q:'q',r:'ʳ',s:'ˢ',t:'ᵗ',u:'ᵘ',v:'ᵛ',w:'ʷ',x:'ˣ',y:'ʸ',z:'ᶻ','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};
+const UPD={a:'ɐ',b:'q',c:'ɔ',d:'p',e:'ǝ',f:'ɟ',g:'ƃ',h:'ɥ',i:'ᴉ',j:'ɾ',k:'ʞ',l:'l',m:'ɯ',n:'u',o:'o',p:'d',q:'b',r:'ɹ',s:'s',t:'ʇ',u:'n',v:'ʌ',w:'ʍ',x:'x',y:'ʎ',z:'z'};
+const AZmap=(str)=>{const o={};const A=[...str];for(let i=0;i<26;i++)o[String.fromCharCode(65+i)]=A[i]||String.fromCharCode(65+i);return o};
+const ASIAN=AZmap('卂乃匚ᗪ乇千Ꮆ卄丨ﾌҜㄥ爪几ㄖ卩Ɋ尺丂ㄒㄩᐯ山乂ㄚ乙');
+const CURR=AZmap('₳฿₵ĐɆ₣₲ⱧƗJ₭Ⱡ₥₦Ø₱QⱤ₴₮ɄV₩ӾɎⱫ');
+const SYL=AZmap('ᗩᗷᑕᗪᗴᖴǤᕼIᒍKᒪᗰᑎᗝᑭᑫᖇᔕTᑌᐯᗯ᙭Yᘔ');
+const FCYR=AZmap('ДБСDЕFGНІЈКLМИОРQЯЅТЦVШХУZ');
 const F={
-  bold:n=>style(n,{U:0x1D400,L:0x1D41A,D:0x1D7CE}),
-  italic:n=>style(n,{U:0x1D434,L:0x1D44E,map:{h:'ℎ'}}),
-  bitalic:n=>style(n,{U:0x1D468,L:0x1D482}),
-  script:n=>style(n,{U:0x1D4D0,L:0x1D4EA}),
-  fraktur:n=>style(n,{U:0x1D56C,L:0x1D586}),
-  dstruck:n=>style(n,{dstruck:1}),
-  mono:n=>style(n,{U:0x1D670,L:0x1D68A,D:0x1D7F6}),
-  full:n=>style(n,{U:0xFF21,L:0xFF41,D:0xFF10}),
-  smallcaps:n=>style(n,{smallcaps:1}),
-  circ:n=>style(n,{U:0x24B6,L:0x24D0,circ:1}),
-  squared:n=>style(n.toUpperCase(),{U:0x1F130})
+  bold:n=>offMap(n,{U:0x1D400,L:0x1D41A,D:0x1D7CE}),
+  italic:n=>offMap(n,{U:0x1D434,L:0x1D44E,map:{h:'ℎ'}}),
+  bitalic:n=>offMap(n,{U:0x1D468,L:0x1D482}),
+  script:n=>offMap(n,{U:0x1D4D0,L:0x1D4EA}),
+  fraktur:n=>offMap(n,{U:0x1D56C,L:0x1D586}),
+  dstruck:n=>offMap(n,{map:DS}),
+  mono:n=>offMap(n,{U:0x1D670,L:0x1D68A,D:0x1D7F6}),
+  sansb:n=>offMap(n,{U:0x1D5D4,L:0x1D5EE,D:0x1D7EC}),
+  sansi:n=>offMap(n,{U:0x1D608,L:0x1D622}),
+  sansbi:n=>offMap(n,{U:0x1D63C,L:0x1D656}),
+  full:n=>offMap(n,{U:0xFF21,L:0xFF41,D:0xFF10}),
+  smallcaps:n=>offMap(n,{lmap:SC}),
+  circ:n=>offMap(n,{U:0x24B6,L:0x24D0,map:{'0':'⓪','1':'①','2':'②','3':'③','4':'④','5':'⑤','6':'⑥','7':'⑦','8':'⑧','9':'⑨'}}),
+  ncirc:n=>offMap(n.toUpperCase(),{U:0x1F150}),
+  squared:n=>offMap(n.toUpperCase(),{U:0x1F130}),
+  nsq:n=>offMap(n.toUpperCase(),{U:0x1F170}),
+  paren:n=>offMap(n.toLowerCase(),{L:0x249C}),
+  sup:n=>offMap(n,{map:SUP}),
+  upd:n=>[...offMap(n.toLowerCase(),{lmap:UPD})].reverse().join(''),
+  asian:n=>offMap(n.toUpperCase(),{map:ASIAN}),
+  curr:n=>offMap(n.toUpperCase(),{map:CURR}),
+  syl:n=>offMap(n.toUpperCase(),{map:SYL}),
+  fcyr:n=>offMap(n.toUpperCase(),{map:FCYR}),
+  plain:n=>n
 };
-const FONTLIST=[['Bold','bold'],['Italic','italic'],['Bold Italic','bitalic'],['Script','script'],['Fraktur','fraktur'],['Double-Struck','dstruck'],['Monospace','mono'],['Fullwidth','full'],['Small Caps','smallcaps'],['Circled','circ'],['Squared','squared']];
+const OVER=[['Cross Out',0x0336],['Slashed',0x0338],['Underline',0x0332],['Double Under',0x0333],['Overline',0x0305],['Wavy Top',0x0303],['Dot Top',0x0307],['Dot Under',0x0323],['Ring Top',0x030A],['X Top',0x033D]];
+const ovl=(n,cc)=>[...n].map(c=>c+String.fromCodePoint(cc)).join('');
+const FONTLIST=[['Bold','bold'],['Italic','italic'],['Bold Italic','bitalic'],['Script','script'],['Fraktur / Gothic','fraktur'],['Outline','dstruck'],['Typewriter','mono'],['Sans Bold','sansb'],['Sans Italic','sansi'],['Sans Bold-Italic','sansbi'],['Wide','full'],['Small Caps','smallcaps'],['Circled','circ'],['Black Circle','ncirc'],['Squared','squared'],['Black Square','nsq'],['Bracket abc','paren'],['Tiny Top','sup'],['Upside Down','upd'],['Warrior 卂','asian'],['Currency ₲','curr'],['Rounded ᗩ','syl'],['Slavic Я','fcyr']];
 const DECOR=[
   b=>'꧁༒'+F.bold(b)+'༒꧂', b=>'▄︻デ '+b+' ══━一', b=>'꧁'+F.script(b)+'꧂',
   b=>'༺'+F.bold(b)+'༻', b=>'◥꧁ '+b+' ꧂◤', b=>'『'+F.full(b)+'』',
@@ -264,27 +375,86 @@ const DECOR=[
   b=>'ヅ'+F.bold(b), b=>'⛧'+b+'⛧', b=>'༄ '+F.bold(b),
   b=>'꧁'+F.fraktur(b)+'꧂', b=>'☠'+F.bold(b)+'☠', b=>'⪻'+b+'⪼',
   b=>F.fraktur(b), b=>F.dstruck(b), b=>F.mono(b),
-  b=>F.bitalic(b), b=>'¥'+F.bold(b)+'¥', b=>'☯'+b+'☯'
+  b=>F.bitalic(b), b=>'¥'+F.bold(b)+'¥', b=>'☯'+b+'☯',
+  b=>'亗'+F.sansb(b)+'亗', b=>'乂'+F.bold(b)+'乂', b=>'๛'+F.bold(b),
+  b=>'×͜×'+b, b=>'➳'+F.script(b), b=>'☾'+b+'☽',
+  b=>'⚝'+F.sansb(b)+'⚝', b=>'•´¯`•'+b+'•´¯`•', b=>'ᰔᩚ'+b+'ᰔᩚ',
+  b=>'꧁ঔৣ☬✞'+F.bold(b)+'✞☬ঔৣ꧂'
 ];
 const AESTHETIC=[
   b=>F.bold(b), b=>F.bitalic(b), b=>F.smallcaps(b), b=>F.full(b), b=>b,
   b=>b+'°', b=>b+'™', b=>'✿'+b, b=>b+'✿', b=>'★'+b,
   b=>F.bold(b)+'❄', b=>'⚡'+F.bold(b), b=>F.bitalic(b)+'✓', b=>F.smallcaps(b)+'°',
-  b=>'°'+b+'°', b=>F.bold(b)+'࿐', b=>'❥'+b, b=>F.italic(b)
+  b=>'°'+b+'°', b=>F.bold(b)+'࿐', b=>'❥'+b, b=>F.italic(b),
+  b=>F.sansb(b), b=>F.sup(b), b=>ovl(b,0x0332), b=>'꒰'+b+'꒱'
 ];
-const SYMBOLS=['メ','✗','⚔','々','☆','★','♡','✿','❄','✓','™','°','♛','卄','乡','ఌ','࿐','༒','꧁','꧂','彡','☠','⚡','✰','☯','ღ','ᯤ','「','」','『','』','【','】','▄︻デ═一'];
-const RP=['Dark','Toxic','Savage','Silent','Crazy','Royal','Evil','Frozen','Shadow','Cyber','Ghost','Mystic','Rapid','Brutal','Hyper','Lunar','Venom','Rogue','Storm','Blaze','Crimson','Iron','Night','Soul','Death','Blood','Wild','Lone','Mad','Psycho','Fatal','Grim','Void','Neon','Turbo','Astro','Apex','Omega','Zero','Rebel','Frost','Phantom','Savant','Inferno','Toxix'];
-const RC=['Sniper','Reaper','Killer','Demon','Wolf','Hunter','Slayer','Beast','Ninja','Samurai','Viper','Dragon','Phoenix','Titan','Ghost','Devil','Assassin','Predator','Warrior','Striker','Raider','Phantom','Shooter','Knight','Hawk','Cobra','Shark','Tiger','Falcon','Spectre','Joker','Blade','Bullet','Hitman','Gamerz','Sniperz','Savage','Legend','Rusher','Bolt'];
-const RS=['X','YT','OP','FF','Pro','God','King','Lord','xD','99','07','21','786','420','Yt','_OP','OG','GG'];
+/* pro player styles */
+const PRO=[
+  ['Raistar style',n=>F.sup(n.toUpperCase())],
+  ['SK Sabir Boss style',n=>'Sᴋ᭄'+F.smallcaps(n)+'࿐'],
+  ['White444 style',n=>{const s=n.trim();return s?s[0].toUpperCase()+F.smallcaps(s.slice(1)):s}],
+  ['Badge99 style',n=>F.smallcaps(n)+'⁹⁹'],
+  ['Total Gaming style',n=>'ᵀᴳ᭄'+F.smallcaps(n)],
+  ['BOSS tag',n=>'꧁Sᴋ᭄'+n+'ᴮᴼˢˢ꧂'],
+  ['MR tag',n=>'ᴹᴿ᭄'+n+'ᶠᶠ'],
+  ['GOD tag',n=>'ᴳᵒᵈ᭄'+n+'࿐'],
+  ['OP tag',n=>n+'ᴼᴾ'],
+  ['PRO tag',n=>'★彡'+n+'彡★ᴾᴿᴼ'],
+  ['VIP tag',n=>'乂'+n+'乂ᵛᶦᵖ'],
+  ['KING tag',n=>'ᴷᴵᴺᴳ᭄'+n+'꧂'],
+  ['CHAMP tag',n=>'⌁'+n+'⌁ᶜᴴᴬᴹᴾ'],
+  ['DARK tag',n=>'ᴰᴬᴿᴷ᭄'+n+'ツ']
+];
+/* symbols by category */
+const SYMS={
+  'Most used':'メ ✗ ⚔ 々 ☆ ★ ♡ ✿ ❄ ✓ ™ ° ♛ 卄 乡 ఌ ࿐ ༒ ꧁ ꧂ 彡 ☠ ⚡ ✰ ☯ ღ ᯤ ▄︻デ═一'.split(' '),
+  'Brackets':'꧁ ꧂ ༺ ༻ ༼ ༽ 『 』 「 」 【 】 〖 〗 ❰ ❱ ⟦ ⟧ ⫷ ⫸ ≪ ≫ 《 》 ⧼ ⧽ ⦑ ⦒ ⪻ ⪼'.split(' '),
+  'Wings ࿐':'࿐ ᭄ ༄ 彡 ໒ ঔৣ ࿔ ༆ ჻ ࿈ ꙰ ๖ۣۜ ৡ ྀ ꧀ ᩚ'.split(' '),
+  'Crowns ♛':'♛ ♚ ♕ ♔ ♜ ♖ ☬ ⚜ ࿇ ᯓ 👑 ྿'.split(' '),
+  'Weapons ⚔':'⚔ ☠ ☢ ☣ ▄︻デ═一 ︻╦╤─ ⌐╦╦═─ ➵ ⚰ 🗡 ⛨ ⚒'.split(' '),
+  'Stars ★':'★ ☆ ✰ ✯ ✩ ✪ ✫ ✬ ✭ ⭑ ⭒ ✦ ✧ ⋆ ٭ ✶ ✴ ❂ ✵ ⚝'.split(' '),
+  'Faces ツ':'ツ ヅ ッ シ ㋡ 〲 ꐕ ⍨ ⍤ ꈍ ᴗ ⚈'.split(' '),
+  'Hearts ♡':'♡ ♥ ❣ ღ ❦ ❧ ✿ ❀ ✾ ❁ ⚘ ꕥ ᰔ 💕 💖 💘'.split(' '),
+  'Arrows ➳':'➳ ➹ ➸ ➺ ➻ ⇝ ↬ ➤ ➢ ⤳ ↯ ⚡ ↠ ⇨ ➽'.split(' '),
+  'Lines':'▁ ▂ ▃ ▄ ▅ ▌ │ █ ║ ─ ═ ┅ ﹌ 〜 〰 ୨୧ ⌁ ¯ ୧ ﹏'.split(' '),
+  'FF Special':'メ 乂 亗 ๛ ༒ 么 廴 気 龍 鬼 神 王 死 侍 一 丶 丿 乡 卄 々'.split(' '),
+  'More ™':'✗ ✘ ✓ ✔ ™ ® © ° ☯ ❄ ఌ ᯤ ꨄ ᝰ ₊ ˚ ༉ 𖤍 ¤ ⌁'.split(' ')
+};
+/* name pools */
+const BOYS='Zylo Kyro Ronin Orion Draven Zephyr Dax Jaxen Zorin Altair Nero Kaizen Ryven Vyre Zayd Arkan Silas Kian Axel Kaze Riven Talon Cyrus Zane Knox Orin Vale Onyx Creed Slate Jett Colt Kane Rhys Dane Cole Rex Zeke Nash Fox Aryan Ayan Rayan Ezan Zoro Kratos Levi Ren Kaito Akira Hiro Zaid Hamza Bilal Shayan Rohan Arnav Vihaan Aarav Dev Ishan Kabir Veer Arjun Rudra Shiv Atlas Blaze Storm Ridge Ace Duke Finn Milo Pax Rome Seth Troy Umar Wren Yoru Zeph Draco Fenix Havok Lynx Rogue Sable Viggo Wolfe Zayn Neon Frost Raze Volt Blitz Ember Ghost Night Raven Shade Spike Steel'.split(' ');
+const GIRLS='Pixie Luna Aria Nyra Zara Ivy Rhea Lyra Mira Kiara Zoya Alia Naya Suri Elle Skye Faye Juno Cleo Dua Noor Mahi Ayra Kyra Myra Tara Sana Hoor Zeba Rania Aleena Mishal Eshal Anaya Amara Bella Celia Dahlia Elara Freya Gia Hazel Inara Jia Kira Laila Mila Nia Opal Pari Qirat Rosa Selena Tia Vera Willa Xena Yara Zia Nova Stella Aurora Celeste Diana Fiona Gemma Harper Isla Jade Kaia Lila Mia Nora Olive Piper Quinn Ruby Sage Thea Uma Violet Ximena Yuna Zelda Angel Bloom Candy Daisy Fairy Glow Heart Iris Jewel Kitty Lily Moon Peach Queen Rose Star Tulip Velvet Wish'.split(' ');
+const AES='Nova Echo Velvet Bloom Frost Sage Blush Dusk Ember Haze Lush Muse Fable Grace Halo Iris Jade Karma Lotus Mist Nectar Opal Pearl Quill Raven Siren Tulip Vibe Willow Zen Aura Belle Coral Dove Fawn Glow Honey Ivory Joy Lace Meadow Nimbus Orchid Petal Rune Tide Umbra Vale Wisp Zephyr Amber Breeze Cloud Dawn Eden Flare Gleam Hush Indigo Jinx Kismet Luster Moon Noir Oasis Prism Quartz Ripple Solace Twilight Unity Verve Whisper Xanadu Yonder Zenith Aether Bliss Cosmo Drift Elixir Fleur Harbor Jubilee Kindle Lumen Mirage Nebula Onyx Poem Quiver Reverie Serene Tempest Utopia Vesper Wander Wonder Zion Sable Saga Sol Fern Clover Maple Cedar Birch Lark Robin Dune Cove Reef Isle Bay Comet Orbit Vega Lyric Melody Rhythm Sonnet Verse'.split(' ');
+const CPRE='Dark Toxic Savage Silent Crazy Royal Evil Frozen Shadow Cyber Ghost Mystic Brutal Hyper Lunar Venom Rogue Storm Blaze Crimson Iron Night Soul Death Blood Wild Lone Mad Fatal Grim Void Neon Turbo Astro Apex Omega Zero Rebel Frost Phantom Inferno Alpha Ultra Mega Prime Elite Golden Steel Thunder Vicious'.split(' ');
+const CCORE='Sniper Reaper Killer Demon Wolf Hunter Slayer Beast Ninja Samurai Viper Dragon Phoenix Titan Ghost Devil Assassin Predator Warrior Striker Raider Phantom Shooter Knight Hawk Cobra Shark Tiger Falcon Spectre Joker Blade Bullet Hitman Legend Rusher Bolt King Queen Boss Lord Emperor Gladiator Monster Slasher Vortex Reign Fury Wraith Golem'.split(' ');
+const SHORTP='Nyx Zed Ryn Vox Kai Ace Rio Neo Sky Rex Jax Kyx Zia Lux Nix Ash Gio Ivo Oz Fizz Rox Dex Pax Kyo Zev Nyo Vix Jem Ryu Kae'.split(' ');
+const XCUR='Xyrex Xenzo Xavor Xylo Xora Xion Xero Xade Xylus Xaru Xin Xous Xita Xelo Xume NyXa RaXon ZeXo KiXo VoXa LyXen MaXo TeXa RyXen'.split(' ');
+const PETS='Booyah Bruno Simba Oreo Zuzu Miso Nala Rocky Coco Leo Maxy Ruby Toby Panda Chiku Golu Sheru Moti Raja Fluffy Snowy Tiger Bolt Mochi Peanut Biscuit Chhotu Lucky'.split(' ');
+const TAGS=['OP','FF','YT','Pro','God','King','xD','OG','GG','VIP','07','21','99','007','786','420','101'];
+const RS=TAGS;
+const ONSET='Z K V R N X J D T L M B S F G'.split(' ');
+const NUC='a o i y e u ay io ae'.split(' ');
+const CODA=['x','z','r','n','s','o','v','q','xo','za','ra','','',''];
 function pick(a){return a[Math.floor(Math.random()*a.length)];}
+function mkShort(){if(Math.random()<.35)return pick(SHORTP);
+  let n=pick(ONSET)+pick(NUC)+pick(CODA);n=n[0].toUpperCase()+n.slice(1);return n.length>=3&&n.length<=6?n:mkShort()}
+function mkX(){const r=Math.random();
+  if(r<.5)return pick(XCUR);
+  const b=pick(BOYS.concat(GIRLS));return b.slice(0,Math.min(4,b.length))+'x'}
+function mkFrom(pool){let n=pick(pool);const r=Math.random();
+  if(r<.18)n=n+pick(TAGS);else if(r<.28)n=n+(100+Math.floor(Math.random()*900));
+  return n}
+function mkClassic(){const r=Math.random();let n=pick(CPRE)+pick(CCORE);
+  if(r<.25)n=pick(CPRE)+'メ'+pick(CCORE);else if(r<.4)n=n+pick(TAGS);
+  return n}
 function randomName(){
   let n;const r=Math.random();
-  if(r<0.25){n=pick(RP)+'メ'+pick(RC);}
-  else{n=pick(RP)+pick(RC);const s=Math.random();if(s<0.4)n+=pick(RS);else if(s<0.6)n+=Math.floor(Math.random()*900+100);}
+  if(r<0.25){n=pick(CPRE)+'メ'+pick(CCORE);}
+  else{n=pick(CPRE)+pick(CCORE);const s=Math.random();if(s<0.4)n+=pick(RS);else if(s<0.6)n+=Math.floor(Math.random()*900+100);}
   return n.slice(0,18);
 }
 const BLANK='ㅤ'; // U+3164 invisible space for Free Fire
 let SEP='メ'; // clan/name separator (changeable)
+const LIVE='https://xnipertools.com/free-fire-name-generator/';
 
 const name=document.getElementById('name'),clan=document.getElementById('clan'),ffSpace=document.getElementById('ffSpace'),out=document.getElementById('out');
 function getBase(){
@@ -296,39 +466,157 @@ function getBase(){
 }
 function esc(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');}
 function escTxt(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
-function copyText(t,btn){navigator.clipboard.writeText(t).then(()=>{const o=btn.textContent;btn.textContent='Copied!';btn.classList.add('done');setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},1100);});}
+let lastCopied='';
+function copyText(t,btn){navigator.clipboard.writeText(t).then(()=>{lastCopied=t;const o=btn.textContent;btn.textContent='Copied!';btn.classList.add('done');setTimeout(()=>{btn.textContent=o;btn.classList.remove('done');},1100);});}
 
 /* favorites */
 function favs(){try{return JSON.parse(localStorage.getItem('ff_favs')||'[]');}catch(e){return[];}}
 function isFav(v){return favs().indexOf(v)>-1;}
-function toggleFav(v){const f=favs();const i=f.indexOf(v);if(i>-1)f.splice(i,1);else f.unshift(v);localStorage.setItem('ff_favs',JSON.stringify(f.slice(0,60)));renderList();renderFavs();}
-function itemHTML(v){
-  return '<div class="style-item"><span class="txt">'+escTxt(v)+'</span><div class="si-act"><button class="favb'+(isFav(v)?' on':'')+'" data-v="'+esc(v)+'">'+(isFav(v)?'★':'☆')+'</button><button class="copy" data-v="'+esc(v)+'">Copy</button></div></div>';
+function toggleFav(v){const f=favs();const i=f.indexOf(v);if(i>-1)f.splice(i,1);else f.unshift(v);localStorage.setItem('ff_favs',JSON.stringify(f.slice(0,60)));renderList();renderPro();renderFavs();}
+/* opts: {lim:12|50, label:'..', tap:'plain name'} */
+function itemHTML(v,opts){
+  opts=opts||{};
+  const L=cps(v);
+  const chip=opts.lim?('<span class="ln'+(L>opts.lim?' bad':'')+'">'+L+'/'+opts.lim+'</span>'):'';
+  const label=opts.label?('<span class="plab">'+escTxt(opts.label)+'</span>'):'';
+  const tap=opts.tap?(' tapname" title="Tap to style this name" data-tap="'+esc(opts.tap)+'"'):'"';
+  return '<div class="style-item"><span class="txt'+tap+'><span class="t">'+label+escTxt(v)+'</span>'+chip+'</span><div class="si-act"><button class="favb'+(isFav(v)?' on':'')+'" data-v="'+esc(v)+'">'+(isFav(v)?'★':'☆')+'</button><button class="copy" data-v="'+esc(v)+'">Copy</button></div></div>';
 }
 function bindItems(c){
   c.querySelectorAll('.copy').forEach(b=>b.onclick=()=>copyText(b.dataset.v,b));
   c.querySelectorAll('.favb').forEach(b=>b.onclick=()=>toggleFav(b.dataset.v));
+  c.querySelectorAll('[data-tap]').forEach(el=>el.onclick=()=>{name.value=el.dataset.tap.slice(0,12);updCount();reshuffle();renderAll();document.getElementById('name').scrollIntoView({behavior:'smooth',block:'center'});});
 }
 const aesthetic=document.getElementById('aesthetic');
 function activePool(){return aesthetic.checked?AESTHETIC:DECOR;}
 let currentSel=[];
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function reshuffle(){const p=activePool();currentSel=shuffle(p.map((_,i)=>i)).slice(0,Math.min(20,p.length));}
-function renderList(){const pool=activePool(),base=getBase();if(!currentSel.length)reshuffle();out.innerHTML=currentSel.map(i=>itemHTML(pool[i](base))).join('');bindItems(out);}
-function renderFavs(){const f=favs(),box=document.getElementById('favBox');if(!f.length){box.style.display='none';return;}box.style.display='';const l=document.getElementById('favList');l.innerHTML=f.map(itemHTML).join('');bindItems(l);}
+function renderList(){const pool=activePool(),base=getBase();if(!currentSel.length)reshuffle();out.innerHTML=currentSel.map(i=>itemHTML(pool[i](base),{lim:12})).join('');bindItems(out);}
+function renderPro(){const base=getBase(),c=document.getElementById('proOut');c.innerHTML=PRO.map(p=>itemHTML(p[1](base),{lim:12,label:p[0]})).join('');bindItems(c);}
+function renderFavs(){const f=favs(),box=document.getElementById('favBox');if(!f.length){box.style.display='none';return;}box.style.display='';const l=document.getElementById('favList');l.innerHTML=f.map(v=>itemHTML(v)).join('');bindItems(l);}
 
 /* font picker */
 const fontPick=document.getElementById('fontPick'),fontResult=document.getElementById('fontResult');
-fontPick.innerHTML=FONTLIST.map(f=>'<option value="'+f[1]+'">'+f[0]+'</option>').join('');
-function renderFont(){const styled=F[fontPick.value](getBase());fontResult.innerHTML='<span class="txt">'+escTxt(styled)+'</span><button class="copy" data-v="'+esc(styled)+'">Copy</button>';fontResult.querySelector('.copy').onclick=function(){copyText(styled,this);};}
+fontPick.innerHTML='<optgroup label="Fonts">'+FONTLIST.map(f=>'<option value="'+f[1]+'">'+f[0]+'</option>').join('')+'</optgroup><optgroup label="Effects">'+OVER.map((o,i)=>'<option value="ov'+i+'">'+o[0]+'</option>').join('')+'</optgroup>';
+function applyFont(v,base){if(v.slice(0,2)==='ov')return ovl(base,OVER[+v.slice(2)][1]);return F[v](base);}
+function renderFont(){const styled=applyFont(fontPick.value,getBase());fontResult.innerHTML='<span class="txt">'+escTxt(styled)+' <span class="ln'+(cps(styled)>12?' bad':'')+'">'+cps(styled)+'/12</span></span><button class="copy" data-v="'+esc(styled)+'">Copy</button>';fontResult.querySelector('.copy').onclick=function(){copyText(styled,this);};}
 fontPick.onchange=renderFont;
 
-/* symbols */
-const symGrid=document.getElementById('symGrid');
-symGrid.innerHTML=SYMBOLS.map(s=>'<button class="sym" data-s="'+esc(s)+'">'+escTxt(s)+'</button>').join('');
-symGrid.querySelectorAll('.sym').forEach(b=>b.onclick=()=>copyText(b.dataset.s,b));
+/* symbols (categorized) */
+const symWrap=document.getElementById('symWrap');
+symWrap.innerHTML=Object.keys(SYMS).map(cat=>'<div class="sym-cat">'+escTxt(cat)+'</div><div class="sym-grid">'+SYMS[cat].map(s=>'<button class="sym" data-s="'+esc(s)+'">'+escTxt(s)+'</button>').join('')+'</div>').join('');
+symWrap.querySelectorAll('.sym').forEach(b=>b.onclick=()=>copyText(b.dataset.s,b));
 
-function renderAll(){renderList();renderFont();}
+/* ready-made names */
+const READYSTY=[n=>F.bold(n),n=>F.smallcaps(n)+'࿐',n=>'★'+n,n=>F.sansb(n),n=>'乡'+F.bold(n),n=>F.smallcaps(n)+'ᴼᴾ',n=>'꧁'+F.bold(n)+'꧂',n=>F.bitalic(n),n=>'༄'+F.smallcaps(n),n=>n+'ᶠᶠ'];
+const GIRLSTY=[n=>'✿'+n+'✿',n=>F.script(n),n=>'ღ'+F.bold(n)+'ღ',n=>F.smallcaps(n)+'°',n=>'꒰'+n+'꒱',n=>'❥'+F.bitalic(n),n=>F.bold(n)+'ᰔ',n=>'°'+F.smallcaps(n)+'°',n=>'✧'+n+'✧',n=>F.script(n)+'࿐'];
+function attitudePool(){const a=[];for(let i=0;i<40;i++)a.push(CPRE[i%CPRE.length]+CCORE[(i*7+3)%CCORE.length]);return a;}
+const CATS={
+  boys:{pool:BOYS,sty:READYSTY,fresh:()=>mkFrom(BOYS)},
+  girls:{pool:GIRLS,sty:GIRLSTY,fresh:()=>mkFrom(GIRLS)},
+  attitude:{pool:attitudePool(),sty:[n=>F.bold(n),n=>F.smallcaps(n),n=>n,n=>F.sansb(n),n=>'☠'+F.bold(n),n=>n+'ᴼᴾ'],fresh:mkClassic},
+  aes:{pool:AES,sty:GIRLSTY.concat([n=>F.sup(n)]),fresh:()=>mkFrom(AES)},
+  short:{pool:SHORTP,sty:READYSTY,fresh:mkShort},
+  x:{pool:XCUR,sty:READYSTY,fresh:mkX}
+};
+let curCat='boys',readyExtra=[];
+function renderReady(){
+  const c=CATS[curCat],box=document.getElementById('readyOut');
+  const items=c.pool.slice(0,24).map((n,i)=>({v:c.sty[i%c.sty.length](n),tap:n}));
+  readyExtra.forEach(e=>items.push(e));
+  box.innerHTML=items.map(it=>itemHTML(it.v,{lim:12,tap:it.tap})).join('');
+  bindItems(box);
+}
+document.getElementById('catRow').addEventListener('click',e=>{const b=e.target.closest('.sep-chip');if(!b)return;
+  document.querySelectorAll('#catRow .sep-chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  curCat=b.dataset.c;readyExtra=[];renderReady();});
+document.getElementById('moreNames').addEventListener('click',()=>{
+  const c=CATS[curCat];
+  for(let i=0;i<10;i++){const n=c.fresh();readyExtra.push({v:pick(c.sty)(n),tap:n});}
+  if(readyExtra.length>40)readyExtra=readyExtra.slice(-40);
+  renderReady();
+});
+
+/* bio generator */
+const BIOSTY={plain:n=>n,small:n=>F.smallcaps(n),bold:n=>F.bold(n),italic:n=>F.italic(n),script:n=>F.script(n),sup:n=>F.sup(n)};
+let bioSty='plain';
+const bioIn=document.getElementById('bioIn'),bioResult=document.getElementById('bioResult'),bioCount=document.getElementById('bioCount');
+function renderBio(){
+  const raw=(bioIn.value||'').trim();
+  const styled=BIOSTY[bioSty](raw||'Booyah is my daily routine 🏆');
+  bioCount.textContent=cps(styled)+' / 50';
+  bioCount.classList.toggle('bad',cps(styled)>50);
+  bioResult.innerHTML='<span class="txt">'+escTxt(styled)+'</span><button class="copy" data-v="'+esc(styled)+'">Copy</button>';
+  bioResult.querySelector('.copy').onclick=function(){copyText(styled,this);};
+}
+bioIn.addEventListener('input',renderBio);
+document.getElementById('bioStyles').addEventListener('click',e=>{const b=e.target.closest('.sep-chip');if(!b)return;
+  document.querySelectorAll('#bioStyles .sep-chip').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+  bioSty=b.dataset.b;renderBio();});
+const BIOS=['Born to rush ⚡ raised to win','1 tap. 1 kill. No luck ☠','Booyah is my daily routine 🏆','Silent player. Loud scoreboard.','AWM speaks louder than words ☠','Rush me = free kill for me 😼','No gun game, only brain game 🧠','Solo vs Squad — still Booyah ⚡','Headshot machine ☠ 90% one tap','Play like a king, fear no one ♛','Grandmaster loading… ⏳','I don\'t camp. I hunt ༒','Made of skills, not luck ✦','Respect all, fear none ⚔','Kill feed = my autograph book ✍','Lobby ka nawab, zone ka badshah ♛','Peak rush hour: 24/7 ⚡','My AWM never misses twice ☠','Catch me in the final zone 🔥','Booyah collector since day 1 🏆','Not toxic, just better 😉','GG only when I say GG ⚡','Landing king. Looting fast ⚡','Zone closes. I don\'t ☠','Your +1 kill, my +1 story ✦','Pro by passion, boss by nature ♛','Squad wipe specialist ⚔','Red zone? My comfort zone 🔥','One man army, zero backup ⚡','Heroic today. Grandmaster soon ⏳','I trade bullets, not words ☠','Every match = my highlight reel 🎯','Small squad, big damage ⚔','Noob yesterday. Nightmare today ☠','Rank push in progress… 📈','Fear the silent ones ༒','Gloo wall artist 🧱 headshot poet ☠','Win in style or lose with data ⚡','Sniper mind, rusher heart 🎯','They run when I land 😼','Built different. Aim different 🎯','No mercy in ranked ⚔','Legends land last, win first ✦','Talk less, one-tap more ☠','My pet has more kills than you 😼','Booyah hunter ༒ zone survivor','Clutch king in every squad ♛','Play fair, aim unfair 🎯','Diamond poor, skill rich ✦','Not lucky. Just locked in 🎯','Rush hour every hour ⚡','Aim so clean it needs a permit ☠','Last zone lawyer — I always win ⚖','Your squad, my warm-up 😼','Certified 1v4 survivor ⚔','Kill count > follower count ✦','Season after season, still the boss ♛','FF is my second home 🔥','Camper? Never met one alive ☠','Winning is a habit, Booyah a routine 🏆'];
+let bioShown=20;
+function renderBios(){
+  const l=document.getElementById('bioList');
+  l.innerHTML=BIOS.slice(0,bioShown).map(b=>itemHTML(b,{lim:50})).join('');
+  bindItems(l);
+  document.getElementById('moreBios').style.display=bioShown>=BIOS.length?'none':'';
+}
+document.getElementById('moreBios').addEventListener('click',()=>{bioShown=BIOS.length;renderBios();});
+
+/* pet names */
+const PETSTY=[n=>F.smallcaps(n)+'࿐',n=>'✿'+n,n=>F.bold(n),n=>'ღ'+n+'ღ',n=>n+'ᰔ',n=>'꒰'+n+'꒱',n=>F.script(n),n=>'★'+F.smallcaps(n)];
+let petExtra=[];
+function renderPets(){
+  const box=document.getElementById('petOut');
+  const items=PETS.map((n,i)=>PETSTY[i%PETSTY.length](n)).concat(petExtra);
+  box.innerHTML=items.map(v=>itemHTML(v,{lim:12})).join('');
+  bindItems(box);
+}
+document.getElementById('morePets').addEventListener('click',()=>{
+  for(let i=0;i<8;i++)petExtra.push(pick(PETSTY)(pick(PETS.concat(GIRLS.slice(0,40),SHORTP))));
+  if(petExtra.length>32)petExtra=petExtra.slice(-32);
+  renderPets();
+});
+
+/* name card (PNG) + share */
+function cardName(){return lastCopied||applyFont(fontPick.value,getBase());}
+function drawCard(cb){
+  const W=1200,H=630,cv=document.createElement('canvas');cv.width=W;cv.height=H;
+  const x=cv.getContext('2d');
+  const g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#0b0b16');g.addColorStop(1,'#171332');
+  x.fillStyle=g;x.fillRect(0,0,W,H);
+  let r=x.createRadialGradient(W*.85,H*.1,0,W*.85,H*.1,500);r.addColorStop(0,'rgba(255,120,40,.28)');r.addColorStop(1,'rgba(255,120,40,0)');
+  x.fillStyle=r;x.fillRect(0,0,W,H);
+  r=x.createRadialGradient(W*.1,H*.95,0,W*.1,H*.95,520);r.addColorStop(0,'rgba(90,120,255,.25)');r.addColorStop(1,'rgba(90,120,255,0)');
+  x.fillStyle=r;x.fillRect(0,0,W,H);
+  x.strokeStyle='rgba(255,255,255,.14)';x.lineWidth=2;x.strokeRect(26,26,W-52,H-52);
+  x.textAlign='center';
+  x.fillStyle='rgba(255,255,255,.55)';x.font='600 30px Inter,Arial,sans-serif';
+  x.fillText('🔥 FREE FIRE NAME',W/2,120);
+  const nm=cardName();
+  let fs=100;x.font='700 '+fs+'px Inter,Arial,sans-serif';
+  while(x.measureText(nm).width>W-160&&fs>28){fs-=4;x.font='700 '+fs+'px Inter,Arial,sans-serif';}
+  x.fillStyle='#ffffff';x.fillText(nm,W/2,H/2+fs*.32);
+  x.fillStyle='rgba(255,255,255,.45)';x.font='500 26px Inter,Arial,sans-serif';
+  x.fillText('xnipertools.com/free-fire-name-generator',W/2,H-84);
+  cv.toBlob(cb,'image/png');
+}
+document.getElementById('cardBtn').addEventListener('click',function(){
+  const btn=this;drawCard(blob=>{
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ff-name-card.png';a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+    const o=btn.textContent;btn.textContent='Downloaded ✓';setTimeout(()=>btn.textContent=o,1400);
+  });
+});
+document.getElementById('shareBtn').addEventListener('click',function(){
+  const btn=this,nm=cardName();
+  const data={title:'Free Fire Name Generator',text:nm+'\nMake your own stylish FF name free:',url:LIVE};
+  if(navigator.share){navigator.share(data).catch(()=>{});}
+  else{navigator.clipboard.writeText(nm+' — '+LIVE).then(()=>{const o=btn.textContent;btn.textContent='Link copied!';setTimeout(()=>btn.textContent=o,1400);});}
+});
+
+function renderAll(){renderList();renderPro();renderFont();renderBio();}
 name.addEventListener('input',renderAll);
 clan.addEventListener('input',renderAll);
 ffSpace.addEventListener('change',renderAll);
@@ -337,10 +625,10 @@ document.getElementById('genBtn').addEventListener('click',function(){reshuffle(
 document.getElementById('randBtn').addEventListener('click',function(){name.value=randomName();updCount();reshuffle();renderAll();});
 function updCount(){var c=document.getElementById('nameCount');if(c)c.textContent=name.value.length+' / 12';}
 name.addEventListener('input',updCount);updCount();
-document.querySelectorAll('.sep-chip').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.sep-chip').forEach(function(x){x.classList.remove('active');});b.classList.add('active');SEP=b.dataset.s;renderAll();});});
+document.querySelectorAll('.sep-row .sep-chip').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.sep-row .sep-chip').forEach(function(x){x.classList.remove('active');});b.classList.add('active');SEP=b.dataset.s;renderAll();});});
 document.getElementById('copyBlank').addEventListener('click',function(){const b=this;navigator.clipboard.writeText(BLANK).then(()=>{b.textContent='Copied! ✓';setTimeout(()=>{b.textContent='Copy Blank Space';},1400);});});
 
-renderAll();renderFavs();
+renderAll();renderFavs();renderReady();renderBios();renderPets();
 document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',function(e){const r=document.createElement('span');r.className='ripple';const rect=this.getBoundingClientRect(),dd=Math.max(rect.width,rect.height);r.style.width=r.style.height=dd+'px';r.style.left=(e.clientX-rect.left-dd/2)+'px';r.style.top=(e.clientY-rect.top-dd/2)+'px';this.appendChild(r);setTimeout(()=>r.remove(),600);}));
 </script>
 <script>(function(){var d=document,r=d.documentElement,b=d.getElementById('themeBtn');function mc(t){var m=d.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='light'?'#f4f6fa':'#0a0a12')}mc(r.getAttribute('data-theme')||'light');if(b)b.addEventListener('click',function(){var n=r.getAttribute('data-theme')==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('xt_theme',n)}catch(e){}mc(n)})})();</script>
