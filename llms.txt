@@ -46,6 +46,21 @@ Xnipertools (https://xnipertools.com) is a free web-tools hub. No sign-up, no wa
 ## Games
 - [Free Online Games](https://xnipertools.com/games/): Play free browser games — no download, no signup — with live leaderboards.
 
+## Guides
+- [All Guides](https://xnipertools.com/guides/): Practical explainers with real numbers, worked examples and screenshots.
+- [How to Compress Images Without Losing Quality](https://xnipertools.com/guides/how-to-compress-images-without-losing-quality/): Quality sliders, JPG vs WebP, exact settings for web, WhatsApp and forms.
+- [Passport Photo Sizes for Every Country](https://xnipertools.com/guides/passport-photo-size-requirements/): Sizes in mm and pixels, background rules, printing 8 on one sheet.
+- [How Loan EMI Is Calculated](https://xnipertools.com/guides/how-emi-is-calculated/): The EMI formula with a full worked example and amortization table.
+- [Debt Snowball vs Avalanche](https://xnipertools.com/guides/debt-snowball-vs-avalanche/): Both strategies simulated month by month on the same debts.
+- [Compound Interest Explained](https://xnipertools.com/guides/compound-interest-explained/): The formula, the Rule of 72, and why starting early wins.
+- [QR Code With a Logo](https://xnipertools.com/guides/qr-code-with-logo/): Error correction levels, logo size limits and print-size rules.
+- [What Makes a Password Strong](https://xnipertools.com/guides/what-makes-a-password-strong/): The entropy math behind cracking times; length beats symbols.
+- [HEIC vs JPG](https://xnipertools.com/guides/heic-vs-jpg/): Why iPhone photos won't open elsewhere and how to convert.
+- [ATS-Friendly Resume](https://xnipertools.com/guides/ats-friendly-resume/): Formatting that survives resume-parsing software.
+- [Invoicing for Freelancers](https://xnipertools.com/guides/freelance-invoice-guide/): The 9 required fields, payment terms and late-payment escalation.
+- [Average Typing Speed](https://xnipertools.com/guides/average-typing-speed/): Real WPM averages and a 4-week improvement plan.
+- [Zakat Calculation Guide](https://xnipertools.com/guides/zakat-calculation-guide/): Nisab, zakatable assets and the 2.5% rate with a worked example.
+
 ## About
 - [Request a Tool](https://xnipertools.com/request-a-tool/): Suggest a new tool.
 - [Report a Bug](https://xnipertools.com/report-bug/): Report an issue with any tool.

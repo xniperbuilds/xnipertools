@@ -38,7 +38,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I format JSON?","acceptedAnswer":{"@type":"Answer","text":"Paste your JSON and tap Format. It is re-indented (beautified) so it is easy to read, and you can choose 2 spaces, 4 spaces or a tab from the indentation dropdown before you format."}},{"@type":"Question","name":"How do I validate JSON?","acceptedAnswer":{"@type":"Answer","text":"Tap Validate. If the JSON is valid you will see a green confirmation. If not, you get the exact error message and the character position of the problem, and your cursor jumps to that spot in the text box."}},{"@type":"Question","name":"What is the difference between formatting and minifying?","acceptedAnswer":{"@type":"Answer","text":"Formatting adds indentation and line breaks so the JSON is easy for a person to read while debugging. Minifying removes all spaces and newlines to make the smallest possible single line, which is what you send over the network or store. Both keep your data identical and are fully reversible here."}},{"@type":"Question","name":"Why does my JSON say it is invalid when it looks fine?","acceptedAnswer":{"@type":"Answer","text":"Strict JSON is fussy: text must use double quotes (not single quotes), you cannot leave a trailing comma after the last item, comments are not allowed, and values can only be strings, numbers, true, false, null, objects or arrays. The most common cause is a missing comma between items or a stray comma before a closing bracket. The error message and highlighted position will point you to it."}},{"@type":"Question","name":"Is my JSON data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything is processed locally in your browser on your own device, so your data is never uploaded to a server or stored by us. It is safe to paste sensitive content like API keys or customer records, and the tool keeps working even offline."}},{"@type":"Question","name":"Can I save or download the result?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tap Copy to put the result on your clipboard, or tap the .json button to download it as a file. Your last input is also remembered in your browser so the box is not empty when you come back; tap Clear to remove it."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=20260613">
+<link rel="stylesheet" href="../style.css?v=20260711">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"JSON Formatter","item":"https://xnipertools.com/json-formatter/"}]}</script>
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" href="/icon-192.png">
@@ -59,6 +59,7 @@ gtag('config', 'G-2G2RG8P4CJ');
     <input type="checkbox" id="navToggle" class="nav-toggle">
     <label for="navToggle" class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></label>
     <nav class="nav-links">
+      <a href="/guides/">Guides</a>
       <a href="/#why">Why us</a>
       <a href="/request-a-tool/">Request a Tool</a>
       <a href="/report-bug/">Report a Bug</a>
@@ -109,7 +110,6 @@ gtag('config', 'G-2G2RG8P4CJ');
     <div class="secure-note">🔒 100% Private: your JSON is processed in your browser and never uploaded.</div>
   </div>
 
-  <div class="ad-slot">Advertisement</div>
 
   <article class="article reveal">
     <h2>Format, validate and clean up messy JSON in seconds</h2>

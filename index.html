@@ -34,6 +34,7 @@
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Xnipertools","url":"https://xnipertools.com/","description":"Free online tools — calculators, image, PDF, text, developer tools and generators.","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://xnipertools.com/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Xnipertools","url":"https://xnipertools.com/","logo":"https://xnipertools.com/icon-512.png","sameAs":["https://instagram.com/xniperr"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these tools really free?","acceptedAnswer":{"@type":"Answer","text":"Yes — every tool on Xnipertools is completely free, with no trial periods, usage limits or locked features."}},{"@type":"Question","name":"Are my files uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Image, PDF and text tools run entirely in your browser using client-side technology. Your files stay on your device."}},{"@type":"Question","name":"Do I need to create an account?","acceptedAnswer":{"@type":"Answer","text":"Never. There is no sign-up, no login and no email required for any tool. Tools that save your work store it locally on your own device."}},{"@type":"Question","name":"Do the tools work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — every tool is built mobile-first and tested on phones before launch. You can also install Xnipertools as an app from your browser menu."}},{"@type":"Question","name":"Who builds Xnipertools?","acceptedAnswer":{"@type":"Answer","text":"Xnipertools is an independent project by the builder behind XniperBuilds. Every tool is designed, coded and tested in-house."}},{"@type":"Question","name":"How accurate are the calculators?","acceptedAnswer":{"@type":"Answer","text":"Financial and health calculators use the standard published formulas, which are shown on each page. For big decisions we recommend confirming with a qualified professional."}}]}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -156,17 +157,43 @@ header{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px s
 .topnav a:hover{color:var(--text);background:var(--hover)}
 @media(max-width:880px){.topnav{display:none}}
 
-/* XCipher signature band */
-.xc{max-width:1280px;margin:18px auto 0;padding:0 20px}
-.xc-card{position:relative;overflow:hidden;display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:space-between;border-radius:20px;padding:24px 26px;background:linear-gradient(135deg,#0b2030,#0a1422);border:1px solid rgba(70,243,198,.32);transition:transform .16s,box-shadow .16s}
-.xc-card:hover{transform:translateY(-3px);box-shadow:0 26px 60px -26px rgba(70,150,255,.5)}
-.xc-card .xc-l{display:flex;flex-direction:column;gap:8px;min-width:240px;flex:1}
-.xc-badge{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#46f3c6;background:rgba(70,243,198,.1);border:1px solid rgba(70,243,198,.32);padding:6px 12px;border-radius:100px}
-.xc-card h3{font-size:clamp(19px,2.6vw,24px);font-weight:800;color:#eaf1ff;letter-spacing:-.01em}
-.xc-card p{font-size:14px;color:#9fb2d4;max-width:570px;line-height:1.55}
-.xc-go{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;color:#04121a;background:linear-gradient(135deg,#46f3c6,#46c6ff);padding:13px 22px;border-radius:13px;white-space:nowrap;box-shadow:0 12px 28px rgba(70,198,255,.3);transition:transform .15s}
-.xc-card:hover .xc-go{transform:translateY(-2px)}
-.xc-go svg{width:16px;height:16px}
+/* Guides row */
+.guides{max-width:1280px;margin:44px auto 0;padding:0 20px}
+.guides .g-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.guides h2{font-size:clamp(22px,3.4vw,28px);font-weight:800;letter-spacing:-.02em}
+.guides .gsub{color:var(--muted);font-size:15px;margin-top:8px;max-width:640px}
+.guides .g-all{flex:none;display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:14px;color:var(--accent-ink);background:var(--accent-soft);padding:10px 16px;border-radius:11px;transition:transform .15s}
+.guides .g-all:hover{transform:translateY(-2px)}
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:20px}
+.g-card{display:flex;flex-direction:column;gap:7px;padding:18px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface-2);box-shadow:var(--shadow);transition:transform .16s,box-shadow .16s,border-color .16s}
+.g-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:color-mix(in srgb,var(--accent) 28%,var(--border))}
+.g-card .g-tag{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent-ink)}
+.g-card h3{font-size:15.5px;font-weight:700;letter-spacing:-.01em;line-height:1.35}
+.g-card p{font-size:13px;color:var(--muted);line-height:1.5}
+.g-card .g-read{margin-top:auto;padding-top:6px;font-size:13px;font-weight:700;color:var(--accent-ink)}
+
+/* Editorial + FAQ */
+.edit{max-width:1280px;margin:48px auto 0;padding:0 20px}
+.edit .ed-box{border:1px solid var(--border);border-radius:20px;background:var(--surface-2);box-shadow:var(--shadow);padding:30px 28px;display:grid;gap:26px;grid-template-columns:1.2fr 1fr}
+@media(max-width:820px){.edit .ed-box{grid-template-columns:1fr}}
+.edit h2{font-size:clamp(20px,3vw,26px);font-weight:800;letter-spacing:-.02em}
+.edit p{font-size:14.5px;color:var(--muted);line-height:1.65;margin-top:11px}
+.edit p b{color:var(--text)}
+.edit .ed-points{display:flex;flex-direction:column;gap:12px;align-self:center}
+.edit .ed-pt{display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border:1px solid var(--border);border-radius:13px;background:var(--panel)}
+.edit .ed-pt .n{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent-ink);font-weight:800;font-size:13.5px}
+.edit .ed-pt div{font-size:13.5px;color:var(--muted);line-height:1.5}
+.edit .ed-pt div b{color:var(--text);display:block;font-size:14px;margin-bottom:2px}
+.hfaq{max-width:1280px;margin:44px auto 0;padding:0 20px}
+.hfaq h2{font-size:clamp(22px,3.4vw,28px);font-weight:800;letter-spacing:-.02em;text-align:center}
+.hfaq .fq-grid{display:grid;gap:12px;margin-top:22px;grid-template-columns:1fr 1fr}
+@media(max-width:760px){.hfaq .fq-grid{grid-template-columns:1fr}}
+.hfaq details{border:1px solid var(--border);border-radius:14px;background:var(--surface-2);box-shadow:var(--shadow);padding:0 18px;overflow:hidden}
+.hfaq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 0;font-weight:700;font-size:14.5px}
+.hfaq summary::-webkit-details-marker{display:none}
+.hfaq summary::after{content:"+";font-size:19px;font-weight:600;color:var(--muted);transition:transform .18s}
+.hfaq details[open] summary::after{transform:rotate(45deg)}
+.hfaq details p{font-size:13.5px;color:var(--muted);line-height:1.6;padding:0 0 15px}
 
 /* Why */
 .why{max-width:1280px;margin:48px auto 0;padding:0 20px}
@@ -260,6 +287,7 @@ footer{border-top:1px solid var(--border);background:var(--panel)}
     </a>
     <nav class="topnav">
       <a href="#tools">Tools</a>
+      <a href="guides/">Guides</a>
       <a href="#why">Why us</a>
       <a href="request-a-tool/">Request a tool</a>
       <a href="about">About</a>
@@ -272,7 +300,7 @@ footer{border-top:1px solid var(--border);background:var(--panel)}
 </header>
 
 <section class="hero">
-  <span class="badge">⚡ 50 free tools · no sign-up</span>
+  <span class="badge">⚡ 50+ free tools · no sign-up</span>
   <h1>Everything you need, in one <span class="accent">dashboard</span></h1>
   <p>Calculators, image, PDF, text, developer tools and more — colour-coded by category. Pick one on the left, or just search.</p>
 </section>
@@ -306,18 +334,6 @@ footer{border-top:1px solid var(--border);background:var(--panel)}
   </section>
 </main>
 
-<!-- XCipher — signature feature -->
-<section class="xc">
-  <a class="xc-card" href="xcipher/" aria-label="Open XCipher — anonymous encrypted chat">
-    <div class="xc-l">
-      <span class="xc-badge">★ New · Our signature</span>
-      <h3>🔒 XCipher — Anonymous Encrypted Chat</h3>
-      <p>No sign-up. End-to-end encrypted. Messages vanish. Public rooms, self-destructing secret links &amp; password-locked private vaults.</p>
-    </div>
-    <span class="xc-go">Open XCipher <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-  </a>
-</section>
-
 <!-- Why -->
 <section class="why" id="why">
   <h2>Fast, free, and out of your way.</h2>
@@ -327,6 +343,56 @@ footer{border-top:1px solid var(--border);background:var(--panel)}
     <div class="wf"><span class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8V5a2 2 0 0 0-2-2H8M12 8h4a2 2 0 0 1 0 4h-4"/></svg></span><h3>Free forever</h3><p>Every tool is free. No hidden charges.</p></div>
     <div class="wf"><span class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><h3>No signup</h3><p>Just open and use. We never ask for data.</p></div>
     <div class="wf"><span class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h3>Mobile first</h3><p>Built to feel perfect on your phone.</p></div>
+  </div>
+</section>
+
+<!-- Guides -->
+<section class="guides" id="guides">
+  <div class="g-head">
+    <div>
+      <h2>Guides &amp; how-tos</h2>
+      <p class="gsub">Practical, plain-English guides written around the tools — real numbers, worked examples and screenshots, so you understand the "why" and not just the button.</p>
+    </div>
+    <a class="g-all" href="guides/">All guides →</a>
+  </div>
+  <div class="g-grid">
+    <a class="g-card" href="guides/how-to-compress-images-without-losing-quality/"><span class="g-tag">Images</span><h3>How to compress images without losing quality</h3><p>What quality sliders really do, JPG vs WebP, and the settings we use for web and WhatsApp.</p><span class="g-read">Read guide →</span></a>
+    <a class="g-card" href="guides/passport-photo-size-requirements/"><span class="g-tag">Documents</span><h3>Passport photo sizes for every country</h3><p>Exact mm and pixel sizes for passports, visas and ID cards — plus how to print 8 photos on one sheet.</p><span class="g-read">Read guide →</span></a>
+    <a class="g-card" href="guides/how-emi-is-calculated/"><span class="g-tag">Finance</span><h3>How loan EMI is actually calculated</h3><p>The EMI formula step by step, with a full worked example and how extra payments change it.</p><span class="g-read">Read guide →</span></a>
+    <a class="g-card" href="guides/debt-snowball-vs-avalanche/"><span class="g-tag">Finance</span><h3>Debt snowball vs avalanche</h3><p>Same debts, two payoff orders — we run the numbers to show which one saves more interest.</p><span class="g-read">Read guide →</span></a>
+    <a class="g-card" href="guides/qr-code-with-logo/"><span class="g-tag">Generators</span><h3>How to make a QR code with your logo</h3><p>Logo size limits, error correction levels, and the print-safety checks most people skip.</p><span class="g-read">Read guide →</span></a>
+    <a class="g-card" href="guides/what-makes-a-password-strong/"><span class="g-tag">Security</span><h3>What actually makes a password strong</h3><p>Length beats symbols — the math behind cracking times, and how to build passwords you can live with.</p><span class="g-read">Read guide →</span></a>
+  </div>
+</section>
+
+<!-- About the project -->
+<section class="edit" id="about-site">
+  <div class="ed-box">
+    <div>
+      <h2>Built by one builder, used in 100+ countries</h2>
+      <p>Xnipertools started in mid-2025 with a simple frustration: most "free" tool websites bury a 10-second job under sign-up walls, watermarks and upload queues. So we built our own — <b>one dashboard of fast, genuinely free tools</b> that respect your time and your privacy.</p>
+      <p>Every tool here is designed, coded and tested in-house — nothing is a rebranded plugin. And because almost everything runs <b>directly in your browser</b>, your photos, PDFs and passwords never leave your device: there is simply no server for them to be uploaded to. That's not a marketing line, it's the architecture.</p>
+      <p>The collection grows almost every week, usually from ideas readers send through the <a href="request-a-tool/" style="color:var(--accent-ink);font-weight:600">request page</a> — the passport photo maker, the school toolkit and the debt payoff calculator all started as user requests.</p>
+    </div>
+    <div class="ed-points">
+      <div class="ed-pt"><span class="n">1</span><div><b>Private by design</b>Files are processed on your device with browser technology — not uploaded, not stored, not seen by us.</div></div>
+      <div class="ed-pt"><span class="n">2</span><div><b>Tested before shipped</b>Every tool goes through real-device checks on desktop and mobile before it appears on this page.</div></div>
+      <div class="ed-pt"><span class="n">3</span><div><b>Honest results</b>Calculators show their formulas and sources — you can verify every number we give you.</div></div>
+      <div class="ed-pt"><span class="n">4</span><div><b>Free means free</b>No trials, no locked "pro" buttons, no watermarks on your downloads.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="hfaq" id="faq">
+  <h2>Common questions</h2>
+  <div class="fq-grid">
+    <details><summary>Are these tools really free?</summary><p>Yes — every tool on Xnipertools is completely free, with no trial periods, usage limits or locked features. You will never hit a paywall halfway through a job.</p></details>
+    <details><summary>Are my files uploaded to a server?</summary><p>No. Image, PDF and text tools run entirely in your browser using client-side technology. Your files stay on your device — when you close the tab, nothing of yours is left behind.</p></details>
+    <details><summary>Do I need to create an account?</summary><p>Never. There is no sign-up, no login and no email required for any tool. Tools that save your work (like the Weekly Planner) store it locally on your own device.</p></details>
+    <details><summary>Do the tools work on mobile?</summary><p>Yes — every tool is built mobile-first and tested on phones before launch. You can also install Xnipertools as an app from your browser menu for one-tap access.</p></details>
+    <details><summary>Who builds Xnipertools?</summary><p>Xnipertools is an independent project by the builder behind XniperBuilds. Every tool is designed, coded and tested in-house — you can read the full story on the <a href="about" style="color:var(--accent-ink);font-weight:600">About page</a>.</p></details>
+    <details><summary>How accurate are the calculators?</summary><p>Financial and health calculators use the standard published formulas, which are shown on each page. They are reliable for planning and education, but for big decisions we always recommend confirming with a qualified professional.</p></details>
   </div>
 </section>
 
@@ -361,7 +427,7 @@ footer{border-top:1px solid var(--border);background:var(--panel)}
         <a href="https://instagram.com/xniperr" target="_blank" rel="noopener" class="ft-ig" aria-label="Follow Xnipertools on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg><span>Follow on Instagram</span></a>
       </div>
       <div class="ft-col"><h4>Popular</h4><a href="background-remover/">Background Remover</a><a href="qr-code-generator/">QR Code Generator</a><a href="resume-builder/">Resume Builder</a><a href="image-to-pdf/">PDF Tools</a><a href="#tools">All tools</a></div>
-      <div class="ft-col"><h4>Company</h4><a href="https://xniperarcade.me/">Games</a><a href="about">About</a><a href="contact">Contact</a><a href="privacy">Privacy Policy</a><a href="terms">Terms</a><a href="report-bug/">Report a bug</a></div>
+      <div class="ft-col"><h4>Company</h4><a href="guides/">Guides</a><a href="https://xniperarcade.me/">Games</a><a href="about">About</a><a href="contact">Contact</a><a href="privacy">Privacy Policy</a><a href="terms">Terms</a><a href="report-bug/">Report a bug</a></div>
     </div>
   </div>
   <div class="ft-bot">© <span id="yr"></span> Xnipertools. All rights reserved.</div>

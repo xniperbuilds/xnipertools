@@ -1,6 +1,6 @@
 /* Xnipertools service worker — minimal, network-first, NO content caching (avoids stale tools).
    Only caches a tiny offline fallback page + icons. Bump VERSION to force cleanup. */
-var VERSION = 'xt-v2';
+var VERSION = 'xt-v3';
 var OFFLINE = '/offline.html';
 var PRECACHE = [OFFLINE, '/icon-192.png', '/icon-512.png'];
 

@@ -289,7 +289,6 @@ input[type=date]::-webkit-calendar-picker-indicator:hover,input[type=datetime-lo
 .article ul,.article ol{margin:8px 0 8px 22px}.article li{margin-bottom:6px}
 
 /* ad slot */
-.ad-slot{margin:30px 0;min-height:100px;display:grid;place-items:center;border:1px dashed rgba(255,255,255,.12);border-radius:14px;color:var(--muted-2);font-size:.78rem;letter-spacing:.04em}
 
 /* ===== Footer ===== */
 footer.site{margin-top:80px;border-top:1px solid var(--border);background:rgba(6,7,9,.6);backdrop-filter:blur(10px);padding:48px 0 30px}
@@ -789,8 +788,7 @@ select,input[type=date],input[type=datetime-local],input[type=time]{color-scheme
 [data-theme="light"] .copy.done{color:#fff}
 [data-theme="light"] .article h3{color:#10131a}
 [data-theme="light"] .article p,[data-theme="light"] .article li{color:#444c5c}
-[data-theme="light"] .ad-slot{border-color:rgba(11,15,26,.16)}
-[data-theme="light"] .seg{background:rgba(11,15,26,.04)}
+[data-theme="light"] [data-theme="light"] .seg{background:rgba(11,15,26,.04)}
 [data-theme="light"] .seg-btn.active{color:#fff}
 [data-theme="light"] .ff-toggle{color:#283044}
 [data-theme="light"] .ff-toggle .tg{background:rgba(11,15,26,.14)}
