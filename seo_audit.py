@@ -2,11 +2,11 @@
 """Xnipertools full-site SEO audit. Regex-based (files are well-formed, single-line meta tags)."""
 import os, re, glob, json, sys
 
-ROOT = r"C:\Users\FAIZAN COMPUTERS\Desktop\Xnipertools"
+ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, sys.argv[1] if len(sys.argv) > 1 else "seo-audit-report.txt")
 
 UTILITY_PAGES = {"404.html", "offline.html"}          # noindex utility pages: lighter rules
-SITE_PAGES = {"about.html", "contact.html", "privacy.html"}  # info pages: no WebApplication needed
+SITE_PAGES = {"about.html", "contact.html", "privacy.html", "terms.html"}  # info pages: no WebApplication; clean URLs (no .html) in canonical+sitemap
 FORM_PAGES = {"report-bug/index.html", "request-a-tool/index.html"}  # WebPage schema is correct for these
 
 sitemap = open(os.path.join(ROOT, "sitemap.xml"), encoding="utf-8").read()
@@ -26,12 +26,21 @@ def check(lines, ok, level, msg):
 for path in htmls:
     rel = os.path.relpath(path, ROOT).replace("\\", "/")
     txt = open(path, encoding="utf-8").read()
-    head = txt.split("</head>")[0]
-    body = txt.split("</head>")[1] if "</head>" in txt else txt
+    # split at the real head/body boundary (</head> followed by <body) —
+    # pages ABOUT meta tags can contain a literal "</head>" inside head content
+    mhb = re.search(r"</head>\s*<body", txt)
+    if mhb:
+        head, body = txt[:mhb.start()], txt[mhb.end():]
+    else:
+        head = txt.split("</head>")[0]
+        body = txt.split("</head>")[1] if "</head>" in txt else txt
     is_util = rel in UTILITY_PAGES
     is_site = rel in SITE_PAGES
     is_home = rel == "index.html"
     is_games = rel == "games/index.html"
+    is_ghub = rel == "guides/index.html"
+    is_guide = rel.startswith("guides/") and not is_ghub
+    is_noindex = re.search(r'name="robots" content="noindex', head) is not None
     slug = rel.replace("/index.html", "/").replace("index.html", "")
     lines = []
 
@@ -57,11 +66,11 @@ for path in htmls:
             check(lines, len(d) <= 175, "WARN", "description %d chars (>175)" % len(d))
             check(lines, len(d) >= 90, "WARN", "description %d chars (<90)" % len(d))
 
-    # 3. robots
+    # 3. robots (deliberately-noindexed pages are fine)
     if is_util:
         check(lines, 'name="robots" content="noindex' in head, "WARN", "utility page should be noindex")
     else:
-        check(lines, 'name="robots" content="index, follow' in head, "FAIL", "robots meta missing/wrong")
+        check(lines, ('name="robots" content="index, follow' in head) or is_noindex, "FAIL", "robots meta missing/wrong")
 
     # 4. author
     if not is_util:
@@ -75,7 +84,7 @@ for path in htmls:
         else:
             want = "https://xnipertools.com/" + (slug if slug else "")
             if rel in SITE_PAGES:
-                want = "https://xnipertools.com/" + rel
+                want = "https://xnipertools.com/" + rel[:-5]  # clean URL, no .html
             check(lines, m.group(1) == want, "FAIL", "canonical is %s (want %s)" % (m.group(1), want))
 
     # 6. OG (9 tags)
@@ -110,7 +119,9 @@ for path in htmls:
         except Exception as e:
             bad += 1
     check(lines, bad == 0, "FAIL", "%d invalid JSON-LD block(s)" % bad)
-    if not (is_util or is_site or is_home or rel in FORM_PAGES):
+    if is_guide:
+        check(lines, "Article" in types, "FAIL", "guide missing Article schema (found: %s)" % (", ".join(sorted(set(types))) or "none"))
+    elif not (is_util or is_site or is_home or is_ghub or rel in FORM_PAGES):
         check(lines, ("WebApplication" in types) or ("VideoGame" in types) or ("CollectionPage" in types),
               "FAIL", "no WebApplication schema (found: %s)" % (", ".join(sorted(set(types))) or "none"))
         check(lines, "BreadcrumbList" in types, "WARN", "no BreadcrumbList schema")
@@ -146,34 +157,37 @@ for path in htmls:
         check(lines, ('class="breadcrumb' in body) or ('aria-label="Breadcrumb"' in body),
               "WARN", "no breadcrumb nav")
 
-    # 14. more tools block
-    if not (is_util or is_home or is_games or rel == "privacy.html"):
+    # 14. more tools block (guides hub is a listing page — exempt)
+    if not (is_util or is_home or is_games or is_ghub or rel == "privacy.html" or rel == "terms.html"):
         check(lines, re.search(r"More tools|More Free Tools|more-tools", body, re.I) is not None,
               "WARN", "no 'More tools' block")
 
-    # 15. sitemap entry
-    if not is_util and rel != "404.html":
+    # 15. sitemap entry (noindexed pages are deliberately absent)
+    if not is_util and rel != "404.html" and not is_noindex:
         url = "https://xnipertools.com/" + (slug if not is_home else "")
         if rel in SITE_PAGES:
-            url = "https://xnipertools.com/" + rel
+            url = "https://xnipertools.com/" + rel[:-5]  # clean URL, no .html
         check(lines, url in sitemap, "FAIL", "missing from sitemap.xml: %s" % url)
 
-    # 16. homepage card
-    if not (is_util or is_site or is_home):
+    # 16. homepage card — tools render from the JS TOOLS array ("url":"slug/"),
+    #     guides appear via the guides row / hub, noindexed pages are exempt
+    if not (is_util or is_site or is_home or is_guide or is_ghub or is_noindex):
         s = slug.rstrip("/")
-        check(lines, ('href="%s/"' % s) in homepage or ('href="/%s/"' % s) in homepage or ("'%s'" % s) in homepage or ('"%s"' % s) in homepage,
+        check(lines, ('href="%s/"' % s) in homepage or ('href="/%s/"' % s) in homepage or ('"%s/"' % s) in homepage,
               "WARN", "no homepage card/link for %s" % s)
 
     status = "CLEAN" if not lines else ("%d issue(s)" % len(lines))
     report.append("%-50s %s" % (rel, status))
     report.extend(lines)
 
-# sitemap orphans: URLs in sitemap with no file
+# sitemap orphans: URLs in sitemap with no file (clean URLs like /about map to about.html)
 for loc in re.findall(r"<loc>(.*?)</loc>", sitemap):
     pathpart = loc.replace("https://xnipertools.com/", "")
     f = os.path.join(ROOT, pathpart.replace("/", os.sep) + ("index.html" if loc.endswith("/") and pathpart else ""))
     if pathpart == "":
         f = os.path.join(ROOT, "index.html")
+    if not os.path.exists(f) and not loc.endswith("/") and os.path.exists(f + ".html"):
+        continue  # clean URL served from <name>.html
     if not os.path.exists(f):
         report.append("SITEMAP ORPHAN: %s" % loc)
         totals["FAIL"] += 1
