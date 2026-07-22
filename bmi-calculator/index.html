@@ -3,13 +3,7 @@
 <head>
 <script>(function(){var t='light';try{t=localStorage.getItem('xt_theme')||'light'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2G2RG8P4CJ');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2G2RG8P4CJ');(function(){var loaded=false;function loadGA(){if(loaded)return;loaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ';document.head.appendChild(s);}['pointerdown','keydown','touchstart','scroll'].forEach(function(ev){addEventListener(ev,loadGA,{once:true,passive:true});});setTimeout(loadGA,12000);})();</script>
 <meta name="google-adsense-account" content="ca-pub-1240154684287662">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1240154684287662" crossorigin="anonymous"></script>
 
@@ -37,51 +31,18 @@ gtag('config', 'G-2G2RG8P4CJ');
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BMI Calculator","url":"https://xnipertools.com/bmi-calculator/","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is BMI?","acceptedAnswer":{"@type":"Answer","text":"BMI (Body Mass Index) is a simple measure that uses your height and weight to estimate whether you are at a healthy weight. The formula is your weight in kilograms divided by your height in metres squared. It gives a single score that places you in one of four categories: underweight, normal, overweight or obese."}},{"@type":"Question","name":"What is a healthy BMI range?","acceptedAnswer":{"@type":"Answer","text":"For most adults a healthy BMI is between 18.5 and 24.9. Below 18.5 is classed as underweight, 25 to 29.9 is overweight, and 30 or above is considered obese. The calculator marks your band on a colour spectrum so you can see exactly where you sit and how close you are to the next range."}},{"@type":"Question","name":"Does this tool work in both metric and imperial units?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use the toggle at the top of the calculator to switch between Metric (kilograms and centimetres) and Imperial (pounds, feet and inches). When you choose imperial, the tool converts your figures to metric internally before calculating, so the BMI score is the same either way."}},{"@type":"Question","name":"Is this BMI calculator accurate?","acceptedAnswer":{"@type":"Answer","text":"The maths is exact and matches the standard worldwide formula, so the number you see is correct. What BMI cannot do is tell muscle from fat. Very muscular people may read as overweight despite low body fat, while others may sit in the normal range and still carry excess fat. Treat it as a screening tool and consult a healthcare professional for a full assessment."}},{"@type":"Question","name":"Do age and gender change my BMI result?","acceptedAnswer":{"@type":"Answer","text":"The score itself is calculated only from your height and weight, so age and gender do not change the number. They do affect how the result is interpreted: women generally carry more body fat than men at the same BMI, and older adults often have more fat than younger adults with an identical score. Adding them gives you helpful context."}},{"@type":"Question","name":"Is my data saved or uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The entire calculation runs inside your browser. The height, weight, age and gender you enter are never sent to a server, stored, or shared. Nothing is saved when you close the page, so you can check your BMI as often as you like in complete privacy."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"BMI Calculator","item":"https://xnipertools.com/bmi-calculator/"}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/bricolage-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../style.css?v=20260711">
 <style>
 /* ===== BMI CALCULATOR — Premium Design ===== */
 
-/* ---------- ANIMATION SYSTEM ---------- */
-@keyframes blurSlideUp{
-  from{opacity:0;filter:blur(12px);transform:translateY(28px)}
-  to{opacity:1;filter:blur(0);transform:translateY(0)}
-}
-@keyframes blurFadeIn{
-  from{opacity:0;filter:blur(8px);transform:scale(.96)}
-  to{opacity:1;filter:blur(0);transform:scale(1)}
-}
-@keyframes gaugeArc{from{stroke-dashoffset:var(--arc-len)}to{stroke-dashoffset:var(--arc-target)}}
-@keyframes needleSweep{from{transform:rotate(var(--needle-from))}to{transform:rotate(var(--needle-to))}}
-@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 var(--cat-glow)}50%{box-shadow:0 0 40px 8px var(--cat-glow)}}
-@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-@keyframes popIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-
-/* Reduced motion */
-@media(prefers-reduced-motion:reduce){
-  .bmi-reveal,.bmi-stagger>*{animation:none!important;opacity:1!important;filter:none!important;transform:none!important}
-  .gauge-arc,.gauge-needle{animation:none!important}
-  .result-card{animation:none!important}
-}
-
-.bmi-reveal{opacity:0;animation:blurSlideUp .7s cubic-bezier(.25,.46,.45,.94) forwards}
-.bmi-stagger>*{opacity:0;animation:blurSlideUp .7s cubic-bezier(.25,.46,.45,.94) forwards}
-.bmi-stagger>*:nth-child(1){animation-delay:.05s}
-.bmi-stagger>*:nth-child(2){animation-delay:.14s}
-.bmi-stagger>*:nth-child(3){animation-delay:.23s}
-.bmi-stagger>*:nth-child(4){animation-delay:.32s}
-.bmi-stagger>*:nth-child(5){animation-delay:.41s}
-.bmi-stagger>*:nth-child(6){animation-delay:.50s}
-
-/* IntersectionObserver-triggered */
-.bmi-io{opacity:0;transform:translateY(28px);filter:blur(12px);transition:opacity .7s cubic-bezier(.25,.46,.45,.94),transform .7s cubic-bezier(.25,.46,.45,.94),filter .7s cubic-bezier(.25,.46,.45,.94)}
-.bmi-io.visible{opacity:1;transform:translateY(0);filter:blur(0)}
+/* ---------- ANIMATIONS REMOVED (performance) ---------- */
+.bmi-reveal,.bmi-stagger>*,.bmi-io,.bmi-io.visible{opacity:1;filter:none;transform:none}
 
 /* ---------- LAYOUT ---------- */
 .bmi-page{padding-top:30px;padding-bottom:80px}
-.bmi-breadcrumb{font-size:.82rem;color:var(--muted);margin-bottom:24px;animation:blurSlideUp .6s .1s both}
+.bmi-breadcrumb{font-size:.82rem;color:var(--muted);margin-bottom:24px}
 .bmi-breadcrumb a{color:var(--accent-l);transition:color .2s}
 .bmi-breadcrumb a:hover{color:#fff}
 .bmi-breadcrumb svg{width:12px;height:12px;vertical-align:middle;margin:0 6px;opacity:.4}
@@ -155,16 +116,14 @@ gtag('config', 'G-2G2RG8P4CJ');
   transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .25s;position:relative;overflow:hidden}
 .calc-btn:hover{transform:translateY(-3px) scale(1.01);box-shadow:0 14px 38px rgba(63,99,216,.45)}
 .calc-btn:active{transform:translateY(0) scale(.98)}
-.calc-btn .shimmer{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
-  background-size:200% 100%;animation:shimmer 2.5s infinite}
+.calc-btn .shimmer{display:none}
 
 /* ---------- RESULT SECTION ---------- */
 .result-section{max-width:680px;margin:0 auto;display:none}
 .result-section.show{display:block}
 
 .result-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:22px;
-  padding:40px 32px;text-align:center;position:relative;overflow:hidden;
-  animation:blurFadeIn .6s cubic-bezier(.25,.46,.45,.94) both}
+  padding:40px 32px;text-align:center;position:relative;overflow:hidden}
 .result-card::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1.5px;
   background:linear-gradient(135deg,var(--cat-color,var(--accent)),transparent 60%);
   -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
@@ -175,10 +134,9 @@ gtag('config', 'G-2G2RG8P4CJ');
 .gauge-wrap{position:relative;width:280px;height:160px;margin:0 auto 10px}
 .gauge-svg{width:100%;height:100%}
 .gauge-bg{fill:none;stroke:rgba(255,255,255,.06);stroke-width:18;stroke-linecap:round}
-.gauge-arc{fill:none;stroke-width:18;stroke-linecap:round;
-  animation:gaugeArc 1.2s cubic-bezier(.4,0,.2,1) forwards}
+.gauge-arc{fill:none;stroke-width:18;stroke-linecap:round;stroke-dashoffset:var(--arc-target)}
 .gauge-tick{fill:none;stroke:rgba(255,255,255,.1);stroke-width:1}
-.gauge-needle{transform-origin:140px 140px;animation:needleSweep 1.2s cubic-bezier(.4,0,.2,1) forwards}
+.gauge-needle{transform-origin:140px 140px;transform:rotate(var(--needle-to,-90deg))}
 .gauge-center{fill:var(--bg);stroke:rgba(255,255,255,.1);stroke-width:1}
 .gauge-labels text{font-size:11px;fill:var(--muted);font-family:'Inter',sans-serif}
 
@@ -664,21 +622,6 @@ function setGender(btn){
   btn.classList.add('active');
 }
 
-// --- Number counter animation ---
-function animateCounter(el,target,duration=1200){
-  const start=performance.now();
-  const from=0;
-  const update=(now)=>{
-    const elapsed=now-start;
-    const progress=Math.min(elapsed/duration,1);
-    const eased=1-Math.pow(1-progress,3); // ease-out cubic
-    const current=from+(target-from)*eased;
-    el.textContent=current.toFixed(1);
-    if(progress<1)requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-}
-
 // --- Calculate BMI ---
 function calculateBMI(){
   let heightM,weightKg;
@@ -730,9 +673,9 @@ function calculateBMI(){
   // Smooth scroll
   setTimeout(()=>section.scrollIntoView({behavior:'smooth',block:'center'}),100);
 
-  // Counter animation
+  // BMI value
   const valEl=document.getElementById('bmiValue');
-  animateCounter(valEl,bmi);
+  valEl.textContent=bmi.toFixed(1);
 
   // Labels
   document.getElementById('bmiLabel').textContent=label;
@@ -743,40 +686,18 @@ function calculateBMI(){
   document.querySelectorAll('.spectrum span').forEach(s=>s.classList.remove('active'));
   document.getElementById('spec'+cat.charAt(0).toUpperCase()+cat.slice(1)).classList.add('active');
 
-  // Gauge needle animation
+  // Gauge needle position
   const needle=document.getElementById('gaugeNeedle');
   const angle=-90+((bmiClamped-15)/25)*180; // -90 to 90 degrees
-  needle.style.setProperty('--needle-from','-90deg');
   needle.style.setProperty('--needle-to',angle+'deg');
-  // Re-trigger animation
-  needle.style.animation='none';
-  needle.offsetHeight; // force reflow
-  needle.style.animation='needleSweep 1.2s cubic-bezier(.4,0,.2,1) forwards';
 
-  // Gauge arc animation
+  // Gauge arc fill
   const arc=document.getElementById('gaugeArc');
   const arcLen=345; // full arc length
   const fillRatio=(bmiClamped-15)/25;
   const target=arcLen-(arcLen*fillRatio);
-  arc.style.setProperty('--arc-len',arcLen);
   arc.style.setProperty('--arc-target',target);
   arc.style.strokeDasharray=arcLen;
-  arc.style.animation='none';
-  arc.offsetHeight;
-  arc.style.animation='gaugeArc 1.2s cubic-bezier(.4,0,.2,1) forwards';
-
-  // Re-trigger result card animation
-  card.style.animation='none';
-  card.offsetHeight;
-  card.style.animation='blurFadeIn .6s cubic-bezier(.25,.46,.45,.94) both';
-
-  // Re-trigger tips stagger
-  const tips=document.getElementById('tipsGrid');
-  tips.querySelectorAll('.tip').forEach((t,i)=>{
-    t.style.animation='none';
-    t.offsetHeight;
-    t.style.animation=`blurSlideUp .7s cubic-bezier(.25,.46,.45,.94) ${.3+i*.09}s both`;
-  });
 }
 
 // Shake button on invalid input

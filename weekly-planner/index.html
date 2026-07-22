@@ -3,13 +3,7 @@
 <head>
 <script>(function(){var t='light';try{t=localStorage.getItem('xt_theme')||'light'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2G2RG8P4CJ');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2G2RG8P4CJ');(function(){var loaded=false;function loadGA(){if(loaded)return;loaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ';document.head.appendChild(s);}['pointerdown','keydown','touchstart','scroll'].forEach(function(ev){addEventListener(ev,loadGA,{once:true,passive:true});});setTimeout(loadGA,12000);})();</script>
 <meta name="google-adsense-account" content="ca-pub-1240154684287662">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1240154684287662" crossorigin="anonymous"></script>
 
@@ -37,8 +31,8 @@ gtag('config', 'G-2G2RG8P4CJ');
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Weekly Planner","url":"https://xnipertools.com/weekly-planner/","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this weekly planner free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The weekly planner is 100% free with no signup, no watermark and no limits. Add as many tasks as you like, every week."}},{"@type":"Question","name":"Will my tasks be saved?","acceptedAnswer":{"@type":"Answer","text":"Yes. Your plan is saved automatically in your browser, so it stays on this device even after you close the tab. Nothing is uploaded to any server."}},{"@type":"Question","name":"Can I download or print my weekly planner?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can download your plan as a high-resolution image to share or set as a wallpaper, or print it straight from the page."}},{"@type":"Question","name":"Can I change the look of the planner?","acceptedAnswer":{"@type":"Answer","text":"Yes. Pick from several colour themes — Indigo, Emerald, Violet, Rose, Amber, Cyan, Sunset and Slate. Your choice is saved automatically."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Weekly Planner","item":"https://xnipertools.com/weekly-planner/"}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/bricolage-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../style.css?v=20260711">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -69,7 +63,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 
 /* theme panel */
 .theme-panel{margin-top:14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:none}
-.theme-panel.open{display:block;animation:popIn .3s cubic-bezier(.2,.8,.2,1)}
+.theme-panel.open{display:block}
 .theme-panel .tp-lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
 .theme-row{display:flex;flex-wrap:wrap;gap:9px}
 .tchip{display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:1px solid var(--border);background:rgba(255,255,255,.04);color:#cfd4e0;font-weight:600;font-size:.84rem;font-family:inherit;padding:8px 13px;border-radius:30px;transition:.15s}
@@ -86,7 +80,7 @@ gtag('config', 'G-2G2RG8P4CJ');
 .ov-stat .l{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:4px}
 .ov-done .n{color:var(--pa2)}
 .ov-msg{width:100%;margin-top:2px;font-weight:600;color:var(--pa2);font-size:.95rem;display:none}
-.ov-msg.show{display:block;animation:popIn .4s}
+.ov-msg.show{display:block}
 
 /* rings */
 .ringwrap{position:relative;display:grid;place-items:center}

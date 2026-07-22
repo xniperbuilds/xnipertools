@@ -3,13 +3,7 @@
 <head>
 <script>(function(){var t='light';try{t=localStorage.getItem('xt_theme')||'light'}catch(e){}document.documentElement.setAttribute('data-theme',t)})();</script>
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-2G2RG8P4CJ');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-2G2RG8P4CJ');(function(){var loaded=false;function loadGA(){if(loaded)return;loaded=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-2G2RG8P4CJ';document.head.appendChild(s);}['pointerdown','keydown','touchstart','scroll'].forEach(function(ev){addEventListener(ev,loadGA,{once:true,passive:true});});setTimeout(loadGA,12000);})();</script>
 <meta name="google-adsense-account" content="ca-pub-1240154684287662">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1240154684287662" crossorigin="anonymous"></script>
 
@@ -37,8 +31,8 @@ gtag('config', 'G-2G2RG8P4CJ');
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Typing Speed Test","url":"https://xnipertools.com/typing-speed-test/","applicationCategory":"EducationalApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is typing speed (WPM) measured?","acceptedAnswer":{"@type":"Answer","text":"WPM means words per minute, where one word is counted as five characters. We take the number of correctly typed characters, divide by five, then divide by the time in minutes. Only correct characters count toward your net WPM, so accuracy matters."}},{"@type":"Question","name":"What is a good typing speed?","acceptedAnswer":{"@type":"Answer","text":"An average typist reaches about 35 to 45 WPM. Around 60 to 70 WPM is considered fast and is typical for office work, while professional typists often exceed 90 WPM. Beginners usually start near 20 to 30 WPM and improve quickly with practice."}},{"@type":"Question","name":"How do the typing lessons work?","acceptedAnswer":{"@type":"Answer","text":"The Learn tab gives you step-by-step lessons, starting with the home row (asdf jkl;) and moving on to the top row, bottom row, capitals, numbers, symbols and full sentences. An on-screen keyboard highlights the next key and shows which finger to use, so you build proper touch-typing habits."}},{"@type":"Question","name":"Do I have to look at the keyboard?","acceptedAnswer":{"@type":"Answer","text":"The goal of touch typing is to type without looking. Keep your fingers on the home row (index fingers on F and J, which have small bumps), use the on-screen keyboard in the Learn tab as a guide, and try not to look down. Speed comes naturally once the positions become muscle memory."}},{"@type":"Question","name":"Are the typing games free to play?","acceptedAnswer":{"@type":"Answer","text":"Yes. The Games tab includes free typing games such as Falling Words and Letter Rush that make practice fun while building speed and accuracy. Everything is free with no signup."}},{"@type":"Question","name":"Does this work on mobile?","acceptedAnswer":{"@type":"Answer","text":"The typing test, lessons and games are designed for a physical keyboard, which gives the best experience on a laptop or desktop. On a phone you can still play using the on-screen keyboard, though a real keyboard is recommended for accurate WPM results."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://xnipertools.com/"},{"@type":"ListItem","position":2,"name":"Typing Speed Test","item":"https://xnipertools.com/typing-speed-test/"}]}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fonts/bricolage-latin.woff2" crossorigin>
 <link rel="stylesheet" href="../style.css?v=20260711">
 <style>
 /* ===== Typing Speed Test — tool-scoped ===== */
@@ -79,8 +73,7 @@ body[data-tool="typing-speed-test"]{--ic:#4f46e5}
 
 .tt-result{margin-top:18px;border-radius:18px;padding:22px;border:1px solid color-mix(in srgb,var(--ic) 30%,transparent);
   background:linear-gradient(150deg,color-mix(in srgb,var(--ic) 16%,transparent),color-mix(in srgb,var(--ic) 4%,transparent));display:none}
-.tt-result.show{display:block;animation:ttPop .4s ease}
-@keyframes ttPop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tt-result.show{display:block}
 .tt-result .big{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
 .tt-result .big .n{font-family:'Space Grotesk',ui-monospace,monospace;font-size:3rem;font-weight:800;color:var(--ic);line-height:1}
 .tt-result .big .u{color:var(--muted);font-weight:700}
