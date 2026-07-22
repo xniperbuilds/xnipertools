@@ -136,10 +136,15 @@ for path in htmls:
     # 9. GA4 — present, and first script must be anti-flash then GA4
     if not is_util:
         check(lines, "G-2G2RG8P4CJ" in head, "FAIL", "GA4 snippet missing")
-        first_two = re.findall(r"<script[^>]*>", head)[:2]
-        first_src = re.search(r"<script[^>]*src=\"([^\"]+)\"", head)
         check(lines, "xt_theme" in head, "WARN", "anti-flash theme script missing from head")
-        check(lines, first_src and "googletagmanager" in first_src.group(1), "WARN", "GA4 not first external script")
+        # GA4 is deliberately deferred to first interaction (perf pass 2026-07-22), so it is
+        # no longer the first external script. That old rule now fires on every page and
+        # buries real issues — check for render-blocking head scripts instead, which is
+        # what actually matters for speed.
+        blocking = [s for s in re.findall(r"<script[^>]*src=[^>]*?>", head)
+                    if " async" not in s and " defer" not in s]
+        check(lines, not blocking, "WARN",
+              "render-blocking script in head: " + (blocking[0][:70] if blocking else ""))
 
     # 10/11. favicons
     check(lines, '/favicon.ico' in head, "FAIL", "favicon.ico link missing")
